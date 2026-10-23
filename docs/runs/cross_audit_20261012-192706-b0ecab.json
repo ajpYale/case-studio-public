@@ -1,0 +1,52 @@
+{
+ "case_id": "20261012-192706-b0ecab",
+ "title": "Cold Space, Hot Economics",
+ "difficulty": "medium",
+ "original_status": "verified",
+ "original_model": "gpt-5.6-terra",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "All displayed arithmetic and the recommendation are internally correct. Harbor climate revenue/cost are $324,000/$58,320; displaced standard revenue/cost are $225,792/$21,168; incremental contribution is $61,056 and payback is 4.9 years. Seaport climate revenue/cost are $316,800/$64,800; displaced standard revenue/cost are $172,800/$20,736; incremental contribution is $99,936 and payback is 3.2 years. Therefore Seaport clears the stated four-year screening hurdle and Harbor does not. The comparative claims also hold: Harbor has higher climate rent and occupancy, lower capex, and a larger displaced standard contribution ($204,624 versus $152,064), which more than offsets Harbor’s higher climate contribution ($265,680 versus $252,000). The case otherwise fits the requested medium format: six directed sections, two exhibits with meaningful distractor data, a demand/commercialization brainstorm, and an opportunity-cost insight. The principal repair is to make q3 hand-calculable within the stated interview-time standard.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q3, “Calculate incremental contribution and payback”; associated model answer and interviewer notes",
+   "problem": "This is not runnable in about a minute by hand as written. The requested answer requires 12 separately displayed calculation outputs (four revenue/cost figures, incremental contribution, and payback for each site), including awkward occupied-unit equivalents of 117.6 at Harbor and 115.2 at Seaport and outputs such as $225,792, $21,168, $152,064, and $99,936. The arithmetic is correct, but it is too long and unnecessarily granular for one quant section in a first-round medium case. A candidate can shortcut it, but the question/model answer explicitly demand the component outputs.",
+   "fix": "Ask only for annual incremental contribution and payback for each site, and guide the intended shortcut: annual contribution = units × 12 × [climate occupancy × (climate rent − climate variable cost) − standard occupancy × (standard rent − standard variable cost)]. Keep the detailed revenue/cost build in interviewer backup only, or replace the occupancy assumptions with round occupied-unit counts."
+  },
+  {
+   "severity": "minor",
+   "where": "Clarifying answer on payback; q5 and q6 references to cash recovery/payback",
+   "problem": "The case calls capex divided by “stabilized annual incremental contribution” simple payback, but does not state that stabilized cash flow begins immediately. q5 then explicitly says a slow opening ramp would “delay cash recovery.” Thus 3.2 and 4.9 are valid stabilized run-rate screening ratios, not necessarily literal calendar-year simple payback periods from capex paid today. The numbers themselves are correct: Harbor = $300,000 / $61,056 = 4.91352, or 4.9 years; Seaport = $320,000 / $99,936 = 3.20205, or 3.2 years.",
+   "fix": "Either label the metric throughout as “stabilized run-rate payback” (and say it is the management screening metric), or explicitly instruct candidates to assume stabilized contribution starts immediately after capex. Do not describe it as actual cash recovery if ramp-up remains a separate risk."
+  },
+  {
+   "severity": "minor",
+   "where": "q1 Share: “strongest risk-adjusted commercial case”; decision criterion and recommendation",
+   "problem": "“Risk-adjusted” is not defined quantitatively, while the stated decision rule is an unlevered, stabilized simple-payback comparison with qualitative risk discussion. This can prompt a candidate to look for a probability adjustment, discount rate, or risk-weighted cash flows that the case does not provide. The rest of the case consistently uses unadjusted economics and qualitative mitigations.",
+   "fix": "Replace “strongest risk-adjusted commercial case” with “strongest commercial case after considering qualitative risks,” or provide an explicit risk-adjustment method if that term is intended literally."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 7252,
+  "cached": 1787,
+  "output": 3788,
+  "requests": 1,
+  "seconds": 35.9,
+  "usd": 0.059415,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 7252,
+    "cached": 1787,
+    "output": 3788,
+    "requests": 1,
+    "seconds": 35.9,
+    "usd": 0.059415
+   }
+  ]
+ }
+}

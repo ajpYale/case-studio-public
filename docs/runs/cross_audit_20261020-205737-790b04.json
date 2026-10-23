@@ -1,0 +1,40 @@
+{
+ "case_id": "20261020-205737-790b04",
+ "title": "A Better Use for the Busy Season",
+ "difficulty": "easy",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "All displayed calculations recompute correctly: annual contribution is (2,000 × $20) + (800 × $20) = $56K; operating profit is $56K - $50K = $6K; 500 incremental self-guided bookings yield $10K and projected profit of $16K. The timing, fixed-cost treatment, units, and like-for-like incremental-profit comparison are internally consistent, and the case has one compact exhibit and eight simple, mental-math-friendly calculations, fitting the requested easy interviewer-led format. The material flaw is the unsupported elevation of staff-hour productivity into the case’s decisive insight.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q2, q3 model answer, q5 model answer, Interviewer notes, Recommendation",
+   "problem": "The case makes contribution per staff hour its central decision insight without establishing that staff hours are constrained, costly at the margin, or otherwise economically relevant to the choice. The arithmetic is correct: self-guided contribution is $30 - $10 = $20 per booking and $20 / 0.25 = $80 per stated staff hour; guided contribution is $75 - $55 = $20 and $20 / 2.5 = $8 per stated staff hour. But the only capacity fact later supplied says the existing operation can serve the extra 500 self-guided bookings with no new fixed costs. Nothing says available staff time is scarce, gives total staff-hour capacity, or says the two offerings compete for a binding labor resource. Therefore the claims that self-guided rentals are the appropriate focus because they are “much more productive in the use of staff time,” and that this is “the strongest economic reason” to favor them, do not follow from the givens. The supported reason to pursue the specified growth is instead that confirmed incremental demand of 500 bookings earns $20 contribution each with no incremental fixed cost: 500 × $20 = $10K, taking profit from $6K to $16K.",
+   "fix": "Minimal no-new-analysis fix: recast staff-hour contribution as an informative but conditional metric. In q3 say it would matter if labor becomes a bottleneck; in q5, Interviewer notes, and Recommendation, make the primary rationale the $10K incremental contribution from demand that can be served with no new fixed costs. Alternatively, explicitly provide a binding staff-hour/capacity constraint before asking candidates to use contribution per staff hour as the decision criterion."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 5676,
+  "cached": 1658,
+  "output": 1826,
+  "requests": 1,
+  "seconds": 18.5,
+  "usd": 0.032228,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 5676,
+    "cached": 1658,
+    "output": 1826,
+    "requests": 1,
+    "seconds": 18.5,
+    "usd": 0.032228
+   }
+  ]
+ }
+}

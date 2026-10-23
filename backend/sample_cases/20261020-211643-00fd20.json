@@ -1,0 +1,1191 @@
+{
+ "id": "20261020-211643-00fd20",
+ "created_at": "2026-10-20T21:16:43.932793+00:00",
+ "request": {
+  "difficulty": "easy",
+  "case_type": null,
+  "industry": null,
+  "format": null,
+  "notes": null,
+  "engine": "luna",
+  "confirm_cost": false
+ },
+ "plan": {
+  "title": "The Empty Popcorn Queue",
+  "client": "Harborlight Cinemas",
+  "industry": "Movie theaters and entertainment",
+  "case_type": "Profitability diagnosis",
+  "situation": "Harborlight Cinemas is a regional theater chain whose annual profit has declined even as attendance has increased. The CEO wants to understand what is driving the decline and what the chain should do next.",
+  "core_question": "Why is Harborlight's profit falling despite higher attendance, and what practical action should management prioritize?",
+  "key_insight": "Theater contribution from tickets grows with attendance, but contribution from concessions falls because a smaller share of guests buys concessions. That decline more than offsets the ticket-side gain. The candidate should diagnose a customer-spend mix problem rather than assume the chain needs more attendance or higher ticket prices.",
+  "twist": null,
+  "storyline": [
+   {
+    "kind": "framework",
+    "intent": "Test whether the candidate uses a clean profitability structure: revenue and variable contribution by stream, then fixed costs. A strong opening distinguishes ticket economics from concessions and asks whether costs, attendance, prices, or customer mix have changed."
+   },
+   {
+    "kind": "exhibit_read",
+    "intent": "Release the simple two-year exhibit after the candidate frames the diagnosis. They should notice attendance rises while concession attachment falls, and identify the latter as a potential cause rather than jumping to a conclusion from revenue or attendance alone."
+   },
+   {
+    "kind": "quant",
+    "intent": "Share the theater's ticket contribution rate, concession contribution margin, and stable annual fixed costs when the candidate asks how to compare the streams. Have the candidate calculate contribution by stream and year, operating profit, and the change in profit."
+   },
+   {
+    "kind": "synthesis",
+    "intent": "Ask for a concise recommendation. Look for a clear diagnosis, a practical way to improve concession purchases per guest, risks to the guest experience, and a next step such as testing tactics at selected theaters before scaling."
+   }
+  ],
+  "numbers_plan": "Use the exhibit's attendance, ticket price, concession attachment, and average concession spend with the interviewer-shared contribution rates and fixed costs. Ticket contribution = attendance × ticket price × theater_ticket_share. Concession contribution = attendance × attach rate × concession spend × concession_margin. Operating profit = ticket contribution + concession contribution − fixed_cost. The final comparison shows ticket contribution increasing by $0.5M while concession contribution falls by $0.96M, driving a $0.46M decline in annual profit, or about 15% versus the prior year.",
+  "exhibits_plan": [
+   "Ex1 — Harborlight operating snapshot, prior year versus current year. A readable table with rows for the two years and columns for attendance (millions of visits), average ticket price ($/visit), concession attachment (% of guests buying), and average concession spend ($/buying guest). It makes the attendance-up / attachment-down pattern visible. It does not show contribution rates or fixed costs; share those when the candidate asks how to translate the operating trends into profit."
+  ],
+  "core_variables": [
+   {
+    "name": "attendance_2024",
+    "value": 1.0,
+    "unit": "count_m",
+    "label": "Prior-year theater visits",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "attendance_2025",
+    "value": 1.1,
+    "unit": "count_m",
+    "label": "Current-year theater visits",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "ticket_price",
+    "value": 10.0,
+    "unit": "per_unit_usd",
+    "label": "Average ticket price per visit, unchanged across both years",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "theater_ticket_share",
+    "value": 0.5,
+    "unit": "pct",
+    "label": "Share of ticket revenue retained by Harborlight after film rental",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "attach_2024",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Prior-year share of guests buying concessions",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "attach_2025",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Current-year share of guests buying concessions",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "concession_spend",
+    "value": 10.0,
+    "unit": "per_unit_usd",
+    "label": "Average concession spend per guest who buys concessions, unchanged across both years",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "concession_margin",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Contribution margin on concession sales",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "fixed_cost",
+    "value": 5.6,
+    "unit": "usd_m",
+    "label": "Annual fixed operating costs, unchanged across both years",
+    "revealed_in": "interviewer",
+    "role": "input"
+   }
+  ],
+  "core_calculations": [
+   {
+    "id": "ticket_contribution_2024",
+    "label": "Prior-year ticket contribution",
+    "expression": "attendance_2024 * ticket_price * theater_ticket_share",
+    "unit": "usd_m",
+    "expected_value": 5.0,
+    "decimals": 1
+   },
+   {
+    "id": "ticket_contribution_2025",
+    "label": "Current-year ticket contribution",
+    "expression": "attendance_2025 * ticket_price * theater_ticket_share",
+    "unit": "usd_m",
+    "expected_value": 5.5,
+    "decimals": 1
+   },
+   {
+    "id": "concession_contribution_2024",
+    "label": "Prior-year concession contribution",
+    "expression": "attendance_2024 * attach_2024 * concession_spend * concession_margin",
+    "unit": "usd_m",
+    "expected_value": 3.6,
+    "decimals": 2
+   },
+   {
+    "id": "concession_contribution_2025",
+    "label": "Current-year concession contribution",
+    "expression": "attendance_2025 * attach_2025 * concession_spend * concession_margin",
+    "unit": "usd_m",
+    "expected_value": 2.64,
+    "decimals": 2
+   },
+   {
+    "id": "profit_2024",
+    "label": "Prior-year operating profit",
+    "expression": "ticket_contribution_2024 + concession_contribution_2024 - fixed_cost",
+    "unit": "usd_m",
+    "expected_value": 3.0,
+    "decimals": 2
+   },
+   {
+    "id": "profit_2025",
+    "label": "Current-year operating profit",
+    "expression": "ticket_contribution_2025 + concession_contribution_2025 - fixed_cost",
+    "unit": "usd_m",
+    "expected_value": 2.54,
+    "decimals": 2
+   },
+   {
+    "id": "profit_change",
+    "label": "Change in operating profit, current year versus prior year",
+    "expression": "profit_2025 - profit_2024",
+    "unit": "usd_m",
+    "expected_value": -0.46,
+    "decimals": 2
+   },
+   {
+    "id": "profit_decline_pct",
+    "label": "Operating profit decline as a share of prior-year profit",
+    "expression": "abs(profit_change) / profit_2024",
+    "unit": "pct",
+    "expected_value": 0.15333333333333332,
+    "decimals": 1
+   }
+  ]
+ },
+ "draft": {
+  "title": "The Empty Popcorn Queue",
+  "client": "Harborlight Cinemas",
+  "industry": "Movie theaters and entertainment",
+  "case_type": "Profitability diagnosis",
+  "difficulty": "easy",
+  "format": "interviewer_led",
+  "duration_minutes": 20,
+  "concepts_tested": [
+   "Profitability diagnosis",
+   "Revenue and contribution by business stream",
+   "Customer attachment and spend",
+   "Contribution margin",
+   "Operating profit change",
+   "Practical recommendation"
+  ],
+  "situation_summary": "Harborlight Cinemas' annual profit has declined despite higher attendance. The candidate diagnoses the change in ticket and concession contribution and recommends a practical response.",
+  "prompt": "Harborlight Cinemas is a regional theater chain. Its annual profit has declined even though attendance has increased. The CEO wants to understand what is driving the decline and what practical action management should prioritize. How would you assess the situation and advise the CEO?",
+  "clarifying": [
+   {
+    "question": "What does the CEO mean by profit, and what time periods should I compare?",
+    "answer": "Use annual operating profit after variable costs and fixed operating costs. Compare the most recent completed year with the immediately preceding year. For this simplified case, tickets and concessions are the only revenue streams; the stated retained share and concession contribution margin capture all variable costs; and fixed operating costs are the only other costs."
+   },
+   {
+    "question": "Should I focus on the theater business overall or a particular location or customer segment?",
+    "answer": "Assess the chain overall. You may identify useful follow-up segmentation in your recommendation."
+   },
+   {
+    "question": "Are there any known changes in the business or objectives beyond restoring profitability?",
+    "answer": "There are no other known changes. The CEO wants a clear diagnosis and practical actions that can improve profit without undermining the guest experience."
+   }
+  ],
+  "variables": [
+   {
+    "name": "attendance_2024",
+    "value": 1.0,
+    "unit": "count_m",
+    "label": "Prior-year theater visits",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "attendance_2025",
+    "value": 1.1,
+    "unit": "count_m",
+    "label": "Current-year theater visits",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "ticket_price",
+    "value": 10.0,
+    "unit": "per_unit_usd",
+    "label": "Average ticket price per visit, unchanged across both years",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "theater_ticket_share",
+    "value": 0.5,
+    "unit": "pct",
+    "label": "Share of ticket revenue retained by Harborlight after film rental",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "attach_2024",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Prior-year share of guests buying concessions",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "attach_2025",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Current-year share of guests buying concessions",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "concession_spend",
+    "value": 10.0,
+    "unit": "per_unit_usd",
+    "label": "Average concession spend per guest who buys concessions, unchanged across both years",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "concession_margin",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Contribution margin on concession sales",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "fixed_cost",
+    "value": 5.6,
+    "unit": "usd_m",
+    "label": "Annual fixed operating costs, unchanged across both years",
+    "revealed_in": "interviewer",
+    "role": "input"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Profitability by revenue stream",
+    "points": [
+     "Ticket economics: attendance, ticket price, and the share retained after film rental.",
+     "Concession economics: guest attachment, average spend per buying guest, and contribution margin.",
+     "Operating costs: variable costs by stream and fixed operating costs.",
+     "Changes and actions: identify what moved, quantify its impact on profit, and prioritize feasible actions."
+    ]
+   }
+  ],
+  "framework_notes": "A strong candidate starts with a simple revenue-and-cost structure, then separates tickets from concessions because they have different economics. They should ask whether attendance, prices, customer behavior, variable costs, or fixed costs changed. The case's central insight is that attendance alone does not explain profit: concession attachment is an important driver of contribution per visit. Do not require a specialized theater-industry framework.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the diagnosis",
+    "kind": "framework",
+    "ask": "How would you structure the diagnosis of Harborlight's declining profit?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would separate operating profit into contribution from tickets and concessions, then subtract fixed costs. For each stream, I would check changes in volume, price or spend, and variable economics. I would compare the periods, isolate the drivers of the profit change, and then assess practical ways to address the largest driver.",
+    "what_great_looks_like": [
+     "Clearly distinguishes ticket and concession economics.",
+     "Recognizes that attendance growth does not necessarily mean profit growth.",
+     "Plans to compare both periods and quantify the drivers before recommending action."
+    ],
+    "common_mistakes": [
+     "Assuming attendance is the only important driver.",
+     "Treating ticket revenue as profit without accounting for film rental.",
+     "Jumping to price increases or cost cuts before diagnosing the change."
+    ],
+    "hints": [
+     "What are Harborlight's main sources of revenue?",
+     "Would the chain retain all ticket revenue?"
+    ],
+    "pushback": [
+     "Attendance is up, so shouldn't profit be up too? What else would you want to check?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Read the operating snapshot",
+    "kind": "exhibit_read",
+    "ask": "Review the operating snapshot. What has changed, and which change would you investigate first as a potential driver of profit?",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Attendance has increased from {attendance_2024} to {attendance_2025}, while ticket price and average spend per concession-buying guest are unchanged. The share of guests buying concessions has fallen from {attach_2024} to {attach_2025}. That makes concession attachment the leading potential explanation to quantify; the exhibit alone does not yet establish the net profit impact.",
+    "what_great_looks_like": [
+     "Accurately identifies that attendance rose while concession attachment fell.",
+     "Notes that ticket price and concession spend per buying guest are unchanged.",
+     "Treats the attachment decline as a hypothesis to test through contribution, rather than assuming the exhibit alone proves causality."
+    ],
+    "common_mistakes": [
+     "Focusing only on the attendance increase.",
+     "Misreading concession attachment as average spend.",
+     "Calling the attachment decline the sole cause before comparing contribution and fixed costs."
+    ],
+    "hints": [
+     "Compare each metric across the periods. Which one moved in the opposite direction from attendance?",
+     "Which operating metric changes how many guests make a concession purchase?"
+    ],
+    "pushback": [
+     "Could the lower attachment rate matter if attendance increased? Explain how you would test that."
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Quantify the profit change",
+    "kind": "quant",
+    "ask": "Please quantify ticket contribution, concession contribution, and operating profit in each period, then explain the change. Use the information below and assume the stated contribution rates and fixed costs are stable across both years.",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "For this simplified case, tickets and concessions are the only revenue streams; the stated retained share and concession contribution margin capture all variable costs; and fixed operating costs are the only other costs.",
+     "Harborlight retains {theater_ticket_share} of ticket revenue after film rental.",
+     "Concession sales have a contribution margin of {concession_margin}.",
+     "Annual fixed operating costs are {fixed_cost} in each period."
+    ],
+    "calculations": [
+     {
+      "id": "ticket_contribution_2024",
+      "label": "Prior-year ticket contribution",
+      "expression": "attendance_2024 * ticket_price * theater_ticket_share",
+      "unit": "usd_m",
+      "expected_value": 5.0,
+      "decimals": 1
+     },
+     {
+      "id": "ticket_contribution_2025",
+      "label": "Current-year ticket contribution",
+      "expression": "attendance_2025 * ticket_price * theater_ticket_share",
+      "unit": "usd_m",
+      "expected_value": 5.5,
+      "decimals": 1
+     },
+     {
+      "id": "concession_contribution_2024",
+      "label": "Prior-year concession contribution",
+      "expression": "attendance_2024 * attach_2024 * concession_spend * concession_margin",
+      "unit": "usd_m",
+      "expected_value": 3.6,
+      "decimals": 2
+     },
+     {
+      "id": "concession_contribution_2025",
+      "label": "Current-year concession contribution",
+      "expression": "attendance_2025 * attach_2025 * concession_spend * concession_margin",
+      "unit": "usd_m",
+      "expected_value": 2.64,
+      "decimals": 2
+     },
+     {
+      "id": "profit_2024",
+      "label": "Prior-year operating profit",
+      "expression": "ticket_contribution_2024 + concession_contribution_2024 - fixed_cost",
+      "unit": "usd_m",
+      "expected_value": 3.0,
+      "decimals": 2
+     },
+     {
+      "id": "profit_2025",
+      "label": "Current-year operating profit",
+      "expression": "ticket_contribution_2025 + concession_contribution_2025 - fixed_cost",
+      "unit": "usd_m",
+      "expected_value": 2.54,
+      "decimals": 2
+     },
+     {
+      "id": "profit_change",
+      "label": "Change in operating profit, current year versus prior year",
+      "expression": "profit_2025 - profit_2024",
+      "unit": "usd_m",
+      "expected_value": -0.46,
+      "decimals": 2
+     },
+     {
+      "id": "profit_decline",
+      "label": "Operating profit decline",
+      "expression": "abs(profit_change)",
+      "unit": "usd_m",
+      "expected_value": 0.46,
+      "decimals": 2
+     }
+    ],
+    "model_answer": "Ticket contribution increases from {ticket_contribution_2024} to {ticket_contribution_2025}. Concession contribution falls from {concession_contribution_2024} to {concession_contribution_2025}. With fixed costs unchanged at {fixed_cost}, operating profit falls from {profit_2024} to {profit_2025}, a decline of {profit_decline}. The concession contribution decline more than offsets the ticket contribution gain.",
+    "what_great_looks_like": [
+     "Uses contribution, not gross sales, for both revenue streams.",
+     "Keeps units consistent: visits in millions multiplied by dollars per visit produce dollars in millions.",
+     "Makes the netting explicit: ticket contribution rises, but concession contribution falls by more.",
+     "Connects the result back to the observed fall in concession attachment."
+    ],
+    "common_mistakes": [
+     "Counting all ticket sales as Harborlight contribution.",
+     "Applying concession margin to all visits rather than to concession sales.",
+     "Subtracting fixed costs from one period but not the other.",
+     "Reporting a profit change without stating whether it is a gain or decline."
+    ],
+    "hints": [
+     "For tickets, apply the retained share to attendance times ticket price.",
+     "For concessions, first determine sales from buying guests, then apply the contribution margin.",
+     "The same fixed cost in both periods does not change the year-over-year difference, but it is needed to calculate operating profit."
+    ],
+    "pushback": [
+     "If attendance is higher, why did total operating profit still fall?",
+     "Which stream accounts for the larger change in contribution?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Recommend an action",
+    "kind": "synthesis",
+    "ask": "What should the CEO do next? Give a concise recommendation, including the diagnosis, a practical action, risks, and how you would validate the approach.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Harborlight should prioritize restoring concession purchases per guest rather than relying on attendance growth alone. Attendance rises from {attendance_2024} to {attendance_2025}, and ticket contribution improves from {ticket_contribution_2024} to {ticket_contribution_2025}; however, the fall in concession attachment from {attach_2024} to {attach_2025} drives concession contribution down from {concession_contribution_2024} to {concession_contribution_2025}. As a result, annual operating profit declines from {profit_2024} to {profit_2025}, a decline of {profit_decline}. Test practical, guest-friendly tactics—such as clearer menu bundles, faster ordering, and targeted reminders—at a sample of theaters. Track purchase attachment, spend per buying guest, concession contribution, service times, and guest feedback against comparable locations before scaling. Avoid aggressive upselling or discounting that harms the experience or gives away margin.",
+    "what_great_looks_like": [
+     "Gives a direct diagnosis and ties it to the contribution bridge.",
+     "Prioritizes increasing concession attachment without ignoring spend per buyer or margin.",
+     "Suggests a controlled test with measurable outcomes and a guest-experience guardrail.",
+     "Distinguishes an actionable hypothesis from proof that a specific tactic will work."
+    ],
+    "common_mistakes": [
+     "Recommending attendance growth as the primary fix without addressing the decline in contribution per visit.",
+     "Suggesting blanket discounts without considering their margin impact.",
+     "Offering a list of tactics without saying how management should test or prioritize them."
+    ],
+    "hints": [
+     "What does the contribution bridge suggest Harborlight should focus on first?",
+     "How could management test improvements without rolling out an unproven change chainwide?"
+    ],
+    "pushback": [
+     "Could encouraging more concession purchases damage the guest experience?",
+     "How would you know whether a pilot improved profit rather than merely sales?"
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Harborlight operating snapshot",
+    "subtitle": "Prior period versus current period",
+    "kind": "table",
+    "columns": [
+     "Period",
+     "Attendance (million visits)",
+     "Average ticket price ($/visit)",
+     "Guests buying concessions (%)",
+     "Concession spend per buying guest ($)"
+    ],
+    "rows": [
+     {
+      "label": "Prior year",
+      "cells": [
+       "=attendance_2024",
+       "=ticket_price",
+       "=attach_2024",
+       "=concession_spend"
+      ]
+     },
+     {
+      "label": "Current year",
+      "cells": [
+       "=attendance_2025",
+       "=ticket_price",
+       "=attach_2025",
+       "=concession_spend"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "count_m",
+     "per_unit_usd",
+     "pct",
+     "per_unit_usd"
+    ],
+    "footnote": "Source: Harborlight management reporting. Annual figures; average prices and spend are unchanged between periods.",
+    "text_body": null
+   }
+  ],
+  "recommendation": {
+   "answer": "Prioritize improving concession attachment through a guest-friendly pilot, rather than treating attendance growth as sufficient to restore profitability. Attendance increases from {attendance_2024} to {attendance_2025} and ticket contribution increases from {ticket_contribution_2024} to {ticket_contribution_2025}, but concession contribution falls from {concession_contribution_2024} to {concession_contribution_2025}. Operating profit consequently falls from {profit_2024} to {profit_2025}, a decline of {profit_decline}.",
+   "risks": [
+    "Upselling or poorly designed bundles could reduce guest satisfaction.",
+    "Discounting could lift attachment while reducing contribution per purchase.",
+    "The chain-level result may conceal differences across locations, showtimes, or guest segments."
+   ],
+   "next_steps": [
+    "Review transaction and guest-feedback data to understand why fewer guests are buying concessions.",
+    "Pilot improved menu visibility, convenient ordering, or carefully priced bundles at selected theaters, with comparable locations as a reference.",
+    "Track attachment, spend per buying guest, contribution, service speed, and guest feedback before deciding whether to scale."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Structuring",
+    "strong": "Separates ticket and concession contribution, identifies fixed costs, and proposes a period-over-period driver analysis.",
+    "weak": "Uses a generic revenue-versus-cost list and does not distinguish the economics of tickets from concessions."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Notices attendance is up while concession attachment is down, and correctly treats this as a hypothesis to quantify.",
+    "weak": "Focuses only on attendance or confuses attachment with spend per buying guest."
+   },
+   {
+    "dimension": "Quantitative accuracy",
+    "strong": "Calculates each stream's contribution and operating profit correctly, handles units, and explains the net change.",
+    "weak": "Uses gross ticket revenue as profit, applies concession margin to the wrong base, or omits fixed costs."
+   },
+   {
+    "dimension": "Business judgment",
+    "strong": "Prioritizes concession attachment while protecting margin and guest experience; proposes a measurable test.",
+    "weak": "Recommends blunt price increases, discounts, or generic attendance growth without linking action to the diagnosis."
+   },
+   {
+    "dimension": "Communication",
+    "strong": "Gives a concise, prioritized synthesis with the diagnosis, supporting figures, risks, and next steps.",
+    "weak": "Lists observations without a clear decision or actionable follow-through."
+   }
+  ],
+  "interviewer_notes": "Run this as a guided warm-up. Begin with the prompt and clarifying Q&A, then ask for the candidate's structure. Hand out ex1 once the candidate has outlined a profitability diagnosis or asks for operating trends. Do not initially provide contribution rates or fixed costs; share those in q3 when the candidate asks how to translate the operating metrics into profit, or after a brief prompt if needed. In q3, also clarify that tickets and concessions are the only revenue streams, the stated contribution measures capture all variable costs, and fixed operating costs are the only other costs. The intended arithmetic is sequential and mental-math friendly: ticket contribution is attendance times ticket price times retained share; concession contribution is attendance times attachment times spend per buying guest times contribution margin; operating profit is the sum of contributions less fixed costs. The key insight is that ticket contribution increases while concession contribution decreases, leaving operating profit down {profit_decline}. Do not introduce additional data or a twist. In the final section, reward a practical pilot with margin and guest-experience guardrails."
+ },
+ "rendered": {
+  "title": "The Empty Popcorn Queue",
+  "client": "Harborlight Cinemas",
+  "industry": "Movie theaters and entertainment",
+  "case_type": "Profitability diagnosis",
+  "difficulty": "easy",
+  "format": "interviewer_led",
+  "duration_minutes": 20,
+  "concepts_tested": [
+   "Profitability diagnosis",
+   "Revenue and contribution by business stream",
+   "Customer attachment and spend",
+   "Contribution margin",
+   "Operating profit change",
+   "Practical recommendation"
+  ],
+  "situation_summary": "Harborlight Cinemas' annual profit has declined despite higher attendance. The candidate diagnoses the change in ticket and concession contribution and recommends a practical response.",
+  "prompt": "Harborlight Cinemas is a regional theater chain. Its annual profit has declined even though attendance has increased. The CEO wants to understand what is driving the decline and what practical action management should prioritize. How would you assess the situation and advise the CEO?",
+  "clarifying": [
+   {
+    "question": "What does the CEO mean by profit, and what time periods should I compare?",
+    "answer": "Use annual operating profit after variable costs and fixed operating costs. Compare the most recent completed year with the immediately preceding year. For this simplified case, tickets and concessions are the only revenue streams; the stated retained share and concession contribution margin capture all variable costs; and fixed operating costs are the only other costs."
+   },
+   {
+    "question": "Should I focus on the theater business overall or a particular location or customer segment?",
+    "answer": "Assess the chain overall. You may identify useful follow-up segmentation in your recommendation."
+   },
+   {
+    "question": "Are there any known changes in the business or objectives beyond restoring profitability?",
+    "answer": "There are no other known changes. The CEO wants a clear diagnosis and practical actions that can improve profit without undermining the guest experience."
+   }
+  ],
+  "variables": [
+   {
+    "name": "attendance_2024",
+    "value": 1.0,
+    "unit": "count_m",
+    "label": "Prior-year theater visits",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "1M"
+   },
+   {
+    "name": "attendance_2025",
+    "value": 1.1,
+    "unit": "count_m",
+    "label": "Current-year theater visits",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "1.1M"
+   },
+   {
+    "name": "ticket_price",
+    "value": 10.0,
+    "unit": "per_unit_usd",
+    "label": "Average ticket price per visit, unchanged across both years",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$10"
+   },
+   {
+    "name": "theater_ticket_share",
+    "value": 0.5,
+    "unit": "pct",
+    "label": "Share of ticket revenue retained by Harborlight after film rental",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "50%"
+   },
+   {
+    "name": "attach_2024",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Prior-year share of guests buying concessions",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "60%"
+   },
+   {
+    "name": "attach_2025",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Current-year share of guests buying concessions",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "40%"
+   },
+   {
+    "name": "concession_spend",
+    "value": 10.0,
+    "unit": "per_unit_usd",
+    "label": "Average concession spend per guest who buys concessions, unchanged across both years",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$10"
+   },
+   {
+    "name": "concession_margin",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Contribution margin on concession sales",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "60%"
+   },
+   {
+    "name": "fixed_cost",
+    "value": 5.6,
+    "unit": "usd_m",
+    "label": "Annual fixed operating costs, unchanged across both years",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$5.6M"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Profitability by revenue stream",
+    "points": [
+     "Ticket economics: attendance, ticket price, and the share retained after film rental.",
+     "Concession economics: guest attachment, average spend per buying guest, and contribution margin.",
+     "Operating costs: variable costs by stream and fixed operating costs.",
+     "Changes and actions: identify what moved, quantify its impact on profit, and prioritize feasible actions."
+    ]
+   }
+  ],
+  "framework_notes": "A strong candidate starts with a simple revenue-and-cost structure, then separates tickets from concessions because they have different economics. They should ask whether attendance, prices, customer behavior, variable costs, or fixed costs changed. The case's central insight is that attendance alone does not explain profit: concession attachment is an important driver of contribution per visit. Do not require a specialized theater-industry framework.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the diagnosis",
+    "kind": "framework",
+    "ask": "How would you structure the diagnosis of Harborlight's declining profit?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would separate operating profit into contribution from tickets and concessions, then subtract fixed costs. For each stream, I would check changes in volume, price or spend, and variable economics. I would compare the periods, isolate the drivers of the profit change, and then assess practical ways to address the largest driver.",
+    "what_great_looks_like": [
+     "Clearly distinguishes ticket and concession economics.",
+     "Recognizes that attendance growth does not necessarily mean profit growth.",
+     "Plans to compare both periods and quantify the drivers before recommending action."
+    ],
+    "common_mistakes": [
+     "Assuming attendance is the only important driver.",
+     "Treating ticket revenue as profit without accounting for film rental.",
+     "Jumping to price increases or cost cuts before diagnosing the change."
+    ],
+    "hints": [
+     "What are Harborlight's main sources of revenue?",
+     "Would the chain retain all ticket revenue?"
+    ],
+    "pushback": [
+     "Attendance is up, so shouldn't profit be up too? What else would you want to check?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Read the operating snapshot",
+    "kind": "exhibit_read",
+    "ask": "Review the operating snapshot. What has changed, and which change would you investigate first as a potential driver of profit?",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Attendance has increased from 1M to 1.1M, while ticket price and average spend per concession-buying guest are unchanged. The share of guests buying concessions has fallen from 60% to 40%. That makes concession attachment the leading potential explanation to quantify; the exhibit alone does not yet establish the net profit impact.",
+    "what_great_looks_like": [
+     "Accurately identifies that attendance rose while concession attachment fell.",
+     "Notes that ticket price and concession spend per buying guest are unchanged.",
+     "Treats the attachment decline as a hypothesis to test through contribution, rather than assuming the exhibit alone proves causality."
+    ],
+    "common_mistakes": [
+     "Focusing only on the attendance increase.",
+     "Misreading concession attachment as average spend.",
+     "Calling the attachment decline the sole cause before comparing contribution and fixed costs."
+    ],
+    "hints": [
+     "Compare each metric across the periods. Which one moved in the opposite direction from attendance?",
+     "Which operating metric changes how many guests make a concession purchase?"
+    ],
+    "pushback": [
+     "Could the lower attachment rate matter if attendance increased? Explain how you would test that."
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Quantify the profit change",
+    "kind": "quant",
+    "ask": "Please quantify ticket contribution, concession contribution, and operating profit in each period, then explain the change. Use the information below and assume the stated contribution rates and fixed costs are stable across both years.",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "For this simplified case, tickets and concessions are the only revenue streams; the stated retained share and concession contribution margin capture all variable costs; and fixed operating costs are the only other costs.",
+     "Harborlight retains 50% of ticket revenue after film rental.",
+     "Concession sales have a contribution margin of 60%.",
+     "Annual fixed operating costs are $5.6M in each period."
+    ],
+    "calculations": [
+     {
+      "id": "ticket_contribution_2024",
+      "label": "Prior-year ticket contribution",
+      "expression": "attendance_2024 * ticket_price * theater_ticket_share",
+      "unit": "usd_m",
+      "expected_value": 5.0,
+      "decimals": 1,
+      "value": 5.0,
+      "display": "$5M",
+      "expression_display": "[Prior-year theater visits] × [Average ticket price per visit, unchanged across both years] × [Share of ticket revenue retained by Harborlight after film rental]"
+     },
+     {
+      "id": "ticket_contribution_2025",
+      "label": "Current-year ticket contribution",
+      "expression": "attendance_2025 * ticket_price * theater_ticket_share",
+      "unit": "usd_m",
+      "expected_value": 5.5,
+      "decimals": 1,
+      "value": 5.5,
+      "display": "$5.5M",
+      "expression_display": "[Current-year theater visits] × [Average ticket price per visit, unchanged across both years] × [Share of ticket revenue retained by Harborlight after film rental]"
+     },
+     {
+      "id": "concession_contribution_2024",
+      "label": "Prior-year concession contribution",
+      "expression": "attendance_2024 * attach_2024 * concession_spend * concession_margin",
+      "unit": "usd_m",
+      "expected_value": 3.6,
+      "decimals": 2,
+      "value": 3.5999999999999996,
+      "display": "$3.6M",
+      "expression_display": "[Prior-year theater visits] × [Prior-year share of guests buying concessions] × [Average concession spend per guest who buys concessions, unchanged across both years] × [Contribution margin on concession sales]"
+     },
+     {
+      "id": "concession_contribution_2025",
+      "label": "Current-year concession contribution",
+      "expression": "attendance_2025 * attach_2025 * concession_spend * concession_margin",
+      "unit": "usd_m",
+      "expected_value": 2.64,
+      "decimals": 2,
+      "value": 2.64,
+      "display": "$2.64M",
+      "expression_display": "[Current-year theater visits] × [Current-year share of guests buying concessions] × [Average concession spend per guest who buys concessions, unchanged across both years] × [Contribution margin on concession sales]"
+     },
+     {
+      "id": "profit_2024",
+      "label": "Prior-year operating profit",
+      "expression": "ticket_contribution_2024 + concession_contribution_2024 - fixed_cost",
+      "unit": "usd_m",
+      "expected_value": 3.0,
+      "decimals": 2,
+      "value": 3.0,
+      "display": "$3M",
+      "expression_display": "[Prior-year ticket contribution] + [Prior-year concession contribution] - [Annual fixed operating costs, unchanged across both years]"
+     },
+     {
+      "id": "profit_2025",
+      "label": "Current-year operating profit",
+      "expression": "ticket_contribution_2025 + concession_contribution_2025 - fixed_cost",
+      "unit": "usd_m",
+      "expected_value": 2.54,
+      "decimals": 2,
+      "value": 2.540000000000001,
+      "display": "$2.54M",
+      "expression_display": "[Current-year ticket contribution] + [Current-year concession contribution] - [Annual fixed operating costs, unchanged across both years]"
+     },
+     {
+      "id": "profit_change",
+      "label": "Change in operating profit, current year versus prior year",
+      "expression": "profit_2025 - profit_2024",
+      "unit": "usd_m",
+      "expected_value": -0.46,
+      "decimals": 2,
+      "value": -0.4599999999999991,
+      "display": "-$0.46M",
+      "expression_display": "[Current-year operating profit] - [Prior-year operating profit]"
+     },
+     {
+      "id": "profit_decline",
+      "label": "Operating profit decline",
+      "expression": "abs(profit_change)",
+      "unit": "usd_m",
+      "expected_value": 0.46,
+      "decimals": 2,
+      "value": 0.4599999999999991,
+      "display": "$0.46M",
+      "expression_display": "abs([Change in operating profit, current year versus prior year])"
+     }
+    ],
+    "model_answer": "Ticket contribution increases from $5M to $5.5M. Concession contribution falls from $3.6M to $2.64M. With fixed costs unchanged at $5.6M, operating profit falls from $3M to $2.54M, a decline of $0.46M. The concession contribution decline more than offsets the ticket contribution gain.",
+    "what_great_looks_like": [
+     "Uses contribution, not gross sales, for both revenue streams.",
+     "Keeps units consistent: visits in millions multiplied by dollars per visit produce dollars in millions.",
+     "Makes the netting explicit: ticket contribution rises, but concession contribution falls by more.",
+     "Connects the result back to the observed fall in concession attachment."
+    ],
+    "common_mistakes": [
+     "Counting all ticket sales as Harborlight contribution.",
+     "Applying concession margin to all visits rather than to concession sales.",
+     "Subtracting fixed costs from one period but not the other.",
+     "Reporting a profit change without stating whether it is a gain or decline."
+    ],
+    "hints": [
+     "For tickets, apply the retained share to attendance times ticket price.",
+     "For concessions, first determine sales from buying guests, then apply the contribution margin.",
+     "The same fixed cost in both periods does not change the year-over-year difference, but it is needed to calculate operating profit."
+    ],
+    "pushback": [
+     "If attendance is higher, why did total operating profit still fall?",
+     "Which stream accounts for the larger change in contribution?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Recommend an action",
+    "kind": "synthesis",
+    "ask": "What should the CEO do next? Give a concise recommendation, including the diagnosis, a practical action, risks, and how you would validate the approach.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Harborlight should prioritize restoring concession purchases per guest rather than relying on attendance growth alone. Attendance rises from 1M to 1.1M, and ticket contribution improves from $5M to $5.5M; however, the fall in concession attachment from 60% to 40% drives concession contribution down from $3.6M to $2.64M. As a result, annual operating profit declines from $3M to $2.54M, a decline of $0.46M. Test practical, guest-friendly tactics—such as clearer menu bundles, faster ordering, and targeted reminders—at a sample of theaters. Track purchase attachment, spend per buying guest, concession contribution, service times, and guest feedback against comparable locations before scaling. Avoid aggressive upselling or discounting that harms the experience or gives away margin.",
+    "what_great_looks_like": [
+     "Gives a direct diagnosis and ties it to the contribution bridge.",
+     "Prioritizes increasing concession attachment without ignoring spend per buyer or margin.",
+     "Suggests a controlled test with measurable outcomes and a guest-experience guardrail.",
+     "Distinguishes an actionable hypothesis from proof that a specific tactic will work."
+    ],
+    "common_mistakes": [
+     "Recommending attendance growth as the primary fix without addressing the decline in contribution per visit.",
+     "Suggesting blanket discounts without considering their margin impact.",
+     "Offering a list of tactics without saying how management should test or prioritize them."
+    ],
+    "hints": [
+     "What does the contribution bridge suggest Harborlight should focus on first?",
+     "How could management test improvements without rolling out an unproven change chainwide?"
+    ],
+    "pushback": [
+     "Could encouraging more concession purchases damage the guest experience?",
+     "How would you know whether a pilot improved profit rather than merely sales?"
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Harborlight operating snapshot",
+    "subtitle": "Prior period versus current period",
+    "kind": "table",
+    "columns": [
+     "Period",
+     "Attendance (million visits)",
+     "Average ticket price ($/visit)",
+     "Guests buying concessions (%)",
+     "Concession spend per buying guest ($)"
+    ],
+    "rows": [
+     {
+      "label": "Prior year",
+      "cells": [
+       "=attendance_2024",
+       "=ticket_price",
+       "=attach_2024",
+       "=concession_spend"
+      ]
+     },
+     {
+      "label": "Current year",
+      "cells": [
+       "=attendance_2025",
+       "=ticket_price",
+       "=attach_2025",
+       "=concession_spend"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "count_m",
+     "per_unit_usd",
+     "pct",
+     "per_unit_usd"
+    ],
+    "footnote": "Source: Harborlight management reporting. Annual figures; average prices and spend are unchanged between periods.",
+    "text_body": null,
+    "grid": [
+     [
+      1.0,
+      10.0,
+      0.6,
+      10.0
+     ],
+     [
+      1.1,
+      10.0,
+      0.4,
+      10.0
+     ]
+    ],
+    "display": [
+     [
+      "1M",
+      "$10",
+      "60%",
+      "$10"
+     ],
+     [
+      "1.1M",
+      "$10",
+      "40%",
+      "$10"
+     ]
+    ],
+    "units": [
+     "count_m",
+     "per_unit_usd",
+     "pct",
+     "per_unit_usd"
+    ]
+   }
+  ],
+  "recommendation": {
+   "answer": "Prioritize improving concession attachment through a guest-friendly pilot, rather than treating attendance growth as sufficient to restore profitability. Attendance increases from 1M to 1.1M and ticket contribution increases from $5M to $5.5M, but concession contribution falls from $3.6M to $2.64M. Operating profit consequently falls from $3M to $2.54M, a decline of $0.46M.",
+   "risks": [
+    "Upselling or poorly designed bundles could reduce guest satisfaction.",
+    "Discounting could lift attachment while reducing contribution per purchase.",
+    "The chain-level result may conceal differences across locations, showtimes, or guest segments."
+   ],
+   "next_steps": [
+    "Review transaction and guest-feedback data to understand why fewer guests are buying concessions.",
+    "Pilot improved menu visibility, convenient ordering, or carefully priced bundles at selected theaters, with comparable locations as a reference.",
+    "Track attachment, spend per buying guest, contribution, service speed, and guest feedback before deciding whether to scale."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Structuring",
+    "strong": "Separates ticket and concession contribution, identifies fixed costs, and proposes a period-over-period driver analysis.",
+    "weak": "Uses a generic revenue-versus-cost list and does not distinguish the economics of tickets from concessions."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Notices attendance is up while concession attachment is down, and correctly treats this as a hypothesis to quantify.",
+    "weak": "Focuses only on attendance or confuses attachment with spend per buying guest."
+   },
+   {
+    "dimension": "Quantitative accuracy",
+    "strong": "Calculates each stream's contribution and operating profit correctly, handles units, and explains the net change.",
+    "weak": "Uses gross ticket revenue as profit, applies concession margin to the wrong base, or omits fixed costs."
+   },
+   {
+    "dimension": "Business judgment",
+    "strong": "Prioritizes concession attachment while protecting margin and guest experience; proposes a measurable test.",
+    "weak": "Recommends blunt price increases, discounts, or generic attendance growth without linking action to the diagnosis."
+   },
+   {
+    "dimension": "Communication",
+    "strong": "Gives a concise, prioritized synthesis with the diagnosis, supporting figures, risks, and next steps.",
+    "weak": "Lists observations without a clear decision or actionable follow-through."
+   }
+  ],
+  "interviewer_notes": "Run this as a guided warm-up. Begin with the prompt and clarifying Q&A, then ask for the candidate's structure. Hand out ex1 once the candidate has outlined a profitability diagnosis or asks for operating trends. Do not initially provide contribution rates or fixed costs; share those in q3 when the candidate asks how to translate the operating metrics into profit, or after a brief prompt if needed. In q3, also clarify that tickets and concessions are the only revenue streams, the stated contribution measures capture all variable costs, and fixed operating costs are the only other costs. The intended arithmetic is sequential and mental-math friendly: ticket contribution is attendance times ticket price times retained share; concession contribution is attendance times attachment times spend per buying guest times contribution margin; operating profit is the sum of contributions less fixed costs. The key insight is that ticket contribution increases while concession contribution decreases, leaving operating profit down $0.46M. Do not introduce additional data or a twist. In the final section, reward a practical pilot with margin and guest-experience guardrails."
+ },
+ "quality": {
+  "status": "verified",
+  "checks": [],
+  "reviews": [
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Prompt/clarifying answers and q3 operating-profit calculation",
+      "problem": "The case asks for chain-wide operating profit but does not explicitly say that tickets and concessions are the only revenue streams, that the stated ticket-retention share and concession contribution margin capture all variable costs, or that the $5.6M fixed-cost figure covers all remaining operating costs. The key calculates total operating profit using only those items, so an unstated scope assumption is doing essential work.",
+      "fix": "Add a sentence before q3: “For this simplified case, tickets and concessions are the only revenue streams; the stated retained share and concession contribution margin capture all variable costs; and fixed operating costs are the only other costs.”"
+     },
+     {
+      "severity": "minor",
+      "where": "q3 model answer and interviewer notes",
+      "problem": "The model answer and interviewer notes contain unresolved template expressions: “{ticket_contribution_2025 - ticket_contribution_2024}” and “{concession_contribution_2024 - concession_contribution_2025}.” The calculations imply a $0.5M ticket-contribution gain and a $0.96M concession-contribution decline, but the answer text is not ready to use as written.",
+      "fix": "Replace the placeholders with “$0.5M” and “$0.96M” in both locations."
+     },
+     {
+      "severity": "minor",
+      "where": "Exhibit ex1, Attendance column",
+      "problem": "The column is labeled “Attendance (million visits)” while the cells say “1M” and “1.1M,” duplicating the scale notation and making the unit presentation less clean than it needs to be.",
+      "fix": "Use either “Attendance (million visits)” with values “1.0” and “1.1,” or “Attendance (visits)” with values “1.0M” and “1.1M.”"
+     },
+     {
+      "severity": "minor",
+      "where": "q3 profit_decline_pct and model answer",
+      "problem": "The exact 15.3% decline comes from $0.46M ÷ $3.00M = 15.33…%. It is correct, but asks for unnecessary precision in a warm-up whose arithmetic is intended to be mental-math friendly; a candidate can readily estimate about 15%, but may not produce 15.3% unaided.",
+      "fix": "State “about 15%” in the key and accept a rounded estimate."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The core arithmetic checks out: ticket contribution is $5.0M and $5.5M; concession contribution is $3.60M and $2.64M; operating profit is $3.00M and $2.54M; the change is -$0.46M, comprising a +$0.50M ticket contribution gain and a -$0.96M concession contribution decline. The decline is 15.33…% of prior-year profit. The case is otherwise a clear, guided easy case with one readable exhibit and straightforward calculations; clarify the cost/revenue scope and fix the answer-key placeholders before publication."
+   },
+   {
+    "issues": [
+     {
+      "severity": "minor",
+      "where": "q3, `Calc profit_decline`",
+      "problem": "This repeats the magnitude already conveyed by `profit_change = -$0.46M`; the separate absolute-value calculation is not used elsewhere. The case has eight listed calculation entries, at the top of its stated range.",
+      "fix": "Remove the `profit_decline` calculation and state that the $0.46M change is a decline in the model answer."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The arithmetic and answer key are consistent: ticket contribution is $5.0M/$5.5M, concession contribution is $3.6M/$2.64M, and operating profit is $3.0M/$2.54M, down $0.46M. The comparison uses the same periods and cost basis, the required inputs are available by q3, and the recommendation follows from the contribution bridge. The earlier concern is resolved: the candidate is explicitly told that tickets and concessions are the only revenue streams and that the stated contribution measures and fixed costs cover the full simplified profit calculation."
+   }
+  ],
+  "fix_rounds": 1,
+  "history": [
+   {
+    "step": "Independent review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Prompt/clarifying answers and q3 operating-profit calculation",
+      "problem": "The case asks for chain-wide operating profit but does not explicitly say that tickets and concessions are the only revenue streams, that the stated ticket-retention share and concession contribution margin capture all variable costs, or that the $5.6M fixed-cost figure covers all remaining operating costs. The key calculates total operating profit using only those items, so an unstated scope assumption is doing essential work.",
+      "fix": "Add a sentence before q3: “For this simplified case, tickets and concessions are the only revenue streams; the stated retained share and concession contribution margin capture all variable costs; and fixed operating costs are the only other costs.”"
+     }
+    ]
+   }
+  ],
+  "model": "gpt-6-luna",
+  "engine": "luna"
+ },
+ "usage": {
+  "model": "gpt-6-luna",
+  "input": 34485,
+  "cached": 15906,
+  "output": 20281,
+  "requests": 5,
+  "seconds": 191.9,
+  "usd": 0.012607,
+  "calls": 5,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6088,
+    "cached": 0,
+    "output": 3878,
+    "requests": 1,
+    "seconds": 27.6,
+    "usd": 0.002697
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 7570,
+    "cached": 7444,
+    "output": 5213,
+    "requests": 1,
+    "seconds": 72.6,
+    "usd": 0.002694
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 5569,
+    "cached": 1783,
+    "output": 4171,
+    "requests": 1,
+    "seconds": 39.1,
+    "usd": 0.002573
+   },
+   {
+    "step": "Fix 1 independent review finding",
+    "role": "writer",
+    "input": 9592,
+    "cached": 4896,
+    "output": 4576,
+    "requests": 1,
+    "seconds": 30.7,
+    "usd": 0.002921
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 5666,
+    "cached": 1783,
+    "output": 2443,
+    "requests": 1,
+    "seconds": 21.9,
+    "usd": 0.001722
+   }
+  ]
+ },
+ "second_opinion": {
+  "model": "gpt-5.6-terra",
+  "at": "2026-10-20T21:16:43.932793+00:00",
+  "difficulty_fit": "about_right",
+  "summary": "Approved. All displayed calculations recompute correctly: ticket contribution is $5.0M and $5.5M; concession contribution is $3.60M and $2.64M; operating profit is $3.00M and $2.54M; and the year-over-year decline is $0.46M. The model-answer comparisons are supported, including that the $0.96M concession-contribution decline more than offsets the $0.50M ticket-contribution gain. Both periods use the same annual basis, volumes, contribution definitions, and fixed-cost treatment. All quantitative inputs are revealed before q3, the exhibit contains only inputs rather than requested answers, and the recommendation follows from the contribution bridge. The case meets the requested easy interviewer-led format: four sections, one readable exhibit, familiar profitability structure, eight simple mental-math calculations at the stated maximum, and one practical business judgment around restoring attachment without sacrificing margin or guest experience.",
+  "issues": [],
+  "usage": {
+   "model": "gpt-5.6-terra",
+   "input": 5587,
+   "cached": 1787,
+   "output": 637,
+   "requests": 1,
+   "seconds": 8.5,
+   "usd": 0.01744,
+   "calls": 1,
+   "steps": [
+    {
+     "step": "Cross-audit",
+     "role": "reviewer",
+     "input": 5587,
+     "cached": 1787,
+     "output": 637,
+     "requests": 1,
+     "seconds": 8.5,
+     "usd": 0.01744
+    }
+   ]
+  }
+ }
+}

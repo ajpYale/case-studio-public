@@ -1,0 +1,64 @@
+{
+ "label": "run14-io-luna-final",
+ "difficulty": "instant_offer",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 23.8,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Fixing 2 consistency issues in the math",
+  "Independent review",
+  "Revising 6 reviewer findings",
+  "Second review",
+  "Revising 3 reviewer findings",
+  "Fixing 14 consistency issues in the math",
+  "Third review",
+  "Revising 1 reviewer finding",
+  "Fixing 14 consistency issues in the math",
+  "Fourth review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-213715-f1e9ef",
+ "title": "The Linen Contract That Fits on Paper",
+ "quality": "verified",
+ "fix_rounds": 6,
+ "calls": 12,
+ "input": 149872,
+ "cached": 68441,
+ "output": 106643,
+ "usd": 0.064147,
+ "reviews": [
+  {
+   "fit": "too_easy",
+   "serious": [
+    "major | q3 capacity diagnosis; q4 no-build economics | The case establishes a peak finishing shortfall, but it does not establish that finishing is the only constraint for the no-machine option. The 88%/76%/95% utilization figures are percentages across different processes, and the exhibits give neither spare washing/drying capacity nor hospital wash/dr",
+    "major | q4 and q6 displacement calculations; interviewer notes | The model turns every finishing-hour shortfall into incumbent pounds lost: 160 hours becomes 400,000 lb, and 400 hours becomes 1,000,000 lb. The case gives 6M annual incumbent pounds and an average finishing rate, but no incumbent peak-week schedule or explicit assumption that this work is present i",
+    "major | q7 model answer; Recommendation and Next steps | The recommended “peak-volume or delivery-cadence commitment” has no target, and smoothing the schedule can reverse the machine decision. From the supplied data, for peak share s above 50%, annual displaced contribution is $2.4s−$1.2M; machine less no-build NPV is [(2.4s−1.2)−0.25]×3.8−1.2 = 9.12s−6.",
+    "major | Rubric; Exceptional / offer-on-the-spot signal | The rubric does not distinguish strong from exceptional performance as requested. Its main categories contrast strong with weak, while the “Exceptional” section also labels its criteria “strong” and does not set a higher, observable offer-on-the-spot bar.",
+    "major | Overall difficulty calibration | For an instant-offer case, most of the apparent 23 calculations are direct arithmetic or repeated baseline/pivot calculations; the decision is then stated without requiring a crossover or other non-obvious sensitivity. The case has useful linkage and distractors, but as written the quantitative work"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q6 Calc pivot_share_cushion; q6 model answer; q7 model answer; Recommendation | The difference between the 75% revised peak share and the 73.575% crossover is 1.425 percentage points, not 1.425%. Calling it a percent difference mislabels the comparison and conflicts with the case’s percentage-point discipline.",
+    "major | q6 Calc machine_break_even_peak_share; q6 model answer; q7 model answer; Recommendation | The case presents a calculator-level result of 73.575% (the formula gives about 73.5746%) and then uses the apparent precision to quantify a narrow cushion. That precision is not hand-calculable in about a minute; a candidate can reasonably derive only an approximation such as 73.6%.",
+    "major | q6 Ask | “What peak-share commitment would change your investment decision?” cues the candidate to find the crossover explicitly. That gives away the sensitivity the instant-offer case is supposed to reward the candidate for choosing, undermining the candidate-led, non-scaffolded requirement."
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q6 crossover calculation and model answer; q7 model answer; Rubric exceptional standard; Recommendation / Next steps | The crossover is reported as 73.575% (with an exact value of 73.5746%) and the cushion as 1.4 percentage points. Although the underlying equation is sound, this precision is not hand-calculable in about a minute and makes the decision hinge on false precision. The case still asks the candidate to de"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

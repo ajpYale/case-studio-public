@@ -1,0 +1,48 @@
+{
+ "label": "run10-medium-luna",
+ "difficulty": "medium",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 4.9,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Independent review",
+  "Revising 2 reviewer findings",
+  "Second review",
+  "Revising 1 reviewer finding",
+  "Third review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-210249-7e1b7c",
+ "title": "The Wellness Plan That Attracts the Wrong Clients",
+ "quality": "verified",
+ "fix_rounds": 2,
+ "calls": 7,
+ "input": 60858,
+ "cached": 22996,
+ "output": 39642,
+ "usd": 0.024761,
+ "reviews": [
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Clarifying answers / q4 payback setup | The investment timing is stated (the $250K is paid at launch), but the timing of contribution is not. The 2-year result assumes the full annual contribution begins in year 1 with no launch delay or ramp-up; that assumption matters especially because broad rollout lands exactly on the 2-year hurdle.",
+    "major | Prompt, q6 recommendation, and Recommendation | Retention is a stated objective, but the modeled economics count only plan contribution net of displaced covered-service contribution. No retention uplift or retained-client contribution is provided, and the recommendation does not clearly limit its conclusion to direct plan economics. If the plan c"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Clarifying answer on cannibalization; q3 model answer; q4 incremental-contribution calculations | The key subtracts the full current covered-service contribution for every enrollee ($120 per high-use household and $50 per low-use household), but the case only says that “some” covered services are already purchased and that those services “may” be displaced. It never establishes that enrollment r"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

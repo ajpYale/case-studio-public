@@ -1,0 +1,40 @@
+{
+ "case_id": "20261020-210249-7e1b7c",
+ "title": "The Wellness Plan That Attracts the Wrong Clients",
+ "difficulty": "medium",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "The case is otherwise runnable and internally consistent. Recomputed economics are: high-use baseline covered-service contribution = $300 − $180 = $120; low-use = $120 − $70 = $50; plan contribution before displacement is $360 − $240 − $20 = $100 for high-use and $360 − $120 − $20 = $220 for low-use; therefore incremental contribution is $100 − $120 = −$20 and $220 − $50 = $170, respectively. Actual paid enrollment is 10,000 × 40% × 35% = 1,400 high-use households and 10,000 × 60% × 15% = 900 low-use households. Broad annual incremental contribution is 1,400 × (−$20) + 900 × $170 = $125K, and $250K / $125K = 2.0 years. Low-use-only contribution is 900 × $170 = $153K; payback is about 1.6 years. The recommendation, displacement treatment, use of paid rather than stated adoption, and like-for-like annual simple-payback comparison all follow from the supplied facts. It meets the requested medium-case shape: six sections including a brainstorm, two exhibits with relevant distractors, linked but hand-solvable arithmetic, a genuine segment-economics pivot, and appropriate light ambiguity through clarifying questions.",
+ "issues": [
+  {
+   "severity": "minor",
+   "where": "q5, Calc low_segment_payback",
+   "problem": "The calculation is internally mislabeled: $250K / $153K = 1.6339869... years, not “exact 1.63399,” while the displayed result is 1.6 years. The model answer’s 1.6 years is a sensible one-decimal rounding, but it is not exact.",
+   "fix": "Write the calculation as “= 1.6339869... years, or approximately 1.6 years,” and remove the claim that 1.63399 is exact."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 7976,
+  "cached": 1787,
+  "output": 1680,
+  "requests": 1,
+  "seconds": 16.5,
+  "usd": 0.035929,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 7976,
+    "cached": 1787,
+    "output": 1680,
+    "requests": 1,
+    "seconds": 16.5,
+    "usd": 0.035929
+   }
+  ]
+ }
+}

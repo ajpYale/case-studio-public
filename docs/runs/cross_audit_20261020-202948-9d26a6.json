@@ -1,0 +1,33 @@
+{
+ "case_id": "20261020-202948-9d26a6",
+ "title": "The Field-Service Bottleneck",
+ "difficulty": "medium",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "Pass. I recomputed all displayed economics and found them internally consistent: 2025 contribution is $7.2M each for equipment ($60M × 12%), parts ($24M × 30%), and service ($16M × 45%), totaling $21.6M; less $18.6M fixed costs gives $3.0M current operating profit. Initial mobile economics are 5,000 served hours (below 6,000-hour full-team capacity), $675K contribution ($135/hour), less $360K salaries = $315K annual incremental profit; $400K capex / $315K = 1.2698, or 1.27 years. With 2,500 validated hours, the four-tech team earns $337.5K contribution less $360K salaries = -$22.5K. A two-tech pilot has 3,000-hour capacity, earns $337.5K contribution less $180K salaries = $157.5K, and pays back $200K / $157.5K = 1.2698, or 1.27 years. Trend and comparative statements are correct, the capex/payback timing convention is explicitly supplied and consistently applied, and all required data are available at the appropriate interviewer-directed stage. The recommendation follows from the pivot and includes fitting operational risks and scale gates. The case has five sections, two staged exhibits with relevant distractor data, ten accessible linked calculations, a brainstorm, a demand-validation pivot, and a capacity/payback trade-off; this is an appropriate typical first-round medium case.",
+ "issues": [],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 7976,
+  "cached": 1562,
+  "output": 1146,
+  "requests": 1,
+  "seconds": 11.8,
+  "usd": 0.030038,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 7976,
+    "cached": 1562,
+    "output": 1146,
+    "requests": 1,
+    "seconds": 11.8,
+    "usd": 0.030038
+   }
+  ]
+ }
+}

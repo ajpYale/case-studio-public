@@ -1,0 +1,46 @@
+{
+ "case_id": "20261020-213715-f1e9ef",
+ "title": "The Linen Contract That Fits on Paper",
+ "difficulty": "instant_offer",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "Arithmetic and finance check: all displayed calculations reconcile using the supplied 3.8x factor. Hospital finishing intensity is 0.5×0.5 + 0.5×1.1 = 0.8 hours per thousand pounds. Baseline peak load is 2.0M×60%/1,000×0.8 = 960 hours, a 160-hour shortfall; this displaces 160/0.4×1,000 = 400,000 lb and $0.24M contribution. No-build annual cash flow is $1.20M − $0.15M − $0.24M = $0.81M and NPV is $0.81M×3.8 − $0.20M = $2.878M ($2.88M). Build cash flow is $1.20M − $0.15M − $0.25M = $0.80M and NPV is $0.80M×3.8 − $1.20M − $0.20M = $1.64M, hence a −$1.238M baseline build disadvantage. At 75%, peak load is 1,200 hours, shortfall 400 hours, displaced incumbent volume 1.0M lb, displacement cost $0.60M, no-build cash flow $0.45M, and no-build NPV $1.51M. The stated $0.13M build advantage is correct. The crossover is also correct: required avoided displacement is $0.25M + $1.20M/3.8 = about $0.5658M annually, implying about 0.943M lb displaced, 377.2 shortfall hours, 1,177.2 total hospital finishing hours, and 1,177.2/1,600 = 73.57% (about 73.6%); the 75% schedule is about 1.43 percentage points above it. The case otherwise meets the requested 7-section/4-exhibit/23-calculation shape, has integrated-exhibit reasoning, a hand-manageable chained calculation, valid like-for-like NPV comparisons, and a coherent conditional recommendation—subject to the missing machine-capacity fact and the telegraphed pivot above.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q4 share / q6 calculations and recommendation",
+   "problem": "The machine’s peak-finishing capacity is never quantified. The q4 share says it “can process all of the hospital’s peak finishing load,” when the known load is only the 960-hour baseline; q6 then assumes build NPV remains $1.64M at the 1,200-hour revised load and recommends a commitment to any peak share above 73.6%. Those conclusions require the machine to cover at least the additional 400 hours at 75%, and the open-ended “above 73.6%” recommendation also requires an upper capacity limit. No such capacity input is available. Thus the pivotal build comparison and robustness recommendation are not verifiable from candidate-visible facts.",
+   "fix": "State a machine capacity explicitly before q6—for example, “the machine adds 800 aggregate peak finishing hours, so total spare finishing capacity becomes 1,600 hours and it can support the full 2.0M-lb hospital contract even if 100% falls in peak weeks.” This makes the unchanged $1.64M build NPV and the crossover recommendation runnable. Alternatively, state its actual maximum and limit the schedule condition to the feasible range."
+  },
+  {
+   "severity": "major",
+   "where": "Clarifying delivery-schedule answer; q2 model answer, hints, and pushback; difficulty design",
+   "problem": "The required curveball is substantially telegraphed rather than functioning as a pivot. Before any analysis, the clarification explicitly says the hospital “may change its delivery schedule,” and q2 then directs attention to cadence/schedule changes and says the investment depends on peak share/crossover. A candidate is therefore primed to expect exactly the q5 reveal, undermining the specified mid-case new-information curveball and reducing the intended test of revising a conclusion under pressure.",
+   "fix": "Remove the advance statement that the hospital may change its schedule. Keep the baseline schedule as the current contractual proposal, and deliver the 75% concentration only after the baseline recommendation. In q2, allow cadence to arise as one possible candidate idea, but remove the explicit schedule-change/crossover framing from the model answer, hint, and pushback."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 10229,
+  "cached": 1787,
+  "output": 4234,
+  "requests": 1,
+  "seconds": 39.2,
+  "usd": 0.072209,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 10229,
+    "cached": 1787,
+    "output": 4234,
+    "requests": 1,
+    "seconds": 39.2,
+    "usd": 0.072209
+   }
+  ]
+ }
+}

@@ -1,0 +1,2029 @@
+{
+ "id": "20261020-202948-9d26a6",
+ "created_at": "2026-10-20T20:29:48.679741+00:00",
+ "request": {
+  "difficulty": "medium",
+  "case_type": null,
+  "industry": null,
+  "format": null,
+  "notes": null,
+  "engine": "luna",
+  "confirm_cost": false
+ },
+ "plan": {
+  "title": "The Field-Service Bottleneck",
+  "client": "Cedar Valley Ag Equipment, a fictional independent farm-equipment dealership group in the U.S. Upper Midwest",
+  "industry": "Agriculture equipment retail, parts, and service",
+  "case_type": "Profitability improvement and investment decision",
+  "situation": "Read-aloud prompt: Cedar Valley Ag sells agricultural equipment, parts, and repair services through a regional dealer network. Management is concerned about profitability and is considering adding mobile-service technicians to capture more repair work at customers’ farms. The owners want to know where to focus, whether the expansion makes economic sense, and how to proceed without compromising service for existing customers. Clarifying Q&A: If asked about the decision horizon, say the owners evaluate annual operating economics and want new investment recovered within {payback_hurdle_years}. If asked about their appetite for risk, they are open to piloting the idea rather than committing to the full proposal at once. If asked whether technician pay is included in fixed costs, explain that existing technician salaries are included in current fixed costs; proposed hires’ salaries are not. Initial mobile-service demand and the later demand-validation update are deliberately held until the relevant sections.",
+  "core_question": "How should Cedar Valley Ag improve profitability, and should it expand mobile service, pilot it, or pursue another path?",
+  "key_insight": "Service is a relatively small share of sales but contributes as much as either of the larger business lines because its contribution margin is much higher. The initial demand case makes the full mobile team look attractive, but validated demand supports only a smaller pilot: the full team would not cover its added salaries, while a two-technician pilot clears the owners’ payback hurdle.",
+  "twist": "After the candidate evaluates the initial forecast, share that customer validation reduces expected incremental annual mobile-service demand from {initial_incremental_hours} to {validated_incremental_hours}. This reverses the full-team economics and makes a staged pilot—not the originally proposed team size—the stronger answer.",
+  "storyline": [
+   {
+    "kind": "framework",
+    "intent": "Ask the candidate to structure the problem before sharing data. A strong approach separates portfolio economics and trends, the sources of incremental service demand, operating capacity and investment economics, and execution/customer risks. If needed, clarify that the decision is both about restoring profitability and evaluating a mobile-service investment."
+   },
+   {
+    "kind": "exhibit_read",
+    "intent": "Hand out the revenue-trend exhibit after the candidate has identified the need to understand performance by business line. Ask what is driving the mix shift and what additional data is needed before prioritizing an action. The candidate should notice equipment revenue is declining while parts and service are growing, but should not equate revenue size with profit contribution."
+   },
+   {
+    "kind": "exhibit_read",
+    "intent": "Release the business-line economics table when the candidate asks for margins, direct economics, or profitability by segment. Ask which business line is most attractive to grow and why. The key comparison is contribution dollars, not revenue or margin percentage alone; satisfaction scores are context, not inputs to the financial calculation."
+   },
+   {
+    "kind": "brainstorm",
+    "intent": "Ask for practical ways to grow service profitably before presenting the investment economics. Reward case-grounded ideas such as bundling preventive maintenance, improving dispatch and route density, booking work ahead of seasonal peaks, using remote triage, improving parts availability, and piloting customer-specific service commitments. Ask the candidate to prioritize by economics and feasibility rather than list ideas."
+   },
+   {
+    "kind": "quant",
+    "intent": "Share the current fixed-cost figure from the interviewer guide when requested, and share the initial mobile demand forecast, team size, technician capacity, compensation, van investment, and hourly economics when the candidate asks what drives the proposal. Have the candidate calculate current contribution and operating profit, then the proposed team’s annual incremental profit and payback. Ensure they distinguish annual operating economics from one-time capex."
+   },
+   {
+    "kind": "pivot",
+    "intent": "Once the initial investment view is clear, share the validated demand figure. Ask the candidate to update the decision and propose a practical next step. Strong candidates cap work at demand, recognize that a four-technician team now loses money after salaries, and size a two-technician pilot against validated demand and capacity."
+   },
+   {
+    "kind": "synthesis",
+    "intent": "Ask for an executive recommendation with a clear decision, supporting economics, the key uncertainty, customer and operational risks, and a short implementation plan. Accept a different recommendation if the candidate makes assumptions explicit and addresses the validated demand constraint."
+   }
+  ],
+  "numbers_plan": "Build current annual economics in $M: calculate each segment’s contribution as revenue × contribution margin, sum contributions, then subtract fixed costs to get operating profit. For the mobile proposal, serve the lesser of forecast demand and technician capacity; multiply served hours by hourly revenue less hourly variable cost, convert dollars to $K, and subtract annual technician salaries. Compare annual incremental profit with one-time van capex for payback. After the demand-validation pivot, repeat the incremental-profit logic for the full team and for a two-technician pilot. The initial forecast supports the full proposal, but validated demand does not: a pilot serving the validated hours has positive annual incremental profit and meets the payback hurdle. Technician salaries are excluded from hourly variable costs and included separately; existing salaries are included in baseline fixed costs.",
+  "exhibits_plan": [
+   "Exhibit 1 — Cedar Valley Ag revenue by business line, recent years. Line chart, with business lines as series and annual revenue in $M; chart cells reference the corresponding revenue variables, including the current-year values used in Exhibit 2. Source-style footnote: Cedar Valley Ag management accounts. The exhibit shows equipment declining and parts and service growing; it does not show margins or explain profit by itself.",
+   "Exhibit 2 — Current business-line economics and customer context. Table with rows for equipment, parts, and service; columns for current-year revenue ($M), contribution margin (%), and customer satisfaction score (index). Revenue and margin cells reference the matching variables; the satisfaction scores are deliberately nonessential to the financial calculation. Source-style footnote: Cedar Valley Ag management accounts and customer survey. The table hides no required calculation inputs; annual fixed costs and mobile-service assumptions are shared separately when requested."
+  ],
+  "core_variables": [
+   {
+    "name": "equipment_revenue_2025",
+    "value": 60.0,
+    "unit": "usd_m",
+    "label": "Current-year equipment revenue",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "parts_revenue_2025",
+    "value": 24.0,
+    "unit": "usd_m",
+    "label": "Current-year parts revenue",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "service_revenue_2025",
+    "value": 16.0,
+    "unit": "usd_m",
+    "label": "Current-year service revenue",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "equipment_contribution_margin",
+    "value": 0.12,
+    "unit": "pct",
+    "label": "Equipment contribution margin",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "parts_contribution_margin",
+    "value": 0.3,
+    "unit": "pct",
+    "label": "Parts contribution margin",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "service_contribution_margin",
+    "value": 0.45,
+    "unit": "pct",
+    "label": "Service contribution margin",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "annual_fixed_cost",
+    "value": 18.6,
+    "unit": "usd_m",
+    "label": "Current annual fixed operating costs, including existing technician salaries",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "equipment_revenue_2023",
+    "value": 62.0,
+    "unit": "usd_m",
+    "label": "Equipment revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "equipment_revenue_2024",
+    "value": 61.0,
+    "unit": "usd_m",
+    "label": "Equipment revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "parts_revenue_2023",
+    "value": 21.0,
+    "unit": "usd_m",
+    "label": "Parts revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "parts_revenue_2024",
+    "value": 22.5,
+    "unit": "usd_m",
+    "label": "Parts revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "service_revenue_2023",
+    "value": 12.0,
+    "unit": "usd_m",
+    "label": "Service revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "service_revenue_2024",
+    "value": 14.0,
+    "unit": "usd_m",
+    "label": "Service revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "equipment_satisfaction_score",
+    "value": 4.6,
+    "unit": "other",
+    "label": "Equipment customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "parts_satisfaction_score",
+    "value": 4.4,
+    "unit": "other",
+    "label": "Parts customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "service_satisfaction_score",
+    "value": 4.8,
+    "unit": "other",
+    "label": "Service customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "payback_hurdle_years",
+    "value": 2.0,
+    "unit": "years",
+    "label": "Owners’ maximum target payback period",
+    "revealed_in": "clarifying",
+    "role": "input"
+   },
+   {
+    "name": "initial_incremental_hours",
+    "value": 5000.0,
+    "unit": "hours",
+    "label": "Initial forecast of incremental annual mobile-service billable hours",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "validated_incremental_hours",
+    "value": 2500.0,
+    "unit": "hours",
+    "label": "Validated incremental annual mobile-service billable hours",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "full_team_tech_count",
+    "value": 4.0,
+    "unit": "count",
+    "label": "Technicians in the proposed full mobile-service team",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "pilot_tech_count",
+    "value": 2.0,
+    "unit": "count",
+    "label": "Technicians in a potential pilot team",
+    "revealed_in": "assumption",
+    "role": "input"
+   },
+   {
+    "name": "billable_hours_per_tech",
+    "value": 1500.0,
+    "unit": "hours",
+    "label": "Annual billable capacity per mobile technician",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "hourly_service_revenue",
+    "value": 180.0,
+    "unit": "per_unit_usd",
+    "label": "Service revenue per billable hour",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "hourly_variable_cost",
+    "value": 45.0,
+    "unit": "per_unit_usd",
+    "label": "Variable parts, travel, and dispatch cost per billable hour, excluding technician salary",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "annual_salary_per_tech_k",
+    "value": 90.0,
+    "unit": "usd_k",
+    "label": "Annual salary and benefits per new technician",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "van_capex_per_tech_k",
+    "value": 100.0,
+    "unit": "usd_k",
+    "label": "One-time van and mobile-equipment investment per technician",
+    "revealed_in": "interviewer",
+    "role": "input"
+   }
+  ],
+  "core_calculations": [
+   {
+    "id": "equipment_contribution",
+    "label": "Current equipment contribution",
+    "expression": "equipment_revenue_2025 * equipment_contribution_margin",
+    "unit": "usd_m",
+    "expected_value": 7.2,
+    "decimals": 2
+   },
+   {
+    "id": "parts_contribution",
+    "label": "Current parts contribution",
+    "expression": "parts_revenue_2025 * parts_contribution_margin",
+    "unit": "usd_m",
+    "expected_value": 7.2,
+    "decimals": 2
+   },
+   {
+    "id": "service_contribution",
+    "label": "Current service contribution",
+    "expression": "service_revenue_2025 * service_contribution_margin",
+    "unit": "usd_m",
+    "expected_value": 7.2,
+    "decimals": 2
+   },
+   {
+    "id": "total_contribution",
+    "label": "Total current contribution",
+    "expression": "equipment_contribution + parts_contribution + service_contribution",
+    "unit": "usd_m",
+    "expected_value": 21.6,
+    "decimals": 2
+   },
+   {
+    "id": "current_operating_profit",
+    "label": "Current operating profit",
+    "expression": "total_contribution - annual_fixed_cost",
+    "unit": "usd_m",
+    "expected_value": 3.0,
+    "decimals": 2
+   },
+   {
+    "id": "initial_full_team_profit",
+    "label": "Initial forecast annual incremental profit for full mobile team",
+    "expression": "min(initial_incremental_hours, full_team_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - full_team_tech_count * annual_salary_per_tech_k",
+    "unit": "usd_k",
+    "expected_value": 315.0,
+    "decimals": 1
+   },
+   {
+    "id": "initial_full_team_payback",
+    "label": "Initial forecast payback for full mobile team",
+    "expression": "full_team_tech_count * van_capex_per_tech_k / initial_full_team_profit",
+    "unit": "years",
+    "expected_value": 1.2698412698412698,
+    "decimals": 2
+   },
+   {
+    "id": "validated_full_team_profit",
+    "label": "Validated annual incremental profit for full mobile team",
+    "expression": "min(validated_incremental_hours, full_team_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - full_team_tech_count * annual_salary_per_tech_k",
+    "unit": "usd_k",
+    "expected_value": -22.5,
+    "decimals": 1
+   },
+   {
+    "id": "pilot_profit",
+    "label": "Validated annual incremental profit for two-technician pilot",
+    "expression": "min(validated_incremental_hours, pilot_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - pilot_tech_count * annual_salary_per_tech_k",
+    "unit": "usd_k",
+    "expected_value": 157.5,
+    "decimals": 1
+   },
+   {
+    "id": "pilot_payback",
+    "label": "Validated payback for two-technician pilot",
+    "expression": "pilot_tech_count * van_capex_per_tech_k / pilot_profit",
+    "unit": "years",
+    "expected_value": 1.2698412698412698,
+    "decimals": 2
+   }
+  ]
+ },
+ "draft": {
+  "title": "The Field-Service Bottleneck",
+  "client": "Cedar Valley Ag Equipment",
+  "industry": "Agriculture equipment retail, parts, and service",
+  "case_type": "Profitability improvement and investment decision",
+  "difficulty": "medium",
+  "format": "interviewer_led",
+  "duration_minutes": 35,
+  "concepts_tested": [
+   "Profitability by business line",
+   "Contribution margin",
+   "Interpreting revenue trends and mix",
+   "Capacity and demand constraints",
+   "Annual operating economics versus one-time investment",
+   "Payback period",
+   "Brainstorming and prioritization",
+   "Adapting a recommendation to new evidence"
+  ],
+  "situation_summary": "Cedar Valley Ag, a regional farm-equipment dealer, is considering mobile-service technicians to capture additional repair work at customers’ farms. The candidate compares business-line economics, evaluates the proposed team, and revises the recommendation after demand validation.",
+  "prompt": "Cedar Valley Ag Equipment is an independent farm-equipment dealership group operating across the U.S. Upper Midwest. It sells new and used equipment, parts, and repair services through a regional dealer network. Management is concerned about profitability and is considering adding mobile-service technicians who would repair equipment at customers’ farms. The owners want to know where to focus to improve profitability and whether to expand mobile service, pilot it, or pursue another path. They also want to avoid compromising service for existing customers. How would you approach the decision?",
+  "clarifying": [
+   {
+    "question": "What is the decision horizon and what return threshold do the owners use?",
+    "answer": "The owners evaluate annual operating economics and want new investment recovered within {payback_hurdle_years}. For simple payback, assume the investment is paid at time zero, annual operating profit is the annual pre-tax cash-flow proxy, full run-rate economics begin immediately with no ramp-up, and time value of money is ignored."
+   },
+   {
+    "question": "Are the owners willing to test the concept before making a full commitment?",
+    "answer": "Yes. They are open to piloting the idea rather than committing to the full proposal immediately."
+   },
+   {
+    "question": "Are existing and proposed technician salaries included in the fixed-cost baseline?",
+    "answer": "Existing technician salaries are included in current fixed costs. Salaries for any proposed new technicians are not; include those separately in the mobile-service economics."
+   },
+   {
+    "question": "Is the mobile-service demand forecast already validated, and what does it count as incremental?",
+    "answer": "It is not yet validated. The initial forecast counts only billable hours expected to create additional demand Cedar Valley would otherwise not serve; it excludes work shifted from existing shops. A later customer-validation exercise will provide a revised estimate on the same basis. Treat the forecast hours as net-new, non-cannibalized demand for the calculations, then validate that assumption during the pilot."
+   }
+  ],
+  "variables": [
+   {
+    "name": "equipment_revenue_2025",
+    "value": 60.0,
+    "unit": "usd_m",
+    "label": "Current-year equipment revenue",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "parts_revenue_2025",
+    "value": 24.0,
+    "unit": "usd_m",
+    "label": "Current-year parts revenue",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "service_revenue_2025",
+    "value": 16.0,
+    "unit": "usd_m",
+    "label": "Current-year service revenue",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "equipment_contribution_margin",
+    "value": 0.12,
+    "unit": "pct",
+    "label": "Equipment contribution margin",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "parts_contribution_margin",
+    "value": 0.3,
+    "unit": "pct",
+    "label": "Parts contribution margin",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "service_contribution_margin",
+    "value": 0.45,
+    "unit": "pct",
+    "label": "Service contribution margin",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "annual_fixed_cost",
+    "value": 18.6,
+    "unit": "usd_m",
+    "label": "Current annual fixed operating costs, including existing technician salaries",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "equipment_revenue_2023",
+    "value": 62.0,
+    "unit": "usd_m",
+    "label": "Equipment revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "equipment_revenue_2024",
+    "value": 61.0,
+    "unit": "usd_m",
+    "label": "Equipment revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "parts_revenue_2023",
+    "value": 21.0,
+    "unit": "usd_m",
+    "label": "Parts revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "parts_revenue_2024",
+    "value": 22.5,
+    "unit": "usd_m",
+    "label": "Parts revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "service_revenue_2023",
+    "value": 12.0,
+    "unit": "usd_m",
+    "label": "Service revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "service_revenue_2024",
+    "value": 14.0,
+    "unit": "usd_m",
+    "label": "Service revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "equipment_satisfaction_score",
+    "value": 4.6,
+    "unit": "other",
+    "label": "Equipment customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "parts_satisfaction_score",
+    "value": 4.4,
+    "unit": "other",
+    "label": "Parts customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "service_satisfaction_score",
+    "value": 4.8,
+    "unit": "other",
+    "label": "Service customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "payback_hurdle_years",
+    "value": 2.0,
+    "unit": "years",
+    "label": "Owners’ maximum target payback period",
+    "revealed_in": "clarifying",
+    "role": "input"
+   },
+   {
+    "name": "initial_incremental_hours",
+    "value": 5000.0,
+    "unit": "hours",
+    "label": "Initial forecast of annual net-new, non-cannibalized mobile-service billable hours",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "validated_incremental_hours",
+    "value": 2500.0,
+    "unit": "hours",
+    "label": "Validated forecast of annual net-new, non-cannibalized mobile-service billable hours",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "full_team_tech_count",
+    "value": 4.0,
+    "unit": "count",
+    "label": "Technicians in the proposed full mobile-service team",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "pilot_tech_count",
+    "value": 2.0,
+    "unit": "count",
+    "label": "Technicians in a potential pilot team",
+    "revealed_in": "assumption",
+    "role": "input"
+   },
+   {
+    "name": "billable_hours_per_tech",
+    "value": 1500.0,
+    "unit": "hours",
+    "label": "Annual billable capacity per mobile technician",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "hourly_service_revenue",
+    "value": 180.0,
+    "unit": "per_unit_usd",
+    "label": "Service revenue per billable hour",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "hourly_variable_cost",
+    "value": 45.0,
+    "unit": "per_unit_usd",
+    "label": "All incremental non-salary operating costs per billable hour, including parts, travel, and dispatch",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "annual_salary_per_tech_k",
+    "value": 90.0,
+    "unit": "usd_k",
+    "label": "Annual salary and benefits per new technician",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "van_capex_per_tech_k",
+    "value": 100.0,
+    "unit": "usd_k",
+    "label": "One-time van and mobile-equipment investment per technician",
+    "revealed_in": "interviewer",
+    "role": "input"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Business-line economics and trajectory",
+    "points": [
+     "Compare revenue trends, contribution margins, and contribution dollars across equipment, parts, and service.",
+     "Separate changes in revenue from changes in profit contribution; assess whether mix is shifting toward higher-contribution activities.",
+     "Identify the largest sources of current profit and the lines with attractive growth potential."
+    ]
+   },
+   {
+    "name": "Service demand and customer value",
+    "points": [
+     "Understand the source and quality of incremental mobile demand, including whether the forecast excludes work shifted from existing shops.",
+     "Assess customer willingness to book, seasonality, service needs, and the value of convenience and uptime.",
+     "Consider whether service can be grown through mobile work or other offerings without weakening the existing customer experience."
+    ]
+   },
+   {
+    "name": "Operating capacity and investment economics",
+    "points": [
+     "Test net-new demand against billable technician capacity and account for hiring, variable costs, and required equipment.",
+     "Calculate incremental annual profit separately from one-time investment and compare payback with the owners’ hurdle.",
+     "Size a staged approach to demand rather than staffing for unused capacity."
+    ]
+   },
+   {
+    "name": "Execution, risks, and alternatives",
+    "points": [
+     "Assess technician availability, route density, parts availability, dispatching, and peak-season service levels.",
+     "Validate that pilot work is genuinely additional rather than diverted from current shops, and protect existing customer service.",
+     "Compare a pilot with other service-growth levers and define measures and decision gates for scaling."
+    ]
+   }
+  ],
+  "framework_notes": "Reward a tailored structure that links the business-line profit pool to the mobile-service decision. Strong candidates distinguish existing business performance from incremental investment economics, clarify that forecast hours are intended to be net-new rather than shifted from shop work, and recognize both the operational capacity constraint and the option to stage investment. Do not require this exact framework or order.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the decision",
+    "kind": "framework",
+    "ask": "How would you structure the problem for Cedar Valley Ag? What would you want to learn before recommending how to improve profitability or whether to invest in mobile service?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would first understand which business lines drive contribution and how their performance is changing. I would then test the quality and scale of net-new mobile demand, confirm that the forecast excludes work shifted from existing shops, compare demand with technician capacity and the full cost of serving it, and assess investment payback. Finally, I would consider a pilot or other service-growth actions, along with customer, staffing, and service-level risks.",
+    "what_great_looks_like": [
+     "Connects the portfolio profitability question to the investment decision rather than treating mobile service as an isolated idea.",
+     "Explicitly clarifies whether mobile demand is additional work or shifted from current shop work.",
+     "Identifies capacity, salaries, vehicle investment, and the customer experience as relevant."
+    ],
+    "common_mistakes": [
+     "Jumping straight to a mobile-service recommendation without diagnosing business-line economics.",
+     "Treating revenue as profit or assuming all forecast demand will be served.",
+     "Omitting existing-customer service levels and execution feasibility."
+    ],
+    "hints": [
+     "If the structure is too broad, ask which parts of Cedar Valley Ag’s business the candidate would compare.",
+     "If the candidate focuses only on the investment, ask how the group knows where its current profit comes from."
+    ],
+    "pushback": [
+     "Why might the largest revenue business not be the best place to focus?",
+     "How would you distinguish new mobile work from work transferred out of existing shops?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Read the business-line evidence",
+    "kind": "exhibit_read",
+    "ask": "Start with the revenue trend exhibit. What stands out, and what would you want to know next to decide which business line is most attractive to grow? After the candidate requests segment profitability, margin, or business-line economics, release the second exhibit. Ask the candidate to compare the segments and explain what the satisfaction scores do—and do not—tell us.",
+    "exhibit_ids": [
+     "ex1",
+     "ex2"
+    ],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "equipment_contribution",
+      "label": "Current equipment contribution",
+      "expression": "equipment_revenue_2025 * equipment_contribution_margin",
+      "unit": "usd_m",
+      "expected_value": 7.2,
+      "decimals": 2
+     },
+     {
+      "id": "parts_contribution",
+      "label": "Current parts contribution",
+      "expression": "parts_revenue_2025 * parts_contribution_margin",
+      "unit": "usd_m",
+      "expected_value": 7.2,
+      "decimals": 2
+     },
+     {
+      "id": "service_contribution",
+      "label": "Current service contribution",
+      "expression": "service_revenue_2025 * service_contribution_margin",
+      "unit": "usd_m",
+      "expected_value": 7.2,
+      "decimals": 2
+     },
+     {
+      "id": "total_contribution",
+      "label": "Total current contribution",
+      "expression": "equipment_contribution + parts_contribution + service_contribution",
+      "unit": "usd_m",
+      "expected_value": 21.6,
+      "decimals": 2
+     }
+    ],
+    "model_answer": "Equipment revenue is trending down, while parts and service revenue are growing. The trend alone does not establish which line is most profitable. The business-line table shows that equipment, parts, and service each contribute {equipment_contribution}, {parts_contribution}, and {service_contribution}, respectively, despite their different revenue bases and margins. Service has the highest contribution margin and a smaller revenue base, but its contribution dollars are already comparable to the larger lines. Satisfaction is useful customer context, but it is not an input to the contribution calculation. The key implication is that growing service may be attractive, provided the growth is net-new and can be delivered effectively.",
+    "what_great_looks_like": [
+     "Describes the diverging revenue trends without asserting that revenue growth alone proves profitability.",
+     "Calculates contribution dollars by line and compares absolute contribution as well as margin percentage.",
+     "Identifies service as a compelling growth area despite its smaller revenue base.",
+     "Treats satisfaction scores as context rather than financial inputs."
+    ],
+    "common_mistakes": [
+     "Assuming equipment is the most important profit pool because it has the highest revenue.",
+     "Ranking service solely by its margin percentage without calculating contribution dollars.",
+     "Confusing customer satisfaction with revenue growth or margin."
+    ],
+    "hints": [
+     "Ask what calculation would let the candidate compare profit contribution across business lines.",
+     "If the candidate uses only revenue, ask how the cost structures might differ."
+    ],
+    "pushback": [
+     "Service is the smallest business line by revenue. Why should Cedar Valley Ag consider prioritizing it?",
+     "Does the high service satisfaction score prove that mobile service will succeed?"
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Generate service-growth ideas",
+    "kind": "brainstorm",
+    "ask": "Before deciding whether to hire mobile technicians, what practical actions could Cedar Valley Ag take to grow service profitably and protect the customer experience? Prioritize the ideas you think are most attractive.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would prioritize actions that increase billable utilization and create genuinely net-new demand without adding unnecessary fixed cost. Options include booking preventive maintenance before seasonal peaks, bundling service plans with equipment sales, using remote triage to resolve simple issues or prepare the right parts, and improving dispatch and route density for farm visits. I would also check parts availability and use customer-specific service commitments selectively. I would test the highest-potential ideas with a limited customer group and track net-new work, contribution, utilization, response times, and any shift in shop demand before scaling.",
+    "what_great_looks_like": [
+     "Offers specific ideas connected to the dealership’s seasonal, field-service, and parts-distribution realities.",
+     "Prioritizes based on incremental contribution, utilization, and ease of execution rather than producing an unranked list.",
+     "Includes a measurement plan that distinguishes genuinely additional work from work shifted out of current shops."
+    ],
+    "common_mistakes": [
+     "Offering generic marketing ideas without explaining how they improve service economics.",
+     "Ignoring technician utilization, travel time, or parts availability.",
+     "Assuming a service-revenue increase necessarily represents incremental profit."
+    ],
+    "hints": [
+     "Ask what could make each field visit more productive or increase the chance that a customer books it.",
+     "Ask how Cedar Valley Ag could test demand without making a full staffing commitment."
+    ],
+    "pushback": [
+     "Which idea would you try first, and why?",
+     "How would you know whether mobile service is creating new demand rather than cannibalizing shop work?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Evaluate the initial mobile-service proposal",
+    "kind": "quant",
+    "ask": "Now evaluate the current business economics and the initial mobile-service proposal. Calculate current operating profit, then estimate the proposed team’s annual incremental profit and payback. Make sure to distinguish annual operating costs from one-time investment.",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "When the candidate asks for current fixed costs or requests the information needed to calculate current operating profit, share annual fixed operating costs of {annual_fixed_cost}. These include existing technician salaries.",
+     "When the candidate asks for the mobile proposal’s forecast, capacity, pricing, costs, or investment assumptions, share the relevant figures: an initial forecast of {initial_incremental_hours} annual net-new, non-cannibalized billable hours; a proposed team of {full_team_tech_count} technicians; annual capacity of {billable_hours_per_tech} billable hours per technician; service revenue of {hourly_service_revenue} per billable hour; variable costs of {hourly_variable_cost} per billable hour, which include all incremental non-salary operating costs such as parts, travel, and dispatch; annual salary and benefits of {annual_salary_per_tech_k} per new technician; and one-time van and mobile-equipment investment of {van_capex_per_tech_k} per technician, which covers all startup investment. The forecast hours exclude work shifted from existing shops; assume there are no other incremental recurring costs or startup investments."
+    ],
+    "calculations": [
+     {
+      "id": "current_operating_profit",
+      "label": "Current operating profit",
+      "expression": "total_contribution - annual_fixed_cost",
+      "unit": "usd_m",
+      "expected_value": 3.0,
+      "decimals": 2
+     },
+     {
+      "id": "initial_full_team_profit",
+      "label": "Initial forecast annual incremental profit for full mobile team",
+      "expression": "min(initial_incremental_hours, full_team_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - full_team_tech_count * annual_salary_per_tech_k",
+      "unit": "usd_k",
+      "expected_value": 315.0,
+      "decimals": 1
+     },
+     {
+      "id": "initial_full_team_payback",
+      "label": "Initial forecast payback for full mobile team",
+      "expression": "full_team_tech_count * van_capex_per_tech_k / initial_full_team_profit",
+      "unit": "years",
+      "expected_value": 1.2698412698412698,
+      "decimals": 2
+     }
+    ],
+    "model_answer": "Current contribution is {total_contribution}; after {annual_fixed_cost} of current fixed costs, current operating profit is {current_operating_profit}. For the mobile proposal, the initial forecast is below the team’s theoretical capacity, so net-new demand—not technician capacity—limits the billable hours in this scenario. At the stated hourly economics, the full team generates annual incremental profit of {initial_full_team_profit} after new technician salaries. The forecast counts only work expected to be additional to current shop demand, and the stated hourly costs and startup investment are the complete incremental cost base for this case. The one-time investment is {full_team_tech_count} times {van_capex_per_tech_k}, producing a simple payback of {initial_full_team_payback} under the stated immediate run-rate and cash-flow assumptions. On this initial forecast, the full proposal clears the owners’ {payback_hurdle_years} payback hurdle, subject to validating demand and confirming that the work is genuinely net-new in practice.",
+    "what_great_looks_like": [
+     "Separates contribution from fixed costs to calculate current operating profit.",
+     "Uses the lesser of forecast net-new demand and team capacity rather than automatically assuming either is fully utilized.",
+     "Subtracts new technician salaries separately because they are not included in hourly variable costs.",
+     "Treats vehicle and equipment spending as one-time capex and compares it with annual incremental profit for simple payback, using the stated time-zero investment and immediate run-rate convention.",
+     "Recognizes that the stated costs cover the complete incremental cost base in the case.",
+     "Flags demand validation and the net-new nature of the work as key uncertainties despite the attractive initial result."
+    ],
+    "common_mistakes": [
+     "Subtracting existing technician salaries again from the baseline after they are included in fixed costs.",
+     "Forgetting to subtract new technician salaries from mobile-service contribution.",
+     "Treating capex as an annual operating cost or comparing annual profit directly with capex without calculating payback.",
+     "Treating the initial forecast as confirmed demand or counting work transferred from shops as net-new."
+    ],
+    "hints": [
+     "Ask what limits billable hours: customer demand or team capacity.",
+     "Ask whether the technician salaries are included in the hourly variable cost.",
+     "Ask the candidate to state which costs recur annually and which are paid once."
+    ],
+    "pushback": [
+     "What is the main assumption behind the attractive payback result?",
+     "Would you recommend hiring the full team before confirming the demand forecast?"
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Update the decision and synthesize",
+    "kind": "pivot",
+    "ask": "Customer validation has now reduced expected annual net-new, non-cannibalized mobile-service demand from the initial forecast to {validated_incremental_hours}. Update the full-team economics. Then, assuming Cedar Valley Ag can start with a {pilot_tech_count}-technician pilot, evaluate whether that is a better next step and give the owners your recommendation.",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "Share the validated forecast of {validated_incremental_hours} annual net-new, non-cannibalized billable hours after the candidate has evaluated the initial forecast. These hours exclude work shifted from existing shops, consistent with the initial forecast definition.",
+     "For a pilot-sizing comparison, ask the candidate to assume a {pilot_tech_count}-technician pilot, or share that assumption if needed. The payback hurdle remains {payback_hurdle_years}. The per-hour economics, annual technician capacity, salaries, and one-time van investment are unchanged; the stated hourly costs include all incremental non-salary operating costs, and there are no other incremental recurring costs or startup investments."
+    ],
+    "calculations": [
+     {
+      "id": "validated_full_team_profit",
+      "label": "Validated annual incremental profit for full mobile team",
+      "expression": "min(validated_incremental_hours, full_team_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - full_team_tech_count * annual_salary_per_tech_k",
+      "unit": "usd_k",
+      "expected_value": -22.5,
+      "decimals": 1
+     },
+     {
+      "id": "pilot_profit",
+      "label": "Validated annual incremental profit for two-technician pilot",
+      "expression": "min(validated_incremental_hours, pilot_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - pilot_tech_count * annual_salary_per_tech_k",
+      "unit": "usd_k",
+      "expected_value": 157.5,
+      "decimals": 1
+     },
+     {
+      "id": "pilot_payback",
+      "label": "Validated payback for two-technician pilot",
+      "expression": "pilot_tech_count * van_capex_per_tech_k / pilot_profit",
+      "unit": "years",
+      "expected_value": 1.2698412698412698,
+      "decimals": 2
+     }
+    ],
+    "model_answer": "With validated net-new demand, the full team would serve only {validated_incremental_hours} hours, leaving some staffing capacity unused, and would generate annual incremental profit of {validated_full_team_profit}. That does not justify launching the full team. A {pilot_tech_count}-technician pilot can serve the validated demand within its capacity and generates annual incremental profit of {pilot_profit}; its one-time investment produces simple payback of {pilot_payback} under the stated immediate run-rate and cash-flow assumptions, within the owners’ {payback_hurdle_years} hurdle. I would launch the pilot rather than the full team, while protecting shop service levels and verifying that actual field jobs are net-new rather than shifted from current shops. I would set a review gate based on realized net-new billable hours, contribution after salaries, customer response times, and shop-work displacement before deciding whether to scale.",
+    "what_great_looks_like": [
+     "Recalculates the full team using validated net-new demand rather than carrying forward the original forecast.",
+     "Recognizes that the validated full-team case loses money after salaries, even though it still has unused capacity.",
+     "Sizes the pilot to the validated demand and checks that its capacity is sufficient.",
+     "Uses after-salary annual incremental profit for simple payback and applies the stated time-zero investment and immediate run-rate assumptions.",
+     "Makes a clear staged recommendation with practical measures and customer safeguards."
+    ],
+    "common_mistakes": [
+     "Continuing to use the initial demand forecast after the pivot.",
+     "Assuming the full team can keep all technicians productive despite insufficient validated demand.",
+     "Forgetting that pilot investment and salary scale with pilot headcount.",
+     "Recommending the pilot without checking whether actual pilot work is genuinely net-new or whether service quality will suffer."
+    ],
+    "hints": [
+     "Recompute served hours using the lower of validated net-new demand and the relevant team’s total capacity.",
+     "Compare the annual contribution after salaries for both team sizes, then compare pilot capex with its annual profit.",
+     "Ask what operating metrics should govern a decision to scale."
+    ],
+    "pushback": [
+     "The initial forecast supported the full team. Why should management change course now?",
+     "What evidence would you require before adding more technicians?",
+     "What could make the pilot’s calculated economics fail in practice?"
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Cedar Valley Ag revenue by business line",
+    "subtitle": "Annual revenue, recent years",
+    "kind": "line",
+    "columns": [
+     "Year",
+     "Equipment",
+     "Parts",
+     "Service"
+    ],
+    "rows": [
+     {
+      "label": "2023",
+      "cells": [
+       "=equipment_revenue_2023",
+       "=parts_revenue_2023",
+       "=service_revenue_2023"
+      ]
+     },
+     {
+      "label": "2024",
+      "cells": [
+       "=equipment_revenue_2024",
+       "=parts_revenue_2024",
+       "=service_revenue_2024"
+      ]
+     },
+     {
+      "label": "2025",
+      "cells": [
+       "=equipment_revenue_2025",
+       "=parts_revenue_2025",
+       "=service_revenue_2025"
+      ]
+     }
+    ],
+    "value_unit": "usd_m",
+    "column_units": null,
+    "footnote": "Source: Cedar Valley Ag management accounts. Revenue only; the exhibit does not show business-line margins or explain profit contribution.",
+    "text_body": null
+   },
+   {
+    "id": "ex2",
+    "title": "Current business-line economics and customer context",
+    "subtitle": "Current-year management view",
+    "kind": "table",
+    "columns": [
+     "Business line",
+     "Revenue",
+     "Contribution margin",
+     "Customer satisfaction index"
+    ],
+    "rows": [
+     {
+      "label": "Equipment",
+      "cells": [
+       "=equipment_revenue_2025",
+       "=equipment_contribution_margin",
+       "=equipment_satisfaction_score"
+      ]
+     },
+     {
+      "label": "Parts",
+      "cells": [
+       "=parts_revenue_2025",
+       "=parts_contribution_margin",
+       "=parts_satisfaction_score"
+      ]
+     },
+     {
+      "label": "Service",
+      "cells": [
+       "=service_revenue_2025",
+       "=service_contribution_margin",
+       "=service_satisfaction_score"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "usd_m",
+     "pct",
+     "other"
+    ],
+    "footnote": "Source: Cedar Valley Ag management accounts and customer survey. Satisfaction index is customer context, not a financial input.",
+    "text_body": null
+   }
+  ],
+  "recommendation": {
+   "answer": "Prioritize service as a growth area, but do not launch the full mobile team based on the validated demand. The business-line analysis shows service contribution of {service_contribution}, equal to the contribution from each of the larger business lines despite service’s smaller revenue base. Current operating profit is {current_operating_profit}. The full team appeared attractive on the initial net-new demand forecast, with annual incremental profit of {initial_full_team_profit} and simple payback of {initial_full_team_payback}; however, validated net-new demand reduces its annual incremental profit to {validated_full_team_profit}. Instead, pilot with {pilot_tech_count} technicians: the pilot is sized to validated net-new demand, generates annual incremental profit of {pilot_profit}, and has simple payback of {pilot_payback}, within the {payback_hurdle_years} hurdle. These paybacks use the stated convention that investment is paid at time zero, annual operating profit is the pre-tax cash-flow proxy, run-rate economics begin immediately, and time value of money is ignored. Scale only if pilot results confirm genuinely additional demand and service quality remains strong.",
+   "risks": [
+    "Validated customer interest may not convert into billable work, or actual mobile jobs may replace work that would otherwise have been done in existing shops.",
+    "Travel time, route density, seasonal peaks, parts availability, and technician utilization could reduce realized contribution.",
+    "Adding field jobs could worsen response times or service levels for existing customers if dispatching and staffing are not managed carefully."
+   ],
+   "next_steps": [
+    "Confirm pilot customers, expected jobs, timing, and willingness to book; prioritize routes and service areas with enough density.",
+    "Set up dispatch, mobile parts replenishment, and a clear process for coordinating field work with existing shop capacity.",
+    "Track realized net-new billable hours, revenue and variable cost per hour, salary-adjusted contribution, customer response times, satisfaction, and any shop-work displacement.",
+    "Review results against the demand and payback case before hiring additional technicians or purchasing further vehicles."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Structuring and prioritization",
+    "strong": "Builds a Cedar Valley-specific structure linking segment economics, net-new demand, capacity and investment, and execution/customer risks. Prioritizes the decisive questions.",
+    "weak": "Uses a generic checklist, jumps to a solution, or fails to connect the portfolio-profitability question to mobile service."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Accurately describes the revenue trajectories, asks for margin or contribution data, calculates absolute contribution by line, and identifies service’s attractive economics without over-reading satisfaction scores.",
+    "weak": "Assumes the highest-revenue line is most profitable, focuses only on margin percentages, or treats satisfaction as a financial driver."
+   },
+   {
+    "dimension": "Quantitative accuracy",
+    "strong": "Calculates current operating profit and both mobile cases correctly; applies net-new demand and capacity limits, accounts for new salaries, and treats capex as a one-time investment for simple payback under the stated timing convention.",
+    "weak": "Confuses revenue with profit, double-counts existing salaries, omits new salaries, ignores demand or capacity, or compares capex directly with annual revenue."
+   },
+   {
+    "dimension": "Judgment and adaptation",
+    "strong": "Changes the recommendation when validated net-new demand undermines the full-team economics, sizes the pilot appropriately, and identifies measurable scale-up gates, including checks for shop-work displacement.",
+    "weak": "Anchors on the initial forecast, ignores the full team’s losses under validated demand, or recommends scaling without testing demand incrementality and service quality."
+   },
+   {
+    "dimension": "Communication and synthesis",
+    "strong": "Gives a concise recommendation with supporting economics, key assumptions, risks, mitigations, and actionable next steps.",
+    "weak": "Recites calculations without making a decision, omits major risks, or provides vague next steps."
+   }
+  ],
+  "interviewer_notes": "Run as an interviewer-led first-round case. Begin with the structure request and let the candidate own the initial hypothesis. In the business-line section, show the revenue trend first; release the economics table once the candidate asks for profit or margin data. The intended insight is that service’s smaller revenue base masks contribution dollars equal to those of equipment and parts. Use the brainstorm to test whether the candidate can connect operating ideas to utilization and net-new contribution. In the quant section, provide annual fixed costs when requested for baseline profit and share mobile assumptions in response to a request for proposal economics. Confirm the candidate knows new salaries are not in hourly variable cost, while existing technician salaries are already included in baseline fixed costs. Clarify that the demand forecasts count only expected work additional to existing shop demand; the pilot should test this assumption. The stated hourly cost covers every incremental non-salary operating cost, van and equipment capex covers all startup investment, and no other incremental recurring or startup costs apply. If asked about the return threshold, clarify the payback convention: capex is paid at time zero; stated annual operating profit is the annual pre-tax cash-flow proxy; full run-rate economics begin immediately with no ramp-up; and time value of money is ignored. Let the candidate evaluate the initial forecast before sharing validation. The pivot is the core judgment test: validated net-new demand, rather than theoretical team capacity, limits the full proposal; a {pilot_tech_count}-technician pilot can serve the validated work and meets the owners’ payback hurdle. Accept other recommendations if candidates explicitly state reasonable assumptions, account for the validated-demand constraint, and protect existing customer service. Suggested pacing: structure and clarifications, about five minutes; exhibits and brainstorm, about ten minutes; initial economics, about ten minutes; pivot and recommendation, about ten minutes."
+ },
+ "rendered": {
+  "title": "The Field-Service Bottleneck",
+  "client": "Cedar Valley Ag Equipment",
+  "industry": "Agriculture equipment retail, parts, and service",
+  "case_type": "Profitability improvement and investment decision",
+  "difficulty": "medium",
+  "format": "interviewer_led",
+  "duration_minutes": 35,
+  "concepts_tested": [
+   "Profitability by business line",
+   "Contribution margin",
+   "Interpreting revenue trends and mix",
+   "Capacity and demand constraints",
+   "Annual operating economics versus one-time investment",
+   "Payback period",
+   "Brainstorming and prioritization",
+   "Adapting a recommendation to new evidence"
+  ],
+  "situation_summary": "Cedar Valley Ag, a regional farm-equipment dealer, is considering mobile-service technicians to capture additional repair work at customers’ farms. The candidate compares business-line economics, evaluates the proposed team, and revises the recommendation after demand validation.",
+  "prompt": "Cedar Valley Ag Equipment is an independent farm-equipment dealership group operating across the U.S. Upper Midwest. It sells new and used equipment, parts, and repair services through a regional dealer network. Management is concerned about profitability and is considering adding mobile-service technicians who would repair equipment at customers’ farms. The owners want to know where to focus to improve profitability and whether to expand mobile service, pilot it, or pursue another path. They also want to avoid compromising service for existing customers. How would you approach the decision?",
+  "clarifying": [
+   {
+    "question": "What is the decision horizon and what return threshold do the owners use?",
+    "answer": "The owners evaluate annual operating economics and want new investment recovered within 2 years. For simple payback, assume the investment is paid at time zero, annual operating profit is the annual pre-tax cash-flow proxy, full run-rate economics begin immediately with no ramp-up, and time value of money is ignored."
+   },
+   {
+    "question": "Are the owners willing to test the concept before making a full commitment?",
+    "answer": "Yes. They are open to piloting the idea rather than committing to the full proposal immediately."
+   },
+   {
+    "question": "Are existing and proposed technician salaries included in the fixed-cost baseline?",
+    "answer": "Existing technician salaries are included in current fixed costs. Salaries for any proposed new technicians are not; include those separately in the mobile-service economics."
+   },
+   {
+    "question": "Is the mobile-service demand forecast already validated, and what does it count as incremental?",
+    "answer": "It is not yet validated. The initial forecast counts only billable hours expected to create additional demand Cedar Valley would otherwise not serve; it excludes work shifted from existing shops. A later customer-validation exercise will provide a revised estimate on the same basis. Treat the forecast hours as net-new, non-cannibalized demand for the calculations, then validate that assumption during the pilot."
+   }
+  ],
+  "variables": [
+   {
+    "name": "equipment_revenue_2025",
+    "value": 60.0,
+    "unit": "usd_m",
+    "label": "Current-year equipment revenue",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "$60M"
+   },
+   {
+    "name": "parts_revenue_2025",
+    "value": 24.0,
+    "unit": "usd_m",
+    "label": "Current-year parts revenue",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "$24M"
+   },
+   {
+    "name": "service_revenue_2025",
+    "value": 16.0,
+    "unit": "usd_m",
+    "label": "Current-year service revenue",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "$16M"
+   },
+   {
+    "name": "equipment_contribution_margin",
+    "value": 0.12,
+    "unit": "pct",
+    "label": "Equipment contribution margin",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "12%"
+   },
+   {
+    "name": "parts_contribution_margin",
+    "value": 0.3,
+    "unit": "pct",
+    "label": "Parts contribution margin",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "30%"
+   },
+   {
+    "name": "service_contribution_margin",
+    "value": 0.45,
+    "unit": "pct",
+    "label": "Service contribution margin",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "45%"
+   },
+   {
+    "name": "annual_fixed_cost",
+    "value": 18.6,
+    "unit": "usd_m",
+    "label": "Current annual fixed operating costs, including existing technician salaries",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$18.6M"
+   },
+   {
+    "name": "equipment_revenue_2023",
+    "value": 62.0,
+    "unit": "usd_m",
+    "label": "Equipment revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$62M"
+   },
+   {
+    "name": "equipment_revenue_2024",
+    "value": 61.0,
+    "unit": "usd_m",
+    "label": "Equipment revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$61M"
+   },
+   {
+    "name": "parts_revenue_2023",
+    "value": 21.0,
+    "unit": "usd_m",
+    "label": "Parts revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$21M"
+   },
+   {
+    "name": "parts_revenue_2024",
+    "value": 22.5,
+    "unit": "usd_m",
+    "label": "Parts revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$22.5M"
+   },
+   {
+    "name": "service_revenue_2023",
+    "value": 12.0,
+    "unit": "usd_m",
+    "label": "Service revenue, earlier year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$12M"
+   },
+   {
+    "name": "service_revenue_2024",
+    "value": 14.0,
+    "unit": "usd_m",
+    "label": "Service revenue, middle year in trend exhibit",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$14M"
+   },
+   {
+    "name": "equipment_satisfaction_score",
+    "value": 4.6,
+    "unit": "other",
+    "label": "Equipment customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor",
+    "display": "4.6"
+   },
+   {
+    "name": "parts_satisfaction_score",
+    "value": 4.4,
+    "unit": "other",
+    "label": "Parts customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor",
+    "display": "4.4"
+   },
+   {
+    "name": "service_satisfaction_score",
+    "value": 4.8,
+    "unit": "other",
+    "label": "Service customer satisfaction score",
+    "revealed_in": "ex2",
+    "role": "distractor",
+    "display": "4.8"
+   },
+   {
+    "name": "payback_hurdle_years",
+    "value": 2.0,
+    "unit": "years",
+    "label": "Owners’ maximum target payback period",
+    "revealed_in": "clarifying",
+    "role": "input",
+    "display": "2 years"
+   },
+   {
+    "name": "initial_incremental_hours",
+    "value": 5000.0,
+    "unit": "hours",
+    "label": "Initial forecast of annual net-new, non-cannibalized mobile-service billable hours",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "5,000 hours"
+   },
+   {
+    "name": "validated_incremental_hours",
+    "value": 2500.0,
+    "unit": "hours",
+    "label": "Validated forecast of annual net-new, non-cannibalized mobile-service billable hours",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "2,500 hours"
+   },
+   {
+    "name": "full_team_tech_count",
+    "value": 4.0,
+    "unit": "count",
+    "label": "Technicians in the proposed full mobile-service team",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "4"
+   },
+   {
+    "name": "pilot_tech_count",
+    "value": 2.0,
+    "unit": "count",
+    "label": "Technicians in a potential pilot team",
+    "revealed_in": "assumption",
+    "role": "input",
+    "display": "2"
+   },
+   {
+    "name": "billable_hours_per_tech",
+    "value": 1500.0,
+    "unit": "hours",
+    "label": "Annual billable capacity per mobile technician",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "1,500 hours"
+   },
+   {
+    "name": "hourly_service_revenue",
+    "value": 180.0,
+    "unit": "per_unit_usd",
+    "label": "Service revenue per billable hour",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$180"
+   },
+   {
+    "name": "hourly_variable_cost",
+    "value": 45.0,
+    "unit": "per_unit_usd",
+    "label": "All incremental non-salary operating costs per billable hour, including parts, travel, and dispatch",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$45"
+   },
+   {
+    "name": "annual_salary_per_tech_k",
+    "value": 90.0,
+    "unit": "usd_k",
+    "label": "Annual salary and benefits per new technician",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$90K"
+   },
+   {
+    "name": "van_capex_per_tech_k",
+    "value": 100.0,
+    "unit": "usd_k",
+    "label": "One-time van and mobile-equipment investment per technician",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$100K"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Business-line economics and trajectory",
+    "points": [
+     "Compare revenue trends, contribution margins, and contribution dollars across equipment, parts, and service.",
+     "Separate changes in revenue from changes in profit contribution; assess whether mix is shifting toward higher-contribution activities.",
+     "Identify the largest sources of current profit and the lines with attractive growth potential."
+    ]
+   },
+   {
+    "name": "Service demand and customer value",
+    "points": [
+     "Understand the source and quality of incremental mobile demand, including whether the forecast excludes work shifted from existing shops.",
+     "Assess customer willingness to book, seasonality, service needs, and the value of convenience and uptime.",
+     "Consider whether service can be grown through mobile work or other offerings without weakening the existing customer experience."
+    ]
+   },
+   {
+    "name": "Operating capacity and investment economics",
+    "points": [
+     "Test net-new demand against billable technician capacity and account for hiring, variable costs, and required equipment.",
+     "Calculate incremental annual profit separately from one-time investment and compare payback with the owners’ hurdle.",
+     "Size a staged approach to demand rather than staffing for unused capacity."
+    ]
+   },
+   {
+    "name": "Execution, risks, and alternatives",
+    "points": [
+     "Assess technician availability, route density, parts availability, dispatching, and peak-season service levels.",
+     "Validate that pilot work is genuinely additional rather than diverted from current shops, and protect existing customer service.",
+     "Compare a pilot with other service-growth levers and define measures and decision gates for scaling."
+    ]
+   }
+  ],
+  "framework_notes": "Reward a tailored structure that links the business-line profit pool to the mobile-service decision. Strong candidates distinguish existing business performance from incremental investment economics, clarify that forecast hours are intended to be net-new rather than shifted from shop work, and recognize both the operational capacity constraint and the option to stage investment. Do not require this exact framework or order.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the decision",
+    "kind": "framework",
+    "ask": "How would you structure the problem for Cedar Valley Ag? What would you want to learn before recommending how to improve profitability or whether to invest in mobile service?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would first understand which business lines drive contribution and how their performance is changing. I would then test the quality and scale of net-new mobile demand, confirm that the forecast excludes work shifted from existing shops, compare demand with technician capacity and the full cost of serving it, and assess investment payback. Finally, I would consider a pilot or other service-growth actions, along with customer, staffing, and service-level risks.",
+    "what_great_looks_like": [
+     "Connects the portfolio profitability question to the investment decision rather than treating mobile service as an isolated idea.",
+     "Explicitly clarifies whether mobile demand is additional work or shifted from current shop work.",
+     "Identifies capacity, salaries, vehicle investment, and the customer experience as relevant."
+    ],
+    "common_mistakes": [
+     "Jumping straight to a mobile-service recommendation without diagnosing business-line economics.",
+     "Treating revenue as profit or assuming all forecast demand will be served.",
+     "Omitting existing-customer service levels and execution feasibility."
+    ],
+    "hints": [
+     "If the structure is too broad, ask which parts of Cedar Valley Ag’s business the candidate would compare.",
+     "If the candidate focuses only on the investment, ask how the group knows where its current profit comes from."
+    ],
+    "pushback": [
+     "Why might the largest revenue business not be the best place to focus?",
+     "How would you distinguish new mobile work from work transferred out of existing shops?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Read the business-line evidence",
+    "kind": "exhibit_read",
+    "ask": "Start with the revenue trend exhibit. What stands out, and what would you want to know next to decide which business line is most attractive to grow? After the candidate requests segment profitability, margin, or business-line economics, release the second exhibit. Ask the candidate to compare the segments and explain what the satisfaction scores do—and do not—tell us.",
+    "exhibit_ids": [
+     "ex1",
+     "ex2"
+    ],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "equipment_contribution",
+      "label": "Current equipment contribution",
+      "expression": "equipment_revenue_2025 * equipment_contribution_margin",
+      "unit": "usd_m",
+      "expected_value": 7.2,
+      "decimals": 2,
+      "value": 7.199999999999999,
+      "display": "$7.2M",
+      "expression_display": "[Current-year equipment revenue] × [Equipment contribution margin]"
+     },
+     {
+      "id": "parts_contribution",
+      "label": "Current parts contribution",
+      "expression": "parts_revenue_2025 * parts_contribution_margin",
+      "unit": "usd_m",
+      "expected_value": 7.2,
+      "decimals": 2,
+      "value": 7.199999999999999,
+      "display": "$7.2M",
+      "expression_display": "[Current-year parts revenue] × [Parts contribution margin]"
+     },
+     {
+      "id": "service_contribution",
+      "label": "Current service contribution",
+      "expression": "service_revenue_2025 * service_contribution_margin",
+      "unit": "usd_m",
+      "expected_value": 7.2,
+      "decimals": 2,
+      "value": 7.2,
+      "display": "$7.2M",
+      "expression_display": "[Current-year service revenue] × [Service contribution margin]"
+     },
+     {
+      "id": "total_contribution",
+      "label": "Total current contribution",
+      "expression": "equipment_contribution + parts_contribution + service_contribution",
+      "unit": "usd_m",
+      "expected_value": 21.6,
+      "decimals": 2,
+      "value": 21.599999999999998,
+      "display": "$21.6M",
+      "expression_display": "[Current equipment contribution] + [Current parts contribution] + [Current service contribution]"
+     }
+    ],
+    "model_answer": "Equipment revenue is trending down, while parts and service revenue are growing. The trend alone does not establish which line is most profitable. The business-line table shows that equipment, parts, and service each contribute $7.2M, $7.2M, and $7.2M, respectively, despite their different revenue bases and margins. Service has the highest contribution margin and a smaller revenue base, but its contribution dollars are already comparable to the larger lines. Satisfaction is useful customer context, but it is not an input to the contribution calculation. The key implication is that growing service may be attractive, provided the growth is net-new and can be delivered effectively.",
+    "what_great_looks_like": [
+     "Describes the diverging revenue trends without asserting that revenue growth alone proves profitability.",
+     "Calculates contribution dollars by line and compares absolute contribution as well as margin percentage.",
+     "Identifies service as a compelling growth area despite its smaller revenue base.",
+     "Treats satisfaction scores as context rather than financial inputs."
+    ],
+    "common_mistakes": [
+     "Assuming equipment is the most important profit pool because it has the highest revenue.",
+     "Ranking service solely by its margin percentage without calculating contribution dollars.",
+     "Confusing customer satisfaction with revenue growth or margin."
+    ],
+    "hints": [
+     "Ask what calculation would let the candidate compare profit contribution across business lines.",
+     "If the candidate uses only revenue, ask how the cost structures might differ."
+    ],
+    "pushback": [
+     "Service is the smallest business line by revenue. Why should Cedar Valley Ag consider prioritizing it?",
+     "Does the high service satisfaction score prove that mobile service will succeed?"
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Generate service-growth ideas",
+    "kind": "brainstorm",
+    "ask": "Before deciding whether to hire mobile technicians, what practical actions could Cedar Valley Ag take to grow service profitably and protect the customer experience? Prioritize the ideas you think are most attractive.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would prioritize actions that increase billable utilization and create genuinely net-new demand without adding unnecessary fixed cost. Options include booking preventive maintenance before seasonal peaks, bundling service plans with equipment sales, using remote triage to resolve simple issues or prepare the right parts, and improving dispatch and route density for farm visits. I would also check parts availability and use customer-specific service commitments selectively. I would test the highest-potential ideas with a limited customer group and track net-new work, contribution, utilization, response times, and any shift in shop demand before scaling.",
+    "what_great_looks_like": [
+     "Offers specific ideas connected to the dealership’s seasonal, field-service, and parts-distribution realities.",
+     "Prioritizes based on incremental contribution, utilization, and ease of execution rather than producing an unranked list.",
+     "Includes a measurement plan that distinguishes genuinely additional work from work shifted out of current shops."
+    ],
+    "common_mistakes": [
+     "Offering generic marketing ideas without explaining how they improve service economics.",
+     "Ignoring technician utilization, travel time, or parts availability.",
+     "Assuming a service-revenue increase necessarily represents incremental profit."
+    ],
+    "hints": [
+     "Ask what could make each field visit more productive or increase the chance that a customer books it.",
+     "Ask how Cedar Valley Ag could test demand without making a full staffing commitment."
+    ],
+    "pushback": [
+     "Which idea would you try first, and why?",
+     "How would you know whether mobile service is creating new demand rather than cannibalizing shop work?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Evaluate the initial mobile-service proposal",
+    "kind": "quant",
+    "ask": "Now evaluate the current business economics and the initial mobile-service proposal. Calculate current operating profit, then estimate the proposed team’s annual incremental profit and payback. Make sure to distinguish annual operating costs from one-time investment.",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "When the candidate asks for current fixed costs or requests the information needed to calculate current operating profit, share annual fixed operating costs of $18.6M. These include existing technician salaries.",
+     "When the candidate asks for the mobile proposal’s forecast, capacity, pricing, costs, or investment assumptions, share the relevant figures: an initial forecast of 5,000 hours annual net-new, non-cannibalized billable hours; a proposed team of 4 technicians; annual capacity of 1,500 hours billable hours per technician; service revenue of $180 per billable hour; variable costs of $45 per billable hour, which include all incremental non-salary operating costs such as parts, travel, and dispatch; annual salary and benefits of $90K per new technician; and one-time van and mobile-equipment investment of $100K per technician, which covers all startup investment. The forecast hours exclude work shifted from existing shops; assume there are no other incremental recurring costs or startup investments."
+    ],
+    "calculations": [
+     {
+      "id": "current_operating_profit",
+      "label": "Current operating profit",
+      "expression": "total_contribution - annual_fixed_cost",
+      "unit": "usd_m",
+      "expected_value": 3.0,
+      "decimals": 2,
+      "value": 2.9999999999999964,
+      "display": "$3M",
+      "expression_display": "[Total current contribution] - [Current annual fixed operating costs, including existing technician salaries]"
+     },
+     {
+      "id": "initial_full_team_profit",
+      "label": "Initial forecast annual incremental profit for full mobile team",
+      "expression": "min(initial_incremental_hours, full_team_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - full_team_tech_count * annual_salary_per_tech_k",
+      "unit": "usd_k",
+      "expected_value": 315.0,
+      "decimals": 1,
+      "value": 315.0,
+      "display": "$315K",
+      "expression_display": "min([Initial forecast of annual net-new, non-cannibalized mobile-service billable hours], [Technicians in the proposed full mobile-service team] × [Annual billable capacity per mobile technician]) × ([Service revenue per billable hour] - [All incremental non-salary operating costs per billable hour, including parts, travel, and dispatch]) ÷ 1000 - [Technicians in the proposed full mobile-service team] × [Annual salary and benefits per new technician]"
+     },
+     {
+      "id": "initial_full_team_payback",
+      "label": "Initial forecast payback for full mobile team",
+      "expression": "full_team_tech_count * van_capex_per_tech_k / initial_full_team_profit",
+      "unit": "years",
+      "expected_value": 1.2698412698412698,
+      "decimals": 2,
+      "value": 1.2698412698412698,
+      "display": "1.27 years",
+      "expression_display": "[Technicians in the proposed full mobile-service team] × [One-time van and mobile-equipment investment per technician] ÷ [Initial forecast annual incremental profit for full mobile team]"
+     }
+    ],
+    "model_answer": "Current contribution is $21.6M; after $18.6M of current fixed costs, current operating profit is $3M. For the mobile proposal, the initial forecast is below the team’s theoretical capacity, so net-new demand—not technician capacity—limits the billable hours in this scenario. At the stated hourly economics, the full team generates annual incremental profit of $315K after new technician salaries. The forecast counts only work expected to be additional to current shop demand, and the stated hourly costs and startup investment are the complete incremental cost base for this case. The one-time investment is 4 times $100K, producing a simple payback of 1.27 years under the stated immediate run-rate and cash-flow assumptions. On this initial forecast, the full proposal clears the owners’ 2 years payback hurdle, subject to validating demand and confirming that the work is genuinely net-new in practice.",
+    "what_great_looks_like": [
+     "Separates contribution from fixed costs to calculate current operating profit.",
+     "Uses the lesser of forecast net-new demand and team capacity rather than automatically assuming either is fully utilized.",
+     "Subtracts new technician salaries separately because they are not included in hourly variable costs.",
+     "Treats vehicle and equipment spending as one-time capex and compares it with annual incremental profit for simple payback, using the stated time-zero investment and immediate run-rate convention.",
+     "Recognizes that the stated costs cover the complete incremental cost base in the case.",
+     "Flags demand validation and the net-new nature of the work as key uncertainties despite the attractive initial result."
+    ],
+    "common_mistakes": [
+     "Subtracting existing technician salaries again from the baseline after they are included in fixed costs.",
+     "Forgetting to subtract new technician salaries from mobile-service contribution.",
+     "Treating capex as an annual operating cost or comparing annual profit directly with capex without calculating payback.",
+     "Treating the initial forecast as confirmed demand or counting work transferred from shops as net-new."
+    ],
+    "hints": [
+     "Ask what limits billable hours: customer demand or team capacity.",
+     "Ask whether the technician salaries are included in the hourly variable cost.",
+     "Ask the candidate to state which costs recur annually and which are paid once."
+    ],
+    "pushback": [
+     "What is the main assumption behind the attractive payback result?",
+     "Would you recommend hiring the full team before confirming the demand forecast?"
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Update the decision and synthesize",
+    "kind": "pivot",
+    "ask": "Customer validation has now reduced expected annual net-new, non-cannibalized mobile-service demand from the initial forecast to 2,500 hours. Update the full-team economics. Then, assuming Cedar Valley Ag can start with a 2-technician pilot, evaluate whether that is a better next step and give the owners your recommendation.",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "Share the validated forecast of 2,500 hours annual net-new, non-cannibalized billable hours after the candidate has evaluated the initial forecast. These hours exclude work shifted from existing shops, consistent with the initial forecast definition.",
+     "For a pilot-sizing comparison, ask the candidate to assume a 2-technician pilot, or share that assumption if needed. The payback hurdle remains 2 years. The per-hour economics, annual technician capacity, salaries, and one-time van investment are unchanged; the stated hourly costs include all incremental non-salary operating costs, and there are no other incremental recurring costs or startup investments."
+    ],
+    "calculations": [
+     {
+      "id": "validated_full_team_profit",
+      "label": "Validated annual incremental profit for full mobile team",
+      "expression": "min(validated_incremental_hours, full_team_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - full_team_tech_count * annual_salary_per_tech_k",
+      "unit": "usd_k",
+      "expected_value": -22.5,
+      "decimals": 1,
+      "value": -22.5,
+      "display": "-$22.5K",
+      "expression_display": "min([Validated forecast of annual net-new, non-cannibalized mobile-service billable hours], [Technicians in the proposed full mobile-service team] × [Annual billable capacity per mobile technician]) × ([Service revenue per billable hour] - [All incremental non-salary operating costs per billable hour, including parts, travel, and dispatch]) ÷ 1000 - [Technicians in the proposed full mobile-service team] × [Annual salary and benefits per new technician]"
+     },
+     {
+      "id": "pilot_profit",
+      "label": "Validated annual incremental profit for two-technician pilot",
+      "expression": "min(validated_incremental_hours, pilot_tech_count * billable_hours_per_tech) * (hourly_service_revenue - hourly_variable_cost) / 1000 - pilot_tech_count * annual_salary_per_tech_k",
+      "unit": "usd_k",
+      "expected_value": 157.5,
+      "decimals": 1,
+      "value": 157.5,
+      "display": "$157.5K",
+      "expression_display": "min([Validated forecast of annual net-new, non-cannibalized mobile-service billable hours], [Technicians in a potential pilot team] × [Annual billable capacity per mobile technician]) × ([Service revenue per billable hour] - [All incremental non-salary operating costs per billable hour, including parts, travel, and dispatch]) ÷ 1000 - [Technicians in a potential pilot team] × [Annual salary and benefits per new technician]"
+     },
+     {
+      "id": "pilot_payback",
+      "label": "Validated payback for two-technician pilot",
+      "expression": "pilot_tech_count * van_capex_per_tech_k / pilot_profit",
+      "unit": "years",
+      "expected_value": 1.2698412698412698,
+      "decimals": 2,
+      "value": 1.2698412698412698,
+      "display": "1.27 years",
+      "expression_display": "[Technicians in a potential pilot team] × [One-time van and mobile-equipment investment per technician] ÷ [Validated annual incremental profit for two-technician pilot]"
+     }
+    ],
+    "model_answer": "With validated net-new demand, the full team would serve only 2,500 hours, leaving some staffing capacity unused, and would generate annual incremental profit of -$22.5K. That does not justify launching the full team. A 2-technician pilot can serve the validated demand within its capacity and generates annual incremental profit of $157.5K; its one-time investment produces simple payback of 1.27 years under the stated immediate run-rate and cash-flow assumptions, within the owners’ 2 years hurdle. I would launch the pilot rather than the full team, while protecting shop service levels and verifying that actual field jobs are net-new rather than shifted from current shops. I would set a review gate based on realized net-new billable hours, contribution after salaries, customer response times, and shop-work displacement before deciding whether to scale.",
+    "what_great_looks_like": [
+     "Recalculates the full team using validated net-new demand rather than carrying forward the original forecast.",
+     "Recognizes that the validated full-team case loses money after salaries, even though it still has unused capacity.",
+     "Sizes the pilot to the validated demand and checks that its capacity is sufficient.",
+     "Uses after-salary annual incremental profit for simple payback and applies the stated time-zero investment and immediate run-rate assumptions.",
+     "Makes a clear staged recommendation with practical measures and customer safeguards."
+    ],
+    "common_mistakes": [
+     "Continuing to use the initial demand forecast after the pivot.",
+     "Assuming the full team can keep all technicians productive despite insufficient validated demand.",
+     "Forgetting that pilot investment and salary scale with pilot headcount.",
+     "Recommending the pilot without checking whether actual pilot work is genuinely net-new or whether service quality will suffer."
+    ],
+    "hints": [
+     "Recompute served hours using the lower of validated net-new demand and the relevant team’s total capacity.",
+     "Compare the annual contribution after salaries for both team sizes, then compare pilot capex with its annual profit.",
+     "Ask what operating metrics should govern a decision to scale."
+    ],
+    "pushback": [
+     "The initial forecast supported the full team. Why should management change course now?",
+     "What evidence would you require before adding more technicians?",
+     "What could make the pilot’s calculated economics fail in practice?"
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Cedar Valley Ag revenue by business line",
+    "subtitle": "Annual revenue, recent years",
+    "kind": "line",
+    "columns": [
+     "Year",
+     "Equipment",
+     "Parts",
+     "Service"
+    ],
+    "rows": [
+     {
+      "label": "2023",
+      "cells": [
+       "=equipment_revenue_2023",
+       "=parts_revenue_2023",
+       "=service_revenue_2023"
+      ]
+     },
+     {
+      "label": "2024",
+      "cells": [
+       "=equipment_revenue_2024",
+       "=parts_revenue_2024",
+       "=service_revenue_2024"
+      ]
+     },
+     {
+      "label": "2025",
+      "cells": [
+       "=equipment_revenue_2025",
+       "=parts_revenue_2025",
+       "=service_revenue_2025"
+      ]
+     }
+    ],
+    "value_unit": "usd_m",
+    "column_units": null,
+    "footnote": "Source: Cedar Valley Ag management accounts. Revenue only; the exhibit does not show business-line margins or explain profit contribution.",
+    "text_body": null,
+    "grid": [
+     [
+      62.0,
+      21.0,
+      12.0
+     ],
+     [
+      61.0,
+      22.5,
+      14.0
+     ],
+     [
+      60.0,
+      24.0,
+      16.0
+     ]
+    ],
+    "display": [
+     [
+      "$62M",
+      "$21M",
+      "$12M"
+     ],
+     [
+      "$61M",
+      "$22.5M",
+      "$14M"
+     ],
+     [
+      "$60M",
+      "$24M",
+      "$16M"
+     ]
+    ],
+    "units": [
+     "usd_m",
+     "usd_m",
+     "usd_m"
+    ]
+   },
+   {
+    "id": "ex2",
+    "title": "Current business-line economics and customer context",
+    "subtitle": "Current-year management view",
+    "kind": "table",
+    "columns": [
+     "Business line",
+     "Revenue",
+     "Contribution margin",
+     "Customer satisfaction index"
+    ],
+    "rows": [
+     {
+      "label": "Equipment",
+      "cells": [
+       "=equipment_revenue_2025",
+       "=equipment_contribution_margin",
+       "=equipment_satisfaction_score"
+      ]
+     },
+     {
+      "label": "Parts",
+      "cells": [
+       "=parts_revenue_2025",
+       "=parts_contribution_margin",
+       "=parts_satisfaction_score"
+      ]
+     },
+     {
+      "label": "Service",
+      "cells": [
+       "=service_revenue_2025",
+       "=service_contribution_margin",
+       "=service_satisfaction_score"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "usd_m",
+     "pct",
+     "other"
+    ],
+    "footnote": "Source: Cedar Valley Ag management accounts and customer survey. Satisfaction index is customer context, not a financial input.",
+    "text_body": null,
+    "grid": [
+     [
+      60.0,
+      0.12,
+      4.6
+     ],
+     [
+      24.0,
+      0.3,
+      4.4
+     ],
+     [
+      16.0,
+      0.45,
+      4.8
+     ]
+    ],
+    "display": [
+     [
+      "$60M",
+      "12%",
+      "4.6"
+     ],
+     [
+      "$24M",
+      "30%",
+      "4.4"
+     ],
+     [
+      "$16M",
+      "45%",
+      "4.8"
+     ]
+    ],
+    "units": [
+     "usd_m",
+     "pct",
+     "other"
+    ]
+   }
+  ],
+  "recommendation": {
+   "answer": "Prioritize service as a growth area, but do not launch the full mobile team based on the validated demand. The business-line analysis shows service contribution of $7.2M, equal to the contribution from each of the larger business lines despite service’s smaller revenue base. Current operating profit is $3M. The full team appeared attractive on the initial net-new demand forecast, with annual incremental profit of $315K and simple payback of 1.27 years; however, validated net-new demand reduces its annual incremental profit to -$22.5K. Instead, pilot with 2 technicians: the pilot is sized to validated net-new demand, generates annual incremental profit of $157.5K, and has simple payback of 1.27 years, within the 2 years hurdle. These paybacks use the stated convention that investment is paid at time zero, annual operating profit is the pre-tax cash-flow proxy, run-rate economics begin immediately, and time value of money is ignored. Scale only if pilot results confirm genuinely additional demand and service quality remains strong.",
+   "risks": [
+    "Validated customer interest may not convert into billable work, or actual mobile jobs may replace work that would otherwise have been done in existing shops.",
+    "Travel time, route density, seasonal peaks, parts availability, and technician utilization could reduce realized contribution.",
+    "Adding field jobs could worsen response times or service levels for existing customers if dispatching and staffing are not managed carefully."
+   ],
+   "next_steps": [
+    "Confirm pilot customers, expected jobs, timing, and willingness to book; prioritize routes and service areas with enough density.",
+    "Set up dispatch, mobile parts replenishment, and a clear process for coordinating field work with existing shop capacity.",
+    "Track realized net-new billable hours, revenue and variable cost per hour, salary-adjusted contribution, customer response times, satisfaction, and any shop-work displacement.",
+    "Review results against the demand and payback case before hiring additional technicians or purchasing further vehicles."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Structuring and prioritization",
+    "strong": "Builds a Cedar Valley-specific structure linking segment economics, net-new demand, capacity and investment, and execution/customer risks. Prioritizes the decisive questions.",
+    "weak": "Uses a generic checklist, jumps to a solution, or fails to connect the portfolio-profitability question to mobile service."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Accurately describes the revenue trajectories, asks for margin or contribution data, calculates absolute contribution by line, and identifies service’s attractive economics without over-reading satisfaction scores.",
+    "weak": "Assumes the highest-revenue line is most profitable, focuses only on margin percentages, or treats satisfaction as a financial driver."
+   },
+   {
+    "dimension": "Quantitative accuracy",
+    "strong": "Calculates current operating profit and both mobile cases correctly; applies net-new demand and capacity limits, accounts for new salaries, and treats capex as a one-time investment for simple payback under the stated timing convention.",
+    "weak": "Confuses revenue with profit, double-counts existing salaries, omits new salaries, ignores demand or capacity, or compares capex directly with annual revenue."
+   },
+   {
+    "dimension": "Judgment and adaptation",
+    "strong": "Changes the recommendation when validated net-new demand undermines the full-team economics, sizes the pilot appropriately, and identifies measurable scale-up gates, including checks for shop-work displacement.",
+    "weak": "Anchors on the initial forecast, ignores the full team’s losses under validated demand, or recommends scaling without testing demand incrementality and service quality."
+   },
+   {
+    "dimension": "Communication and synthesis",
+    "strong": "Gives a concise recommendation with supporting economics, key assumptions, risks, mitigations, and actionable next steps.",
+    "weak": "Recites calculations without making a decision, omits major risks, or provides vague next steps."
+   }
+  ],
+  "interviewer_notes": "Run as an interviewer-led first-round case. Begin with the structure request and let the candidate own the initial hypothesis. In the business-line section, show the revenue trend first; release the economics table once the candidate asks for profit or margin data. The intended insight is that service’s smaller revenue base masks contribution dollars equal to those of equipment and parts. Use the brainstorm to test whether the candidate can connect operating ideas to utilization and net-new contribution. In the quant section, provide annual fixed costs when requested for baseline profit and share mobile assumptions in response to a request for proposal economics. Confirm the candidate knows new salaries are not in hourly variable cost, while existing technician salaries are already included in baseline fixed costs. Clarify that the demand forecasts count only expected work additional to existing shop demand; the pilot should test this assumption. The stated hourly cost covers every incremental non-salary operating cost, van and equipment capex covers all startup investment, and no other incremental recurring or startup costs apply. If asked about the return threshold, clarify the payback convention: capex is paid at time zero; stated annual operating profit is the annual pre-tax cash-flow proxy; full run-rate economics begin immediately with no ramp-up; and time value of money is ignored. Let the candidate evaluate the initial forecast before sharing validation. The pivot is the core judgment test: validated net-new demand, rather than theoretical team capacity, limits the full proposal; a 2-technician pilot can serve the validated work and meets the owners’ payback hurdle. Accept other recommendations if candidates explicitly state reasonable assumptions, account for the validated-demand constraint, and protect existing customer service. Suggested pacing: structure and clarifications, about five minutes; exhibits and brainstorm, about ten minutes; initial economics, about ten minutes; pivot and recommendation, about ten minutes."
+ },
+ "quality": {
+  "status": "verified",
+  "checks": [],
+  "reviews": [
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "q4–q5 payback calculations and model answers",
+      "problem": "The paybacks divide upfront van capex by annual operating profit ($400K/$315K = 1.27 years; $200K/$157.5K = 1.27 years), but the case never defines operating profit as the cash-flow proxy or specifies when capex is paid, when annual earnings start, or whether there is a ramp-up. The stated payback hurdle therefore relies on unstated timing and cash-flow assumptions; with a ramp-up or lower first-year cash flow, the full-team/pilot hurdle conclusions could change.",
+      "fix": "State that capex is paid at time zero, the stated annual operating profit is used as the annual pre-tax cash-flow proxy, and full run-rate economics begin immediately with no ramp-up (and no discounting for simple payback)."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The arithmetic and comparisons are internally consistent: each business line contributes $7.2M; current operating profit is $3M; initial full-team profit/payback are $315K/1.27 years; validated full-team profit is -$22.5K; and the two-technician pilot yields $157.5K and 1.27-year payback. The case fits the requested medium structure and calculation load. One material payback-assumption gap should be fixed before use."
+   },
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "q4 mobile-service cost inputs and the q4–q5 mobile profit calculations/model answers",
+      "problem": "The key treats the listed hourly variable costs and new technician salaries as the complete recurring cost base, and van capex as the complete one-time investment, but the case never explicitly says that no other incremental costs apply. For example, additional mobile-team overhead or vehicle operating costs could reduce the stated $315K initial profit and $157.5K pilot profit, changing the payback and recommendation.",
+      "fix": "Add a clear assumption when sharing the proposal inputs: the listed hourly variable costs include all incremental non-salary operating costs, there are no other incremental recurring costs, and the stated van/equipment capex covers all startup investment."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The arithmetic, comparisons, payback timing convention, demand-versus-capacity treatment, and recommendation are consistent. The previously raised payback timing/cash-flow-proxy issue is resolved by the clarifying answer. One material assumption about completeness of mobile-service costs should be made explicit so the economics are fully runnable."
+   },
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Q4–Q5 mobile-demand inputs and model answers",
+      "problem": "The hours are repeatedly labeled “incremental” (5,000 initially and 2,500 after validation), which ordinarily means net-new dealership work. But the framework, model answers, and recommendation say Cedar Valley must still determine whether the mobile jobs are genuinely incremental or merely shifted from its shops. That distinction changes the calculated economics: the $315K, -$22.5K, and $157.5K profit figures treat every mobile hour as additive and do not subtract any lost shop contribution. As written, candidates cannot tell whether the forecasts already exclude cannibalized work or whether the profit calculations are conditional on that assumption.",
+      "fix": "Define the forecasts as gross mobile-service billable hours that may include work shifted from existing shops, and state that the calculations assume all forecast hours are net-new pending pilot validation. Alternatively, define the 2,500 validated hours as net incremental after cannibalization and align the discussion to that definition."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The arithmetic, capacity limits, payback timing, exhibits, and recommendation are otherwise consistent. Contribution is $7.2M per business line, current operating profit is $3.0M, and the mobile calculations reproduce the stated $315K / 1.27-year initial case, -$22.5K full-team validated case, and $157.5K / 1.27-year pilot case. The stated timing and complete-cost assumptions resolve the earlier payback and cost-base concerns. The demand-incrementality definition needs clarification because it materially affects whether the modeled profits support the recommendation."
+   },
+   {
+    "issues": [
+     {
+      "severity": "minor",
+      "where": "q4 Share (mobile proposal assumptions)",
+      "problem": "The phrase “annual capacity of 1,500 hours billable hours per technician” is grammatically malformed, though the intended capacity is clear.",
+      "fix": "Change it to “annual billable capacity of 1,500 hours per technician.”"
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The case’s calculations and answer key are internally consistent: business-line contributions are $7.2M each and total $21.6M; current operating profit is $3.0M; initial mobile profit and payback are $315K and 1.27 years; validated full-team profit is -$22.5K; and pilot profit and payback are $157.5K and 1.27 years. The timing, cash-flow proxy, complete incremental cost assumptions, demand basis, and capacity limits are stated, resolving the previously raised payback and cannibalization concerns. The recommendation follows from the validated economics. It meets the requested medium-case shape: five sections, two exhibits including distractor data, and ten calculation steps."
+   }
+  ],
+  "fix_rounds": 3,
+  "history": [
+   {
+    "step": "Independent review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "q4–q5 payback calculations and model answers",
+      "problem": "The paybacks divide upfront van capex by annual operating profit ($400K/$315K = 1.27 years; $200K/$157.5K = 1.27 years), but the case never defines operating profit as the cash-flow proxy or specifies when capex is paid, when annual earnings start, or whether there is a ramp-up. The stated payback hurdle therefore relies on unstated timing and cash-flow assumptions; with a ramp-up or lower first-year cash flow, the full-team/pilot hurdle conclusions could change.",
+      "fix": "State that capex is paid at time zero, the stated annual operating profit is used as the annual pre-tax cash-flow proxy, and full run-rate economics begin immediately with no ramp-up (and no discounting for simple payback)."
+     }
+    ]
+   },
+   {
+    "step": "Second review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "q4 mobile-service cost inputs and the q4–q5 mobile profit calculations/model answers",
+      "problem": "The key treats the listed hourly variable costs and new technician salaries as the complete recurring cost base, and van capex as the complete one-time investment, but the case never explicitly says that no other incremental costs apply. For example, additional mobile-team overhead or vehicle operating costs could reduce the stated $315K initial profit and $157.5K pilot profit, changing the payback and recommendation.",
+      "fix": "Add a clear assumption when sharing the proposal inputs: the listed hourly variable costs include all incremental non-salary operating costs, there are no other incremental recurring costs, and the stated van/equipment capex covers all startup investment."
+     }
+    ]
+   },
+   {
+    "step": "Third review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Q4–Q5 mobile-demand inputs and model answers",
+      "problem": "The hours are repeatedly labeled “incremental” (5,000 initially and 2,500 after validation), which ordinarily means net-new dealership work. But the framework, model answers, and recommendation say Cedar Valley must still determine whether the mobile jobs are genuinely incremental or merely shifted from its shops. That distinction changes the calculated economics: the $315K, -$22.5K, and $157.5K profit figures treat every mobile hour as additive and do not subtract any lost shop contribution. As written, candidates cannot tell whether the forecasts already exclude cannibalized work or whether the profit calculations are conditional on that assumption.",
+      "fix": "Define the forecasts as gross mobile-service billable hours that may include work shifted from existing shops, and state that the calculations assume all forecast hours are net-new pending pilot validation. Alternatively, define the 2,500 validated hours as net incremental after cannibalization and align the discussion to that definition."
+     }
+    ]
+   }
+  ],
+  "model": "gpt-6-luna",
+  "engine": "luna"
+ },
+ "usage": {
+  "model": "gpt-6-luna",
+  "input": 80394,
+  "cached": 17502,
+  "output": 52160,
+  "requests": 9,
+  "seconds": 424.5,
+  "usd": 0.034089,
+  "calls": 9,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 5495,
+    "cached": 0,
+    "output": 8896,
+    "requests": 1,
+    "seconds": 75.9,
+    "usd": 0.005132
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 8812,
+    "cached": 0,
+    "output": 8973,
+    "requests": 1,
+    "seconds": 80.2,
+    "usd": 0.005585
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 7421,
+    "cached": 0,
+    "output": 2814,
+    "requests": 1,
+    "seconds": 30.8,
+    "usd": 0.002331
+   },
+   {
+    "step": "Fix 1 independent review finding",
+    "role": "writer",
+    "input": 11436,
+    "cached": 4276,
+    "output": 6988,
+    "requests": 1,
+    "seconds": 46.8,
+    "usd": 0.004429
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 7714,
+    "cached": 1558,
+    "output": 3514,
+    "requests": 1,
+    "seconds": 39.9,
+    "usd": 0.002539
+   },
+   {
+    "step": "Fix 1 second review finding",
+    "role": "writer",
+    "input": 11623,
+    "cached": 4276,
+    "output": 6662,
+    "requests": 1,
+    "seconds": 40.4,
+    "usd": 0.004289
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 7897,
+    "cached": 1558,
+    "output": 3968,
+    "requests": 1,
+    "seconds": 42.6,
+    "usd": 0.002789
+   },
+   {
+    "step": "Fix 1 third review finding",
+    "role": "writer",
+    "input": 11799,
+    "cached": 4276,
+    "output": 7458,
+    "requests": 1,
+    "seconds": 39.9,
+    "usd": 0.004709
+   },
+   {
+    "step": "Final review",
+    "role": "reviewer",
+    "input": 8197,
+    "cached": 1558,
+    "output": 2887,
+    "requests": 1,
+    "seconds": 28.0,
+    "usd": 0.002286
+   }
+  ]
+ },
+ "second_opinion": {
+  "model": "gpt-5.6-terra",
+  "at": "2026-10-20T20:29:48.679741+00:00",
+  "difficulty_fit": "about_right",
+  "summary": "Pass. I recomputed all displayed economics and found them internally consistent: 2025 contribution is $7.2M each for equipment ($60M × 12%), parts ($24M × 30%), and service ($16M × 45%), totaling $21.6M; less $18.6M fixed costs gives $3.0M current operating profit. Initial mobile economics are 5,000 served hours (below 6,000-hour full-team capacity), $675K contribution ($135/hour), less $360K salaries = $315K annual incremental profit; $400K capex / $315K = 1.2698, or 1.27 years. With 2,500 validated hours, the four-tech team earns $337.5K contribution less $360K salaries = -$22.5K. A two-tech pilot has 3,000-hour capacity, earns $337.5K contribution less $180K salaries = $157.5K, and pays back $200K / $157.5K = 1.2698, or 1.27 years. Trend and comparative statements are correct, the capex/payback timing convention is explicitly supplied and consistently applied, and all required data are available at the appropriate interviewer-directed stage. The recommendation follows from the pivot and includes fitting operational risks and scale gates. The case has five sections, two staged exhibits with relevant distractor data, ten accessible linked calculations, a brainstorm, a demand-validation pivot, and a capacity/payback trade-off; this is an appropriate typical first-round medium case.",
+  "issues": [],
+  "usage": {
+   "model": "gpt-5.6-terra",
+   "input": 7976,
+   "cached": 1562,
+   "output": 1146,
+   "requests": 1,
+   "seconds": 11.8,
+   "usd": 0.030038,
+   "calls": 1,
+   "steps": [
+    {
+     "step": "Cross-audit",
+     "role": "reviewer",
+     "input": 7976,
+     "cached": 1562,
+     "output": 1146,
+     "requests": 1,
+     "seconds": 11.8,
+     "usd": 0.030038
+    }
+   ]
+  }
+ }
+}

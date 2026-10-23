@@ -1,0 +1,64 @@
+{
+ "case_id": "20261012-185335-ffe091",
+ "title": "The Checkout Credit Trap",
+ "difficulty": "hard",
+ "original_status": "verified",
+ "original_model": "gpt-5.6-terra",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "The case otherwise fits the requested hard level: it has seven sections, three exhibits with clear distractors, a sequential exclusivity pivot, a capacity constraint, a four-plus-step economics/DCF chain, cannibalization, and an integrated recommendation. Core economics recompute correctly: capacity is 230,000; standard finance income is $57.132M; losses, servicing, and cannibalization are $19.8904M, $20.4700M, and $9.0252M; baseline cash flows are $2.84784M, $4.78444M, and $5.94640M; and baseline NPV is $8.8305886M. The pivot also recomputes to a 10.3% blended yield, $43.5896M finance income, -$7.5960M steady-state cash flow, and -$18.7674084M NPV. The approval-count error, unsafe promo-cap threshold, and non-hand-runnable threshold calculation need correction before publication.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q2 / Calc annual_approved_loans / q2 model answer",
+   "problem": "The approval arithmetic is not exact as claimed: 4,860,000 × 8.7% = 422,820, and 422,820 × 61% = 257,920.2, not 257,920 exactly. The capacity conclusion remains unchanged because either figure exceeds 230,000, but the case explicitly labels 257,920 as “exact” and repeats it as the calculated result.",
+   "fix": "Change the calculation and model answer to “257,920.2 expected approvals (about 257,920)” or alter an input so the expected approval count is integral. Keep feasible originations at 230,000."
+  },
+  {
+   "severity": "major",
+   "where": "q5 / Calc max_promo_share_at_hurdle; q5, q6, q7 model answers; Recommendation",
+   "problem": "The stated maximum promotional cap is rounded in the unsafe direction. Recomputed baseline NPV is $8.8305886M, so the allowable NPV reduction is $2.8305886M. The PV loss from moving from 0% to 100% promo is $33.856M × [(60% × 0.917) + (85% × 0.842) + (100% × 0.772)] = $33.856M × 2.0379 = $68.9951424M. Thus the maximum share is 2.8305886 / 68.9951424 = 4.10259%, not a cap safely expressed as “at or below 4.103%.” At exactly 4.103%, NPV is approximately $5.9997M, just below the $6M hurdle. The recommendation repeats this erroneous operational threshold.",
+   "fix": "State a conservative implementable cap of “4.102% or lower” (or “below 4.103%, subject to exact settlement”) everywhere. If retaining rounded communication, say “about 4.10%” and specify that the contract threshold must be calculated from unrounded values."
+  },
+  {
+   "severity": "major",
+   "where": "q5 / Calc max_promo_share_at_hurdle",
+   "problem": "The cap calculation is not interview-ready by hand. It requires deriving a three-year PV factor of 2.0379, multiplying it by $33.856M to get $68.9951424M, and dividing $2.8305886M by that result to report a five-significant-figure 4.103%. This is calculator-level arithmetic, contrary to the stated one-minute, by-hand standard.",
+   "fix": "Provide a shareable exhibit line such as “PV revenue lost per 1 percentage point of promo mix: $0.690M” (rounded conservatively), and ask for an approximately 4.1% cap; or provide the 2.0379 ramp-discount factor and accept a conservative 4.1% answer. Use the unrounded threshold internally for the contract recommendation."
+  },
+  {
+   "severity": "minor",
+   "where": "q5 / Calc promo_npv",
+   "problem": "The value marked “exact” is slightly wrong. Using the supplied factors: year-1 cash flow is -$5.2776M × 0.917 = -$4.8395592M; year 2 is -$6.7266M × 0.842 = -$5.6637372M; year 3 is -$7.596M × 0.772 = -$5.864112M. Including -$2.4M upfront gives -$18.7674084M, not -$18.7675M. The displayed rounded result of -$18.77M is correct.",
+   "fix": "Replace “exact -18.7675” with “exact -18.7674084” (or stop labeling the calculation exact)."
+  },
+  {
+   "severity": "minor",
+   "where": "Clarifying, q1/q3/q5/q7 model answers, interviewer notes, and Recommendation",
+   "problem": "“3 years-year” is repeated throughout. It is grammatically malformed and makes the contract duration unnecessarily awkward, although the intended three-year timing is otherwise clear and consistently modeled.",
+   "fix": "Replace every instance with “3-year” (for example, “a 3-year contract and evaluation period” and “3-year NPV”)."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 9683,
+  "cached": 9561,
+  "output": 4059,
+  "requests": 1,
+  "seconds": 116.8,
+  "usd": 0.050864,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 9683,
+    "cached": 9561,
+    "output": 4059,
+    "requests": 1,
+    "seconds": 116.8,
+    "usd": 0.050864
+   }
+  ]
+ }
+}

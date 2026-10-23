@@ -1,0 +1,1249 @@
+[
+ {
+  "label": "run01-medium",
+  "difficulty": "medium",
+  "engine": "luna",
+  "status": "error",
+  "minutes": 0.2,
+  "error": "ModelHTTPError: status_code: 400, model_name: gpt-6-luna, body: {'message': \"azure-openai error: Function tools with reasoning_effort are not supported for gpt-6-luna-global in /v1/chat/completions. To use function tools, use /v1/responses or set reasoning_effort to 'none'.\", 'type': 'invalid_request_error', 'param': 'reasoning_effort', 'code': None}",
+  "case_id": null,
+  "title": null,
+  "quality": null,
+  "fix_rounds": null,
+  "calls": null,
+  "input": null,
+  "cached": null,
+  "output": null,
+  "usd": null,
+  "note": null,
+  "prompt_version": null
+ },
+ {
+  "label": "run02-hard",
+  "difficulty": "hard",
+  "engine": "luna",
+  "status": "error",
+  "minutes": 0.2,
+  "error": "ModelHTTPError: status_code: 400, model_name: gpt-6-luna, body: {'message': \"azure-openai error: Function tools with reasoning_effort are not supported for gpt-6-luna-global in /v1/chat/completions. To use function tools, use /v1/responses or set reasoning_effort to 'none'.\", 'type': 'invalid_request_error', 'param': 'reasoning_effort', 'code': None}",
+  "case_id": null,
+  "title": null,
+  "quality": null,
+  "fix_rounds": null,
+  "calls": null,
+  "input": null,
+  "cached": null,
+  "output": null,
+  "usd": null,
+  "note": null,
+  "prompt_version": null
+ },
+ {
+  "label": "run03-medium-luna",
+  "difficulty": "medium",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 7.2,
+  "error": null,
+  "case_id": "20261020-202948-9d26a6",
+  "title": "The Field-Service Bottleneck",
+  "quality": "verified",
+  "fix_rounds": 3,
+  "calls": 9,
+  "input": 80394,
+  "cached": 17502,
+  "output": 52160,
+  "usd": 0.034089,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 5495,
+    "cached": 0,
+    "output": 8896,
+    "seconds": 75.9,
+    "usd": 0.005132
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 8812,
+    "cached": 0,
+    "output": 8973,
+    "seconds": 80.2,
+    "usd": 0.005585
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 7421,
+    "cached": 0,
+    "output": 2814,
+    "seconds": 30.8,
+    "usd": 0.002331
+   },
+   {
+    "step": "Fix 1 independent review finding",
+    "role": "writer",
+    "input": 11436,
+    "cached": 4276,
+    "output": 6988,
+    "seconds": 46.8,
+    "usd": 0.004429
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 7714,
+    "cached": 1558,
+    "output": 3514,
+    "seconds": 39.9,
+    "usd": 0.002539
+   },
+   {
+    "step": "Fix 1 second review finding",
+    "role": "writer",
+    "input": 11623,
+    "cached": 4276,
+    "output": 6662,
+    "seconds": 40.4,
+    "usd": 0.004289
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 7897,
+    "cached": 1558,
+    "output": 3968,
+    "seconds": 42.6,
+    "usd": 0.002789
+   },
+   {
+    "step": "Fix 1 third review finding",
+    "role": "writer",
+    "input": 11799,
+    "cached": 4276,
+    "output": 7458,
+    "seconds": 39.9,
+    "usd": 0.004709
+   },
+   {
+    "step": "Final review",
+    "role": "reviewer",
+    "input": 8197,
+    "cached": 1558,
+    "output": 2887,
+    "seconds": 28.0,
+    "usd": 0.002286
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 0,
+   "minors": 0,
+   "usd": 0.030038,
+   "major_issues": []
+  }
+ },
+ {
+  "label": "run04-hard-luna",
+  "difficulty": "hard",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 5.8,
+  "error": null,
+  "case_id": "20261020-202824-979bb5",
+  "title": "Plugged In, Priced Out",
+  "quality": "verified",
+  "fix_rounds": 2,
+  "calls": 6,
+  "input": 52933,
+  "cached": 19506,
+  "output": 41162,
+  "usd": 0.024937,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 5714,
+    "cached": 3562,
+    "output": 7973,
+    "seconds": 79.8,
+    "usd": 0.004288
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 8928,
+    "cached": 4276,
+    "output": 8175,
+    "seconds": 76.5,
+    "usd": 0.004709
+   },
+   {
+    "step": "Fix 1 number-check issue",
+    "role": "writer",
+    "input": 11368,
+    "cached": 4276,
+    "output": 8309,
+    "seconds": 46.6,
+    "usd": 0.005081
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 7626,
+    "cached": 1558,
+    "output": 5302,
+    "seconds": 55.7,
+    "usd": 0.003422
+   },
+   {
+    "step": "Fix 1 independent review finding",
+    "role": "writer",
+    "input": 11500,
+    "cached": 4276,
+    "output": 6954,
+    "seconds": 35.8,
+    "usd": 0.00442
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 7797,
+    "cached": 1558,
+    "output": 4449,
+    "seconds": 44.1,
+    "usd": 0.003017
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 1,
+   "minors": 0,
+   "usd": 0.055005,
+   "major_issues": [
+    "The capacity/payment condition is not fully specified, yet the key treats the $5.2M payment as unavoidable. The prompt says the utility can support 230 connections from year 5 “only if” Port Alder pays. That establishes that payment is required for 230, but does not say what capacity is available in years 5–15 if the port declines the payment, or whether the project may continue at 80 connections. That is a live decision alternative in a capital-investment case, and a candidate can reasonably challenge the key’s assumption rather than automatically subtract $5.2M. The stated constrained-case arithmetic is correct conditional on buying the upgrade: early cash flow = 80 × $29,250 − $1.34M = $1.000M; the 4-year PV factor at 8.5% is 3.2756; the remaining factor is 8.30424 − 3.2756 = 5.02864; later PV = $4.64455M × 5.02864 = $23.3558M; and NPV = $3.2756M + $23.3558M − $29.2M − $5.2M = −$7.7686M. But the candidate is not told that this conditional scenario is the only feasible project configuration."
+   ]
+  }
+ },
+ {
+  "label": "run05-io-luna",
+  "difficulty": "instant_offer",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 13.0,
+  "error": null,
+  "case_id": "20261020-204203-a17e6f",
+  "title": "The PFAS Capacity Bet",
+  "quality": "verified",
+  "fix_rounds": 4,
+  "calls": 10,
+  "input": 120660,
+  "cached": 41558,
+  "output": 95969,
+  "usd": 0.058256,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 5962,
+    "cached": 3562,
+    "output": 12348,
+    "seconds": 132.8,
+    "usd": 0.006506
+   },
+   {
+    "step": "Correct the plan's core math",
+    "role": "planner",
+    "input": 10169,
+    "cached": 3562,
+    "output": 6555,
+    "seconds": 45.0,
+    "usd": 0.004136
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 10826,
+    "cached": 4276,
+    "output": 14040,
+    "seconds": 128.3,
+    "usd": 0.007878
+   },
+   {
+    "step": "Fix 2 number-check issues",
+    "role": "writer",
+    "input": 14404,
+    "cached": 4276,
+    "output": 9256,
+    "seconds": 43.5,
+    "usd": 0.005934
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 10252,
+    "cached": 1558,
+    "output": 9080,
+    "seconds": 87.1,
+    "usd": 0.005639
+   },
+   {
+    "step": "Fix 6 independent review findings",
+    "role": "writer",
+    "input": 15277,
+    "cached": 4276,
+    "output": 12755,
+    "seconds": 70.4,
+    "usd": 0.007792
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 11041,
+    "cached": 0,
+    "output": 6658,
+    "seconds": 65.5,
+    "usd": 0.004706
+   },
+   {
+    "step": "Fix 3 second review findings",
+    "role": "writer",
+    "input": 15594,
+    "cached": 4276,
+    "output": 11765,
+    "seconds": 59.6,
+    "usd": 0.007337
+   },
+   {
+    "step": "Fix 1 number-check issue",
+    "role": "writer",
+    "input": 15513,
+    "cached": 4276,
+    "output": 10480,
+    "seconds": 53.2,
+    "usd": 0.006684
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 11622,
+    "cached": 11496,
+    "output": 3032,
+    "seconds": 90.0,
+    "usd": 0.001644
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 2,
+   "minors": 1,
+   "usd": 0.056784,
+   "major_issues": [
+    "The case is not hand-runnable under its own interview-ready standard. It asks candidates to multiply non-round annual cash flows by a five-significant-figure annuity factor and report six-decimal NPV outputs: e.g., q5 ownership is $0.706M × 3.791 − $3.3M = −$0.623554M, and q4 is $0.85M × 3.791 − $3.3M = −$0.07765M. Those are calculator-level computations, not calculations a candidate can reliably complete by hand in about a minute. The exact arithmetic in the key is correct, but the precision creates an unrunnable quant step and false precision in the CEO answer.",
+    "The case gives a present-value annuity factor of 3.791x but never states the discount rate behind the NPV. The factor does make the calculations reproducible, but the requested difficulty specification explicitly calls for an NPV or perpetuity with a given discount rate. A candidate also cannot articulate the financial hurdle or test a discount-rate sensitivity from the materials. For reference, a five-year year-end annuity factor of 3.791x corresponds to approximately a 10% annual discount rate."
+   ]
+  }
+ },
+ {
+  "label": "run06-hard-luna",
+  "difficulty": "hard",
+  "engine": "luna",
+  "status": "error",
+  "minutes": 1.3,
+  "error": "Something went wrong. ModelHTTPError: status_code: 500, model_name: gpt-6-luna, body: {'status': 'failure', 'message': 'Internal Server Error', 'request_id': '938845ab-eea8-4257-ae5b-54f3ec2b9e42'}",
+  "case_id": null,
+  "title": null,
+  "quality": null,
+  "fix_rounds": null,
+  "calls": null,
+  "input": null,
+  "cached": null,
+  "output": null,
+  "usd": null,
+  "note": null,
+  "prompt_version": null
+ },
+ {
+  "label": "run07-hard-luna",
+  "difficulty": "hard",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 10.6,
+  "error": null,
+  "case_id": "20261020-205309-3d59ff",
+  "title": "The Organics Contract That Crowds Out Its Best Customers",
+  "quality": "verified",
+  "fix_rounds": 5,
+  "calls": 11,
+  "input": 124446,
+  "cached": 28397,
+  "output": 84948,
+  "usd": 0.054729,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6301,
+    "cached": 0,
+    "output": 9630,
+    "seconds": 72.6,
+    "usd": 0.005599
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 9904,
+    "cached": 0,
+    "output": 9197,
+    "seconds": 73.4,
+    "usd": 0.005833
+   },
+   {
+    "step": "Fix 1 number-check issue",
+    "role": "writer",
+    "input": 13457,
+    "cached": 4687,
+    "output": 8208,
+    "seconds": 46.2,
+    "usd": 0.005244
+   },
+   {
+    "step": "Fix 1 number-check issue",
+    "role": "writer",
+    "input": 13445,
+    "cached": 4687,
+    "output": 8319,
+    "seconds": 50.4,
+    "usd": 0.005298
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 9042,
+    "cached": 0,
+    "output": 6319,
+    "seconds": 59.5,
+    "usd": 0.004287
+   },
+   {
+    "step": "Fix 5 independent review findings",
+    "role": "writer",
+    "input": 14174,
+    "cached": 4687,
+    "output": 9420,
+    "seconds": 51.7,
+    "usd": 0.00594
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 9774,
+    "cached": 1654,
+    "output": 5916,
+    "seconds": 56.8,
+    "usd": 0.003986
+   },
+   {
+    "step": "Fix 2 second review findings",
+    "role": "writer",
+    "input": 14235,
+    "cached": 4687,
+    "output": 9398,
+    "seconds": 69.9,
+    "usd": 0.005936
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 9985,
+    "cached": 1654,
+    "output": 5741,
+    "seconds": 52.6,
+    "usd": 0.003925
+   },
+   {
+    "step": "Fix 1 third review finding",
+    "role": "writer",
+    "input": 14066,
+    "cached": 4687,
+    "output": 9201,
+    "seconds": 59.5,
+    "usd": 0.005817
+   },
+   {
+    "step": "Final review",
+    "role": "reviewer",
+    "input": 10063,
+    "cached": 1654,
+    "output": 3599,
+    "seconds": 36.1,
+    "usd": 0.002864
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 0,
+   "minors": 2,
+   "usd": 0.071521,
+   "major_issues": []
+  }
+ },
+ {
+  "label": "run08-io-luna",
+  "difficulty": "instant_offer",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 18.8,
+  "error": null,
+  "case_id": "20261020-210123-e7d51f",
+  "title": "The Crate Comeback",
+  "quality": "review_flags",
+  "fix_rounds": 6,
+  "calls": 14,
+  "input": 170601,
+  "cached": 68484,
+  "output": 121148,
+  "usd": 0.07398,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6450,
+    "cached": 6324,
+    "output": 7229,
+    "seconds": 123.8,
+    "usd": 0.00369
+   },
+   {
+    "step": "Correct the plan's core math",
+    "role": "planner",
+    "input": 10090,
+    "cached": 3973,
+    "output": 5543,
+    "seconds": 45.8,
+    "usd": 0.003573
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 11124,
+    "cached": 4687,
+    "output": 13051,
+    "seconds": 103.6,
+    "usd": 0.007374
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 9418,
+    "cached": 9292,
+    "output": 5096,
+    "seconds": 97.2,
+    "usd": 0.002654
+   },
+   {
+    "step": "Fix 4 independent review findings",
+    "role": "writer",
+    "input": 14283,
+    "cached": 14157,
+    "output": 10880,
+    "seconds": 186.5,
+    "usd": 0.005594
+   },
+   {
+    "step": "Fix 12 number-check issues",
+    "role": "writer",
+    "input": 14918,
+    "cached": 4687,
+    "output": 9800,
+    "seconds": 59.8,
+    "usd": 0.006223
+   },
+   {
+    "step": "Fix 12 number-check issues",
+    "role": "writer",
+    "input": 15354,
+    "cached": 4687,
+    "output": 10615,
+    "seconds": 51.2,
+    "usd": 0.006685
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 10843,
+    "cached": 1654,
+    "output": 7024,
+    "seconds": 64.6,
+    "usd": 0.004674
+   },
+   {
+    "step": "Fix 3 second review findings",
+    "role": "writer",
+    "input": 15410,
+    "cached": 4687,
+    "output": 10150,
+    "seconds": 67.0,
+    "usd": 0.006459
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 10707,
+    "cached": 1654,
+    "output": 7390,
+    "seconds": 65.7,
+    "usd": 0.00484
+   },
+   {
+    "step": "Fix 1 third review finding",
+    "role": "writer",
+    "input": 14888,
+    "cached": 4687,
+    "output": 9563,
+    "seconds": 63.7,
+    "usd": 0.0061
+   },
+   {
+    "step": "Fourth review",
+    "role": "reviewer",
+    "input": 10866,
+    "cached": 1654,
+    "output": 7938,
+    "seconds": 68.2,
+    "usd": 0.005134
+   },
+   {
+    "step": "Fix 3 fourth review findings",
+    "role": "writer",
+    "input": 15099,
+    "cached": 4687,
+    "output": 10026,
+    "seconds": 62.5,
+    "usd": 0.006358
+   },
+   {
+    "step": "Final review",
+    "role": "reviewer",
+    "input": 11151,
+    "cached": 1654,
+    "output": 6843,
+    "seconds": 60.0,
+    "usd": 0.004622
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 1,
+   "minors": 1,
+   "usd": 0.056604,
+   "major_issues": [
+    "The model treats all 1.2M 2028 short-haul corridor turns as annual FreshLoop depot volume, but no candidate-visible fact says FreshLoop can win, is contracted for, or has a credible right to serve those turns if it builds. The prompt only says that without the depot FreshLoop cannot serve the corridor turns; that establishes incrementality versus no-build, not capture/availability under build. This is material: the full cooperative contract alone is not enough to support the depot. Its annual contribution is 0.4M × $1.04 = $0.416M; after the $1.0M fixed cost, annual cash flow is -$0.584M. The stated $1.3992M NPV instead relies on the uncommitted 1.2M short-haul volume: 1.2M × $1.66 = $1.992M, plus $0.416M, less $1.0M = $1.408M; $1.408M × 4.9 - $5.5M = $1.3992M. Consequently, the recommendation that capex can be released once the 0.4M cooperative contract is binding is unsupported unless the short-haul base is also assured."
+   ]
+  }
+ },
+ {
+  "label": "run09-easy-luna",
+  "difficulty": "easy",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 2.8,
+  "error": null,
+  "case_id": "20261020-205737-790b04",
+  "title": "A Better Use for the Busy Season",
+  "quality": "verified",
+  "fix_rounds": 1,
+  "calls": 5,
+  "input": 34789,
+  "cached": 16655,
+  "output": 20080,
+  "usd": 0.012457,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6055,
+    "cached": 3973,
+    "output": 4941,
+    "seconds": 37.3,
+    "usd": 0.002767
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 7755,
+    "cached": 4687,
+    "output": 5412,
+    "seconds": 42.2,
+    "usd": 0.003133
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 5593,
+    "cached": 1654,
+    "output": 3497,
+    "seconds": 37.7,
+    "usd": 0.002254
+   },
+   {
+    "step": "Fix 1 independent review finding",
+    "role": "writer",
+    "input": 9616,
+    "cached": 4687,
+    "output": 4146,
+    "seconds": 22.6,
+    "usd": 0.002733
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 5770,
+    "cached": 1654,
+    "output": 2084,
+    "seconds": 20.4,
+    "usd": 0.00157
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 1,
+   "minors": 0,
+   "usd": 0.032228,
+   "major_issues": [
+    "The case makes contribution per staff hour its central decision insight without establishing that staff hours are constrained, costly at the margin, or otherwise economically relevant to the choice. The arithmetic is correct: self-guided contribution is $30 - $10 = $20 per booking and $20 / 0.25 = $80 per stated staff hour; guided contribution is $75 - $55 = $20 and $20 / 2.5 = $8 per stated staff hour. But the only capacity fact later supplied says the existing operation can serve the extra 500 self-guided bookings with no new fixed costs. Nothing says available staff time is scarce, gives total staff-hour capacity, or says the two offerings compete for a binding labor resource. Therefore the claims that self-guided rentals are the appropriate focus because they are “much more productive in the use of staff time,” and that this is “the strongest economic reason” to favor them, do not follow from the givens. The supported reason to pursue the specified growth is instead that confirmed incremental demand of 500 bookings earns $20 contribution each with no incremental fixed cost: 500 × $20 = $10K, taking profit from $6K to $16K."
+   ]
+  }
+ },
+ {
+  "label": "run10-medium-luna",
+  "difficulty": "medium",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 4.9,
+  "error": null,
+  "case_id": "20261020-210249-7e1b7c",
+  "title": "The Wellness Plan That Attracts the Wrong Clients",
+  "quality": "verified",
+  "fix_rounds": 2,
+  "calls": 7,
+  "input": 60858,
+  "cached": 22996,
+  "output": 39642,
+  "usd": 0.024761,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6081,
+    "cached": 3973,
+    "output": 7512,
+    "seconds": 69.8,
+    "usd": 0.004056
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 8839,
+    "cached": 4687,
+    "output": 8495,
+    "seconds": 53.7,
+    "usd": 0.00481
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 6956,
+    "cached": 1654,
+    "output": 3923,
+    "seconds": 38.2,
+    "usd": 0.002638
+   },
+   {
+    "step": "Fix 2 independent review findings",
+    "role": "writer",
+    "input": 11327,
+    "cached": 4687,
+    "output": 6697,
+    "seconds": 35.0,
+    "usd": 0.004222
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 7713,
+    "cached": 1654,
+    "output": 4235,
+    "seconds": 37.6,
+    "usd": 0.002888
+   },
+   {
+    "step": "Fix 1 second review finding",
+    "role": "writer",
+    "input": 11894,
+    "cached": 4687,
+    "output": 6765,
+    "seconds": 35.3,
+    "usd": 0.004327
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 8048,
+    "cached": 1654,
+    "output": 2015,
+    "seconds": 20.2,
+    "usd": 0.00182
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 0,
+   "minors": 1,
+   "usd": 0.035929,
+   "major_issues": []
+  }
+ },
+ {
+  "label": "run11-io-luna-tuned",
+  "difficulty": "instant_offer",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 7.2,
+  "error": null,
+  "case_id": "20261020-211027-c94b35",
+  "title": "The Operating-Room Shortcut",
+  "quality": "verified",
+  "fix_rounds": 2,
+  "calls": 6,
+  "input": 71884,
+  "cached": 18014,
+  "output": 62094,
+  "usd": 0.037942,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6749,
+    "cached": 0,
+    "output": 12288,
+    "seconds": 86.3,
+    "usd": 0.006984
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 11476,
+    "cached": 4816,
+    "output": 14289,
+    "seconds": 104.7,
+    "usd": 0.008022
+   },
+   {
+    "step": "Fix 3 number-check issues",
+    "role": "writer",
+    "input": 15552,
+    "cached": 4816,
+    "output": 10251,
+    "seconds": 52.4,
+    "usd": 0.006513
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 10661,
+    "cached": 1783,
+    "output": 8260,
+    "seconds": 71.4,
+    "usd": 0.005254
+   },
+   {
+    "step": "Fix 4 independent review findings",
+    "role": "writer",
+    "input": 15903,
+    "cached": 4816,
+    "output": 11212,
+    "seconds": 56.7,
+    "usd": 0.007037
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 11543,
+    "cached": 1783,
+    "output": 5794,
+    "seconds": 53.7,
+    "usd": 0.004132
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 0,
+   "minors": 2,
+   "usd": 0.057957,
+   "major_issues": []
+  }
+ },
+ {
+  "label": "run12-hard-luna-tuned",
+  "difficulty": "hard",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 8.0,
+  "error": null,
+  "case_id": "20261020-211122-ca68c4",
+  "title": "The Recycled Mix That Needs a Road Test",
+  "quality": "verified",
+  "fix_rounds": 3,
+  "calls": 8,
+  "input": 83383,
+  "cached": 22116,
+  "output": 61956,
+  "usd": 0.038834,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6536,
+    "cached": 4102,
+    "output": 5972,
+    "seconds": 51.2,
+    "usd": 0.003328
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 9385,
+    "cached": 0,
+    "output": 10308,
+    "seconds": 76.0,
+    "usd": 0.006324
+   },
+   {
+    "step": "Fix 1 number-check issue",
+    "role": "writer",
+    "input": 12853,
+    "cached": 4816,
+    "output": 7707,
+    "seconds": 49.0,
+    "usd": 0.004903
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 8542,
+    "cached": 0,
+    "output": 6908,
+    "seconds": 64.2,
+    "usd": 0.004519
+   },
+   {
+    "step": "Fix 5 independent review findings",
+    "role": "writer",
+    "input": 13668,
+    "cached": 4816,
+    "output": 11602,
+    "seconds": 72.0,
+    "usd": 0.006953
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 9286,
+    "cached": 1783,
+    "output": 4286,
+    "seconds": 43.3,
+    "usd": 0.003096
+   },
+   {
+    "step": "Fix 1 second review finding",
+    "role": "writer",
+    "input": 13483,
+    "cached": 4816,
+    "output": 9451,
+    "seconds": 63.5,
+    "usd": 0.005854
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 9630,
+    "cached": 1783,
+    "output": 5722,
+    "seconds": 57.7,
+    "usd": 0.003857
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 2,
+   "minors": 0,
+   "usd": 0.053901,
+   "major_issues": [
+    "The stated payback method is implemented with `round(x + 0.5)`, which is not the required “first year-end”/ceiling operation. Payback must be `ceil(remaining investment / annual profit)` after the delay. The displayed outcomes happen to be correct: full line has cumulative operating profit of -$0.48M after years 1–2, then -$0.48M + 3 × $1.5184M = $4.0752M at end-year 5 (versus $2.5568M at end-year 4), so it pays back in year 5; pilot has $0.62M after year 2 and $1.33M after year 3, so it pays back in year 3. But the supplied formula would fail for other valid values, including an exact integer number of post-delay years, and teaches an incorrect finance method.",
+    "The pivotal calculation is not reliably hand-runnable under the case's exact-arithmetic convention. It asks the candidate to divide $4.48M by $1.5184M (or repeatedly work with $1.5184M and $4.0752M) to determine full-line payback. These are five-significant-figure intermediate figures, and the guide simultaneously says not to round an intermediate as though exact. The conclusion can be reached by a cumulative schedule, but neither the question nor interviewer guidance directs that simpler approach. This violates the stated hand-calculation standard for a hard case."
+   ]
+  }
+ },
+ {
+  "label": "run13-easy-freshclone",
+  "difficulty": "easy",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 3.3,
+  "error": null,
+  "case_id": "20261020-211643-00fd20",
+  "title": "The Empty Popcorn Queue",
+  "quality": "verified",
+  "fix_rounds": 1,
+  "calls": 5,
+  "input": 34485,
+  "cached": 15906,
+  "output": 20281,
+  "usd": 0.012607,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6088,
+    "cached": 0,
+    "output": 3878,
+    "seconds": 27.6,
+    "usd": 0.002697
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 7570,
+    "cached": 7444,
+    "output": 5213,
+    "seconds": 72.6,
+    "usd": 0.002694
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 5569,
+    "cached": 1783,
+    "output": 4171,
+    "seconds": 39.1,
+    "usd": 0.002573
+   },
+   {
+    "step": "Fix 1 independent review finding",
+    "role": "writer",
+    "input": 9592,
+    "cached": 4896,
+    "output": 4576,
+    "seconds": 30.7,
+    "usd": 0.002921
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 5666,
+    "cached": 1783,
+    "output": 2443,
+    "seconds": 21.9,
+    "usd": 0.001722
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 0,
+   "minors": 0,
+   "usd": 0.01744,
+   "major_issues": []
+  }
+ },
+ {
+  "label": "run14-io-luna-final",
+  "difficulty": "instant_offer",
+  "engine": "luna",
+  "status": "done",
+  "minutes": 23.8,
+  "error": null,
+  "case_id": "20261020-213715-f1e9ef",
+  "title": "The Linen Contract That Fits on Paper",
+  "quality": "verified",
+  "fix_rounds": 6,
+  "calls": 12,
+  "input": 149872,
+  "cached": 68441,
+  "output": 106643,
+  "usd": 0.064147,
+  "note": null,
+  "prompt_version": null,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6910,
+    "cached": 6784,
+    "output": 8575,
+    "seconds": 523.2,
+    "usd": 0.004368
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 10748,
+    "cached": 4896,
+    "output": 12367,
+    "seconds": 79.8,
+    "usd": 0.006961
+   },
+   {
+    "step": "Fix 2 number-check issues",
+    "role": "writer",
+    "input": 14443,
+    "cached": 4896,
+    "output": 9328,
+    "seconds": 44.2,
+    "usd": 0.005903
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 9666,
+    "cached": 1783,
+    "output": 8980,
+    "seconds": 87.2,
+    "usd": 0.00549
+   },
+   {
+    "step": "Fix 6 independent review findings",
+    "role": "writer",
+    "input": 15095,
+    "cached": 14969,
+    "output": 11597,
+    "seconds": 178.8,
+    "usd": 0.005961
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 10529,
+    "cached": 1783,
+    "output": 5793,
+    "seconds": 54.9,
+    "usd": 0.004004
+   },
+   {
+    "step": "Fix 3 second review findings",
+    "role": "writer",
+    "input": 15202,
+    "cached": 15076,
+    "output": 9653,
+    "seconds": 204.4,
+    "usd": 0.00499
+   },
+   {
+    "step": "Fix 14 number-check issues",
+    "role": "writer",
+    "input": 15343,
+    "cached": 4896,
+    "output": 9467,
+    "seconds": 49.3,
+    "usd": 0.006085
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 10726,
+    "cached": 1783,
+    "output": 4813,
+    "seconds": 46.8,
+    "usd": 0.003539
+   },
+   {
+    "step": "Fix 1 third review finding",
+    "role": "writer",
+    "input": 15054,
+    "cached": 4896,
+    "output": 9876,
+    "seconds": 48.4,
+    "usd": 0.006254
+   },
+   {
+    "step": "Fix 14 number-check issues",
+    "role": "writer",
+    "input": 15351,
+    "cached": 4896,
+    "output": 9610,
+    "seconds": 45.9,
+    "usd": 0.006158
+   },
+   {
+    "step": "Fourth review",
+    "role": "reviewer",
+    "input": 10805,
+    "cached": 1783,
+    "output": 6584,
+    "seconds": 58.1,
+    "usd": 0.004434
+   }
+  ],
+  "audit": {
+   "model": "gpt-5.6-terra",
+   "blockers": 0,
+   "majors": 2,
+   "minors": 0,
+   "usd": 0.072209,
+   "major_issues": [
+    "The machine’s peak-finishing capacity is never quantified. The q4 share says it “can process all of the hospital’s peak finishing load,” when the known load is only the 960-hour baseline; q6 then assumes build NPV remains $1.64M at the 1,200-hour revised load and recommends a commitment to any peak share above 73.6%. Those conclusions require the machine to cover at least the additional 400 hours at 75%, and the open-ended “above 73.6%” recommendation also requires an upper capacity limit. No such capacity input is available. Thus the pivotal build comparison and robustness recommendation are not verifiable from candidate-visible facts.",
+    "The required curveball is substantially telegraphed rather than functioning as a pivot. Before any analysis, the clarification explicitly says the hospital “may change its delivery schedule,” and q2 then directs attention to cadence/schedule changes and says the investment depends on peak share/crossover. A candidate is therefore primed to expect exactly the q5 reveal, undermining the specified mid-case new-information curveball and reducing the intended test of revising a conclusion under pressure."
+   ]
+  }
+ },
+ {
+  "label": "run15-hard-luna-final",
+  "difficulty": "hard",
+  "engine": "luna",
+  "status": "error",
+  "minutes": 8.4,
+  "error": "Something went wrong. ModelHTTPError: status_code: 500, model_name: gpt-6-luna, body: {'status': 'failure', 'message': 'Internal Server Error', 'request_id': '470c4460-d753-42f5-bb1b-75198ed9d400'}",
+  "case_id": null,
+  "title": null,
+  "quality": null,
+  "fix_rounds": null,
+  "calls": null,
+  "input": null,
+  "cached": null,
+  "output": null,
+  "usd": null,
+  "note": null,
+  "prompt_version": null
+ }
+]

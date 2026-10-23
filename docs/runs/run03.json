@@ -1,0 +1,55 @@
+{
+ "label": "run03-medium-luna",
+ "difficulty": "medium",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 7.2,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Independent review",
+  "Revising 1 reviewer finding",
+  "Second review",
+  "Revising 1 reviewer finding",
+  "Third review",
+  "Revising 1 reviewer finding",
+  "Final review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-202948-9d26a6",
+ "title": "The Field-Service Bottleneck",
+ "quality": "verified",
+ "fix_rounds": 3,
+ "calls": 9,
+ "input": 80394,
+ "cached": 17502,
+ "output": 52160,
+ "usd": 0.034089,
+ "reviews": [
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q4–q5 payback calculations and model answers | The paybacks divide upfront van capex by annual operating profit ($400K/$315K = 1.27 years; $200K/$157.5K = 1.27 years), but the case never defines operating profit as the cash-flow proxy or specifies when capex is paid, when annual earnings start, or whether there is a ramp-up. The stated payback h"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q4 mobile-service cost inputs and the q4–q5 mobile profit calculations/model answers | The key treats the listed hourly variable costs and new technician salaries as the complete recurring cost base, and van capex as the complete one-time investment, but the case never explicitly says that no other incremental costs apply. For example, additional mobile-team overhead or vehicle operat"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Q4–Q5 mobile-demand inputs and model answers | The hours are repeatedly labeled “incremental” (5,000 initially and 2,500 after validation), which ordinarily means net-new dealership work. But the framework, model answers, and recommendation say Cedar Valley must still determine whether the mobile jobs are genuinely incremental or merely shifted "
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

@@ -1,0 +1,14 @@
+{
+ "label": "run15-hard-luna-final",
+ "difficulty": "hard",
+ "engine": "luna",
+ "status": "error",
+ "minutes": 8.4,
+ "stages": [
+  "Planning the storyline",
+  "Correcting the plan's core math",
+  "Writing the full case",
+  "Generation failed"
+ ],
+ "error": "Something went wrong. ModelHTTPError: status_code: 500, model_name: gpt-6-luna, body: {'status': 'failure', 'message': 'Internal Server Error', 'request_id': '470c4460-d753-42f5-bb1b-75198ed9d400'}"
+}

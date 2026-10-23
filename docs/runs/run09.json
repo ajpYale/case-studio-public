@@ -1,0 +1,39 @@
+{
+ "label": "run09-easy-luna",
+ "difficulty": "easy",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 2.8,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Independent review",
+  "Revising 1 reviewer finding",
+  "Second review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-205737-790b04",
+ "title": "A Better Use for the Busy Season",
+ "quality": "verified",
+ "fix_rounds": 1,
+ "calls": 5,
+ "input": 34789,
+ "cached": 16655,
+ "output": 20080,
+ "usd": 0.012457,
+ "reviews": [
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q4 projected operating profit; q5 model answer and recommendation | The $16K next-season profit is calculated as the current $6K profit plus $10K from 500 extra bookings. That arithmetic is correct, but it assumes the existing business repeats next season at the same 2,000 self-guided bookings, 800 guided bookings, prices, unit costs, and $50K fixed costs. The case "
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

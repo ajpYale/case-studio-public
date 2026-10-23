@@ -1,0 +1,18 @@
+# secrets and local environments
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.claude/
+
+# local data: generated cases, PDFs, spend ledger
+backend/generated/
+backend/usage_ledger.json
+Generated Cases/
+
+# extracted casebook text (copyrighted; only needed to rebuild the knowledge pack)
+build_knowledge/work/
+backend/practice/
+
+# The full knowledge pack is distilled from copyrighted casebooks: never commit it here
+backend/knowledge/knowledge_pack.json

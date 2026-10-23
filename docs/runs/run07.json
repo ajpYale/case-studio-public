@@ -1,0 +1,62 @@
+{
+ "label": "run07-hard-luna",
+ "difficulty": "hard",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 10.6,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Fixing 1 consistency issue in the math",
+  "Fixing 1 consistency issue in the math",
+  "Independent review",
+  "Revising 5 reviewer findings",
+  "Second review",
+  "Revising 2 reviewer findings",
+  "Third review",
+  "Revising 1 reviewer finding",
+  "Final review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-205309-3d59ff",
+ "title": "The Organics Contract That Crowds Out Its Best Customers",
+ "quality": "verified",
+ "fix_rounds": 5,
+ "calls": 11,
+ "input": 124446,
+ "cached": 28397,
+ "output": 84948,
+ "usd": 0.054729,
+ "reviews": [
+  {
+   "fit": "about_right",
+   "serious": [
+    "blocker | Exhibit ex1: column units and row values | The exhibit labels households and yard waste in “(000s)” but shows values such as 30K households and 12K tons. Read literally, those are 30,000 thousand households and 12,000 thousand tons; the answer key instead treats them as 30,000 households and 12,000 tons. The candidate cannot know which scale",
+    "major | Q5–Q7: payback and contract-term comparison | The pivot payback is 4.2M / 0.7575M = 5.54 years, longer than the five-year contract. At the modeled flat run rate, five years generate 3.7875M of net contribution, leaving 0.4125M of the 4.2M investment unrecovered, before any residual value or renewal. The key says the pivot misses the four-year h",
+    "major | Q5–Q7: investment and cash-flow timing | The case compares simple payback with a five-year contract but does not state when capex is paid, when contribution starts, whether there is an installation delay or ramp, or when the contract term begins. For example, 3.2 years of run-rate payback after commissioning does not necessarily mean recov",
+    "major | Exhibit ex3 and Q5–Q7: operating-cost completeness | The calculation treats the $30/inbound-ton processing cost as the only non-disposal operating cost and uses the resulting contribution as the cash flow for payback. The case does not say whether that figure includes incremental labor, maintenance, odor-control operating costs, or other fixed operati",
+    "major | Q6: definition of the 30K annual minimum | The city’s “minimum annual volume” is treated as 30K tons actually delivered and processed, driving both contribution and 12K tons of displaced yard waste. A contractual minimum could instead be a take-or-pay commitment, with payment for undelivered tons; that would have different revenue, capacity,"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Q6 required_pivot_fee calculation; Q6 model answer; Q7 model answer; Recommendation | The required fee is understated by $10/ton. From the displayed formula, required annual gross contribution is $1.05M ( $4.2M / 4 ) plus $0.60M of displaced yard-waste contribution, or $1.65M. Adding the pivot operating-cost offset of $1.2825M gives $2.9325M of annual fee revenue; divided by 30K tons",
+    "major | Q5 timing share and model answer; Q6 timing share and model answer; Q7 model answer; Recommendation | Capital is paid at contract award, but contribution starts at commissioning. The time from award to commissioning is not specified. The stated 3.2-year initial payback is only the operating period from commissioning, not necessarily simple payback from the investment date. With $3M / $0.93M = 3.2258"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Exhibit ex1: table values and note; q3 market-sizing result | The unit ambiguity flagged in the earlier review remains. The note says household and yard-waste values are “presented in thousands,” while the cells still show values such as “30K” households and “12K” tons. Read literally as values in thousands, these mean 30 million households and 12 million tons"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

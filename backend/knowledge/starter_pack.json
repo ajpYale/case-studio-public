@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "built_at": "hand-written starter pack",
+  "built_from": {"cases": 0, "casebooks": 0, "starter": true},
+  "levels": {
+    "easy": {
+      "stats": {},
+      "calibration_notes": "- One familiar business question (profitability, market sizing, pricing, entry) with a clear objective.\n- A standard structure is enough; no competing hypotheses.\n- Round numbers, a few linked steps of basic arithmetic, and at most one or two small exhibits.\n- The insight should be visible once the candidate does the obvious math."
+    },
+    "medium": {
+      "stats": {},
+      "calibration_notes": "- A realistic decision with two or three drivers the candidate must separate.\n- Two or three exhibits, at least one that needs comparison or a derived metric to read.\n- Several chained calculations (margins, breakeven, payback, growth) with one irrelevant data point.\n- The recommendation should weigh a trade-off, not just report a number."
+    },
+    "hard": {
+      "stats": {},
+      "calibration_notes": "- An ambiguous situation where the candidate must define the real problem first.\n- Three or more exhibits, some with distractor data, and a mid-case new fact that changes the picture.\n- Multi-step math that combines exhibits (contribution, NPV with a given factor, capacity limits).\n- The key insight should be non-obvious and only emerge from the numbers."
+    },
+    "instant_offer": {
+      "stats": {},
+      "calibration_notes": "- Everything in Hard, plus a binding constraint or second-order effect most candidates miss.\n- Exhibits that must be combined, and at least one tempting but wrong reading.\n- A pivot that reverses or sharply qualifies the first answer.\n- Every number must still be hand-calculable and the case fully solvable."
+    }
+  },
+  "case_types": {},
+  "industries": [
+    "Consumer goods", "Industrial & manufacturing", "Retail & e-commerce", "Telecom & media",
+    "Pharma, biotech & medical devices", "Technology & software", "Hospitality, leisure & sports",
+    "Public sector & nonprofit", "Agriculture & food production", "Energy, utilities & natural resources",
+    "Banking & financial services", "Airlines & travel", "Automotive & transportation", "Education",
+    "Restaurants & food service", "Insurance", "Healthcare providers", "Real estate & construction",
+    "Logistics & supply chain", "Private equity & investing"
+  ],
+  "style_guide": "- Open with a concrete client, a decision, and a reason it matters now.\n- Each section should build on facts from the one before and end with a clear ask.\n- Exhibits should require interpretation; release them when the candidate asks for that data.\n- Keep the math interview-sized and tied to the decision.\n- Close with a recommendation, risks, and next steps.",
+  "archetypes": []
+}

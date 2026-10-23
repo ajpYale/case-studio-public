@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bulldog Security Forces · Intrusion detected</title>
+  <link rel="icon" href="/static/dan.svg">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/dan.css">
+  <style>
+    body { background: #00254c; color: #fff; }
+    .siren { height: 8px; background: repeating-linear-gradient(90deg, #bd5319 0 40px, #00356b 40px 80px); animation: siren 1s linear infinite; }
+    @keyframes siren { to { background-position: 80px 0; } }
+    .trap { max-width: 980px; margin: 0 auto; padding: 36px 28px 120px; }
+    .trap-hero { display: grid; grid-template-columns: 180px 1fr; gap: 30px; align-items: center; }
+    .trap-hero .dan-wrap { filter: drop-shadow(0 10px 24px rgba(0,0,0,.45)); animation: guard 2.4s ease-in-out infinite; }
+    @keyframes guard { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-6px) rotate(2deg); } }
+    .badge-red { display: inline-block; background: #bd5319; color: #fff; font: 700 12px var(--sans); letter-spacing: .18em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 3px; animation: flash 1.2s steps(2) infinite; }
+    @keyframes flash { 50% { background: #7a2e0b; } }
+    .trap h1 { color: #fff; font-size: 44px; line-height: 1.1; margin: 14px 0 12px; }
+    .trap .lede { color: #cfe0f5; font-size: 18px; }
+    .panel-dark { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 18px 22px; margin-top: 26px; }
+    #scan { font: 13.5px/1.75 "Cascadia Mono", Consolas, Menlo, monospace; color: #9fd0ff; min-height: 190px; }
+    #scan b { color: #ffcf9e; }
+    .trap h2 { color: #fff; font-size: 26px; margin: 0 0 6px; }
+    .trap .muted { color: #a9bdd6; }
+    .trap .chip { background: transparent; color: #dbe7f5; border-color: rgba(255,255,255,.3); }
+    .trap .chip.active, .trap .chip:hover { background: #fff; color: var(--yale-blue); border-color: #fff; }
+    #schools { margin-top: 12px; }
+    .roast-line { display: grid; grid-template-columns: 190px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .roast-tag { font: 700 11px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: #63aaff; padding-top: 4px; }
+    .roast-line p { margin: 0; font: 400 18px/1.45 var(--serif); color: #fff; }
+    .trap-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; align-items: center; }
+    .trap-actions .btn-primary { width: auto; background: #fff; color: var(--yale-blue); }
+    .trap-actions .btn-primary:hover { background: #dbe7f5; }
+    .trap-actions a.btn { text-decoration: none; }
+    .fine { font-size: 12px; color: #8fa6c2; margin-top: 28px; }
+    #dan-unleash { color: var(--yale-blue); }
+    @media (max-width: 760px) { .trap-hero { grid-template-columns: 1fr; } .roast-line { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="siren"></div>
+  <main class="trap">
+    <section class="trap-hero">
+      <span data-dan="180"></span>
+      <div>
+        <span class="badge-red">Bulldog Security Forces · Intrusion detected</span>
+        <h1>Well, well, well. Look who clicked the button.</h1>
+        <p class="lede">You have foolishly wandered into our complex, multi-layered security system. Your reconnaissance
+          was poor, your cover story was weak, and you clearly underestimated the Bulldog Security Forces.
+          Please remain calm. Handsome Dan is reviewing your file personally.</p>
+      </div>
+    </section>
+
+    <section class="panel-dark"><div id="scan" aria-live="polite"></div></section>
+
+    <section class="panel-dark" id="school-pick" hidden>
+      <h2>Identify yourself, intruder.</h2>
+      <p class="muted">Where do you go? Choose carefully. Handsome Dan already knows, he just wants to hear you say it.</p>
+      <div class="chips" id="schools"></div>
+      <div id="roast-wrap" hidden>
+        <div id="roast"></div>
+        <div class="trap-actions">
+          <button type="button" class="btn btn-primary" id="again">Generate another insult</button>
+          <a class="btn btn-ghost" href="https://som.yale.edu/programs/mba" target="_blank" rel="noopener">Apply to Yale SOM and end this</a>
+          <a class="btn btn-ghost" href="/">Return to McKennel &amp; Co. (we're generous)</a>
+        </div>
+        <p class="muted small" id="roast-count"></p>
+      </div>
+    </section>
+
+  </main>
+  <script src="/static/dan.js"></script>
+  <script src="/static/trap.js"></script>
+</body>
+</html>

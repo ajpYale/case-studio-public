@@ -1,0 +1,33 @@
+{
+ "case_id": "20261020-211643-00fd20",
+ "title": "The Empty Popcorn Queue",
+ "difficulty": "easy",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "Approved. All displayed calculations recompute correctly: ticket contribution is $5.0M and $5.5M; concession contribution is $3.60M and $2.64M; operating profit is $3.00M and $2.54M; and the year-over-year decline is $0.46M. The model-answer comparisons are supported, including that the $0.96M concession-contribution decline more than offsets the $0.50M ticket-contribution gain. Both periods use the same annual basis, volumes, contribution definitions, and fixed-cost treatment. All quantitative inputs are revealed before q3, the exhibit contains only inputs rather than requested answers, and the recommendation follows from the contribution bridge. The case meets the requested easy interviewer-led format: four sections, one readable exhibit, familiar profitability structure, eight simple mental-math calculations at the stated maximum, and one practical business judgment around restoring attachment without sacrificing margin or guest experience.",
+ "issues": [],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 5587,
+  "cached": 1787,
+  "output": 637,
+  "requests": 1,
+  "seconds": 8.5,
+  "usd": 0.01744,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 5587,
+    "cached": 1787,
+    "output": 637,
+    "requests": 1,
+    "seconds": 8.5,
+    "usd": 0.01744
+   }
+  ]
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "label": "run04-hard-luna",
+ "difficulty": "hard",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 5.8,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Fixing 1 consistency issue in the math",
+  "Independent review",
+  "Revising 1 reviewer finding",
+  "Second review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-202824-979bb5",
+ "title": "Plugged In, Priced Out",
+ "quality": "verified",
+ "fix_rounds": 2,
+ "calls": 6,
+ "input": 52933,
+ "cached": 19506,
+ "output": 41162,
+ "usd": 0.024937,
+ "reviews": [
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Clarifying assumptions / q3 and q5 NPV calculations | The answer key treats annual cash flow as level for all 15 years, but the candidate is not told that eligible calls, uptake, fees, electricity cost, and fixed O&M stay constant over the project life. The stated planning figures alone do not establish that trajectory; the annuity-factor NPV ($9.37M) "
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

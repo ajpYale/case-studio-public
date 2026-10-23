@@ -1,0 +1,52 @@
+{
+ "label": "run12-hard-luna-tuned",
+ "difficulty": "hard",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 8.0,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Fixing 1 consistency issue in the math",
+  "Independent review",
+  "Revising 5 reviewer findings",
+  "Second review",
+  "Revising 1 reviewer finding",
+  "Third review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-211122-ca68c4",
+ "title": "The Recycled Mix That Needs a Road Test",
+ "quality": "verified",
+ "fix_rounds": 3,
+ "calls": 8,
+ "input": 83383,
+ "cached": 22116,
+ "output": 61956,
+ "usd": 0.038834,
+ "reviews": [
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q6 pivot; Answer-key inputs `near_term_demand_cap`; model answer and recommendation | The 50K figure is described as total eligible demand across the accessible market, but the answer key treats all 50K as Northline sales. That drops the 35% capture proxy used in q3 without stating that Northline can capture the whole market. Applying the stated proxy to 50K gives Northline 17.5K ton",
+    "major | q6 pivot; full-line payback calculation and subsequent recommendation | The qualification constraint lasts 2 years, but the 5-year payback is calculated by treating the $800K annual profit at the temporary 50K-volume cap as if it continued indefinitely. The case gives no post-qualification demand or operating schedule, so it cannot establish the full project’s payback a",
+    "major | Clarifying answer on cannibalization; q4 incremental contribution calculation | The key subtracts $18 from the $50 contribution on every RAP ton, producing $32 per ton, which assumes every RAP ton displaces exactly one ton of Northline’s virgin mix. The clarification says RAP may displace existing sales, but provides neither a displacement rate nor an explicit 1:1 assumption. I",
+    "major | Prompt payback hurdle; q6 and q7 pilot conclusions | The prompt makes the 4-year hurdle applicable to a full-scale investment only. The key says the pilot “clears” the hurdle and uses its 1.7-year payback as support for choosing it, although no pilot hurdle or pilot decision criterion is given. The pilot payback can be reported as a comparison, but pa",
+    "major | Exhibit 2 units and displayed values | The dollar columns are labeled “($000)” but show “$4,000K” and “$800K”; capacity is labeled “(000 tons)” but shows “90K” and “30K.” The labels and values use two different scaling conventions, creating potential 1,000-fold misinterpretations of both investment/cost and capacity."
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Clarifying answer on financial convention; q4 full-line payback; q6 full-line and pilot payback; q7 and Recommendation | The case says annual operating economics are received at each year-end, but the answer key calculates fractional-year payback by prorating an annual profit within the year. For example, q4 gives $4M ÷ $1.5184M = 2.634 years (shown as 2.6), and q6 gives the pilot 2 + ($1.2M − $0.62M) ÷ $0.71M = 2.817"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

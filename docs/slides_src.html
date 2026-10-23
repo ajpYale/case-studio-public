@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>McKennel &amp; Co. — MGT 409 Final Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<style>
+  :root { --r-heading-font: Georgia, "Times New Roman", serif; --r-main-font: "Segoe UI", Helvetica, Arial, sans-serif;
+          --r-heading-color: #00356b; --r-link-color: #286dc0; --r-main-font-size: 30px; }
+  .reveal h1, .reveal h2 { font-weight: 400; text-transform: none; }
+  .reveal h2 { font-size: 1.45em; border-bottom: 4px solid #00356b; padding-bottom: 10px; margin-bottom: 22px; }
+  .reveal .eyebrow { font-size: .5em; letter-spacing: .14em; text-transform: uppercase; color: #978d85; font-weight: 700; }
+  .reveal .sub { color: #4a4a4a; font-size: .8em; }
+  .reveal img.shot { border: 1px solid #ddd; box-shadow: 0 6px 20px rgba(0,0,0,.08); max-height: 470px; }
+  .reveal .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; text-align: left; }
+  .reveal .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; text-align: left; }
+  .reveal ul { font-size: .78em; }
+  .reveal li { margin-bottom: 10px; }
+  .reveal .big { font-family: Georgia, serif; font-size: 2.1em; color: #00356b; line-height: 1; display: block; }
+  .reveal .lab { font-size: .55em; color: #6b6b6b; display: block; margin-top: 6px; }
+  .reveal table { font-size: .52em; }
+  .reveal table th { background: #00356b; color: #fff; }
+  .reveal .note { font-size: .55em; color: #6b6b6b; }
+  .reveal .warn { color: #bd5319; }
+  .reveal .good { color: #5f712d; }
+  .reveal section.title { text-align: left; }
+  .reveal .bar { height: 10px; background: #00356b; width: 120px; margin: 18px 0 26px; }
+  .reveal .cap { font-size: .5em; color: #6b6b6b; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+
+<section class="title">
+  <p class="eyebrow">MGT 409 · Final Project · Andrew Perlowin</p>
+  <h1 style="font-size:2.6em;margin:0">McKennel &amp; Co.</h1>
+  <div class="bar"></div>
+  <p class="sub" style="max-width:600px">AI agents that write complete, interviewer-ready consulting practice cases on demand,
+  with an answer key checked by code, and then interview you on them.</p>
+  <img src="screenshots/shell/shell-run.png" alt="" style="position:absolute;right:0;top:120px;width:470px;border:1px solid #ddd;box-shadow:0 6px 20px rgba(0,0,0,.08)">
+  <p class="note" style="margin-top:40px">Repo: <a href="https://github.com/ajpYale/case-studio">github.com/ajpYale/case-studio</a> · Runs locally in ~5 minutes</p>
+</section>
+
+<section>
+  <h2>The problem: practice cases run out, and a third are wrong</h2>
+  <div class="cols">
+    <div>
+      <ul>
+        <li>MBA consulting candidates practice dozens of cases with a partner, who needs a <b>case packet</b> to run them.</li>
+        <li>Clubs share <b>casebooks</b>: finite, repetitive, and unlabeled for difficulty.</li>
+        <li>ChatGPT makes "a case" as loose prose: no exhibits, and the math is never checked.</li>
+      </ul>
+    </div>
+    <div style="text-align:center">
+      <span class="big">35%</span><span class="lab">of free online casebook cases I audited (105 of 303)<br>had a wrong answer key or a flawed premise</span>
+      <p class="note" style="margin-top:30px">Own audit of 17 casebooks (2019+), logged case by case</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What's new: a case <em>author</em>, plus an interviewer you can trust</h2>
+  <table>
+    <thead><tr><th>Product</th><th>What it is</th><th>Price</th></tr></thead>
+    <tbody>
+      <tr><td>ChatGPT / Claude</td><td>Free-text cases, unchecked math</td><td>$0–20/mo</td></tr>
+      <tr><td>Road to Offer</td><td>AI interviewer, 71 fixed cases</td><td>$49/mo</td></tr>
+      <tr><td>CaseStudyPrep.AI</td><td>Voice AI interviewer, fixed packs</td><td>$35 / 5 cases</td></tr>
+      <tr><td>PrepLounge · CaseCoach</td><td>Peer marketplace · video course</td><td>~$69 · ~$199 /yr</td></tr>
+      <tr style="background:#eef4fb"><td><b>McKennel &amp; Co.</b></td><td><b>New full packet at any difficulty; every number recomputed by code; Handsome Dan interviews you on it</b></td><td><b>$0.01–$0.06 / case · ~1¢ / interview</b></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Calibrated on 449 audited cases from 32 MBA casebooks. The app never reads the casebooks at runtime.</p>
+</section>
+
+<section>
+  <h2>The agents</h2>
+  <div style="max-width:1000px;margin:0 auto"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 540" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="McKennel &amp; Co. agent pipeline">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a4a4a"/></marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#bd5319"/></marker>
+  </defs>
+  <style>
+    .agent { fill: #00356b; } .agentt { fill: #fff; font-size: 14px; font-weight: 700; } .agents { fill: #cfe0f5; font-size: 11px; }
+    .tool { fill: #fff; stroke: #5f712d; stroke-width: 2; } .toolt { fill: #3c4a1c; font-size: 13.5px; font-weight: 700; } .tools { fill: #4a4a4a; font-size: 11px; }
+    .data { fill: #eef4fb; stroke: #286dc0; stroke-width: 1.5; stroke-dasharray: 4 3; } .datat { fill: #00254c; font-size: 12.5px; font-weight: 700; } .datas { fill: #4a4a4a; font-size: 11px; }
+    .guard { fill: #fbf1ea; stroke: #bd5319; stroke-width: 1.5; } .guardt { fill: #7a2e0b; font-size: 12.5px; font-weight: 700; } .guards { fill: #4a4a4a; font-size: 11px; }
+    .ln { stroke: #4a4a4a; stroke-width: 1.6; fill: none; marker-end: url(#a); }
+    .lo { stroke: #bd5319; stroke-width: 1.6; fill: none; marker-end: url(#o); stroke-dasharray: 5 3; }
+    .lbl { fill: #6b6b6b; font-size: 11px; }
+  </style>
+
+  <!-- user + guards -->
+  <rect x="20" y="20" width="150" height="62" rx="6" fill="#fff" stroke="#978d85" stroke-width="1.5"/>
+  <text x="95" y="46" text-anchor="middle" font-size="14" font-weight="700" fill="#1f1f1f">User</text>
+  <text x="95" y="65" text-anchor="middle" class="tools">difficulty · engine · notes</text>
+
+  <rect x="210" y="14" width="250" height="74" rx="6" class="guard"/>
+  <text x="335" y="36" text-anchor="middle" class="guardt">Guards (FastAPI orchestrator)</text>
+  <text x="335" y="54" text-anchor="middle" class="guards">notes screen · Sol confirmation · queue cap</text>
+  <text x="335" y="70" text-anchor="middle" class="guards">daily $ budget · per-case $ cap · per-call token cap</text>
+  <line x1="170" y1="51" x2="208" y2="51" class="ln"/>
+
+  <rect x="510" y="14" width="330" height="74" rx="6" class="data"/>
+  <text x="675" y="36" text-anchor="middle" class="datat">Knowledge pack (built once, offline)</text>
+  <text x="675" y="54" text-anchor="middle" class="datas">449 audited cases from 32 MBA casebooks → difficulty</text>
+  <text x="675" y="70" text-anchor="middle" class="datas">calibration · 449 archetypes · style guide · quality rules</text>
+
+  <!-- planner -->
+  <rect x="210" y="128" width="250" height="62" rx="6" class="agent"/>
+  <text x="335" y="153" text-anchor="middle" class="agentt">1 · Planner agent</text>
+  <text x="335" y="172" text-anchor="middle" class="agents">story, key insight, storyline, numeric spine</text>
+  <line x1="335" y1="88" x2="335" y2="126" class="ln"/>
+  <path d="M560,88 L447,127" class="ln"/>
+  <text x="512" y="110" class="lbl">6 archetypes retrieved</text>
+
+  <rect x="510" y="128" width="200" height="62" rx="6" class="tool"/>
+  <text x="610" y="153" text-anchor="middle" class="toolt">Plan math check</text>
+  <text x="610" y="172" text-anchor="middle" class="tools">code · evaluates the spine</text>
+  <path d="M460,170 L508,170" class="ln"/>
+  <path d="M610,190 C610,215 420,215 400,192" class="lo"/>
+  <text x="478" y="230" class="lbl" fill="#bd5319">issues → replan (≤2)</text>
+
+  <!-- writer -->
+  <rect x="210" y="240" width="250" height="62" rx="6" class="agent"/>
+  <text x="335" y="265" text-anchor="middle" class="agentt">2 · Writer agent</text>
+  <text x="335" y="284" text-anchor="middle" class="agents">full case as variables, formulas, placeholders</text>
+  <line x1="335" y1="190" x2="335" y2="238" class="ln"/>
+
+  <rect x="510" y="240" width="200" height="62" rx="6" class="tool"/>
+  <text x="610" y="265" text-anchor="middle" class="toolt">Verifier</text>
+  <text x="610" y="284" text-anchor="middle" class="tools">code · 29 automated checks</text>
+  <path d="M460,271 L508,271" class="ln"/>
+
+  <rect x="740" y="240" width="110" height="62" rx="6" class="agent"/>
+  <text x="795" y="265" text-anchor="middle" class="agentt">Fixer</text>
+  <text x="795" y="284" text-anchor="middle" class="agents">writer, repair mode</text>
+  <path d="M710,262 L738,262" class="lo"/>
+  <path d="M738,284 L712,284" class="lo"/>
+  <text x="700" y="230" class="lbl" fill="#bd5319">issues ↔ fix (≤3 per pass)</text>
+
+  <!-- reviewer -->
+  <rect x="210" y="352" width="250" height="62" rx="6" class="agent"/>
+  <text x="335" y="377" text-anchor="middle" class="agentt">3 · Reviewer agent</text>
+  <text x="335" y="396" text-anchor="middle" class="agents">independent audit · blocker / major / minor</text>
+  <path d="M610,302 C610,340 480,350 462,370" class="ln"/>
+  <text x="530" y="346" class="lbl">clean draft</text>
+  <path d="M460,395 C700,410 800,360 795,304" class="lo"/>
+  <text x="472" y="440" class="lbl" fill="#bd5319">serious findings → Fixer → Verifier → review again (3–5 reviews)</text>
+
+  <!-- output -->
+  <rect x="210" y="458" width="250" height="62" rx="6" class="tool"/>
+  <text x="335" y="483" text-anchor="middle" class="toolt">Renderer + PDF exporter</text>
+  <text x="335" y="502" text-anchor="middle" class="tools">numbers filled from formulas · SVG charts</text>
+  <line x1="335" y1="414" x2="335" y2="456" class="ln"/>
+
+  <rect x="510" y="458" width="330" height="62" rx="6" class="data"/>
+  <text x="675" y="483" text-anchor="middle" class="datat">Library + PDF · status + token/cost log</text>
+  <text x="675" y="502" text-anchor="middle" class="datas">Verified · Reviewer flags remain · Needs attention</text>
+  <line x1="460" y1="489" x2="508" y2="489" class="ln"/>
+
+  <!-- legend -->
+  <rect x="20" y="128" width="14" height="14" class="agent"/><text x="40" y="140" class="tools">AI agent (Luna or Terra/Sol)</text>
+  <rect x="20" y="152" width="14" height="14" class="tool"/><text x="40" y="164" class="tools">code tool (no AI)</text>
+  <rect x="20" y="176" width="14" height="14" class="data"/><text x="40" y="188" class="tools">data</text>
+  <rect x="20" y="200" width="14" height="14" class="guard"/><text x="40" y="212" class="tools">safety / budget guard</text>
+  <line x1="20" y1="232" x2="50" y2="232" class="lo"/><text x="56" y="236" class="tools">bounded repair loop</text>
+</svg>
+</div>
+</section>
+
+<section>
+  <h2>Demo: the run room, with 3 cases in parallel</h2>
+  <div class="cols">
+    <img class="shot" src="screenshots/batch/03-running-75s.png" alt="Run room">
+    <img class="shot" src="screenshots/final-io-guide.png" alt="Interviewer guide">
+  </div>
+  <p class="cap">Left: 3 Easy cases generating at once, each card showing the agent at work, tokens and live cost (3.6 min wall clock, $0.051, all verified).
+  Right: the interviewer guide of a Luna Instant Offer case that passed a Terra second opinion with no major issues.</p>
+</section>
+
+<section>
+  <h2>Practice with Handsome Dan: an interviewer that can't leak the key</h2>
+  <div class="cols">
+    <div>
+      <div style="max-width:600px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="Practice with Handsome Dan: interviewer and scorer agents">
+  <defs>
+    <marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a4a4a"/></marker>
+  </defs>
+  <style>
+    .p-agent { fill: #00356b; } .p-agentt { fill: #fff; font-size: 14px; font-weight: 700; } .p-agents { fill: #cfe0f5; font-size: 11px; }
+    .p-tool { fill: #fff; stroke: #5f712d; stroke-width: 2; } .p-toolt { fill: #3c4a1c; font-size: 13.5px; font-weight: 700; } .p-tools { fill: #4a4a4a; font-size: 11px; }
+    .p-data { fill: #eef4fb; stroke: #286dc0; stroke-width: 1.5; stroke-dasharray: 4 3; } .p-datat { fill: #00254c; font-size: 12.5px; font-weight: 700; } .p-datas { fill: #4a4a4a; font-size: 11px; }
+    .p-ln { stroke: #4a4a4a; stroke-width: 1.6; fill: none; marker-end: url(#pa); }
+    .p-lbl { fill: #6b6b6b; font-size: 11px; }
+  </style>
+  <rect x="16" y="24" width="190" height="104" rx="6" fill="#fff" stroke="#978d85" stroke-width="1.5"/>
+  <text x="111" y="50" text-anchor="middle" font-size="14" font-weight="700" fill="#1f1f1f">Candidate (browser)</text>
+  <text x="111" y="70" text-anchor="middle" class="p-tools">sees only: the prompt, Handsome Dan's</text>
+  <text x="111" y="85" text-anchor="middle" class="p-tools">messages, exhibits handed over</text>
+  <text x="111" y="108" text-anchor="middle" class="p-tools" fill="#bd5319">no answer key · no title</text>
+
+  <rect x="262" y="24" width="250" height="104" rx="6" class="p-agent"/>
+  <text x="387" y="52" text-anchor="middle" class="p-agentt">Interviewer agent · Handsome Dan</text>
+  <text x="387" y="72" text-anchor="middle" class="p-agents">sees the full interviewer guide</text>
+  <text x="387" y="88" text-anchor="middle" class="p-agents">answers only from it · releases exhibits</text>
+  <text x="387" y="104" text-anchor="middle" class="p-agents">hints on request · pushback · never the key</text>
+
+  <rect x="572" y="24" width="270" height="104" rx="6" class="p-tool"/>
+  <text x="707" y="52" text-anchor="middle" class="p-toolt">Leak guard + gates (code)</text>
+  <text x="707" y="72" text-anchor="middle" class="p-tools">blocks results the candidate hasn't produced</text>
+  <text x="707" y="88" text-anchor="middle" class="p-tools">(retry once, then redact) · exhibits only for</text>
+  <text x="707" y="104" text-anchor="middle" class="p-tools">reached sections · parts only move forward</text>
+
+  <path d="M206 64 L260 64" class="p-ln"/>
+  <text x="212" y="56" class="p-lbl">message</text>
+  <path d="M512 64 L570 64" class="p-ln"/>
+  <text x="518" y="56" class="p-lbl">draft reply</text>
+  <path d="M707 128 C707 170 140 170 111 130" class="p-ln"/>
+  <text x="380" y="166" class="p-lbl">checked reply + newly released exhibits</text>
+
+  <rect x="262" y="196" width="250" height="84" rx="6" class="p-agent"/>
+  <text x="387" y="224" text-anchor="middle" class="p-agentt">Scorer agent</text>
+  <text x="387" y="244" text-anchor="middle" class="p-agents">guide + transcript → rubric scores,</text>
+  <text x="387" y="260" text-anchor="middle" class="p-agents">math check, verdict, what to fix</text>
+  <path d="M111 130 L111 238 L260 238" class="p-ln"/>
+  <text x="120" y="230" class="p-lbl">"Score my case"</text>
+
+  <rect x="572" y="196" width="270" height="84" rx="6" class="p-data"/>
+  <text x="707" y="224" text-anchor="middle" class="p-datat">Session file + meter</text>
+  <text x="707" y="244" text-anchor="middle" class="p-datas">transcript · tokens and $ per call</text>
+  <text x="707" y="260" text-anchor="middle" class="p-datas">$0.50 cap · 60-message cap · daily cap</text>
+  <path d="M512 238 L570 238" class="p-ln"/>
+</svg></div>
+      <ul style="margin-top:14px">
+        <li><b>Interviewer agent</b> runs the case from the guide; the browser never receives the key or the title</li>
+        <li><b>Code leak guard</b> blocks any result the candidate hasn't produced yet</li>
+        <li><b>Scorer agent</b> grades on the case's rubric with quoted evidence</li>
+        <li>Strong candidate: <b>5/5</b> for $0.005 · weak candidate + injection attempt: <b>2/5</b> for $0.011</li>
+      </ul>
+    </div>
+    <img class="shot" src="screenshots/practice/iv2-weak-chat.png" alt="Handsome Dan interview">
+  </div>
+</section>
+
+<section>
+  <h2>Cost to run</h2>
+  <div class="cols3">
+  <div><span class="big">$0.013</span><span class="lab">Easy case on Luna<br>5 calls · 3 min</span></div>
+  <div><span class="big">$0.040</span><span class="lab">Hard case on Luna<br>8 calls · 8 min</span></div>
+  <div><span class="big">$0.059</span><span class="lab">Instant Offer on Luna<br>10 calls · 16 min</span></div>
+</div>
+<table style="margin-top:34px">
+  <thead><tr><th>Users</th><th>Luna / month</th><th>Stronger engine (est.)</th></tr></thead>
+  <tbody><tr><td>1 (8 cases)</td><td>$0.28</td><td>$8.63</td></tr>
+  <tr><td>100</td><td>$28</td><td>$863</td></tr>
+  <tr><td>10,000</td><td>$2,783</td><td>$86,267</td></tr></tbody>
+</table>
+<p class="note">A full practice interview with scoring: $0.005–$0.011. Measured from API usage on 11 completed runs and 2 interviews; course prices. Output tokens are 81% of cost; caching saved 3%.</p>
+</section>
+
+<section>
+  <h2>Safety: defenses that fire</h2>
+  <div class="cols">
+    <div>
+      <ul>
+        <li><b>Prompt injection</b> screened and fenced; agents have no tools</li>
+        <li><b>No code execution</b>: whitelist arithmetic parser</li>
+        <li><b>Invented numbers</b> caught by 29 code checks</li>
+        <li><b>Answer-key leaks</b>: key never sent to the browser; code leak guard on every reply</li>
+        <li><b>Overspending</b>: per-call, per-case and daily caps; Sol asks every run</li>
+        <li><b>36 automated safety tests</b>, no model calls, all passing</li>
+      </ul>
+    </div>
+    <div>
+      <img class="shot" src="screenshots/injection-blocked.png" alt="Injection blocked" style="max-height:230px">
+      <img class="shot" src="screenshots/daily-budget-refused.png" alt="Budget refused" style="max-height:230px">
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Impact and what I learned</h2>
+  <div class="cols">
+  <div>
+    <ul>
+      <li><b>Cost:</b> $0.03 per case vs $2.50–$7 on paid platforms</li>
+      <li><b>Correctness:</b> answer keys can't contradict their exhibits; casebooks: 35% flawed</li>
+      <li><b>Supply:</b> unlimited new cases at any difficulty</li>
+      <li style="background:#fff3b0">Real-user test: add before submitting</li>
+    </ul>
+  </div>
+  <div>
+    <p class="eyebrow">Luna is not powerful enough for the hardest cases</p>
+    <span class="big warn">5 of 7</span><span class="lab">Luna Hard / Instant Offer cases had a major issue its own review missed (Terra audit)</span>
+    <span class="big good" style="margin-top:22px">3 of 4</span><span class="lab">Easy / Medium cases passed the same audit clean</span>
+  </div>
+</div>
+</section>
+
+<section>
+  <h2>Limits and next steps</h2>
+  <div class="cols">
+    <div>
+      <p class="eyebrow">Limits</p>
+      <ul>
+        <li>Luna is not reliable on Hard and Instant Offer (5 of 7 had a major issue); use Second opinion or Stronger</li>
+        <li>AI review samples problems; it can't prove there are none</li>
+        <li>Handsome Dan's voice is the browser's; insight leaks are rule-based, not code-guarded</li>
+        <li>Local, single-user; 2 of 15 runs hit gateway errors</li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow">Next</p>
+      <ul>
+        <li>Give Handsome Dan a voice, and test him on saved transcripts</li>
+        <li>Hosted club library with member ratings as the quality signal</li>
+        <li>Two independent cheap reviewers before a case counts as verified</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({ hash: true, width: 1280, height: 720, margin: 0.05, transition: "fade" });</script>
+</body>
+</html>

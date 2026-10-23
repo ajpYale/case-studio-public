@@ -1,0 +1,74 @@
+{
+ "levels": {
+  "easy": {
+   "n": 2,
+   "calls": 5,
+   "input": 34637,
+   "cached": 16280.5,
+   "output": 20180.5,
+   "cached_share": 0.4700320466553108,
+   "usd": 0.012532,
+   "usd_min": 0.012457,
+   "usd_max": 0.012607,
+   "minutes": 3.05,
+   "verified": 2,
+   "strong_est_usd": 0.28213509999999997
+  },
+  "medium": {
+   "n": 2,
+   "calls": 8,
+   "input": 70626,
+   "cached": 20249,
+   "output": 45901,
+   "cached_share": 0.2867074448503384,
+   "usd": 0.029425,
+   "usd_min": 0.024761,
+   "usd_max": 0.034089,
+   "minutes": 6.050000000000001,
+   "verified": 2,
+   "strong_est_usd": 0.6556158
+  },
+  "hard": {
+   "n": 3,
+   "calls": 8.333333333333334,
+   "input": 86920.66666666667,
+   "cached": 23339.666666666668,
+   "output": 62688.666666666664,
+   "cached_share": 0.26851688512896815,
+   "usd": 0.0395,
+   "usd_min": 0.024937,
+   "usd_max": 0.054729,
+   "minutes": 8.133333333333333,
+   "verified": 3,
+   "strong_est_usd": 0.8840939333333333
+  },
+  "instant_offer": {
+   "n": 4,
+   "calls": 10.5,
+   "input": 128254.25,
+   "cached": 49124.25,
+   "output": 96463.5,
+   "cached_share": 0.38302239496936746,
+   "usd": 0.05858125,
+   "usd_min": 0.037942,
+   "usd_max": 0.07398,
+   "minutes": 15.700000000000001,
+   "verified": 3,
+   "strong_est_usd": 3.314117125
+  }
+ },
+ "blend": {
+  "per_case": 0.034790737499999995,
+  "per_user_month": 0.27832589999999996,
+  "users_100": 27.832589999999996,
+  "users_10000": 2783.2589999999996,
+  "per_case_strong_est": 1.0783362404166665,
+  "per_user_month_strong_est": 8.626689923333332,
+  "users_100_strong": 862.6689923333332,
+  "users_10000_strong": 86266.89923333333
+ },
+ "caching_saving_share": 0.03263325300350861,
+ "output_share_of_cost": 0.8083580811422841,
+ "total_luna_usd": 0.436739,
+ "n_runs_measured": 11
+}

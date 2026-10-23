@@ -1,0 +1,39 @@
+{
+ "label": "run13-easy-freshclone",
+ "difficulty": "easy",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 3.3,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Independent review",
+  "Revising 1 reviewer finding",
+  "Second review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-211643-00fd20",
+ "title": "The Empty Popcorn Queue",
+ "quality": "verified",
+ "fix_rounds": 1,
+ "calls": 5,
+ "input": 34485,
+ "cached": 15906,
+ "output": 20281,
+ "usd": 0.012607,
+ "reviews": [
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Prompt/clarifying answers and q3 operating-profit calculation | The case asks for chain-wide operating profit but does not explicitly say that tickets and concessions are the only revenue streams, that the stated ticket-retention share and concession contribution margin capture all variable costs, or that the $5.6M fixed-cost figure covers all remaining operatin"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

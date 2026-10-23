@@ -1,0 +1,46 @@
+{
+ "case_id": "20261020-211122-ca68c4",
+ "title": "The Recycled Mix That Needs a Road Test",
+ "difficulty": "hard",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "The case is otherwise internally consistent and meets the requested hard-case design: it has seven sections, three exhibits with relevant distractors, a candidate-led structure, cannibalization and capacity constraints, a meaningful qualification pivot, and 16 labeled quantitative outputs. Recomputed figures are correct: compatible demand is 240×450 + 180×350 + 120×300 = 207,000 tons; 35% capture is 72,450 tons; base full-line contribution/profit are $2.3184M/$1.5184M and payback is end-year 3. During the delay, sales are 17,500 tons; full-line profit is -$0.24M and pilot profit is $0.31M; post-approval pilot profit is $0.71M. The two payback-method/runnability fixes above are required before publication.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q6, Calc full_line_payback_with_delay and Calc pilot_payback_with_delay",
+   "problem": "The stated payback method is implemented with `round(x + 0.5)`, which is not the required “first year-end”/ceiling operation. Payback must be `ceil(remaining investment / annual profit)` after the delay. The displayed outcomes happen to be correct: full line has cumulative operating profit of -$0.48M after years 1–2, then -$0.48M + 3 × $1.5184M = $4.0752M at end-year 5 (versus $2.5568M at end-year 4), so it pays back in year 5; pilot has $0.62M after year 2 and $1.33M after year 3, so it pays back in year 3. But the supplied formula would fail for other valid values, including an exact integer number of post-delay years, and teaches an incorrect finance method.",
+   "fix": "Replace both `round(... + 0.5)` expressions with `ceil(...)` (or, preferably for an interview case, show/check cumulative profit by year). Keep the current 5-year and 3-year results."
+  },
+  {
+   "severity": "major",
+   "where": "q6 payback calculations and interviewer guidance",
+   "problem": "The pivotal calculation is not reliably hand-runnable under the case's exact-arithmetic convention. It asks the candidate to divide $4.48M by $1.5184M (or repeatedly work with $1.5184M and $4.0752M) to determine full-line payback. These are five-significant-figure intermediate figures, and the guide simultaneously says not to round an intermediate as though exact. The conclusion can be reached by a cumulative schedule, but neither the question nor interviewer guidance directs that simpler approach. This violates the stated hand-calculation standard for a hard case.",
+   "fix": "In q6 explicitly instruct candidates to round annual operating profit to the nearest $0.01M for the payback test, consistently in both the question and key, and direct them to check cumulative year-end cash flows. For example, use -$0.24M in years 1–2 and +$1.52M thereafter: cumulative profit is -$0.48M, $1.04M, $2.56M, and $4.08M at ends of years 2–5, yielding 5 years. Alternatively, retain exact values but provide the same year-end cumulative schedule as interviewer guidance and remove the division formula."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 9184,
+  "cached": 1787,
+  "output": 2926,
+  "requests": 1,
+  "seconds": 28.0,
+  "usd": 0.053901,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 9184,
+    "cached": 1787,
+    "output": 2926,
+    "requests": 1,
+    "seconds": 28.0,
+    "usd": 0.053901
+   }
+  ]
+ }
+}

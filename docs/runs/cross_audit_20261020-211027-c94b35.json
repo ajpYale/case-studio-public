@@ -1,0 +1,46 @@
+{
+ "case_id": "20261020-211027-c94b35",
+ "title": "The Operating-Room Shortcut",
+ "difficulty": "instant_offer",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "The numerical model is internally consistent and runnable. Recomputed results: base commercial demand is 32K × 37.5% × 40% = 4.8K, capped at 4K; base transfers are 4K × 60% = 2.4K; base ASC contribution is $8.0M, lost hospital contribution is $3.0M, annual system cash flow is $1.8M, and NPV is $1.8M × 6.7 − $16M = −$3.94M. The NPV-zero annual cash-flow requirement is $16M/6.7 = $2.388M; at a $1.25K per-commercial-case system contribution, break-even volume is (3.2 + 2.388)/1.25 = 4.470K, or 111.8% of 4K capacity. Under the grant, Medicaid volume is 1K and commercial volume is 3K; ASC contribution is $7.2M, displaced hospital contribution is $2.25M, annual cash flow is $1.75M, net capex is $6M, and NPV is $1.75M × 6.7 − $6M = $5.725M. At 90% commercial transfers, displaced contribution is $3.375M, annual cash flow is $0.625M, and NPV is −$1.8125M. The zero-NPV transfer-share ceiling is (7.2 − 3.2 − 6/6.7)/(3 × 1.25) = 82.786%, or 82.8%. All displayed rounded values and conclusions match these computations; the grant-driven reversal, capacity constraint, cannibalization treatment, timing, and conditional recommendation are sound. The case meets the requested Instant Offer shape: 7 sections, 4 exhibits, roughly 24 listed quantitative steps, a capacity/NPV/cannibalization chain, pivot, pushbacks, ambiguous opening, and differentiated exceptional-performance rubric. The only substantive polish issue is the unsupported cross-exhibit comparability sentence noted above.",
+ "issues": [
+  {
+   "severity": "minor",
+   "where": "q4 model answer: “This commercial-only demand funnel is consistent with the historical exhibit’s slower growth in the ASC-addressable subset.”",
+   "problem": "This is an unsupported like-for-like comparison. ex1 supplies historical annual cases from “Harborview finance and scheduling systems,” without specifying that they cover the same commercial-insured catchment, payer population, procedure definition, or forecast period as ex2’s 1,600K commercial-insured catchment funnel. The arithmetic is correct—commercial target procedures are 1,600K × 2% = 32K; outpatient-eligible cases are 32K × 37.5% = 12K; planned captured commercial cases are 12K × 40% = 4.8K; and served pre-grant volume is capped at 4K—but those calculations do not establish consistency with ex1’s 3.0K to 3.4K historical addressable series.",
+   "fix": "Delete that sentence, or explicitly label ex1 as the same commercial catchment and procedure scope and state the periods being compared. Deleting it is the minimal fix because the decision does not need the comparison."
+  },
+  {
+   "severity": "minor",
+   "where": "Rubric, “Performance tier” entries",
+   "problem": "The tier labels are malformed and unnecessarily confusing: “Performance tier: strong: strong = … | weak = …” and “Performance tier: exceptional / offer-on-the-spot: strong = … | weak = …”. The substantive distinction is present, but an interviewer scanning the rubric could misread “strong” as the rating within the exceptional tier.",
+   "fix": "Relabel as “Performance tier — Strong” and “Performance tier — Exceptional / offer-on-the-spot,” each followed by “Meets” versus “Does not meet” (or simply the respective descriptors)."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 11277,
+  "cached": 1787,
+  "output": 2828,
+  "requests": 1,
+  "seconds": 26.6,
+  "usd": 0.057957,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 11277,
+    "cached": 1787,
+    "output": 2828,
+    "requests": 1,
+    "seconds": 26.6,
+    "usd": 0.057957
+   }
+  ]
+ }
+}

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 540" font-family="Segoe UI, Helvetica, Arial, sans-serif" role="img" aria-label="McKennel &amp; Co. agent pipeline">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a4a4a"/></marker>
+    <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#bd5319"/></marker>
+  </defs>
+  <style>
+    .agent { fill: #00356b; } .agentt { fill: #fff; font-size: 14px; font-weight: 700; } .agents { fill: #cfe0f5; font-size: 11px; }
+    .tool { fill: #fff; stroke: #5f712d; stroke-width: 2; } .toolt { fill: #3c4a1c; font-size: 13.5px; font-weight: 700; } .tools { fill: #4a4a4a; font-size: 11px; }
+    .data { fill: #eef4fb; stroke: #286dc0; stroke-width: 1.5; stroke-dasharray: 4 3; } .datat { fill: #00254c; font-size: 12.5px; font-weight: 700; } .datas { fill: #4a4a4a; font-size: 11px; }
+    .guard { fill: #fbf1ea; stroke: #bd5319; stroke-width: 1.5; } .guardt { fill: #7a2e0b; font-size: 12.5px; font-weight: 700; } .guards { fill: #4a4a4a; font-size: 11px; }
+    .ln { stroke: #4a4a4a; stroke-width: 1.6; fill: none; marker-end: url(#a); }
+    .lo { stroke: #bd5319; stroke-width: 1.6; fill: none; marker-end: url(#o); stroke-dasharray: 5 3; }
+    .lbl { fill: #6b6b6b; font-size: 11px; }
+  </style>
+
+  <!-- user + guards -->
+  <rect x="20" y="20" width="150" height="62" rx="6" fill="#fff" stroke="#978d85" stroke-width="1.5"/>
+  <text x="95" y="46" text-anchor="middle" font-size="14" font-weight="700" fill="#1f1f1f">User</text>
+  <text x="95" y="65" text-anchor="middle" class="tools">difficulty · engine · notes</text>
+
+  <rect x="210" y="14" width="250" height="74" rx="6" class="guard"/>
+  <text x="335" y="36" text-anchor="middle" class="guardt">Guards (FastAPI orchestrator)</text>
+  <text x="335" y="54" text-anchor="middle" class="guards">notes screen · Sol confirmation · queue cap</text>
+  <text x="335" y="70" text-anchor="middle" class="guards">daily $ budget · per-case $ cap · per-call token cap</text>
+  <line x1="170" y1="51" x2="208" y2="51" class="ln"/>
+
+  <rect x="510" y="14" width="330" height="74" rx="6" class="data"/>
+  <text x="675" y="36" text-anchor="middle" class="datat">Knowledge pack (built once, offline)</text>
+  <text x="675" y="54" text-anchor="middle" class="datas">449 audited cases from 32 MBA casebooks → difficulty</text>
+  <text x="675" y="70" text-anchor="middle" class="datas">calibration · 449 archetypes · style guide · quality rules</text>
+
+  <!-- planner -->
+  <rect x="210" y="128" width="250" height="62" rx="6" class="agent"/>
+  <text x="335" y="153" text-anchor="middle" class="agentt">1 · Planner agent</text>
+  <text x="335" y="172" text-anchor="middle" class="agents">story, key insight, storyline, numeric spine</text>
+  <line x1="335" y1="88" x2="335" y2="126" class="ln"/>
+  <path d="M560,88 L447,127" class="ln"/>
+  <text x="512" y="110" class="lbl">6 archetypes retrieved</text>
+
+  <rect x="510" y="128" width="200" height="62" rx="6" class="tool"/>
+  <text x="610" y="153" text-anchor="middle" class="toolt">Plan math check</text>
+  <text x="610" y="172" text-anchor="middle" class="tools">code · evaluates the spine</text>
+  <path d="M460,170 L508,170" class="ln"/>
+  <path d="M610,190 C610,215 420,215 400,192" class="lo"/>
+  <text x="478" y="230" class="lbl" fill="#bd5319">issues → replan (≤2)</text>
+
+  <!-- writer -->
+  <rect x="210" y="240" width="250" height="62" rx="6" class="agent"/>
+  <text x="335" y="265" text-anchor="middle" class="agentt">2 · Writer agent</text>
+  <text x="335" y="284" text-anchor="middle" class="agents">full case as variables, formulas, placeholders</text>
+  <line x1="335" y1="190" x2="335" y2="238" class="ln"/>
+
+  <rect x="510" y="240" width="200" height="62" rx="6" class="tool"/>
+  <text x="610" y="265" text-anchor="middle" class="toolt">Verifier</text>
+  <text x="610" y="284" text-anchor="middle" class="tools">code · 29 automated checks</text>
+  <path d="M460,271 L508,271" class="ln"/>
+
+  <rect x="740" y="240" width="110" height="62" rx="6" class="agent"/>
+  <text x="795" y="265" text-anchor="middle" class="agentt">Fixer</text>
+  <text x="795" y="284" text-anchor="middle" class="agents">writer, repair mode</text>
+  <path d="M710,262 L738,262" class="lo"/>
+  <path d="M738,284 L712,284" class="lo"/>
+  <text x="700" y="230" class="lbl" fill="#bd5319">issues ↔ fix (≤3 per pass)</text>
+
+  <!-- reviewer -->
+  <rect x="210" y="352" width="250" height="62" rx="6" class="agent"/>
+  <text x="335" y="377" text-anchor="middle" class="agentt">3 · Reviewer agent</text>
+  <text x="335" y="396" text-anchor="middle" class="agents">independent audit · blocker / major / minor</text>
+  <path d="M610,302 C610,340 480,350 462,370" class="ln"/>
+  <text x="530" y="346" class="lbl">clean draft</text>
+  <path d="M460,395 C700,410 800,360 795,304" class="lo"/>
+  <text x="472" y="440" class="lbl" fill="#bd5319">serious findings → Fixer → Verifier → review again (3–5 reviews)</text>
+
+  <!-- output -->
+  <rect x="210" y="458" width="250" height="62" rx="6" class="tool"/>
+  <text x="335" y="483" text-anchor="middle" class="toolt">Renderer + PDF exporter</text>
+  <text x="335" y="502" text-anchor="middle" class="tools">numbers filled from formulas · SVG charts</text>
+  <line x1="335" y1="414" x2="335" y2="456" class="ln"/>
+
+  <rect x="510" y="458" width="330" height="62" rx="6" class="data"/>
+  <text x="675" y="483" text-anchor="middle" class="datat">Library + PDF · status + token/cost log</text>
+  <text x="675" y="502" text-anchor="middle" class="datas">Verified · Reviewer flags remain · Needs attention</text>
+  <line x1="460" y1="489" x2="508" y2="489" class="ln"/>
+
+  <!-- legend -->
+  <rect x="20" y="128" width="14" height="14" class="agent"/><text x="40" y="140" class="tools">AI agent (Luna or Terra/Sol)</text>
+  <rect x="20" y="152" width="14" height="14" class="tool"/><text x="40" y="164" class="tools">code tool (no AI)</text>
+  <rect x="20" y="176" width="14" height="14" class="data"/><text x="40" y="188" class="tools">data</text>
+  <rect x="20" y="200" width="14" height="14" class="guard"/><text x="40" y="212" class="tools">safety / budget guard</text>
+  <line x1="20" y1="232" x2="50" y2="232" class="lo"/><text x="56" y="236" class="tools">bounded repair loop</text>
+</svg>

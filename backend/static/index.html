@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>McKennel &amp; Co. · Handsome Dan's case kennel · Yale SOM</title>
+  <link rel="icon" href="/static/dan.svg">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/dan.css">
+</head>
+<body>
+  <header class="topbar dan-top">
+    <div class="brand">
+      <span class="dan-mark" data-dan="48"></span>
+      <div>
+        <div class="wordmark">McKennel &amp; Co.</div>
+        <div class="tagline">Handsome Dan's case kennel · Yale School of Management</div>
+      </div>
+    </div>
+    <nav class="dan-nav" aria-label="Main">
+      <button type="button" class="nav-btn" data-view="run">Run room</button>
+      <button type="button" class="nav-btn" data-view="library">Library</button>
+      <button type="button" class="nav-btn" data-view="practice">Practice with Handsome Dan</button>
+    </nav>
+    <div class="topbar-meta">
+      <div id="built-from"></div>
+      <div class="spend-pill" id="spend-pill" title="Model spend today against the daily cap"></div>
+    </div>
+  </header>
+
+  <!-- ===================================================== RUN ROOM -->
+  <main class="view" id="view-run">
+    <section class="run-config card">
+      <h2 class="card-title">New batch</h2>
+      <form id="gen-form">
+        <fieldset class="levels" id="difficulty">
+          <legend>Difficulty</legend>
+          <label class="level" data-level="easy"><input type="radio" name="difficulty" value="easy">
+            <span class="level-name">Easy</span><span class="level-tier">Puppy</span>
+            <span class="level-desc">Warm-up. One clear insight, round numbers.</span></label>
+          <label class="level" data-level="medium"><input type="radio" name="difficulty" value="medium" checked>
+            <span class="level-name">Medium</span><span class="level-tier">Bulldog</span>
+            <span class="level-desc">Typical first round. A chain of math and a brainstorm.</span></label>
+          <label class="level" data-level="hard"><input type="radio" name="difficulty" value="hard">
+            <span class="level-name">Hard</span><span class="level-tier">Top Dog</span>
+            <span class="level-desc">Final round. Distractors, a pivot, second-order effects.</span></label>
+          <label class="level level-offer" data-level="instant_offer"><input type="radio" name="difficulty" value="instant_offer">
+            <span class="level-name">Instant Offer</span><span class="level-tier">Handsome Dan</span>
+            <span class="level-desc">Brutal. Messy data, a reversal, pushback, CEO synthesis.</span></label>
+        </fieldset>
+
+        <fieldset class="engine" id="engine">
+          <legend>Model</legend>
+          <label class="seg"><input type="radio" name="engine" value="luna" checked><span>Luna <small>course model</small></span></label>
+          <label class="seg"><input type="radio" name="engine" value="strong"><span>Stronger <small>Terra / Sol</small></span></label>
+        </fieldset>
+        <p class="engine-hint" id="engine-hint"></p>
+
+        <div class="count-row">
+          <span class="count-label">How many</span>
+          <div class="stepper">
+            <button type="button" class="step-btn" id="count-minus" aria-label="Fewer">−</button>
+            <input type="number" id="count" name="count" value="1" min="1" max="6" aria-label="Number of cases">
+            <button type="button" class="step-btn" id="count-plus" aria-label="More">+</button>
+          </div>
+          <button type="button" class="link-btn" id="one-of-each">One of each level</button>
+        </div>
+
+        <details class="more">
+          <summary>More options</summary>
+          <label class="field">Case type
+            <select name="case_type" id="case_type"><option value="">Any</option></select>
+          </label>
+          <label class="field">Industry
+            <select name="industry" id="industry"><option value="">Any</option></select>
+          </label>
+          <label class="field">Format
+            <select name="format" id="format"><option value="">Either</option></select>
+          </label>
+          <label class="field">Anything else <span class="optional">optional</span>
+            <textarea name="notes" rows="2" maxlength="600" placeholder="e.g. focus on pricing, include an NPV, set it in Southeast Asia"></textarea>
+          </label>
+        </details>
+
+        <button type="submit" class="btn btn-primary btn-big" id="gen-btn">Generate case</button>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <p class="budget" id="budget"></p>
+      </form>
+    </section>
+
+    <section class="run-board">
+      <div class="kpi-strip" id="kpi-strip"></div>
+      <div class="jobs" id="jobs"></div>
+      <div class="jobs-empty" id="jobs-empty">
+        <span data-dan="96"></span>
+        <h3>The kennel is quiet.</h3>
+        <p>Pick a level and how many cases you want. Each one is planned, written, checked by code and reviewed. Watch every step, token and cent here as it runs.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================== LIBRARY -->
+  <main class="view" id="view-library" hidden>
+    <div class="lib-head">
+      <div>
+        <h1>Library</h1>
+        <p class="muted" id="empty-built"></p>
+      </div>
+      <div class="chips" id="lib-filter">
+        <button type="button" class="chip active" data-level="">All</button>
+        <button type="button" class="chip" data-level="easy">Easy</button>
+        <button type="button" class="chip" data-level="medium">Medium</button>
+        <button type="button" class="chip" data-level="hard">Hard</button>
+        <button type="button" class="chip" data-level="instant_offer">Instant Offer</button>
+      </div>
+    </div>
+    <div class="lib-grid" id="library"></div>
+  </main>
+
+  <!-- ===================================================== CASE (opened from the library or a run) -->
+  <main class="view main" id="view-case" hidden>
+    <button type="button" class="link-btn back" id="case-back">← Back</button>
+    <article class="case" id="case"></article>
+  </main>
+
+  <!-- ===================================================== PRACTICE -->
+  <main class="view" id="view-practice" hidden>
+    <section class="practice-start card" id="practice-start">
+      <div class="practice-hero">
+        <span data-dan="104"></span>
+        <div>
+          <h1>Practice with Handsome Dan</h1>
+          <p class="lede">Handsome Dan picks a case from the library and interviews you live: he reads the prompt, answers your
+            clarifying questions, hands over exhibits when you get there, pushes back, and scores you at the end.</p>
+        </div>
+      </div>
+      <div class="chips" id="practice-level">
+        <button type="button" class="chip active" data-level="">Any level</button>
+        <button type="button" class="chip" data-level="easy">Easy</button>
+        <button type="button" class="chip" data-level="medium">Medium</button>
+        <button type="button" class="chip" data-level="hard">Hard</button>
+        <button type="button" class="chip" data-level="instant_offer">Instant Offer</button>
+      </div>
+      <fieldset class="engine practice-engine" id="practice-engine">
+        <legend>Who plays Handsome Dan</legend>
+        <label class="seg"><input type="radio" name="iv-engine" value="luna" checked><span>Luna <small>course model · about ½¢ an interview</small></span></label>
+        <label class="seg"><input type="radio" name="iv-engine" value="strong"><span>Stronger <small>Terra · follows the rules more closely · about 15¢</small></span></label>
+      </fieldset>
+      <button type="button" class="btn btn-primary btn-big" id="practice-go">Give me a case</button>
+      <p class="form-error" id="practice-error" role="alert" hidden></p>
+      <p class="muted small">Handsome Dan only knows what's
+        in the case, never shows you the answer key, and the case title stays hidden until you're scored.</p>
+      <div id="practice-resume"></div>
+    </section>
+
+    <section class="interview" id="interview" hidden>
+      <div class="chat card">
+        <div class="chat-head">
+          <div><span class="pill" id="iv-level"></span> <strong id="iv-client"></strong> <span class="muted" id="iv-industry"></span></div>
+          <div class="progress-dots" id="iv-progress"></div>
+        </div>
+        <div class="messages" id="messages" aria-live="polite"></div>
+        <form class="composer" id="composer">
+          <textarea id="composer-text" rows="3" maxlength="2000" placeholder="Talk to Handsome Dan. Enter sends, Shift+Enter adds a line."></textarea>
+          <div class="composer-actions">
+            <button type="button" class="btn btn-ghost mic-btn" id="mic-btn" title="Speak your reply; it's typed into the box so you can edit it before sending">🎤 Speak</button>
+            <button type="button" class="btn btn-ghost" id="hint-btn">Ask for a hint</button>
+            <button type="button" class="btn btn-ghost" id="skip-btn" title="Don't answer this part; Handsome Dan presents the next one (no model call)">Skip to the next part</button>
+            <button type="button" class="btn btn-ghost" id="score-btn">Score my case</button>
+            <button type="submit" class="btn btn-primary" id="send-btn">Send</button>
+          </div>
+        </form>
+      </div>
+      <aside class="iv-side">
+        <div class="card voice-card" id="voice-card">
+          <h3 class="card-title">Voice</h3>
+          <label class="field">Handsome Dan's voice
+            <select id="voice-profile">
+              <option value="off">Off (text only)</option>
+              <option value="regal">Regal Handsome Dan</option>
+              <option value="calm">Calm narrator</option>
+            </select>
+          </label>
+          <label class="field">What he reads aloud
+            <select id="voice-scope">
+              <option value="prompt">The case prompt</option>
+              <option value="all">Everything he says</option>
+            </select>
+          </label>
+          <button type="button" class="btn btn-ghost" id="hear-prompt">▶ Hear the case prompt</button>
+          <p class="muted small">Uses your browser's built-in voices. Nothing extra is sent to the app.</p>
+        </div>
+        <div class="card meter-card" id="iv-meter"></div>
+        <div class="card">
+          <h3 class="card-title">Exhibits from Handsome Dan</h3>
+          <div id="iv-exhibits"><p class="muted small">Handsome Dan hands these over as you reach them.</p></div>
+        </div>
+        <button type="button" class="link-btn" id="iv-new">Start a different case</button>
+      </aside>
+    </section>
+
+    <section class="scorecard" id="scorecard" hidden></section>
+  </main>
+
+  <footer class="dan-foot">
+    <span data-dan="26"></span>
+    <span>McKennel &amp; Co. · consulting case practice, guarded by Handsome Dan</span>
+    <a class="trap-btn" href="/bulldog-security">Why is Handsome Dan on my screen, I don't go to Yale?</a>
+  </footer>
+
+  <script src="/static/dan.js"></script>
+  <script src="/static/charts.js"></script>
+  <script src="/static/case_view.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

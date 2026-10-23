@@ -1,0 +1,46 @@
+{
+ "case_id": "20261020-210123-e7d51f",
+ "title": "The Crate Comeback",
+ "difficulty": "instant_offer",
+ "original_status": "review_flags",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "The numerical work is otherwise internally consistent. Key checks: demand growth is 0.3M short-haul + 0.4M ordinary long-haul = 0.7M; short contribution is $3 - $0.75 - $0.35 - (2% × $12) = $1.66 per turn; ordinary long-haul contribution is $3 - $1.10 - $1.00 - (12% × $12) = -$0.54; short-only NPV is ($1.992M - $1.0M) × 4.9 - $5.5M = -$0.6392M; cooperative contribution is $3 - $1.10 - $0.50 - (3% × $12) = $1.04; and the full stated mix produces $1.3992M NPV. Capacity, timing, cash-flow basis, and use of the supplied 4.9x annuity factor are consistent. The case also meets the requested shape and difficulty features (seven distinct sections, four exhibits, a multi-step NPV chain, integrated-exhibit diagnosis, pivot, two pushbacks, and hand-manageable arithmetic). The material gap is that it calls a forecasted short-haul market volume a usable seven-year operating base without ever making its availability an input; this makes both the financial case and the stated commercial gate unrunnable as written.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "Demand availability / q5, q6, q7, Recommendation, and Interviewer notes",
+   "problem": "The model treats all 1.2M 2028 short-haul corridor turns as annual FreshLoop depot volume, but no candidate-visible fact says FreshLoop can win, is contracted for, or has a credible right to serve those turns if it builds. The prompt only says that without the depot FreshLoop cannot serve the corridor turns; that establishes incrementality versus no-build, not capture/availability under build. This is material: the full cooperative contract alone is not enough to support the depot. Its annual contribution is 0.4M × $1.04 = $0.416M; after the $1.0M fixed cost, annual cash flow is -$0.584M. The stated $1.3992M NPV instead relies on the uncommitted 1.2M short-haul volume: 1.2M × $1.66 = $1.992M, plus $0.416M, less $1.0M = $1.408M; $1.408M × 4.9 - $5.5M = $1.3992M. Consequently, the recommendation that capex can be released once the 0.4M cooperative contract is binding is unsupported unless the short-haul base is also assured.",
+   "fix": "Add a candidate-visible statement in Exhibit 1 or the q5 share fact: “FreshLoop has enforceable/renewable commitments or demonstrated access for 1.2M annual short-haul turns throughout the seven operating years, conditional on depot availability.” Alternatively, retain it as forecast demand but change the recommendation and approval gate to require binding or otherwise evidenced access to both the 1.2M short-haul base and the 0.4M cooperative volume."
+  },
+  {
+   "severity": "minor",
+   "where": "q6 calculation definition: minimum_practical_commitment and minimum_commitment_npv",
+   "problem": "The displayed method is described as a general ‘round up’ method but uses round(break_even_contract_turns / commitment_rounding_unit + 0.5). It happens to produce 0.126M for the non-integer threshold 0.125432M, but it is an opaque substitute for a ceiling operation and would incorrectly round an exactly-on-increment threshold upward. The correct result in this instance is nevertheless 0.126M: ceiling(0.125432M / 0.001M) × 0.001M = 0.126M, and its NPV is ($0.992M + 0.126M × $1.04) × 4.9 - $5.5M = $0.002896M.",
+   "fix": "Replace both formulas with ceil(break_even_contract_turns / commitment_rounding_unit) × commitment_rounding_unit, and use that named rounded-up value in the NPV formula."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 10781,
+  "cached": 0,
+  "output": 2476,
+  "requests": 1,
+  "seconds": 25.1,
+  "usd": 0.056604,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 10781,
+    "cached": 0,
+    "output": 2476,
+    "requests": 1,
+    "seconds": 25.1,
+    "usd": 0.056604
+   }
+  ]
+ }
+}

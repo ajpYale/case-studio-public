@@ -1,0 +1,12 @@
+{
+ "label": "run01-medium",
+ "job": "3fb0efc2c2",
+ "status": "error",
+ "minutes": 0.2,
+ "stages": [
+  "Planning the storyline"
+ ],
+ "error": "ModelHTTPError: status_code: 400, model_name: gpt-6-luna, body: {'message': \"azure-openai error: Function tools with reasoning_effort are not supported for gpt-6-luna-global in /v1/chat/completions. To use function tools, use /v1/responses or set reasoning_effort to 'none'.\", 'type': 'invalid_request_error', 'param': 'reasoning_effort', 'code': None}",
+ "difficulty": "medium",
+ "engine": "luna"
+}

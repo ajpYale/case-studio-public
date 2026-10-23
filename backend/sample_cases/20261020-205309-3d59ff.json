@@ -1,0 +1,2573 @@
+{
+ "id": "20261020-205309-3d59ff",
+ "created_at": "2026-10-20T20:53:09.396822+00:00",
+ "request": {
+  "difficulty": "hard",
+  "case_type": null,
+  "industry": null,
+  "format": null,
+  "notes": null,
+  "engine": "luna",
+  "confirm_cost": false
+ },
+ "plan": {
+  "title": "The Organics Contract That Crowds Out Its Best Customers",
+  "client": "Northstar Organics",
+  "industry": "Commercial organics processing and composting",
+  "case_type": "Growth strategy and capital-allocation decision",
+  "situation": "Northstar Organics is a fictional regional organics processor considering a five-year municipal food-scraps contract. It would need to install a depackaging line to accept the material. The city’s initial volume estimate appears to fit the market opportunity, but Northstar’s site also has a hard throughput limit and already processes yard waste. The CEO wants to know whether to bid, what terms to seek, and how to protect the economics if the city’s requirements change.",
+  "core_question": "Should Northstar pursue the city contract and invest in the depackaging line, and what conditions should it negotiate before committing?",
+  "key_insight": "The contract’s attractive unit contribution is not the same as its incremental value: Northstar has only 18,000 tons of spare site capacity, so the initial 24,000-ton contract displaces 6,000 tons of existing yard waste. The initial economics still clear the four-year payback hurdle, but the city’s later 30,000-ton minimum and required odor-control upgrade push payback beyond the hurdle. A strong candidate recognizes that the decision turns on contract economics after capacity opportunity cost, then proposes a price or capital-sharing condition rather than accepting the headline volume.",
+  "twist": "After the candidate evaluates the initial offer, the interviewer reveals that the city will require a 30,000-ton annual minimum, expects higher contamination, and requires an odor-control upgrade. Recalculate rather than extrapolating the initial case: the revised offer misses the client’s payback hurdle unless Northstar improves the fee or shares the added capital cost.",
+  "storyline": [
+   {
+    "kind": "framework",
+    "intent": "Assess whether the candidate frames a client-specific decision: contract attractiveness and competitive position; feedstock quality and unit economics; site capacity and displaced business; investment and implementation requirements; and contract, community, and execution risks. A strong candidate distinguishes market volume from volume Northstar can profitably process."
+   },
+   {
+    "kind": "exhibit_read",
+    "intent": "Have the candidate identify the relevant municipal feedstock and pricing evidence, interpret the competitor reference as context rather than a substitute for Northstar’s own economics, and set aside irrelevant yard-waste and recycling figures."
+   },
+   {
+    "kind": "market_sizing",
+    "intent": "Estimate the addressable annual food-scrap volume from eligible households, participation, and annual generation per participating household. Compare the result with the city’s initial offer and identify any demand or adoption uncertainty."
+   },
+   {
+    "kind": "brainstorm",
+    "intent": "Generate case-grounded ways to improve or de-risk the bid: contamination controls at collection, volume and quality bands, price escalators or surcharges, municipal capex support, phased onboarding, guaranteed minimum fees, and preserving or relocating displaced yard-waste customers."
+   },
+   {
+    "kind": "quant",
+    "intent": "Calculate initial annual contract contribution after processing and reject-disposal costs, then subtract the contribution lost when contract volume exceeds spare site capacity. Compare the resulting payback with the client hurdle and contract term."
+   },
+   {
+    "kind": "pivot",
+    "intent": "Update the model for the revised minimum volume, higher contamination, and odor-control capex. Test whether the revised offer clears the hurdle and calculate the fee or city contribution needed to restore it."
+   },
+   {
+    "kind": "synthesis",
+    "intent": "Deliver a conditional bid recommendation that integrates economics, operating feasibility, contract protections, and a practical diligence and negotiation sequence."
+   }
+  ],
+  "numbers_plan": "The candidate sums 30,000, 28,000, and 22,000 eligible households, applies 60% participation and 0.5 tons per participating household per year to estimate 24,000 tons annually. At the initial 20% contamination rate, each inbound ton earns $78 in tipping fees plus compost revenue on clean material and incurs processing and reject-disposal costs, yielding $45 per ton, or $1.08M annual contribution. Northstar has 18,000 tons of spare capacity (60,000 capacity less 42,000 existing yard waste), so 6,000 tons of yard waste are displaced at $25 contribution per ton. Net incremental annual contribution is $930K; against $3.0M capex, payback is about 3.2 years, below the four-year hurdle and within the five-year contract. On the pivot, 30,000 tons at 35% contamination generate $1.0575M contribution before displacement; 12,000 tons of yard waste are displaced, costing $300K, for $757.5K net annual contribution. Total capex becomes $4.2M, yielding about 5.5-year payback. At that revised operating profile, the fee must rise to about $87.75 per ton (roughly $88) to meet the four-year hurdle, or the city must contribute about $1.17M toward capex.",
+  "exhibits_plan": [
+   "Exhibit 1 — Municipal collection opportunity by service area: a table of eligible households, participation, annual food scraps per participating household, and annual yard-waste tonnage. The three household counts drive sizing; yard-waste figures are distractors and should not be added to food scraps.",
+   "Exhibit 2 — Tipping-fee comparison: a bar chart comparing the proposed city fee, Northstar’s yard-waste fee, and a competing processor’s quote, all in dollars per inbound ton. It provides commercial context, not a substitute for Northstar’s contribution calculation.",
+   "Exhibit 3 — Food-scrap processing assumptions: a table of contamination rate, compost yield from clean feedstock, compost selling price, processing cost, and reject-disposal cost. These are unit economics inputs, not precomputed project results."
+  ],
+  "core_variables": [
+   {
+    "name": "households_north_k",
+    "value": 30.0,
+    "unit": "count_k",
+    "label": "Eligible households in the North service area",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "households_central_k",
+    "value": 28.0,
+    "unit": "count_k",
+    "label": "Eligible households in the Central service area",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "households_south_k",
+    "value": 22.0,
+    "unit": "count_k",
+    "label": "Eligible households in the South service area",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "participation_rate",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Expected household participation rate",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "food_scraps_per_active_household",
+    "value": 0.5,
+    "unit": "other",
+    "label": "Annual food scraps per participating household, in tons",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "yard_waste_north_tons_k",
+    "value": 12.0,
+    "unit": "count_k",
+    "label": "Annual yard waste in North service area",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "yard_waste_central_tons_k",
+    "value": 10.0,
+    "unit": "count_k",
+    "label": "Annual yard waste in Central service area",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "yard_waste_south_tons_k",
+    "value": 8.0,
+    "unit": "count_k",
+    "label": "Annual yard waste in South service area",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "city_tipping_fee",
+    "value": 78.0,
+    "unit": "per_unit_usd",
+    "label": "Initial city tipping fee per inbound ton",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "yard_waste_tipping_fee",
+    "value": 52.0,
+    "unit": "per_unit_usd",
+    "label": "Northstar yard-waste tipping fee per ton",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "competitor_tipping_quote",
+    "value": 70.0,
+    "unit": "per_unit_usd",
+    "label": "Competing processor’s quoted fee per ton",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "initial_contamination_rate",
+    "value": 0.2,
+    "unit": "pct",
+    "label": "Contamination rate in the initial city feedstock estimate",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "compost_yield_from_clean_feedstock",
+    "value": 0.25,
+    "unit": "ratio",
+    "label": "Tons of saleable compost produced per ton of clean food-scrap feedstock",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "compost_price_per_ton",
+    "value": 40.0,
+    "unit": "per_unit_usd",
+    "label": "Compost selling price per ton",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "processing_cost_per_inbound_ton",
+    "value": 30.0,
+    "unit": "per_unit_usd",
+    "label": "Processing cost per inbound ton",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "reject_disposal_cost_per_ton",
+    "value": 55.0,
+    "unit": "per_unit_usd",
+    "label": "Cost to dispose of each rejected ton",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "existing_yard_waste_tons_k",
+    "value": 42.0,
+    "unit": "count_k",
+    "label": "Current annual yard-waste throughput",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "site_capacity_tons_k",
+    "value": 60.0,
+    "unit": "count_k",
+    "label": "Annual site throughput capacity",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "yard_waste_contribution_per_ton",
+    "value": 25.0,
+    "unit": "per_unit_usd",
+    "label": "Contribution earned on displaced yard-waste volume",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "initial_line_capex",
+    "value": 3.0,
+    "unit": "usd_m",
+    "label": "Initial depackaging-line capital cost",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "payback_hurdle",
+    "value": 4.0,
+    "unit": "years",
+    "label": "Maximum acceptable simple payback",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "contract_term",
+    "value": 5.0,
+    "unit": "years",
+    "label": "Initial contract term",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "pivot_contract_tons_k",
+    "value": 30.0,
+    "unit": "count_k",
+    "label": "Revised city minimum annual volume",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "pivot_contamination_rate",
+    "value": 0.35,
+    "unit": "pct",
+    "label": "Revised expected feedstock contamination rate",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "odor_control_capex",
+    "value": 1.2,
+    "unit": "usd_m",
+    "label": "Additional odor-control capital required by revised city terms",
+    "revealed_in": "interviewer",
+    "role": "input"
+   }
+  ],
+  "core_calculations": [
+   {
+    "id": "eligible_households_k",
+    "label": "Total eligible households",
+    "expression": "households_north_k + households_central_k + households_south_k",
+    "unit": "count_k",
+    "expected_value": 80.0,
+    "decimals": 0
+   },
+   {
+    "id": "initial_contract_tons_k",
+    "label": "Initial annual addressable food-scrap volume",
+    "expression": "eligible_households_k * participation_rate * food_scraps_per_active_household",
+    "unit": "count_k",
+    "expected_value": 24.0,
+    "decimals": 0
+   },
+   {
+    "id": "initial_clean_feed_tons_k",
+    "label": "Initial annual clean feedstock",
+    "expression": "initial_contract_tons_k * (1 - initial_contamination_rate)",
+    "unit": "count_k",
+    "expected_value": 19.2,
+    "decimals": 1
+   },
+   {
+    "id": "initial_compost_output_tons_k",
+    "label": "Initial annual saleable compost output",
+    "expression": "initial_clean_feed_tons_k * compost_yield_from_clean_feedstock",
+    "unit": "count_k",
+    "expected_value": 4.8,
+    "decimals": 1
+   },
+   {
+    "id": "initial_gross_contribution",
+    "label": "Initial annual contract contribution before capacity displacement",
+    "expression": "initial_contract_tons_k * (city_tipping_fee + (1 - initial_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton - processing_cost_per_inbound_ton - initial_contamination_rate * reject_disposal_cost_per_ton) / 1000",
+    "unit": "usd_m",
+    "expected_value": 1.08,
+    "decimals": 2
+   },
+   {
+    "id": "spare_capacity_tons_k",
+    "label": "Annual spare site capacity",
+    "expression": "site_capacity_tons_k - existing_yard_waste_tons_k",
+    "unit": "count_k",
+    "expected_value": 18.0,
+    "decimals": 0
+   },
+   {
+    "id": "initial_displaced_yard_tons_k",
+    "label": "Initial annual yard-waste volume displaced",
+    "expression": "max(0, initial_contract_tons_k - spare_capacity_tons_k)",
+    "unit": "count_k",
+    "expected_value": 6.0,
+    "decimals": 0
+   },
+   {
+    "id": "initial_lost_yard_contribution",
+    "label": "Initial annual contribution lost to displaced yard waste",
+    "expression": "initial_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000",
+    "unit": "usd_m",
+    "expected_value": 0.15,
+    "decimals": 2
+   },
+   {
+    "id": "initial_net_contribution",
+    "label": "Initial annual net incremental contribution",
+    "expression": "initial_gross_contribution - initial_lost_yard_contribution",
+    "unit": "usd_m",
+    "expected_value": 0.93,
+    "decimals": 2
+   },
+   {
+    "id": "initial_payback",
+    "label": "Initial simple payback",
+    "expression": "initial_line_capex / initial_net_contribution",
+    "unit": "years",
+    "expected_value": 3.2258064516,
+    "decimals": 1
+   },
+   {
+    "id": "pivot_gross_contribution",
+    "label": "Revised annual contract contribution before capacity displacement",
+    "expression": "pivot_contract_tons_k * (city_tipping_fee + (1 - pivot_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton - processing_cost_per_inbound_ton - pivot_contamination_rate * reject_disposal_cost_per_ton) / 1000",
+    "unit": "usd_m",
+    "expected_value": 1.0575,
+    "decimals": 3
+   },
+   {
+    "id": "pivot_displaced_yard_tons_k",
+    "label": "Revised annual yard-waste volume displaced",
+    "expression": "max(0, existing_yard_waste_tons_k + pivot_contract_tons_k - site_capacity_tons_k)",
+    "unit": "count_k",
+    "expected_value": 12.0,
+    "decimals": 0
+   },
+   {
+    "id": "pivot_net_contribution",
+    "label": "Revised annual net incremental contribution",
+    "expression": "pivot_gross_contribution - pivot_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000",
+    "unit": "usd_m",
+    "expected_value": 0.7575,
+    "decimals": 3
+   },
+   {
+    "id": "pivot_total_capex",
+    "label": "Total capital required under revised terms",
+    "expression": "initial_line_capex + odor_control_capex",
+    "unit": "usd_m",
+    "expected_value": 4.2,
+    "decimals": 1
+   },
+   {
+    "id": "pivot_payback",
+    "label": "Revised simple payback",
+    "expression": "pivot_total_capex / pivot_net_contribution",
+    "unit": "years",
+    "expected_value": 5.5445544554,
+    "decimals": 1
+   },
+   {
+    "id": "required_pivot_fee",
+    "label": "City tipping fee required to meet the payback hurdle under revised terms",
+    "expression": "((pivot_total_capex / payback_hurdle + pivot_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000 + pivot_contract_tons_k * (processing_cost_per_inbound_ton + pivot_contamination_rate * reject_disposal_cost_per_ton - (1 - pivot_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton) / 1000) * 1000) / pivot_contract_tons_k",
+    "unit": "per_unit_usd",
+    "expected_value": 87.75,
+    "decimals": 2
+   }
+  ]
+ },
+ "draft": {
+  "title": "The Organics Contract That Crowds Out Its Best Customers",
+  "client": "Northstar Organics",
+  "industry": "Commercial organics processing and composting",
+  "case_type": "Growth strategy and capital-allocation decision",
+  "difficulty": "hard",
+  "format": "candidate_led",
+  "duration_minutes": 40,
+  "concepts_tested": [
+   "Tailored structuring",
+   "Market sizing",
+   "Unit economics and contribution margin",
+   "Capacity constraints and opportunity cost",
+   "Simple payback",
+   "Contract negotiation",
+   "Scenario analysis",
+   "Contamination and operating risk",
+   "Executive synthesis"
+  ],
+  "situation_summary": "Northstar Organics is considering a municipal food-scraps contract that requires a depackaging line. Although the initial contract appears attractive, limited site capacity means it would displace profitable yard-waste business; the city’s revised requirements make the investment miss Northstar’s payback hurdle and leave part of the investment unrecovered by the end of the contract.",
+  "prompt": "Northstar Organics is a regional commercial organics processor. A municipality has invited the company to bid on a food-scraps processing contract. Winning would require Northstar to install a depackaging line, and the city’s initial estimate of available material appears attractive. Northstar’s site also has existing yard-waste business and a firm throughput limit. The CEO wants to know whether to pursue the contract, what terms to seek, and what must be validated before committing capital. How would you assess the opportunity and advise the CEO?",
+  "clarifying": [
+   {
+    "question": "What is Northstar trying to optimize: growth, profit, or something else?",
+    "answer": "The CEO’s priority is to earn an acceptable return on incremental investment while preserving service quality and avoiding an uneconomic long-term commitment. Northstar uses a simple payback hurdle of {payback_hurdle}."
+   },
+   {
+    "question": "What is the proposed contract duration?",
+    "answer": "The initial municipal contract would run for {contract_term}, subject to negotiation."
+   },
+   {
+    "question": "Does Northstar have any strategic reason to enter food-scraps processing beyond this contract?",
+    "answer": "It is a potential adjacent service, but the CEO has not approved a broader expansion strategy. Evaluate this contract on its own economics; mention any strategic option value separately and do not assume uncontracted future volume."
+   },
+   {
+    "question": "Are all city food scraps expected to be clean and saleable?",
+    "answer": "No. The city’s initial feedstock estimate includes contamination. The initial contamination assumption and the operating inputs are in the processing assumptions exhibit."
+   },
+   {
+    "question": "Should I include financing, taxes, or the time value of money?",
+    "answer": "Use simple payback on annual incremental contribution. Ignore taxes, financing, and time value of money for this screen; flag that a full investment case would need them."
+   },
+   {
+    "question": "Is there a stated competitor or market-price reference?",
+    "answer": "The fee comparison exhibit includes a competitor quote and Northstar’s yard-waste fee. Treat them as commercial context, not as substitutes for calculating Northstar’s own contribution."
+   }
+  ],
+  "variables": [
+   {
+    "name": "households_north",
+    "value": 30000.0,
+    "unit": "count",
+    "label": "Eligible households in the North service area",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "households_central",
+    "value": 28000.0,
+    "unit": "count",
+    "label": "Eligible households in the Central service area",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "households_south",
+    "value": 22000.0,
+    "unit": "count",
+    "label": "Eligible households in the South service area",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "participation_rate",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Expected household participation rate",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "food_scraps_per_active_household",
+    "value": 0.5,
+    "unit": "other",
+    "label": "Annual food scraps per participating household, in tons",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "yard_waste_north_tons",
+    "value": 12000.0,
+    "unit": "count",
+    "label": "Annual yard waste in North service area",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "yard_waste_central_tons",
+    "value": 10000.0,
+    "unit": "count",
+    "label": "Annual yard waste in Central service area",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "yard_waste_south_tons",
+    "value": 8000.0,
+    "unit": "count",
+    "label": "Annual yard waste in South service area",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "city_tipping_fee",
+    "value": 78.0,
+    "unit": "per_unit_usd",
+    "label": "Initial city tipping fee per inbound ton",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "yard_waste_tipping_fee",
+    "value": 52.0,
+    "unit": "per_unit_usd",
+    "label": "Northstar yard-waste tipping fee per ton",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "competitor_tipping_quote",
+    "value": 70.0,
+    "unit": "per_unit_usd",
+    "label": "Competing processor’s quoted fee per ton",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "initial_contamination_rate",
+    "value": 0.2,
+    "unit": "pct",
+    "label": "Contamination rate in the initial city feedstock estimate",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "compost_yield_from_clean_feedstock",
+    "value": 0.25,
+    "unit": "ratio",
+    "label": "Tons of saleable compost produced per ton of clean food-scrap feedstock",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "compost_price_per_ton",
+    "value": 40.0,
+    "unit": "per_unit_usd",
+    "label": "Compost selling price per ton",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "processing_cost_per_inbound_ton",
+    "value": 30.0,
+    "unit": "per_unit_usd",
+    "label": "All incremental operating cost per inbound ton, excluding reject disposal",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "reject_disposal_cost_per_ton",
+    "value": 55.0,
+    "unit": "per_unit_usd",
+    "label": "Cost to dispose of each rejected ton",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "existing_yard_waste_tons_k",
+    "value": 42.0,
+    "unit": "count_k",
+    "label": "Current annual yard-waste throughput",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "site_capacity_tons_k",
+    "value": 60.0,
+    "unit": "count_k",
+    "label": "Annual site throughput capacity",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "yard_waste_contribution_per_ton",
+    "value": 50.0,
+    "unit": "per_unit_usd",
+    "label": "Contribution earned on displaced yard-waste volume",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "initial_line_capex",
+    "value": 3.0,
+    "unit": "usd_m",
+    "label": "Initial depackaging-line capital cost",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "payback_hurdle",
+    "value": 4.0,
+    "unit": "years",
+    "label": "Maximum acceptable simple payback",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "contract_term",
+    "value": 5.0,
+    "unit": "years",
+    "label": "Initial contract term",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "pivot_contract_tons_k",
+    "value": 30.0,
+    "unit": "count_k",
+    "label": "New expected annual physical inbound volume delivered and processed",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "pivot_contamination_rate",
+    "value": 0.35,
+    "unit": "pct",
+    "label": "New expected feedstock contamination rate",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "odor_control_capex",
+    "value": 1.2,
+    "unit": "usd_m",
+    "label": "Additional odor-control capital required by new city terms",
+    "revealed_in": "interviewer",
+    "role": "input"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Contract attractiveness and demand",
+    "points": [
+     "Validate the city’s addressable feedstock, participation assumptions, and volume guarantee.",
+     "Compare the contract fee and terms with relevant market context, without mistaking competitor pricing for Northstar’s economics.",
+     "Assess contract duration, volume bands, quality definitions, escalation, and minimum-payment protections."
+    ]
+   },
+   {
+    "name": "Feedstock and unit economics",
+    "points": [
+     "Model tipping-fee revenue, compost revenue from clean feedstock, processing expense, and reject-disposal expense.",
+     "Test contamination, compost yield, and the reliability of compost offtake assumptions.",
+     "Separate revenue from contribution and identify which economics Northstar can negotiate or operationally influence."
+    ]
+   },
+   {
+    "name": "Site capacity and displaced business",
+    "points": [
+     "Compare contract volume with true spare throughput, accounting for current yard-waste use.",
+     "Value any displaced yard-waste contribution as an opportunity cost.",
+     "Assess whether shifts, storage, routing, or another site can relieve the bottleneck and at what cost."
+    ]
+   },
+   {
+    "name": "Investment and execution",
+    "points": [
+     "Estimate required line and odor-control capital, installation timing, operating readiness, and payback.",
+     "Check permitting, odor management, contamination controls, labor, and equipment reliability.",
+     "Consider phasing investment against verified deliveries and contract protections."
+    ]
+   },
+   {
+    "name": "Strategic, customer, and community risk",
+    "points": [
+     "Consider the value of establishing a food-scraps capability without assigning unsupported value to future opportunities.",
+     "Protect existing yard-waste customers and municipal service levels.",
+     "Assess community acceptance, contract enforcement, and downside exposure if volume or quality differs from plan."
+    ]
+   }
+  ],
+  "framework_notes": "Reward a decision-oriented structure that distinguishes municipal market volume from volume Northstar can actually process profitably. Strong candidates bring capacity opportunity cost and feedstock quality into the core economics early, and identify that the bid terms can change the answer. Do not require candidates to use these exact buckets; accept a logically complete alternative.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the decision",
+    "kind": "framework",
+    "ask": "How would you structure the decision for Northstar? Please identify the most important questions and how you would ultimately decide whether to bid.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would assess whether the city can provide reliable, economically attractive feedstock; calculate contribution after contamination, processing, and disposal; compare contract volume with spare site capacity and value displaced yard-waste business; and test the required capital against Northstar’s payback hurdle and contract duration. I would then identify contract protections and operating conditions that could preserve the economics, and validate the main demand, quality, and execution risks before committing.",
+    "what_great_looks_like": [
+     "Frames a clear decision and decision criteria rather than listing generic diligence topics.",
+     "Highlights capacity and existing customers as potential constraints before seeing the economics.",
+     "Separates contribution from revenue and identifies contract terms as a lever."
+    ],
+    "common_mistakes": [
+     "Treating the city’s estimated volume as automatically incremental to current throughput.",
+     "Using the competitor quote as the answer to whether the contract is attractive.",
+     "Listing broad market questions without a decision rule."
+    ],
+    "hints": [
+     "What could make a positive unit margin fail to create positive incremental value for Northstar?",
+     "What would you compare the investment return against?"
+    ],
+    "pushback": [
+     "If the contract looks profitable per ton, why might Northstar still decline it?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Read the market and operating exhibits",
+    "kind": "exhibit_read",
+    "ask": "Review the exhibits. What stands out, which data would you use to assess demand and price, and what would you set aside? What would you want to validate before relying on the estimates?",
+    "exhibit_ids": [
+     "ex1",
+     "ex2",
+     "ex3"
+    ],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "The service-area household counts, participation estimate, and annual scraps per active household can support an addressable food-scrap estimate. The yard-waste tonnage shown by service area is a different material stream and should not be added to food scraps. The city’s fee can be compared with Northstar’s yard-waste fee and the competing quote for context, but the fee comparison alone does not show profit. The processing exhibit indicates that contamination reduces compostable feedstock and also creates reject-disposal expense. I would validate household participation, collection capture, contamination measurement, compost offtake, and whether the city’s quoted volume is guaranteed.",
+    "what_great_looks_like": [
+     "Identifies the correct denominator and material stream in the household exhibit.",
+     "Notices contamination has both a lost compost-revenue effect and a disposal-cost effect.",
+     "Treats price comparison as context and asks about volume and quality guarantees."
+    ],
+    "common_mistakes": [
+     "Adding yard-waste tonnage to food-scrap volume.",
+     "Applying compost revenue to all inbound tons rather than clean feedstock.",
+     "Assuming the competitor’s quoted fee proves Northstar’s bid price is profitable."
+    ],
+    "hints": [
+     "Which rows in the service-area exhibit describe food scraps, and which describe another stream?",
+     "Does contamination affect only revenue, or also costs?"
+    ],
+    "pushback": [
+     "The competitor’s quote is lower than the city’s fee. Does that establish that this is a good contract for Northstar?"
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Size the municipal food-scrap opportunity",
+    "kind": "market_sizing",
+    "ask": "Estimate annual food-scrap volume from the service areas using the exhibit. Compare that estimate with the opportunity Northstar should use as its initial operating case, and tell me what uncertainty matters most.",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "eligible_households_k",
+      "label": "Total eligible households",
+      "expression": "households_north + households_central + households_south",
+      "unit": "count",
+      "expected_value": 80000.0,
+      "decimals": 0
+     },
+     {
+      "id": "initial_contract_tons_k",
+      "label": "Initial annual addressable food-scrap volume",
+      "expression": "eligible_households_k * participation_rate * food_scraps_per_active_household / 1000",
+      "unit": "count_k",
+      "expected_value": 24.0,
+      "decimals": 0
+     }
+    ],
+    "model_answer": "The service areas contain {eligible_households_k} eligible households. Applying the estimated participation and annual scraps per participating household gives an initial annual food-scrap opportunity of {initial_contract_tons_k}. I would use that as the initial operating case only if the city can substantiate the participation, collection capture, and delivery assumptions and provide a credible volume commitment. The yard-waste figures are not part of this food-scrap estimate.",
+    "what_great_looks_like": [
+     "Combines the three service areas correctly and applies participation only once.",
+     "Keeps the tonnage time base annual and the material stream consistent.",
+     "Recognizes that an addressable estimate is not necessarily contracted or delivered volume."
+    ],
+    "common_mistakes": [
+     "Adding the service-area yard-waste tonnage into food-scrap volume.",
+     "Forgetting to apply the participation rate or applying it more than once.",
+     "Treating the estimate as a guaranteed minimum without validation."
+    ],
+    "hints": [
+     "Start with total eligible households, then apply participation and annual volume per active household.",
+     "What would cause actual collected volume to differ from the estimate?"
+    ],
+    "pushback": [
+     "The city says its collection program will drive participation. What contractual evidence would you want before relying on that?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Improve or de-risk the bid",
+    "kind": "brainstorm",
+    "ask": "Before we calculate the full investment economics, what practical changes to the bid or operating model could make this opportunity more attractive and less risky for Northstar? Prioritize the actions that could most directly address the issues in the exhibits.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would negotiate a minimum annual payment or take-or-pay volume commitment and a fee escalator, with transparent contamination sampling and a surcharge or rejection right above agreed quality bands. The city could fund or share capital for any city-specific equipment, and Northstar could phase onboarding against verified collections rather than build for an unproven forecast. Operationally, the city could improve source separation and collection education, while Northstar could set delivery windows and inspect loads. Because the site may be capacity-constrained, I would also explore retaining displaced yard-waste customers through alternate-site processing, seasonal routing, or prioritizing the highest-contribution accounts. Any alternative capacity solution should be costed rather than assumed.",
+    "what_great_looks_like": [
+     "Connects negotiation levers directly to volume, contamination, capital, and capacity risk.",
+     "Offers practical collection-side as well as processor-side interventions.",
+     "Recognizes preserving or relocating existing yard-waste business as a distinct path, not free capacity."
+    ],
+    "common_mistakes": [
+     "Suggesting generic marketing or growth ideas unrelated to the binding constraints.",
+     "Assuming a new site, extra shifts, or outside processing is free and immediately available.",
+     "Treating a contamination surcharge as effective without a measurable sampling and enforcement mechanism."
+    ],
+    "hints": [
+     "Which risks can be allocated to the city through contract terms?",
+     "Could Northstar protect existing business rather than simply displace it?"
+    ],
+    "pushback": [
+     "A volume guarantee does not make poor-quality feedstock attractive. What additional protection would you require?"
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Test the initial offer economics",
+    "kind": "quant",
+    "ask": "For the initial operating case, calculate annual contract contribution before and after any displaced yard-waste business, then assess simple payback against Northstar’s hurdle and the contract term. I’ll provide the site and investment facts you need.",
+    "exhibit_ids": [
+     "ex2",
+     "ex3"
+    ],
+    "info_to_share": [
+     "Northstar currently processes {existing_yard_waste_tons_k} of yard waste per year at a site with total annual throughput capacity of {site_capacity_tons_k}.",
+     "Each displaced ton of yard waste contributes {yard_waste_contribution_per_ton}.",
+     "The initial depackaging line requires {initial_line_capex} of capital. Northstar’s maximum acceptable simple payback is {payback_hurdle}, and the initial contract term is {contract_term}.",
+     "For this screen, assume the city’s initial operating volume is the annual food-scrap volume you estimated from the service-area exhibit. Use the city fee shown in the fee-comparison exhibit.",
+     "Assume the processing cost shown in the exhibit includes all incremental operating costs, including labor, maintenance, and odor-control operating expense; the separately listed reject-disposal cost is additional.",
+     "For timing, the line capital is paid at commissioning, the contract term begins at commissioning, and full run-rate contribution begins immediately at commissioning, with no installation delay within the contract term and no ramp-up. Simple payback is measured from commissioning. Use the same timing convention for the city’s later request."
+    ],
+    "calculations": [
+     {
+      "id": "initial_gross_contribution",
+      "label": "Initial annual contract contribution before capacity displacement",
+      "expression": "initial_contract_tons_k * (city_tipping_fee + (1 - initial_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton - processing_cost_per_inbound_ton - initial_contamination_rate * reject_disposal_cost_per_ton) / 1000",
+      "unit": "usd_m",
+      "expected_value": 1.08,
+      "decimals": 2
+     },
+     {
+      "id": "spare_capacity_tons_k",
+      "label": "Annual spare site capacity",
+      "expression": "site_capacity_tons_k - existing_yard_waste_tons_k",
+      "unit": "count_k",
+      "expected_value": 18.0,
+      "decimals": 0
+     },
+     {
+      "id": "initial_displaced_yard_tons_k",
+      "label": "Initial annual yard-waste volume displaced",
+      "expression": "max(0, initial_contract_tons_k - spare_capacity_tons_k)",
+      "unit": "count_k",
+      "expected_value": 6.0,
+      "decimals": 0
+     },
+     {
+      "id": "initial_lost_yard_contribution",
+      "label": "Initial annual contribution lost to displaced yard waste",
+      "expression": "initial_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000",
+      "unit": "usd_m",
+      "expected_value": 0.3,
+      "decimals": 2
+     },
+     {
+      "id": "initial_net_contribution",
+      "label": "Initial annual net incremental contribution",
+      "expression": "initial_gross_contribution - initial_lost_yard_contribution",
+      "unit": "usd_m",
+      "expected_value": 0.78,
+      "decimals": 2
+     },
+     {
+      "id": "initial_payback",
+      "label": "Initial simple payback",
+      "expression": "initial_line_capex / initial_net_contribution",
+      "unit": "years",
+      "expected_value": 3.8461538462,
+      "decimals": 1
+     }
+    ],
+    "model_answer": "The contract produces {initial_gross_contribution} of annual contribution before capacity opportunity cost. Northstar has {spare_capacity_tons_k} of spare capacity, so accepting the initial volume displaces {initial_displaced_yard_tons_k} of yard waste and sacrifices {initial_lost_yard_contribution} of contribution. Net incremental contribution is {initial_net_contribution}; simple payback from commissioning is {initial_payback}. On the stated assumptions, the initial case clears the {payback_hurdle} hurdle and recovers the investment within the {contract_term} contract term. This conclusion depends on the volume and contamination assumptions being verified and on the stated operating-cost scope being complete.",
+    "what_great_looks_like": [
+     "Builds per-ton economics from tipping revenue, compost revenue on clean material, processing expense, and disposal expense on contaminated material.",
+     "Recognizes that contract throughput crowds out existing yard waste once it exceeds spare capacity.",
+     "Uses net incremental contribution, not gross contract contribution, in payback and compares payback with both hurdle and contract term."
+    ],
+    "common_mistakes": [
+     "Applying compost revenue to contaminated tons or ignoring reject disposal.",
+     "Counting all contract contribution as incremental while ignoring displaced yard-waste contribution.",
+     "Using total contract volume rather than only the volume above spare capacity to calculate displaced yard-waste contribution."
+    ],
+    "hints": [
+     "What portion of inbound tons generates compost revenue, and what portion incurs disposal expense?",
+     "How much capacity is available after current yard-waste throughput?",
+     "Use net incremental contribution for payback."
+    ],
+    "pushback": [
+     "The contract has an attractive contribution per ton. Why should Northstar care about the contribution on yard waste?"
+    ]
+   },
+   {
+    "id": "q6",
+    "title": "Reassess under new city terms",
+    "kind": "pivot",
+    "ask": "The city has now changed its request. Recalculate the economics rather than extrapolating the initial result, and tell me what condition Northstar should seek to restore the required return.",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "The city now expects {pivot_contract_tons_k} of physical inbound volume to be delivered and processed each year, with contamination of {pivot_contamination_rate}. This is not a take-or-pay amount for undelivered tons. The city says the higher volume includes additional municipal sources beyond the household program; the amount and reliability of that incremental source have not yet been independently validated.",
+     "The city requires an odor-control upgrade costing {odor_control_capex}. Assume the city fee remains {city_tipping_fee} unless Northstar negotiates a change, and that the revised request has the same {contract_term} contract term.",
+     "Use the same site capacity, existing yard-waste throughput, yard-waste contribution, compost yield and price, processing cost, and reject-disposal cost as in the initial case. The odor-control investment is incremental to the depackaging-line investment. The stated processing cost includes all incremental operating costs, including odor-control operating expense.",
+     "For timing, capital is paid at commissioning and full run-rate contribution starts immediately at commissioning; simple payback is measured from that date, using the same convention as the initial case."
+    ],
+    "calculations": [
+     {
+      "id": "pivot_gross_contribution",
+      "label": "Annual contract contribution before capacity displacement under new terms",
+      "expression": "pivot_contract_tons_k * (city_tipping_fee + (1 - pivot_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton - processing_cost_per_inbound_ton - pivot_contamination_rate * reject_disposal_cost_per_ton) / 1000",
+      "unit": "usd_m",
+      "expected_value": 1.0575,
+      "decimals": 3
+     },
+     {
+      "id": "pivot_displaced_yard_tons_k",
+      "label": "Annual yard-waste volume displaced under new terms",
+      "expression": "max(0, existing_yard_waste_tons_k + pivot_contract_tons_k - site_capacity_tons_k)",
+      "unit": "count_k",
+      "expected_value": 12.0,
+      "decimals": 0
+     },
+     {
+      "id": "pivot_net_contribution",
+      "label": "Annual net incremental contribution under new terms",
+      "expression": "pivot_gross_contribution - pivot_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000",
+      "unit": "usd_m",
+      "expected_value": 0.4575,
+      "decimals": 3
+     },
+     {
+      "id": "pivot_total_capex",
+      "label": "Total capital required under new terms",
+      "expression": "initial_line_capex + odor_control_capex",
+      "unit": "usd_m",
+      "expected_value": 4.2,
+      "decimals": 1
+     },
+     {
+      "id": "pivot_payback",
+      "label": "Simple payback under new terms",
+      "expression": "pivot_total_capex / pivot_net_contribution",
+      "unit": "years",
+      "expected_value": 9.1803278689,
+      "decimals": 1
+     },
+     {
+      "id": "required_pivot_fee",
+      "label": "City tipping fee required to meet the payback hurdle under new terms",
+      "expression": "((pivot_total_capex / payback_hurdle + pivot_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000 + pivot_contract_tons_k * (processing_cost_per_inbound_ton + pivot_contamination_rate * reject_disposal_cost_per_ton - (1 - pivot_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton) / 1000) * 1000) / pivot_contract_tons_k",
+      "unit": "per_unit_usd",
+      "expected_value": 97.75,
+      "decimals": 2
+     },
+     {
+      "id": "pivot_unrecovered_at_term",
+      "label": "Investment not recovered by the end of the contract, assuming no residual value or renewal",
+      "expression": "max(0, pivot_total_capex - pivot_net_contribution * contract_term)",
+      "unit": "usd_m",
+      "expected_value": 1.9125,
+      "decimals": 3
+     }
+    ],
+    "model_answer": "At the new quality and volume assumptions, annual contribution before displacement is {pivot_gross_contribution}. The site would displace {pivot_displaced_yard_tons_k} of yard waste, leaving net annual incremental contribution of {pivot_net_contribution}. Total capital rises to {pivot_total_capex}, producing simple payback of {pivot_payback}, which misses the {payback_hurdle} hurdle and extends beyond the {contract_term} contract term. Assuming no residual value or renewal, {pivot_unrecovered_at_term} of the investment remains unrecovered at the end of the term. Holding the new operating assumptions constant, the city fee would need to be at least {required_pivot_fee} per inbound ton to meet the hurdle. I would not accept the stated volume at face value: it exceeds the household-based estimate, so Northstar should verify the additional sources and delivery schedule before sizing or commissioning the line. Alternatively, seek city capital support, quality-adjusted fees and contamination protections, or a smaller phased contract based on verified deliveries.",
+    "what_great_looks_like": [
+     "Rebuilds unit economics using the new contamination rate and applies the capacity cap to the new volume.",
+     "Identifies that the new offer fails the hurdle and does not recover the investment within the contract term, despite higher volume.",
+     "Derives a fee that restores payback while retaining the new costs and opportunity cost.",
+     "Challenges the unvalidated additional source behind the municipal volume."
+    ],
+    "common_mistakes": [
+     "Carrying forward the initial contribution per ton despite changed contamination.",
+     "Using total contract volume rather than the volume above spare capacity to calculate displaced yard-waste contribution.",
+     "Omitting the odor-control upgrade from total capital required.",
+     "Treating an unvalidated delivery estimate as a guaranteed take-or-pay payment.",
+     "Ignoring that payback extends beyond the contract term or assuming uncontracted renewal value."
+    ],
+    "hints": [
+     "Recalculate the per-ton contribution under the new contamination assumption first.",
+     "What volume exceeds spare capacity, and what contribution does that displace?",
+     "What annual net contribution is required for the capital investment to meet the hurdle?",
+     "How much of the investment is recovered over the stated contract term at the modeled run rate?"
+    ],
+    "pushback": [
+     "If the city refuses a fee increase, what other terms could close the gap without relying on unverified volume?"
+    ]
+   },
+   {
+    "id": "q7",
+    "title": "Make the recommendation",
+    "kind": "synthesis",
+    "ask": "Give the CEO your recommendation. State whether Northstar should bid on the city’s current request, the conditions you would require, the most important risks, and the next steps.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would pursue the opportunity only on a conditional basis and would not commit to the city’s current request as written. The initial case produces {initial_net_contribution} of annual net incremental contribution and {initial_payback} simple payback from commissioning, clearing the hurdle and recovering the investment within the contract term under the stated timing convention. The city’s current terms produce {pivot_net_contribution} of annual net incremental contribution and {pivot_payback} payback after higher contamination, displacement, and added odor-control capital. Payback exceeds the {contract_term} contract term, leaving {pivot_unrecovered_at_term} unrecovered at term assuming no residual value or renewal. Northstar should seek a fee of at least {required_pivot_fee} per inbound ton under the current operating assumptions, or equivalent city capital support, and negotiate enforceable delivery and quality terms. Before committing, validate the additional municipal sources behind the volume, conduct feedstock sampling and a site-capacity review, confirm compost offtake and odor-control scope, and model a downside case. If the city will not provide economics or protections that restore the hurdle, Northstar should decline or propose a smaller phased contract that fits verified spare capacity.",
+    "what_great_looks_like": [
+     "Leads with a clear conditional decision rather than an unqualified yes based on the initial case.",
+     "Synthesizes both scenarios and makes the capacity opportunity cost visible.",
+     "Names contract terms, verification actions, and a credible walk-away condition.",
+     "Explicitly compares payback to both the hurdle and the contract term, without assuming renewal or residual value.",
+     "Prioritizes near-term diligence and implementation sequencing."
+    ],
+    "common_mistakes": [
+     "Recommending acceptance based on the initial case without updating for the city’s current terms.",
+     "Stating an economic condition without protecting volume or feedstock quality.",
+     "Ignoring existing customers, the unvalidated volume, or odor-control execution.",
+     "Failing to note investment recovery beyond the contract term or relying on an unspecified renewal."
+    ],
+    "hints": [
+     "Which economics should drive the decision now, and what changed?",
+     "What two or three conditions are truly non-negotiable before capital is committed?"
+    ],
+    "pushback": [
+     "Would you still bid if the city rejects the fee increase but offers a volume guarantee? Explain what you would need to validate."
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Municipal collection opportunity by service area",
+    "subtitle": "Planning estimates; food scraps and yard waste are separate material streams",
+    "kind": "table",
+    "columns": [
+     "Service area",
+     "Eligible households",
+     "Expected participation",
+     "Food scraps per participating household (tons/year)",
+     "Yard waste (tons/year)"
+    ],
+    "rows": [
+     {
+      "label": "North",
+      "cells": [
+       "=households_north",
+       "=participation_rate",
+       "=food_scraps_per_active_household",
+       "=yard_waste_north_tons"
+      ]
+     },
+     {
+      "label": "Central",
+      "cells": [
+       "=households_central",
+       "=participation_rate",
+       "=food_scraps_per_active_household",
+       "=yard_waste_central_tons"
+      ]
+     },
+     {
+      "label": "South",
+      "cells": [
+       "=households_south",
+       "=participation_rate",
+       "=food_scraps_per_active_household",
+       "=yard_waste_south_tons"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "count",
+     "pct",
+     "other",
+     "count"
+    ],
+    "footnote": "Source: Northstar commercial diligence team; municipal planning estimates. Household and yard-waste values are actual counts and tons, not thousands. Yard waste is shown for context and is not part of the food-scrap estimate.",
+    "text_body": null
+   },
+   {
+    "id": "ex2",
+    "title": "Tipping-fee reference points",
+    "subtitle": "Quoted fees per inbound ton",
+    "kind": "bar",
+    "columns": [
+     "Processor / stream",
+     "Fee ($/ton)"
+    ],
+    "rows": [
+     {
+      "label": "City food-scraps proposal",
+      "cells": [
+       "=city_tipping_fee"
+      ]
+     },
+     {
+      "label": "Northstar yard-waste service",
+      "cells": [
+       "=yard_waste_tipping_fee"
+      ]
+     },
+     {
+      "label": "Competing processor quote",
+      "cells": [
+       "=competitor_tipping_quote"
+      ]
+     }
+    ],
+    "value_unit": "per_unit_usd",
+    "column_units": [
+     "per_unit_usd"
+    ],
+    "footnote": "Source: Northstar sales team and municipal request for proposals. Quotes may differ in service scope, contamination terms, and included transportation.",
+    "text_body": null
+   },
+   {
+    "id": "ex3",
+    "title": "Food-scrap processing assumptions",
+    "subtitle": "Initial operating case, per inbound ton unless specified",
+    "kind": "table",
+    "columns": [
+     "Operating assumption",
+     "Initial case"
+    ],
+    "rows": [
+     {
+      "label": "Feedstock contamination rate",
+      "cells": [
+       "=initial_contamination_rate"
+      ]
+     },
+     {
+      "label": "Saleable compost yield from clean feedstock (tons per clean ton)",
+      "cells": [
+       "=compost_yield_from_clean_feedstock"
+      ]
+     },
+     {
+      "label": "Compost selling price ($/ton of compost)",
+      "cells": [
+       "=compost_price_per_ton"
+      ]
+     },
+     {
+      "label": "All incremental operating cost ($/inbound ton, excluding reject disposal)",
+      "cells": [
+       "=processing_cost_per_inbound_ton"
+      ]
+     },
+     {
+      "label": "Reject disposal cost ($/rejected ton)",
+      "cells": [
+       "=reject_disposal_cost_per_ton"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other"
+    ],
+    "footnote": "Source: Northstar engineering and commercial estimates. Reject disposal cost applies to contaminated inbound material; compost yield and price apply only to clean feedstock. Processing cost includes incremental labor, maintenance, and odor-control operating expense.",
+    "text_body": null
+   }
+  ],
+  "recommendation": {
+   "answer": "Bid only if Northstar can negotiate the city’s current request to meet its payback hurdle and verify the supply behind the expected volume. Under the initial case, annual net incremental contribution is {initial_net_contribution} and payback from commissioning is {initial_payback}, within the contract term under the stated timing convention. Under the city’s current terms, annual net incremental contribution is {pivot_net_contribution} and payback is {pivot_payback}, exceeding both the hurdle and contract term. Assuming no residual value or renewal, {pivot_unrecovered_at_term} remains unrecovered at term. At the current operating profile, seek a city fee of at least {required_pivot_fee} per inbound ton, or equivalent city capital support, alongside enforceable delivery and contamination protections. Do not commit capital until the additional feedstock, odor-control scope, and site capacity are validated.",
+   "risks": [
+    "The city’s expected annual delivery volume exceeds the household-based estimate, and the claimed additional municipal supply is unverified.",
+    "Actual contamination could exceed the estimate, increasing reject disposal and reducing compost revenue.",
+    "Site throughput is constrained; displaced yard-waste contribution and customer relationships may be greater than modeled.",
+    "Odor-control requirements, permitting, installation, and community response could increase cost or delay startup.",
+    "The simple-payback screen ignores taxes, financing, and time value of money; it assumes capital is paid at commissioning and full run-rate contribution begins immediately, and it assumes no residual value or renewal after the contract."
+   ],
+   "next_steps": [
+    "Validate the city’s additional sources, collection schedule, and enforceable delivery commitment; clarify remedies for shortfalls because the expected physical volume is not a take-or-pay payment.",
+    "Run representative feedstock sampling and agree on contamination measurement, surcharge, rejection, and audit mechanisms.",
+    "Confirm site throughput by season, protect or relocate affected yard-waste customers, and cost any alternative capacity.",
+    "Obtain a firm depackaging and odor-control scope, schedule, and capital quote; conduct permitting and community diligence.",
+    "Negotiate a fee at or above {required_pivot_fee} per inbound ton, or equivalent capital participation, and complete a downside investment case before board approval."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Structuring and problem definition",
+    "strong": "Builds a tailored decision framework spanning demand and contract terms, unit economics, capacity displacement, investment and execution, and stakeholder risk; sets out decision criteria.",
+    "weak": "Uses a generic profitability framework and misses capacity, feedstock quality, or contract protections."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Selectively uses household participation inputs, distinguishes food scraps from yard waste, sees contamination’s revenue and cost impacts, and treats competitor pricing as context.",
+    "weak": "Adds unlike material streams, overlooks units or time basis, or equates fee level with profit."
+   },
+   {
+    "dimension": "Quantitative rigor",
+    "strong": "Calculates contribution with clean-material compost revenue and contaminated-material disposal cost, then subtracts displaced yard-waste contribution before payback; updates all relevant assumptions after the city changes its terms.",
+    "weak": "Confuses revenue with contribution, ignores opportunity cost or added capital, or carries forward initial unit economics after contamination changes."
+   },
+   {
+    "dimension": "Judgment and negotiation",
+    "strong": "Challenges the source of the city’s stated volume, links price and capital terms to the hurdle, and protects quality and delivery through enforceable contract mechanisms.",
+    "weak": "Accepts an unverified delivery estimate, proposes generic terms, or ignores operational feasibility."
+   },
+   {
+    "dimension": "Synthesis and communication",
+    "strong": "Gives a clear conditional recommendation with concise evidence, risks, walk-away conditions, and sequenced next steps.",
+    "weak": "Offers an unconditional decision, repeats calculations without a decision, or omits implementation and diligence."
+   }
+  ],
+  "interviewer_notes": "Run as a candidate-led case. Allow the candidate to establish the decision framework before releasing the exhibits. In the exhibit discussion, check that they separate food scraps from the yard-waste context data and understand which processing inputs apply to clean versus contaminated material. Let the candidate size annual food scraps before giving the initial economics. In the initial quant section, share current throughput, total capacity, yard-waste contribution, line capex, payback hurdle, contract term, operating-cost scope, and timing convention when requested or when the candidate begins the investment calculation. The critical insight is that the initial contract exceeds spare capacity and displaces profitable yard waste, although its adjusted economics still clear the hurdle. After the candidate completes that screen, provide the city’s new expected physical volume, higher contamination, and odor-control capital together. Clarify that the volume is to be physically delivered and processed, not a take-or-pay payment, and that the revised request has the same contract term and timing convention. The new terms change the recommendation: the economics miss the hurdle and leave part of the investment unrecovered by the end of the contract, while the claimed additional volume also exceeds the household-based estimate and needs validation. Strong candidates calculate the city fee needed to restore the hurdle and pair it with enforceable quality and delivery protections. Accept a well-reasoned alternative such as phased onboarding or a smaller verified contract, provided it is not assumed to eliminate capacity or capital costs for free. If the candidate stalls, nudge from unit contribution to spare capacity, then from the new operating assumptions to required annual contribution and term-end recovery. Close with a concise executive recommendation and practical diligence sequence."
+ },
+ "rendered": {
+  "title": "The Organics Contract That Crowds Out Its Best Customers",
+  "client": "Northstar Organics",
+  "industry": "Commercial organics processing and composting",
+  "case_type": "Growth strategy and capital-allocation decision",
+  "difficulty": "hard",
+  "format": "candidate_led",
+  "duration_minutes": 40,
+  "concepts_tested": [
+   "Tailored structuring",
+   "Market sizing",
+   "Unit economics and contribution margin",
+   "Capacity constraints and opportunity cost",
+   "Simple payback",
+   "Contract negotiation",
+   "Scenario analysis",
+   "Contamination and operating risk",
+   "Executive synthesis"
+  ],
+  "situation_summary": "Northstar Organics is considering a municipal food-scraps contract that requires a depackaging line. Although the initial contract appears attractive, limited site capacity means it would displace profitable yard-waste business; the city’s revised requirements make the investment miss Northstar’s payback hurdle and leave part of the investment unrecovered by the end of the contract.",
+  "prompt": "Northstar Organics is a regional commercial organics processor. A municipality has invited the company to bid on a food-scraps processing contract. Winning would require Northstar to install a depackaging line, and the city’s initial estimate of available material appears attractive. Northstar’s site also has existing yard-waste business and a firm throughput limit. The CEO wants to know whether to pursue the contract, what terms to seek, and what must be validated before committing capital. How would you assess the opportunity and advise the CEO?",
+  "clarifying": [
+   {
+    "question": "What is Northstar trying to optimize: growth, profit, or something else?",
+    "answer": "The CEO’s priority is to earn an acceptable return on incremental investment while preserving service quality and avoiding an uneconomic long-term commitment. Northstar uses a simple payback hurdle of 4 years."
+   },
+   {
+    "question": "What is the proposed contract duration?",
+    "answer": "The initial municipal contract would run for 5 years, subject to negotiation."
+   },
+   {
+    "question": "Does Northstar have any strategic reason to enter food-scraps processing beyond this contract?",
+    "answer": "It is a potential adjacent service, but the CEO has not approved a broader expansion strategy. Evaluate this contract on its own economics; mention any strategic option value separately and do not assume uncontracted future volume."
+   },
+   {
+    "question": "Are all city food scraps expected to be clean and saleable?",
+    "answer": "No. The city’s initial feedstock estimate includes contamination. The initial contamination assumption and the operating inputs are in the processing assumptions exhibit."
+   },
+   {
+    "question": "Should I include financing, taxes, or the time value of money?",
+    "answer": "Use simple payback on annual incremental contribution. Ignore taxes, financing, and time value of money for this screen; flag that a full investment case would need them."
+   },
+   {
+    "question": "Is there a stated competitor or market-price reference?",
+    "answer": "The fee comparison exhibit includes a competitor quote and Northstar’s yard-waste fee. Treat them as commercial context, not as substitutes for calculating Northstar’s own contribution."
+   }
+  ],
+  "variables": [
+   {
+    "name": "households_north",
+    "value": 30000.0,
+    "unit": "count",
+    "label": "Eligible households in the North service area",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "30,000"
+   },
+   {
+    "name": "households_central",
+    "value": 28000.0,
+    "unit": "count",
+    "label": "Eligible households in the Central service area",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "28,000"
+   },
+   {
+    "name": "households_south",
+    "value": 22000.0,
+    "unit": "count",
+    "label": "Eligible households in the South service area",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "22,000"
+   },
+   {
+    "name": "participation_rate",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Expected household participation rate",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "60%"
+   },
+   {
+    "name": "food_scraps_per_active_household",
+    "value": 0.5,
+    "unit": "other",
+    "label": "Annual food scraps per participating household, in tons",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "0.5"
+   },
+   {
+    "name": "yard_waste_north_tons",
+    "value": 12000.0,
+    "unit": "count",
+    "label": "Annual yard waste in North service area",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "12,000"
+   },
+   {
+    "name": "yard_waste_central_tons",
+    "value": 10000.0,
+    "unit": "count",
+    "label": "Annual yard waste in Central service area",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "10,000"
+   },
+   {
+    "name": "yard_waste_south_tons",
+    "value": 8000.0,
+    "unit": "count",
+    "label": "Annual yard waste in South service area",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "8,000"
+   },
+   {
+    "name": "city_tipping_fee",
+    "value": 78.0,
+    "unit": "per_unit_usd",
+    "label": "Initial city tipping fee per inbound ton",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "$78"
+   },
+   {
+    "name": "yard_waste_tipping_fee",
+    "value": 52.0,
+    "unit": "per_unit_usd",
+    "label": "Northstar yard-waste tipping fee per ton",
+    "revealed_in": "ex2",
+    "role": "distractor",
+    "display": "$52"
+   },
+   {
+    "name": "competitor_tipping_quote",
+    "value": 70.0,
+    "unit": "per_unit_usd",
+    "label": "Competing processor’s quoted fee per ton",
+    "revealed_in": "ex2",
+    "role": "distractor",
+    "display": "$70"
+   },
+   {
+    "name": "initial_contamination_rate",
+    "value": 0.2,
+    "unit": "pct",
+    "label": "Contamination rate in the initial city feedstock estimate",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "20%"
+   },
+   {
+    "name": "compost_yield_from_clean_feedstock",
+    "value": 0.25,
+    "unit": "ratio",
+    "label": "Tons of saleable compost produced per ton of clean food-scrap feedstock",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "0.25"
+   },
+   {
+    "name": "compost_price_per_ton",
+    "value": 40.0,
+    "unit": "per_unit_usd",
+    "label": "Compost selling price per ton",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "$40"
+   },
+   {
+    "name": "processing_cost_per_inbound_ton",
+    "value": 30.0,
+    "unit": "per_unit_usd",
+    "label": "All incremental operating cost per inbound ton, excluding reject disposal",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "$30"
+   },
+   {
+    "name": "reject_disposal_cost_per_ton",
+    "value": 55.0,
+    "unit": "per_unit_usd",
+    "label": "Cost to dispose of each rejected ton",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "$55"
+   },
+   {
+    "name": "existing_yard_waste_tons_k",
+    "value": 42.0,
+    "unit": "count_k",
+    "label": "Current annual yard-waste throughput",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "42K"
+   },
+   {
+    "name": "site_capacity_tons_k",
+    "value": 60.0,
+    "unit": "count_k",
+    "label": "Annual site throughput capacity",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "60K"
+   },
+   {
+    "name": "yard_waste_contribution_per_ton",
+    "value": 50.0,
+    "unit": "per_unit_usd",
+    "label": "Contribution earned on displaced yard-waste volume",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$50"
+   },
+   {
+    "name": "initial_line_capex",
+    "value": 3.0,
+    "unit": "usd_m",
+    "label": "Initial depackaging-line capital cost",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$3M"
+   },
+   {
+    "name": "payback_hurdle",
+    "value": 4.0,
+    "unit": "years",
+    "label": "Maximum acceptable simple payback",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "4 years"
+   },
+   {
+    "name": "contract_term",
+    "value": 5.0,
+    "unit": "years",
+    "label": "Initial contract term",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "5 years"
+   },
+   {
+    "name": "pivot_contract_tons_k",
+    "value": 30.0,
+    "unit": "count_k",
+    "label": "New expected annual physical inbound volume delivered and processed",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "30K"
+   },
+   {
+    "name": "pivot_contamination_rate",
+    "value": 0.35,
+    "unit": "pct",
+    "label": "New expected feedstock contamination rate",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "35%"
+   },
+   {
+    "name": "odor_control_capex",
+    "value": 1.2,
+    "unit": "usd_m",
+    "label": "Additional odor-control capital required by new city terms",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "$1.2M"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Contract attractiveness and demand",
+    "points": [
+     "Validate the city’s addressable feedstock, participation assumptions, and volume guarantee.",
+     "Compare the contract fee and terms with relevant market context, without mistaking competitor pricing for Northstar’s economics.",
+     "Assess contract duration, volume bands, quality definitions, escalation, and minimum-payment protections."
+    ]
+   },
+   {
+    "name": "Feedstock and unit economics",
+    "points": [
+     "Model tipping-fee revenue, compost revenue from clean feedstock, processing expense, and reject-disposal expense.",
+     "Test contamination, compost yield, and the reliability of compost offtake assumptions.",
+     "Separate revenue from contribution and identify which economics Northstar can negotiate or operationally influence."
+    ]
+   },
+   {
+    "name": "Site capacity and displaced business",
+    "points": [
+     "Compare contract volume with true spare throughput, accounting for current yard-waste use.",
+     "Value any displaced yard-waste contribution as an opportunity cost.",
+     "Assess whether shifts, storage, routing, or another site can relieve the bottleneck and at what cost."
+    ]
+   },
+   {
+    "name": "Investment and execution",
+    "points": [
+     "Estimate required line and odor-control capital, installation timing, operating readiness, and payback.",
+     "Check permitting, odor management, contamination controls, labor, and equipment reliability.",
+     "Consider phasing investment against verified deliveries and contract protections."
+    ]
+   },
+   {
+    "name": "Strategic, customer, and community risk",
+    "points": [
+     "Consider the value of establishing a food-scraps capability without assigning unsupported value to future opportunities.",
+     "Protect existing yard-waste customers and municipal service levels.",
+     "Assess community acceptance, contract enforcement, and downside exposure if volume or quality differs from plan."
+    ]
+   }
+  ],
+  "framework_notes": "Reward a decision-oriented structure that distinguishes municipal market volume from volume Northstar can actually process profitably. Strong candidates bring capacity opportunity cost and feedstock quality into the core economics early, and identify that the bid terms can change the answer. Do not require candidates to use these exact buckets; accept a logically complete alternative.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the decision",
+    "kind": "framework",
+    "ask": "How would you structure the decision for Northstar? Please identify the most important questions and how you would ultimately decide whether to bid.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would assess whether the city can provide reliable, economically attractive feedstock; calculate contribution after contamination, processing, and disposal; compare contract volume with spare site capacity and value displaced yard-waste business; and test the required capital against Northstar’s payback hurdle and contract duration. I would then identify contract protections and operating conditions that could preserve the economics, and validate the main demand, quality, and execution risks before committing.",
+    "what_great_looks_like": [
+     "Frames a clear decision and decision criteria rather than listing generic diligence topics.",
+     "Highlights capacity and existing customers as potential constraints before seeing the economics.",
+     "Separates contribution from revenue and identifies contract terms as a lever."
+    ],
+    "common_mistakes": [
+     "Treating the city’s estimated volume as automatically incremental to current throughput.",
+     "Using the competitor quote as the answer to whether the contract is attractive.",
+     "Listing broad market questions without a decision rule."
+    ],
+    "hints": [
+     "What could make a positive unit margin fail to create positive incremental value for Northstar?",
+     "What would you compare the investment return against?"
+    ],
+    "pushback": [
+     "If the contract looks profitable per ton, why might Northstar still decline it?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Read the market and operating exhibits",
+    "kind": "exhibit_read",
+    "ask": "Review the exhibits. What stands out, which data would you use to assess demand and price, and what would you set aside? What would you want to validate before relying on the estimates?",
+    "exhibit_ids": [
+     "ex1",
+     "ex2",
+     "ex3"
+    ],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "The service-area household counts, participation estimate, and annual scraps per active household can support an addressable food-scrap estimate. The yard-waste tonnage shown by service area is a different material stream and should not be added to food scraps. The city’s fee can be compared with Northstar’s yard-waste fee and the competing quote for context, but the fee comparison alone does not show profit. The processing exhibit indicates that contamination reduces compostable feedstock and also creates reject-disposal expense. I would validate household participation, collection capture, contamination measurement, compost offtake, and whether the city’s quoted volume is guaranteed.",
+    "what_great_looks_like": [
+     "Identifies the correct denominator and material stream in the household exhibit.",
+     "Notices contamination has both a lost compost-revenue effect and a disposal-cost effect.",
+     "Treats price comparison as context and asks about volume and quality guarantees."
+    ],
+    "common_mistakes": [
+     "Adding yard-waste tonnage to food-scrap volume.",
+     "Applying compost revenue to all inbound tons rather than clean feedstock.",
+     "Assuming the competitor’s quoted fee proves Northstar’s bid price is profitable."
+    ],
+    "hints": [
+     "Which rows in the service-area exhibit describe food scraps, and which describe another stream?",
+     "Does contamination affect only revenue, or also costs?"
+    ],
+    "pushback": [
+     "The competitor’s quote is lower than the city’s fee. Does that establish that this is a good contract for Northstar?"
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Size the municipal food-scrap opportunity",
+    "kind": "market_sizing",
+    "ask": "Estimate annual food-scrap volume from the service areas using the exhibit. Compare that estimate with the opportunity Northstar should use as its initial operating case, and tell me what uncertainty matters most.",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "eligible_households_k",
+      "label": "Total eligible households",
+      "expression": "households_north + households_central + households_south",
+      "unit": "count",
+      "expected_value": 80000.0,
+      "decimals": 0,
+      "value": 80000.0,
+      "display": "80,000",
+      "expression_display": "[Eligible households in the North service area] + [Eligible households in the Central service area] + [Eligible households in the South service area]"
+     },
+     {
+      "id": "initial_contract_tons_k",
+      "label": "Initial annual addressable food-scrap volume",
+      "expression": "eligible_households_k * participation_rate * food_scraps_per_active_household / 1000",
+      "unit": "count_k",
+      "expected_value": 24.0,
+      "decimals": 0,
+      "value": 24.0,
+      "display": "24K",
+      "expression_display": "[Total eligible households] × [Expected household participation rate] × [Annual food scraps per participating household, in tons] ÷ 1000"
+     }
+    ],
+    "model_answer": "The service areas contain 80,000 eligible households. Applying the estimated participation and annual scraps per participating household gives an initial annual food-scrap opportunity of 24K. I would use that as the initial operating case only if the city can substantiate the participation, collection capture, and delivery assumptions and provide a credible volume commitment. The yard-waste figures are not part of this food-scrap estimate.",
+    "what_great_looks_like": [
+     "Combines the three service areas correctly and applies participation only once.",
+     "Keeps the tonnage time base annual and the material stream consistent.",
+     "Recognizes that an addressable estimate is not necessarily contracted or delivered volume."
+    ],
+    "common_mistakes": [
+     "Adding the service-area yard-waste tonnage into food-scrap volume.",
+     "Forgetting to apply the participation rate or applying it more than once.",
+     "Treating the estimate as a guaranteed minimum without validation."
+    ],
+    "hints": [
+     "Start with total eligible households, then apply participation and annual volume per active household.",
+     "What would cause actual collected volume to differ from the estimate?"
+    ],
+    "pushback": [
+     "The city says its collection program will drive participation. What contractual evidence would you want before relying on that?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Improve or de-risk the bid",
+    "kind": "brainstorm",
+    "ask": "Before we calculate the full investment economics, what practical changes to the bid or operating model could make this opportunity more attractive and less risky for Northstar? Prioritize the actions that could most directly address the issues in the exhibits.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would negotiate a minimum annual payment or take-or-pay volume commitment and a fee escalator, with transparent contamination sampling and a surcharge or rejection right above agreed quality bands. The city could fund or share capital for any city-specific equipment, and Northstar could phase onboarding against verified collections rather than build for an unproven forecast. Operationally, the city could improve source separation and collection education, while Northstar could set delivery windows and inspect loads. Because the site may be capacity-constrained, I would also explore retaining displaced yard-waste customers through alternate-site processing, seasonal routing, or prioritizing the highest-contribution accounts. Any alternative capacity solution should be costed rather than assumed.",
+    "what_great_looks_like": [
+     "Connects negotiation levers directly to volume, contamination, capital, and capacity risk.",
+     "Offers practical collection-side as well as processor-side interventions.",
+     "Recognizes preserving or relocating existing yard-waste business as a distinct path, not free capacity."
+    ],
+    "common_mistakes": [
+     "Suggesting generic marketing or growth ideas unrelated to the binding constraints.",
+     "Assuming a new site, extra shifts, or outside processing is free and immediately available.",
+     "Treating a contamination surcharge as effective without a measurable sampling and enforcement mechanism."
+    ],
+    "hints": [
+     "Which risks can be allocated to the city through contract terms?",
+     "Could Northstar protect existing business rather than simply displace it?"
+    ],
+    "pushback": [
+     "A volume guarantee does not make poor-quality feedstock attractive. What additional protection would you require?"
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Test the initial offer economics",
+    "kind": "quant",
+    "ask": "For the initial operating case, calculate annual contract contribution before and after any displaced yard-waste business, then assess simple payback against Northstar’s hurdle and the contract term. I’ll provide the site and investment facts you need.",
+    "exhibit_ids": [
+     "ex2",
+     "ex3"
+    ],
+    "info_to_share": [
+     "Northstar currently processes 42K of yard waste per year at a site with total annual throughput capacity of 60K.",
+     "Each displaced ton of yard waste contributes $50.",
+     "The initial depackaging line requires $3M of capital. Northstar’s maximum acceptable simple payback is 4 years, and the initial contract term is 5 years.",
+     "For this screen, assume the city’s initial operating volume is the annual food-scrap volume you estimated from the service-area exhibit. Use the city fee shown in the fee-comparison exhibit.",
+     "Assume the processing cost shown in the exhibit includes all incremental operating costs, including labor, maintenance, and odor-control operating expense; the separately listed reject-disposal cost is additional.",
+     "For timing, the line capital is paid at commissioning, the contract term begins at commissioning, and full run-rate contribution begins immediately at commissioning, with no installation delay within the contract term and no ramp-up. Simple payback is measured from commissioning. Use the same timing convention for the city’s later request."
+    ],
+    "calculations": [
+     {
+      "id": "initial_gross_contribution",
+      "label": "Initial annual contract contribution before capacity displacement",
+      "expression": "initial_contract_tons_k * (city_tipping_fee + (1 - initial_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton - processing_cost_per_inbound_ton - initial_contamination_rate * reject_disposal_cost_per_ton) / 1000",
+      "unit": "usd_m",
+      "expected_value": 1.08,
+      "decimals": 2,
+      "value": 1.08,
+      "display": "$1.08M",
+      "expression_display": "[Initial annual addressable food-scrap volume] × ([Initial city tipping fee per inbound ton] + (1 - [Contamination rate in the initial city feedstock estimate]) × [Tons of saleable compost produced per ton of clean food-scrap feedstock] × [Compost selling price per ton] - [All incremental operating cost per inbound ton, excluding reject disposal] - [Contamination rate in the initial city feedstock estimate] × [Cost to dispose of each rejected ton]) ÷ 1000"
+     },
+     {
+      "id": "spare_capacity_tons_k",
+      "label": "Annual spare site capacity",
+      "expression": "site_capacity_tons_k - existing_yard_waste_tons_k",
+      "unit": "count_k",
+      "expected_value": 18.0,
+      "decimals": 0,
+      "value": 18.0,
+      "display": "18K",
+      "expression_display": "[Annual site throughput capacity] - [Current annual yard-waste throughput]"
+     },
+     {
+      "id": "initial_displaced_yard_tons_k",
+      "label": "Initial annual yard-waste volume displaced",
+      "expression": "max(0, initial_contract_tons_k - spare_capacity_tons_k)",
+      "unit": "count_k",
+      "expected_value": 6.0,
+      "decimals": 0,
+      "value": 6.0,
+      "display": "6K",
+      "expression_display": "max(0, [Initial annual addressable food-scrap volume] - [Annual spare site capacity])"
+     },
+     {
+      "id": "initial_lost_yard_contribution",
+      "label": "Initial annual contribution lost to displaced yard waste",
+      "expression": "initial_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000",
+      "unit": "usd_m",
+      "expected_value": 0.3,
+      "decimals": 2,
+      "value": 0.3,
+      "display": "$0.3M",
+      "expression_display": "[Initial annual yard-waste volume displaced] × [Contribution earned on displaced yard-waste volume] ÷ 1000"
+     },
+     {
+      "id": "initial_net_contribution",
+      "label": "Initial annual net incremental contribution",
+      "expression": "initial_gross_contribution - initial_lost_yard_contribution",
+      "unit": "usd_m",
+      "expected_value": 0.78,
+      "decimals": 2,
+      "value": 0.78,
+      "display": "$0.78M",
+      "expression_display": "[Initial annual contract contribution before capacity displacement] - [Initial annual contribution lost to displaced yard waste]"
+     },
+     {
+      "id": "initial_payback",
+      "label": "Initial simple payback",
+      "expression": "initial_line_capex / initial_net_contribution",
+      "unit": "years",
+      "expected_value": 3.8461538462,
+      "decimals": 1,
+      "value": 3.846153846153846,
+      "display": "3.8 years",
+      "expression_display": "[Initial depackaging-line capital cost] ÷ [Initial annual net incremental contribution]"
+     }
+    ],
+    "model_answer": "The contract produces $1.08M of annual contribution before capacity opportunity cost. Northstar has 18K of spare capacity, so accepting the initial volume displaces 6K of yard waste and sacrifices $0.3M of contribution. Net incremental contribution is $0.78M; simple payback from commissioning is 3.8 years. On the stated assumptions, the initial case clears the 4 years hurdle and recovers the investment within the 5 years contract term. This conclusion depends on the volume and contamination assumptions being verified and on the stated operating-cost scope being complete.",
+    "what_great_looks_like": [
+     "Builds per-ton economics from tipping revenue, compost revenue on clean material, processing expense, and disposal expense on contaminated material.",
+     "Recognizes that contract throughput crowds out existing yard waste once it exceeds spare capacity.",
+     "Uses net incremental contribution, not gross contract contribution, in payback and compares payback with both hurdle and contract term."
+    ],
+    "common_mistakes": [
+     "Applying compost revenue to contaminated tons or ignoring reject disposal.",
+     "Counting all contract contribution as incremental while ignoring displaced yard-waste contribution.",
+     "Using total contract volume rather than only the volume above spare capacity to calculate displaced yard-waste contribution."
+    ],
+    "hints": [
+     "What portion of inbound tons generates compost revenue, and what portion incurs disposal expense?",
+     "How much capacity is available after current yard-waste throughput?",
+     "Use net incremental contribution for payback."
+    ],
+    "pushback": [
+     "The contract has an attractive contribution per ton. Why should Northstar care about the contribution on yard waste?"
+    ]
+   },
+   {
+    "id": "q6",
+    "title": "Reassess under new city terms",
+    "kind": "pivot",
+    "ask": "The city has now changed its request. Recalculate the economics rather than extrapolating the initial result, and tell me what condition Northstar should seek to restore the required return.",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "The city now expects 30K of physical inbound volume to be delivered and processed each year, with contamination of 35%. This is not a take-or-pay amount for undelivered tons. The city says the higher volume includes additional municipal sources beyond the household program; the amount and reliability of that incremental source have not yet been independently validated.",
+     "The city requires an odor-control upgrade costing $1.2M. Assume the city fee remains $78 unless Northstar negotiates a change, and that the revised request has the same 5 years contract term.",
+     "Use the same site capacity, existing yard-waste throughput, yard-waste contribution, compost yield and price, processing cost, and reject-disposal cost as in the initial case. The odor-control investment is incremental to the depackaging-line investment. The stated processing cost includes all incremental operating costs, including odor-control operating expense.",
+     "For timing, capital is paid at commissioning and full run-rate contribution starts immediately at commissioning; simple payback is measured from that date, using the same convention as the initial case."
+    ],
+    "calculations": [
+     {
+      "id": "pivot_gross_contribution",
+      "label": "Annual contract contribution before capacity displacement under new terms",
+      "expression": "pivot_contract_tons_k * (city_tipping_fee + (1 - pivot_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton - processing_cost_per_inbound_ton - pivot_contamination_rate * reject_disposal_cost_per_ton) / 1000",
+      "unit": "usd_m",
+      "expected_value": 1.0575,
+      "decimals": 3,
+      "value": 1.0575,
+      "display": "$1.058M",
+      "expression_display": "[New expected annual physical inbound volume delivered and processed] × ([Initial city tipping fee per inbound ton] + (1 - [New expected feedstock contamination rate]) × [Tons of saleable compost produced per ton of clean food-scrap feedstock] × [Compost selling price per ton] - [All incremental operating cost per inbound ton, excluding reject disposal] - [New expected feedstock contamination rate] × [Cost to dispose of each rejected ton]) ÷ 1000"
+     },
+     {
+      "id": "pivot_displaced_yard_tons_k",
+      "label": "Annual yard-waste volume displaced under new terms",
+      "expression": "max(0, existing_yard_waste_tons_k + pivot_contract_tons_k - site_capacity_tons_k)",
+      "unit": "count_k",
+      "expected_value": 12.0,
+      "decimals": 0,
+      "value": 12.0,
+      "display": "12K",
+      "expression_display": "max(0, [Current annual yard-waste throughput] + [New expected annual physical inbound volume delivered and processed] - [Annual site throughput capacity])"
+     },
+     {
+      "id": "pivot_net_contribution",
+      "label": "Annual net incremental contribution under new terms",
+      "expression": "pivot_gross_contribution - pivot_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000",
+      "unit": "usd_m",
+      "expected_value": 0.4575,
+      "decimals": 3,
+      "value": 0.45750000000000013,
+      "display": "$0.458M",
+      "expression_display": "[Annual contract contribution before capacity displacement under new terms] - [Annual yard-waste volume displaced under new terms] × [Contribution earned on displaced yard-waste volume] ÷ 1000"
+     },
+     {
+      "id": "pivot_total_capex",
+      "label": "Total capital required under new terms",
+      "expression": "initial_line_capex + odor_control_capex",
+      "unit": "usd_m",
+      "expected_value": 4.2,
+      "decimals": 1,
+      "value": 4.2,
+      "display": "$4.2M",
+      "expression_display": "[Initial depackaging-line capital cost] + [Additional odor-control capital required by new city terms]"
+     },
+     {
+      "id": "pivot_payback",
+      "label": "Simple payback under new terms",
+      "expression": "pivot_total_capex / pivot_net_contribution",
+      "unit": "years",
+      "expected_value": 9.1803278689,
+      "decimals": 1,
+      "value": 9.180327868852457,
+      "display": "9.2 years",
+      "expression_display": "[Total capital required under new terms] ÷ [Annual net incremental contribution under new terms]"
+     },
+     {
+      "id": "required_pivot_fee",
+      "label": "City tipping fee required to meet the payback hurdle under new terms",
+      "expression": "((pivot_total_capex / payback_hurdle + pivot_displaced_yard_tons_k * yard_waste_contribution_per_ton / 1000 + pivot_contract_tons_k * (processing_cost_per_inbound_ton + pivot_contamination_rate * reject_disposal_cost_per_ton - (1 - pivot_contamination_rate) * compost_yield_from_clean_feedstock * compost_price_per_ton) / 1000) * 1000) / pivot_contract_tons_k",
+      "unit": "per_unit_usd",
+      "expected_value": 97.75,
+      "decimals": 2,
+      "value": 97.75,
+      "display": "$97.75",
+      "expression_display": "(([Total capital required under new terms] ÷ [Maximum acceptable simple payback] + [Annual yard-waste volume displaced under new terms] × [Contribution earned on displaced yard-waste volume] ÷ 1000 + [New expected annual physical inbound volume delivered and processed] × ([All incremental operating cost per inbound ton, excluding reject disposal] + [New expected feedstock contamination rate] × [Cost to dispose of each rejected ton] - (1 - [New expected feedstock contamination rate]) × [Tons of saleable compost produced per ton of clean food-scrap feedstock] × [Compost selling price per ton]) ÷ 1000) × 1000) ÷ [New expected annual physical inbound volume delivered and processed]"
+     },
+     {
+      "id": "pivot_unrecovered_at_term",
+      "label": "Investment not recovered by the end of the contract, assuming no residual value or renewal",
+      "expression": "max(0, pivot_total_capex - pivot_net_contribution * contract_term)",
+      "unit": "usd_m",
+      "expected_value": 1.9125,
+      "decimals": 3,
+      "value": 1.9124999999999996,
+      "display": "$1.913M",
+      "expression_display": "max(0, [Total capital required under new terms] - [Annual net incremental contribution under new terms] × [Initial contract term])"
+     }
+    ],
+    "model_answer": "At the new quality and volume assumptions, annual contribution before displacement is $1.058M. The site would displace 12K of yard waste, leaving net annual incremental contribution of $0.458M. Total capital rises to $4.2M, producing simple payback of 9.2 years, which misses the 4 years hurdle and extends beyond the 5 years contract term. Assuming no residual value or renewal, $1.913M of the investment remains unrecovered at the end of the term. Holding the new operating assumptions constant, the city fee would need to be at least $97.75 per inbound ton to meet the hurdle. I would not accept the stated volume at face value: it exceeds the household-based estimate, so Northstar should verify the additional sources and delivery schedule before sizing or commissioning the line. Alternatively, seek city capital support, quality-adjusted fees and contamination protections, or a smaller phased contract based on verified deliveries.",
+    "what_great_looks_like": [
+     "Rebuilds unit economics using the new contamination rate and applies the capacity cap to the new volume.",
+     "Identifies that the new offer fails the hurdle and does not recover the investment within the contract term, despite higher volume.",
+     "Derives a fee that restores payback while retaining the new costs and opportunity cost.",
+     "Challenges the unvalidated additional source behind the municipal volume."
+    ],
+    "common_mistakes": [
+     "Carrying forward the initial contribution per ton despite changed contamination.",
+     "Using total contract volume rather than the volume above spare capacity to calculate displaced yard-waste contribution.",
+     "Omitting the odor-control upgrade from total capital required.",
+     "Treating an unvalidated delivery estimate as a guaranteed take-or-pay payment.",
+     "Ignoring that payback extends beyond the contract term or assuming uncontracted renewal value."
+    ],
+    "hints": [
+     "Recalculate the per-ton contribution under the new contamination assumption first.",
+     "What volume exceeds spare capacity, and what contribution does that displace?",
+     "What annual net contribution is required for the capital investment to meet the hurdle?",
+     "How much of the investment is recovered over the stated contract term at the modeled run rate?"
+    ],
+    "pushback": [
+     "If the city refuses a fee increase, what other terms could close the gap without relying on unverified volume?"
+    ]
+   },
+   {
+    "id": "q7",
+    "title": "Make the recommendation",
+    "kind": "synthesis",
+    "ask": "Give the CEO your recommendation. State whether Northstar should bid on the city’s current request, the conditions you would require, the most important risks, and the next steps.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would pursue the opportunity only on a conditional basis and would not commit to the city’s current request as written. The initial case produces $0.78M of annual net incremental contribution and 3.8 years simple payback from commissioning, clearing the hurdle and recovering the investment within the contract term under the stated timing convention. The city’s current terms produce $0.458M of annual net incremental contribution and 9.2 years payback after higher contamination, displacement, and added odor-control capital. Payback exceeds the 5 years contract term, leaving $1.913M unrecovered at term assuming no residual value or renewal. Northstar should seek a fee of at least $97.75 per inbound ton under the current operating assumptions, or equivalent city capital support, and negotiate enforceable delivery and quality terms. Before committing, validate the additional municipal sources behind the volume, conduct feedstock sampling and a site-capacity review, confirm compost offtake and odor-control scope, and model a downside case. If the city will not provide economics or protections that restore the hurdle, Northstar should decline or propose a smaller phased contract that fits verified spare capacity.",
+    "what_great_looks_like": [
+     "Leads with a clear conditional decision rather than an unqualified yes based on the initial case.",
+     "Synthesizes both scenarios and makes the capacity opportunity cost visible.",
+     "Names contract terms, verification actions, and a credible walk-away condition.",
+     "Explicitly compares payback to both the hurdle and the contract term, without assuming renewal or residual value.",
+     "Prioritizes near-term diligence and implementation sequencing."
+    ],
+    "common_mistakes": [
+     "Recommending acceptance based on the initial case without updating for the city’s current terms.",
+     "Stating an economic condition without protecting volume or feedstock quality.",
+     "Ignoring existing customers, the unvalidated volume, or odor-control execution.",
+     "Failing to note investment recovery beyond the contract term or relying on an unspecified renewal."
+    ],
+    "hints": [
+     "Which economics should drive the decision now, and what changed?",
+     "What two or three conditions are truly non-negotiable before capital is committed?"
+    ],
+    "pushback": [
+     "Would you still bid if the city rejects the fee increase but offers a volume guarantee? Explain what you would need to validate."
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Municipal collection opportunity by service area",
+    "subtitle": "Planning estimates; food scraps and yard waste are separate material streams",
+    "kind": "table",
+    "columns": [
+     "Service area",
+     "Eligible households",
+     "Expected participation",
+     "Food scraps per participating household (tons/year)",
+     "Yard waste (tons/year)"
+    ],
+    "rows": [
+     {
+      "label": "North",
+      "cells": [
+       "=households_north",
+       "=participation_rate",
+       "=food_scraps_per_active_household",
+       "=yard_waste_north_tons"
+      ]
+     },
+     {
+      "label": "Central",
+      "cells": [
+       "=households_central",
+       "=participation_rate",
+       "=food_scraps_per_active_household",
+       "=yard_waste_central_tons"
+      ]
+     },
+     {
+      "label": "South",
+      "cells": [
+       "=households_south",
+       "=participation_rate",
+       "=food_scraps_per_active_household",
+       "=yard_waste_south_tons"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "count",
+     "pct",
+     "other",
+     "count"
+    ],
+    "footnote": "Source: Northstar commercial diligence team; municipal planning estimates. Household and yard-waste values are actual counts and tons, not thousands. Yard waste is shown for context and is not part of the food-scrap estimate.",
+    "text_body": null,
+    "grid": [
+     [
+      30000.0,
+      0.6,
+      0.5,
+      12000.0
+     ],
+     [
+      28000.0,
+      0.6,
+      0.5,
+      10000.0
+     ],
+     [
+      22000.0,
+      0.6,
+      0.5,
+      8000.0
+     ]
+    ],
+    "display": [
+     [
+      "30,000",
+      "60%",
+      "0.5",
+      "12,000"
+     ],
+     [
+      "28,000",
+      "60%",
+      "0.5",
+      "10,000"
+     ],
+     [
+      "22,000",
+      "60%",
+      "0.5",
+      "8,000"
+     ]
+    ],
+    "units": [
+     "count",
+     "pct",
+     "other",
+     "count"
+    ]
+   },
+   {
+    "id": "ex2",
+    "title": "Tipping-fee reference points",
+    "subtitle": "Quoted fees per inbound ton",
+    "kind": "bar",
+    "columns": [
+     "Processor / stream",
+     "Fee ($/ton)"
+    ],
+    "rows": [
+     {
+      "label": "City food-scraps proposal",
+      "cells": [
+       "=city_tipping_fee"
+      ]
+     },
+     {
+      "label": "Northstar yard-waste service",
+      "cells": [
+       "=yard_waste_tipping_fee"
+      ]
+     },
+     {
+      "label": "Competing processor quote",
+      "cells": [
+       "=competitor_tipping_quote"
+      ]
+     }
+    ],
+    "value_unit": "per_unit_usd",
+    "column_units": [
+     "per_unit_usd"
+    ],
+    "footnote": "Source: Northstar sales team and municipal request for proposals. Quotes may differ in service scope, contamination terms, and included transportation.",
+    "text_body": null,
+    "grid": [
+     [
+      78.0
+     ],
+     [
+      52.0
+     ],
+     [
+      70.0
+     ]
+    ],
+    "display": [
+     [
+      "$78"
+     ],
+     [
+      "$52"
+     ],
+     [
+      "$70"
+     ]
+    ],
+    "units": [
+     "per_unit_usd"
+    ]
+   },
+   {
+    "id": "ex3",
+    "title": "Food-scrap processing assumptions",
+    "subtitle": "Initial operating case, per inbound ton unless specified",
+    "kind": "table",
+    "columns": [
+     "Operating assumption",
+     "Initial case"
+    ],
+    "rows": [
+     {
+      "label": "Feedstock contamination rate",
+      "cells": [
+       "=initial_contamination_rate"
+      ]
+     },
+     {
+      "label": "Saleable compost yield from clean feedstock (tons per clean ton)",
+      "cells": [
+       "=compost_yield_from_clean_feedstock"
+      ]
+     },
+     {
+      "label": "Compost selling price ($/ton of compost)",
+      "cells": [
+       "=compost_price_per_ton"
+      ]
+     },
+     {
+      "label": "All incremental operating cost ($/inbound ton, excluding reject disposal)",
+      "cells": [
+       "=processing_cost_per_inbound_ton"
+      ]
+     },
+     {
+      "label": "Reject disposal cost ($/rejected ton)",
+      "cells": [
+       "=reject_disposal_cost_per_ton"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other"
+    ],
+    "footnote": "Source: Northstar engineering and commercial estimates. Reject disposal cost applies to contaminated inbound material; compost yield and price apply only to clean feedstock. Processing cost includes incremental labor, maintenance, and odor-control operating expense.",
+    "text_body": null,
+    "grid": [
+     [
+      0.2
+     ],
+     [
+      0.25
+     ],
+     [
+      40.0
+     ],
+     [
+      30.0
+     ],
+     [
+      55.0
+     ]
+    ],
+    "display": [
+     [
+      "20%"
+     ],
+     [
+      "0.25"
+     ],
+     [
+      "$40"
+     ],
+     [
+      "$30"
+     ],
+     [
+      "$55"
+     ]
+    ],
+    "units": [
+     "other"
+    ]
+   }
+  ],
+  "recommendation": {
+   "answer": "Bid only if Northstar can negotiate the city’s current request to meet its payback hurdle and verify the supply behind the expected volume. Under the initial case, annual net incremental contribution is $0.78M and payback from commissioning is 3.8 years, within the contract term under the stated timing convention. Under the city’s current terms, annual net incremental contribution is $0.458M and payback is 9.2 years, exceeding both the hurdle and contract term. Assuming no residual value or renewal, $1.913M remains unrecovered at term. At the current operating profile, seek a city fee of at least $97.75 per inbound ton, or equivalent city capital support, alongside enforceable delivery and contamination protections. Do not commit capital until the additional feedstock, odor-control scope, and site capacity are validated.",
+   "risks": [
+    "The city’s expected annual delivery volume exceeds the household-based estimate, and the claimed additional municipal supply is unverified.",
+    "Actual contamination could exceed the estimate, increasing reject disposal and reducing compost revenue.",
+    "Site throughput is constrained; displaced yard-waste contribution and customer relationships may be greater than modeled.",
+    "Odor-control requirements, permitting, installation, and community response could increase cost or delay startup.",
+    "The simple-payback screen ignores taxes, financing, and time value of money; it assumes capital is paid at commissioning and full run-rate contribution begins immediately, and it assumes no residual value or renewal after the contract."
+   ],
+   "next_steps": [
+    "Validate the city’s additional sources, collection schedule, and enforceable delivery commitment; clarify remedies for shortfalls because the expected physical volume is not a take-or-pay payment.",
+    "Run representative feedstock sampling and agree on contamination measurement, surcharge, rejection, and audit mechanisms.",
+    "Confirm site throughput by season, protect or relocate affected yard-waste customers, and cost any alternative capacity.",
+    "Obtain a firm depackaging and odor-control scope, schedule, and capital quote; conduct permitting and community diligence.",
+    "Negotiate a fee at or above $97.75 per inbound ton, or equivalent capital participation, and complete a downside investment case before board approval."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Structuring and problem definition",
+    "strong": "Builds a tailored decision framework spanning demand and contract terms, unit economics, capacity displacement, investment and execution, and stakeholder risk; sets out decision criteria.",
+    "weak": "Uses a generic profitability framework and misses capacity, feedstock quality, or contract protections."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Selectively uses household participation inputs, distinguishes food scraps from yard waste, sees contamination’s revenue and cost impacts, and treats competitor pricing as context.",
+    "weak": "Adds unlike material streams, overlooks units or time basis, or equates fee level with profit."
+   },
+   {
+    "dimension": "Quantitative rigor",
+    "strong": "Calculates contribution with clean-material compost revenue and contaminated-material disposal cost, then subtracts displaced yard-waste contribution before payback; updates all relevant assumptions after the city changes its terms.",
+    "weak": "Confuses revenue with contribution, ignores opportunity cost or added capital, or carries forward initial unit economics after contamination changes."
+   },
+   {
+    "dimension": "Judgment and negotiation",
+    "strong": "Challenges the source of the city’s stated volume, links price and capital terms to the hurdle, and protects quality and delivery through enforceable contract mechanisms.",
+    "weak": "Accepts an unverified delivery estimate, proposes generic terms, or ignores operational feasibility."
+   },
+   {
+    "dimension": "Synthesis and communication",
+    "strong": "Gives a clear conditional recommendation with concise evidence, risks, walk-away conditions, and sequenced next steps.",
+    "weak": "Offers an unconditional decision, repeats calculations without a decision, or omits implementation and diligence."
+   }
+  ],
+  "interviewer_notes": "Run as a candidate-led case. Allow the candidate to establish the decision framework before releasing the exhibits. In the exhibit discussion, check that they separate food scraps from the yard-waste context data and understand which processing inputs apply to clean versus contaminated material. Let the candidate size annual food scraps before giving the initial economics. In the initial quant section, share current throughput, total capacity, yard-waste contribution, line capex, payback hurdle, contract term, operating-cost scope, and timing convention when requested or when the candidate begins the investment calculation. The critical insight is that the initial contract exceeds spare capacity and displaces profitable yard waste, although its adjusted economics still clear the hurdle. After the candidate completes that screen, provide the city’s new expected physical volume, higher contamination, and odor-control capital together. Clarify that the volume is to be physically delivered and processed, not a take-or-pay payment, and that the revised request has the same contract term and timing convention. The new terms change the recommendation: the economics miss the hurdle and leave part of the investment unrecovered by the end of the contract, while the claimed additional volume also exceeds the household-based estimate and needs validation. Strong candidates calculate the city fee needed to restore the hurdle and pair it with enforceable quality and delivery protections. Accept a well-reasoned alternative such as phased onboarding or a smaller verified contract, provided it is not assumed to eliminate capacity or capital costs for free. If the candidate stalls, nudge from unit contribution to spare capacity, then from the new operating assumptions to required annual contribution and term-end recovery. Close with a concise executive recommendation and practical diligence sequence."
+ },
+ "quality": {
+  "status": "verified",
+  "checks": [],
+  "reviews": [
+   {
+    "issues": [
+     {
+      "severity": "blocker",
+      "where": "Exhibit ex1: column units and row values",
+      "problem": "The exhibit labels households and yard waste in “(000s)” but shows values such as 30K households and 12K tons. Read literally, those are 30,000 thousand households and 12,000 thousand tons; the answer key instead treats them as 30,000 households and 12,000 tons. The candidate cannot know which scale to use, so the stated 24K-ton estimate is not reproducible from the exhibit as labeled.",
+      "fix": "Make units and values consistent. For example, label the columns “Households” and “Yard waste (tons/year)” and retain 30K/12K values; or label them “(000s)” and show 30/12."
+     },
+     {
+      "severity": "major",
+      "where": "Q5–Q7: payback and contract-term comparison",
+      "problem": "The pivot payback is 4.2M / 0.7575M = 5.54 years, longer than the five-year contract. At the modeled flat run rate, five years generate 3.7875M of net contribution, leaving 0.4125M of the 4.2M investment unrecovered, before any residual value or renewal. The key says the pivot misses the four-year hurdle but never explicitly notes that payback also extends beyond the contract term, an important part of the stated decision criterion.",
+      "fix": "State that the current terms do not recover the investment within the five-year contract (with about $0.413M unrecovered at term, assuming no residual value), and make any renewal or post-contract value an explicit assumption rather than relying on it."
+     },
+     {
+      "severity": "major",
+      "where": "Q5–Q7: investment and cash-flow timing",
+      "problem": "The case compares simple payback with a five-year contract but does not state when capex is paid, when contribution starts, whether there is an installation delay or ramp, or when the contract term begins. For example, 3.2 years of run-rate payback after commissioning does not necessarily mean recovery within a five-year term that starts at award.",
+      "fix": "State a timing convention, such as: capex is paid at contract award; full run-rate contribution starts immediately after commissioning with no ramp; and the five-year term starts at commissioning. Adjust the convention if that is not the intended scenario."
+     },
+     {
+      "severity": "major",
+      "where": "Exhibit ex3 and Q5–Q7: operating-cost completeness",
+      "problem": "The calculation treats the $30/inbound-ton processing cost as the only non-disposal operating cost and uses the resulting contribution as the cash flow for payback. The case does not say whether that figure includes incremental labor, maintenance, odor-control operating costs, or other fixed operating expense. If it does not, both paybacks and the $87.75 fee threshold are overstated/understated respectively.",
+      "fix": "State that the $30/ton includes all incremental operating costs other than the separately listed reject disposal cost, or provide the missing incremental operating costs and include them in both scenarios."
+     },
+     {
+      "severity": "major",
+      "where": "Q6: definition of the 30K annual minimum",
+      "problem": "The city’s “minimum annual volume” is treated as 30K tons actually delivered and processed, driving both contribution and 12K tons of displaced yard waste. A contractual minimum could instead be a take-or-pay commitment, with payment for undelivered tons; that would have different revenue, capacity, and disposal economics. The key correctly flags supply uncertainty but does not resolve what the 30K means in the calculation.",
+      "fix": "Specify that the 30K is expected physical inbound volume actually delivered and processed each year, or define it as a take-or-pay minimum and model the payment and actual throughput separately."
+     },
+     {
+      "severity": "minor",
+      "where": "Internal calculation notes: Q5 initial_payback and Q6 pivot_payback",
+      "problem": "The notes label 3.22581 and 5.54455 as “exact,” but the exact ratios are 100/31 = 3.225806… and 560/101 = 5.544554… respectively. The rounded one-decimal answers (3.2 and 5.5 years) are fine; the exactness labels are not.",
+      "fix": "Label those intermediate values approximate, or retain the exact fractions and use the displayed rounded results for the answer key."
+     },
+     {
+      "severity": "minor",
+      "where": "Q6/Q7 model answer and recommendation: alternative city capital support",
+      "problem": "The recommendation says “equivalent city capital support” but does not quantify the equivalent amount. At the $78 fee and modeled $0.7575M annual net contribution, four-year payback permits total capex of 4 × $0.7575M = $3.03M; against $4.2M capex, the city would need to cover at least $1.17M, assuming no other changes.",
+      "fix": "State the $1.17M minimum capital contribution as the equivalent alternative under the stated assumptions."
+     },
+     {
+      "severity": "minor",
+      "where": "Case title",
+      "problem": "“Crowds Out Its Best Customers” is stronger than the modeled evidence. The case assigns the same $25/ton contribution to all displaced yard-waste volume and does not identify particular customers as the best or highest-value.",
+      "fix": "Rename it to “The Organics Contract That Crowds Out Existing Yard-Waste Business,” unless customer-level economics are added."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "Most of the arithmetic checks out: 80K eligible households × 60% × 0.5 tons = 24K tons; the initial case yields $1.08M gross contribution, $0.93M after $0.15M of displaced yard-waste contribution, and 3.23 years payback. The pivot yields $1.0575M gross, $0.7575M net, 5.54 years payback, and an $87.75/ton fee for four-year payback. The case has the requested hard-case shape (7 sections, 3 exhibits, 16 linked calculations, capacity trade-off, and a pivot), but the ex1 unit mismatch makes it unrunnable as written, and the payback/contract timing and pivot-volume definitions need clarification before publication."
+   },
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Q6 required_pivot_fee calculation; Q6 model answer; Q7 model answer; Recommendation",
+      "problem": "The required fee is understated by $10/ton. From the displayed formula, required annual gross contribution is $1.05M ( $4.2M / 4 ) plus $0.60M of displaced yard-waste contribution, or $1.65M. Adding the pivot operating-cost offset of $1.2825M gives $2.9325M of annual fee revenue; divided by 30K tons, the required fee is $97.75/ton, not $87.75. At $87.75, contribution is $45/ton, gross contribution is $1.35M, net contribution after displacement is $0.75M, and payback is 5.6 years.",
+      "fix": "Change every stated $87.75/ton threshold to $97.75/ton. Keep the current fee at $78 unless negotiated; at the corrected threshold, net contribution is $1.05M/year and payback is 4 years."
+     },
+     {
+      "severity": "major",
+      "where": "Q5 timing share and model answer; Q6 timing share and model answer; Q7 model answer; Recommendation",
+      "problem": "Capital is paid at contract award, but contribution starts at commissioning. The time from award to commissioning is not specified. The stated 3.2-year initial payback is only the operating period from commissioning, not necessarily simple payback from the investment date. With $3M / $0.93M = 3.2258 operating years, the initial case clears a four-year payback hurdle only if commissioning occurs within about 0.77 years of award. The stated five-year contract recovery comparison is based on five operating years from commissioning and is not itself affected by the pre-commissioning gap.",
+      "fix": "Either specify the award-to-commissioning period and include it in payback, or state that commissioning occurs at award (equivalently, capex is paid at commissioning) for this screen. Apply the same convention to both scenarios."
+     },
+     {
+      "severity": "minor",
+      "where": "Q5 Calc initial_payback and Q6 Calc pivot_payback",
+      "problem": "The answer key labels 3.22581 and 5.54455 as exact values, but these are rounded representations of repeating quotients: $3M / $0.93M = 3.225806… and $4.2M / $0.7575M = 5.544554… . No later calculation appears to depend on these values, so the displayed one-decimal paybacks remain correct.",
+      "fix": "Label these values approximate (or retain the quotient/fraction as the exact value); do not describe the finite decimals as exact."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The revised exhibit units and the operating-cost, physical-volume, and contract-term clarifications resolve the previously identified issues. The case otherwise has a coherent 7-section flow, three exhibits, distractor data, a linked capacity/contribution/payback calculation chain, and a meaningful pivot. It is not ready for the library until the pivot fee threshold and the award-to-commissioning payback timing are corrected."
+   },
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Exhibit ex1: table values and note; q3 market-sizing result",
+      "problem": "The unit ambiguity flagged in the earlier review remains. The note says household and yard-waste values are “presented in thousands,” while the cells still show values such as “30K” households and “12K” tons. Read literally as values in thousands, these mean 30 million households and 12 million tons, but q3 treats them as 30,000 households and 12,000 tons, yielding 80,000 households and 24,000 tons/year. The exhibit therefore does not unambiguously support the answer key’s calculation.",
+      "fix": "Use one convention consistently: either show 30, 28, 22 and 12, 10, 8 with explicit “(000s)” column headers, or keep 30K/28K/etc. and replace the note with “K denotes actual thousands; values are not additionally scaled.”"
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The operating and investment calculations, scenario comparison, timing assumptions, and recommendation reconcile. The prior timing, operating-cost scope, delivered-volume definition, and pivot-fee issues appear resolved. One major exhibit-unit ambiguity remains and should be fixed before the case is run."
+   },
+   {
+    "issues": [
+     {
+      "severity": "minor",
+      "where": "Q6 model answer; Q7 model answer; Recommendation",
+      "problem": "City capital support is presented as an alternative to the $97.75/ton fee, but the answer key does not quantify what “equivalent” support means. At the modeled $0.4575M annual net contribution, four-year payback permits at most $1.83M of Northstar-funded capital ($0.4575M × 4), versus $4.2M required; the city would need to fund about $2.37M if support simply reduces Northstar’s capex and operating economics stay unchanged.",
+      "fix": "State the assumption and add the approximate $2.37M support threshold, or describe capital support as a lever to be sized rather than as an already equivalent alternative."
+     },
+     {
+      "severity": "minor",
+      "where": "Clarifying answer on strategic rationale; Q7 model answer; Recommendation",
+      "problem": "The clarifying answer explicitly asks the candidate to mention strategic option value separately, but the model recommendation does not do so. It correctly avoids relying on uncontracted future volume, yet leaves out the requested distinction between standalone contract economics and any unquantified capability value.",
+      "fix": "Add a brief sentence that food-scraps capability may have strategic option value, but it is unquantified and is not included in the decision economics."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "Recomputed the calculations: the initial case gives $1.08M gross contribution, $0.78M net contribution after displacement, and 3.85 years’ payback; the pivot gives $1.0575M gross, $0.4575M net, 9.18 years’ payback, a $97.75/ton fee to meet the four-year hurdle, and $1.9125M unrecovered at five years. The calculations, comparisons, timing conventions, and stated conclusions are consistent; the previously raised unit, timing, operating-cost, physical-volume, and fee-calculation issues are resolved. The case meets the requested hard-case shape and is hand-runnable. The two minor omissions are noted above."
+   }
+  ],
+  "fix_rounds": 5,
+  "history": [
+   {
+    "step": "number check",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "sections[5].common_mistakes[2]",
+      "problem": "text mentions corrections or earlier versions; the case must read as a finished original"
+     }
+    ]
+   },
+   {
+    "step": "number check",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "sections[5].common_mistakes[2]",
+      "problem": "text mentions corrections or earlier versions; the case must read as a finished original"
+     }
+    ]
+   },
+   {
+    "step": "Independent review",
+    "issues": [
+     {
+      "severity": "blocker",
+      "where": "Exhibit ex1: column units and row values",
+      "problem": "The exhibit labels households and yard waste in “(000s)” but shows values such as 30K households and 12K tons. Read literally, those are 30,000 thousand households and 12,000 thousand tons; the answer key instead treats them as 30,000 households and 12,000 tons. The candidate cannot know which scale to use, so the stated 24K-ton estimate is not reproducible from the exhibit as labeled.",
+      "fix": "Make units and values consistent. For example, label the columns “Households” and “Yard waste (tons/year)” and retain 30K/12K values; or label them “(000s)” and show 30/12."
+     },
+     {
+      "severity": "major",
+      "where": "Q5–Q7: payback and contract-term comparison",
+      "problem": "The pivot payback is 4.2M / 0.7575M = 5.54 years, longer than the five-year contract. At the modeled flat run rate, five years generate 3.7875M of net contribution, leaving 0.4125M of the 4.2M investment unrecovered, before any residual value or renewal. The key says the pivot misses the four-year hurdle but never explicitly notes that payback also extends beyond the contract term, an important part of the stated decision criterion.",
+      "fix": "State that the current terms do not recover the investment within the five-year contract (with about $0.413M unrecovered at term, assuming no residual value), and make any renewal or post-contract value an explicit assumption rather than relying on it."
+     },
+     {
+      "severity": "major",
+      "where": "Q5–Q7: investment and cash-flow timing",
+      "problem": "The case compares simple payback with a five-year contract but does not state when capex is paid, when contribution starts, whether there is an installation delay or ramp, or when the contract term begins. For example, 3.2 years of run-rate payback after commissioning does not necessarily mean recovery within a five-year term that starts at award.",
+      "fix": "State a timing convention, such as: capex is paid at contract award; full run-rate contribution starts immediately after commissioning with no ramp; and the five-year term starts at commissioning. Adjust the convention if that is not the intended scenario."
+     },
+     {
+      "severity": "major",
+      "where": "Exhibit ex3 and Q5–Q7: operating-cost completeness",
+      "problem": "The calculation treats the $30/inbound-ton processing cost as the only non-disposal operating cost and uses the resulting contribution as the cash flow for payback. The case does not say whether that figure includes incremental labor, maintenance, odor-control operating costs, or other fixed operating expense. If it does not, both paybacks and the $87.75 fee threshold are overstated/understated respectively.",
+      "fix": "State that the $30/ton includes all incremental operating costs other than the separately listed reject disposal cost, or provide the missing incremental operating costs and include them in both scenarios."
+     },
+     {
+      "severity": "major",
+      "where": "Q6: definition of the 30K annual minimum",
+      "problem": "The city’s “minimum annual volume” is treated as 30K tons actually delivered and processed, driving both contribution and 12K tons of displaced yard waste. A contractual minimum could instead be a take-or-pay commitment, with payment for undelivered tons; that would have different revenue, capacity, and disposal economics. The key correctly flags supply uncertainty but does not resolve what the 30K means in the calculation.",
+      "fix": "Specify that the 30K is expected physical inbound volume actually delivered and processed each year, or define it as a take-or-pay minimum and model the payment and actual throughput separately."
+     }
+    ]
+   },
+   {
+    "step": "Second review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Q6 required_pivot_fee calculation; Q6 model answer; Q7 model answer; Recommendation",
+      "problem": "The required fee is understated by $10/ton. From the displayed formula, required annual gross contribution is $1.05M ( $4.2M / 4 ) plus $0.60M of displaced yard-waste contribution, or $1.65M. Adding the pivot operating-cost offset of $1.2825M gives $2.9325M of annual fee revenue; divided by 30K tons, the required fee is $97.75/ton, not $87.75. At $87.75, contribution is $45/ton, gross contribution is $1.35M, net contribution after displacement is $0.75M, and payback is 5.6 years.",
+      "fix": "Change every stated $87.75/ton threshold to $97.75/ton. Keep the current fee at $78 unless negotiated; at the corrected threshold, net contribution is $1.05M/year and payback is 4 years."
+     },
+     {
+      "severity": "major",
+      "where": "Q5 timing share and model answer; Q6 timing share and model answer; Q7 model answer; Recommendation",
+      "problem": "Capital is paid at contract award, but contribution starts at commissioning. The time from award to commissioning is not specified. The stated 3.2-year initial payback is only the operating period from commissioning, not necessarily simple payback from the investment date. With $3M / $0.93M = 3.2258 operating years, the initial case clears a four-year payback hurdle only if commissioning occurs within about 0.77 years of award. The stated five-year contract recovery comparison is based on five operating years from commissioning and is not itself affected by the pre-commissioning gap.",
+      "fix": "Either specify the award-to-commissioning period and include it in payback, or state that commissioning occurs at award (equivalently, capex is paid at commissioning) for this screen. Apply the same convention to both scenarios."
+     }
+    ]
+   },
+   {
+    "step": "Third review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Exhibit ex1: table values and note; q3 market-sizing result",
+      "problem": "The unit ambiguity flagged in the earlier review remains. The note says household and yard-waste values are “presented in thousands,” while the cells still show values such as “30K” households and “12K” tons. Read literally as values in thousands, these mean 30 million households and 12 million tons, but q3 treats them as 30,000 households and 12,000 tons, yielding 80,000 households and 24,000 tons/year. The exhibit therefore does not unambiguously support the answer key’s calculation.",
+      "fix": "Use one convention consistently: either show 30, 28, 22 and 12, 10, 8 with explicit “(000s)” column headers, or keep 30K/28K/etc. and replace the note with “K denotes actual thousands; values are not additionally scaled.”"
+     }
+    ]
+   }
+  ],
+  "model": "gpt-6-luna",
+  "engine": "luna"
+ },
+ "usage": {
+  "model": "gpt-6-luna",
+  "input": 124446,
+  "cached": 28397,
+  "output": 84948,
+  "requests": 11,
+  "seconds": 628.7,
+  "usd": 0.054729,
+  "calls": 11,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6301,
+    "cached": 0,
+    "output": 9630,
+    "requests": 1,
+    "seconds": 72.6,
+    "usd": 0.005599
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 9904,
+    "cached": 0,
+    "output": 9197,
+    "requests": 1,
+    "seconds": 73.4,
+    "usd": 0.005833
+   },
+   {
+    "step": "Fix 1 number-check issue",
+    "role": "writer",
+    "input": 13457,
+    "cached": 4687,
+    "output": 8208,
+    "requests": 1,
+    "seconds": 46.2,
+    "usd": 0.005244
+   },
+   {
+    "step": "Fix 1 number-check issue",
+    "role": "writer",
+    "input": 13445,
+    "cached": 4687,
+    "output": 8319,
+    "requests": 1,
+    "seconds": 50.4,
+    "usd": 0.005298
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 9042,
+    "cached": 0,
+    "output": 6319,
+    "requests": 1,
+    "seconds": 59.5,
+    "usd": 0.004287
+   },
+   {
+    "step": "Fix 5 independent review findings",
+    "role": "writer",
+    "input": 14174,
+    "cached": 4687,
+    "output": 9420,
+    "requests": 1,
+    "seconds": 51.7,
+    "usd": 0.00594
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 9774,
+    "cached": 1654,
+    "output": 5916,
+    "requests": 1,
+    "seconds": 56.8,
+    "usd": 0.003986
+   },
+   {
+    "step": "Fix 2 second review findings",
+    "role": "writer",
+    "input": 14235,
+    "cached": 4687,
+    "output": 9398,
+    "requests": 1,
+    "seconds": 69.9,
+    "usd": 0.005936
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 9985,
+    "cached": 1654,
+    "output": 5741,
+    "requests": 1,
+    "seconds": 52.6,
+    "usd": 0.003925
+   },
+   {
+    "step": "Fix 1 third review finding",
+    "role": "writer",
+    "input": 14066,
+    "cached": 4687,
+    "output": 9201,
+    "requests": 1,
+    "seconds": 59.5,
+    "usd": 0.005817
+   },
+   {
+    "step": "Final review",
+    "role": "reviewer",
+    "input": 10063,
+    "cached": 1654,
+    "output": 3599,
+    "requests": 1,
+    "seconds": 36.1,
+    "usd": 0.002864
+   }
+  ]
+ },
+ "second_opinion": {
+  "model": "gpt-5.6-terra",
+  "at": "2026-10-20T20:53:09.396822+00:00",
+  "difficulty_fit": "about_right",
+  "summary": "All displayed quantitative results and comparative claims in the model answer recompute correctly. Initial food-scrap volume is 80,000 × 60% × 0.5 = 24K tons/year. Initial per-ton contribution is $78 + (80% × 0.25 × $40) − $30 − (20% × $55) = $45, or $1.08M annually; 24K tons against 18K spare capacity displaces 6K tons of yard waste ($0.30M), leaving $0.78M and $3.0M / $0.78M = 3.846 years, correctly shown as 3.8 years. Under the pivot, per-ton contribution is $78 + (65% × 0.25 × $40) − $30 − (35% × $55) = $35.25; 30K tons yields $1.0575M gross, displaces 12K tons ($0.60M), and leaves $0.4575M. Total capex is $4.2M, payback is 9.1803 years, term-end unrecovered capex is $1.9125M, and the required fee for a four-year payback is $97.75/ton. The case consistently uses annual volumes, incremental contribution, the stated commissioning timing, and simple payback; it explicitly handles the capacity opportunity cost, added capital, absence of take-or-pay protection, and lack of residual/renewal value. It has the requested hard-case elements: seven sections, three exhibits with useful distractors, a linked capacity/payback chain, a material pivot, and a candidate-led structure. The only findings are a circular q3 comparison instruction and avoidably messy pivot arithmetic.",
+  "issues": [
+   {
+    "severity": "minor",
+    "where": "q3 Ask",
+    "problem": "The wording asks the candidate to “compare” the household-based estimate with the opportunity Northstar should use as its initial operating case, but no separate city volume estimate or alternative operating-case volume has been provided at this point. The intended answer simply derives 24K tons/year and uses that same number, so there is nothing distinct to compare.",
+    "fix": "Change the ask to: “Estimate annual food-scrap volume from the service areas and explain whether it is an appropriate initial operating case.”"
+   },
+   {
+    "severity": "minor",
+    "where": "q6 calculations and model answer; repeated in q7 and Recommendation",
+    "problem": "The pivot arithmetic is correct, but several outputs are needlessly precision-heavy for a live hand-calculation case: gross contribution is exactly $1.0575M, net contribution is exactly $0.4575M, payback is 9.18033 years, and unrecovered investment is $1.9125M. A candidate can estimate the displayed rounded answers, but preserving exact values through the seven linked calculations is unnecessarily awkward and creates avoidable rounding-risk—especially because the case correctly prohibits using rounded intermediates as exact values.",
+    "fix": "Adjust one or two pivot inputs so the pivot unit contribution and annual contribution are clean, then recalculate the displayed key consistently. For example, choose pivot economics that yield a round per-ton contribution and round annual net contribution (and therefore clean payback and term-end recovery), while retaining the same capacity-displacement and contamination logic."
+   }
+  ],
+  "usage": {
+   "model": "gpt-5.6-terra",
+   "input": 9494,
+   "cached": 1658,
+   "output": 4305,
+   "requests": 1,
+   "seconds": 39.7,
+   "usd": 0.071521,
+   "calls": 1,
+   "steps": [
+    {
+     "step": "Cross-audit",
+     "role": "reviewer",
+     "input": 9494,
+     "cached": 1658,
+     "output": 4305,
+     "requests": 1,
+     "seconds": 39.7,
+     "usd": 0.071521
+    }
+   ]
+  }
+ }
+}

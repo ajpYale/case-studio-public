@@ -1,0 +1,52 @@
+{
+ "case_id": "20261012-185304-f9878d",
+ "title": "The Summer Peak Trap",
+ "difficulty": "hard",
+ "original_status": "verified",
+ "original_model": "gpt-5.6-terra",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "The core case is arithmetically consistent and runnable through q4. Recalculation confirms: annual demand is 4×2.43 + 8×1.035 = 18.00M; existing in-house output is 4×0.71 + 8×1.035 = 11.12M; subcontracted volume is 6.88M. Preliminary annual EBITDA is 11.12×$0.085 + 6.88×$0.014 - $0.418 = $0.62352M and NPV is $2.880662M. Dedicated usable peak capacity is 2.7×90% = 2.43M per month; dedicated annual EBITDA is 18×$0.085 - $0.620 - $0.418 = $0.49200M; NPV is $0.49200×4.62 - $5.14 = -$2.86696M. The zero-NPV price is $0.095 + ($5.14/4.62 + $0.620 + $0.418)/18 = $0.214475, a 19.1529% uplift. The seasonal capacity logic, no-subcontracting pivot, discounting convention, exhibit sequencing, and hard-level design all work. The material repair is to quantify and time the non-price counterproposal so it genuinely closes the NPV gap; generic take-or-pay does not do so in the fixed-volume base case.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q5 model answer; final Recommendation / Next steps",
+   "problem": "The proposed commercial remedy is not financially specified enough to be runnable, and it conflates a standard take-or-pay with incremental economics. Recomputed dedicated-case shortfall at the $0.18 base price is $2.86696M of NPV: annual EBITDA is 18.00M × ($0.180-$0.095) - $0.620M - $0.418M = $0.49200M; PV is $0.49200M × 4.62 = $2.27304M; less $5.14000M capex = -$2.86696M. A take-or-pay that merely guarantees the stated fixed 18.00M annual forecast adds no base-case cash flow and therefore does not close this gap. Likewise, a customer capex contribution is only “economically equivalent” if its amount and timing are defined: it must be $2.86696M paid today, or a payment stream with that present value. The answer currently permits a candidate/interviewer to treat generic take-or-pay or an unspecified later contribution as enough to meet the hurdle.",
+   "fix": "State that HelioFill needs either (i) a blended price of at least $0.214475 per can, (ii) a $2.86696M customer capex contribution paid at signing / year 0, or (iii) an explicitly stated payment schedule with PV of $2.86696M. Describe take-or-pay separately as downside protection unless it includes an incremental reservation fee of that PV-equivalent value."
+  },
+  {
+   "severity": "minor",
+   "where": "q5 model answer",
+   "problem": "“A peak-capacity surcharge ... that lifts effective price to at least $0.2145” is directionally correct only if “effective price” clearly means the blended price across all 18.00M annual cans. It does not give the peak-only surcharge implied by the proposed structure. The required annual incremental revenue is 18.00M × ($0.214475-$0.180000) = $0.62055M. If charged only on the 9.72M peak cans, the required surcharge is $0.62055M / 9.72M = $0.06384 per peak can, implying a peak price of about $0.24384—not a $0.2145 peak price.",
+   "fix": "Add one clarifying sentence: “If the remedy is a peak-only charge, it must be about $0.0638 per peak can above the $0.18 base price (about $0.2438 in peak months), which yields the $0.214475 blended price.”"
+  },
+  {
+   "severity": "minor",
+   "where": "q6 model answer",
+   "problem": "The claim that a 74% supermarket revenue mix “supports national relevance” is not established by Exhibit 3. A channel mix indicates where revenue is earned, not national distribution, retailer breadth, or geographic coverage. The prompt calls the proposed contract national, but the exhibit itself does not substantiate the comparative claim.",
+   "fix": "Replace with: “The proposed national contract and 74% supermarket mix make the account strategically relevant, subject to confirming retailer breadth and national distribution.”"
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 8657,
+  "cached": 1562,
+  "output": 3148,
+  "requests": 1,
+  "seconds": 29.4,
+  "usd": 0.055765,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 8657,
+    "cached": 1562,
+    "output": 3148,
+    "requests": 1,
+    "seconds": 29.4,
+    "usd": 0.055765
+   }
+  ]
+ }
+}

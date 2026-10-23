@@ -1,0 +1,3210 @@
+{
+ "id": "20261020-211027-c94b35",
+ "created_at": "2026-10-20T21:10:27.668462+00:00",
+ "request": {
+  "difficulty": "instant_offer",
+  "case_type": null,
+  "industry": null,
+  "format": null,
+  "notes": null,
+  "engine": "luna",
+  "confirm_cost": false
+ },
+ "plan": {
+  "title": "The Operating-Room Shortcut",
+  "client": "Harborview Health, a fictional nonprofit regional health system",
+  "industry": "U.S. healthcare delivery",
+  "case_type": "Ambulatory surgery center build decision; market sizing, cannibalization, capacity-constrained unit economics, NPV, and scenario analysis",
+  "situation": "Harborview’s outpatient surgery volumes appear to be surging, and its CEO is considering a freestanding ambulatory surgery center (ASC) to expand access and improve margins. The proposal looks attractive on headline growth and standalone ASC economics. The board wants to know whether to build, what would make the answer change, and how to protect both access and system-wide economics.",
+  "core_question": "Should Harborview build the ASC, and what conditions would make the investment attractive without mistaking transferred hospital cases for new system value?",
+  "key_insight": "The headline growth in outpatient procedures overstates growth in the procedures the ASC can serve, and the apparent standalone contribution overstates system-wide value because many cases would move from Harborview’s hospital. On the base case, a full-capacity center misses the investment hurdle: the volume needed to clear it exceeds capacity. The pivot changes the answer for a less obvious reason: a Medicaid access grant both reduces the upfront investment and requires a case mix that replaces some internal transfers with incremental patients. The grant-backed plan has positive NPV at the base transfer rate, but becomes value-destructive if internal transfers rise above the calculated break-even share. A strong recommendation is therefore conditional on validating case origin and securing the grant—not an unconditional build or rejection.",
+  "twist": "The access grant initially looks like a margin-diluting obligation. In fact, its reserved Medicaid volume displaces some cases that would otherwise have been transferred from Harborview’s hospital, reducing cannibalization. The grant-backed case is attractive at the base transfer rate; the result reverses if the remaining commercial cases are too heavily transferred from the hospital.",
+  "storyline": [
+   {
+    "kind": "framework",
+    "intent": "Candidate-led scoping. The interviewer gives only the CEO’s access-and-margin objective. A strong candidate asks whether the decision should be evaluated on ASC standalone profit or Harborview-wide incremental cash flow, and whether shifting existing hospital cases counts as growth. Clarifying answer: use system-wide cash economics over the stated investment horizon; transferred cases count only for their incremental contribution versus keeping them at the hospital. Do not volunteer the grant."
+   },
+   {
+    "kind": "exhibit_read",
+    "intent": "Ask, “What is driving the apparent growth, and what does it imply for this decision?” Release ex1. The candidate should distinguish total outpatient growth from growth in ASC-addressable procedures and avoid treating the headline trend as a forecast of incremental ASC demand. The historical trend alone does not establish where future ASC cases will come from."
+   },
+   {
+    "kind": "brainstorm",
+    "intent": "Ask, “What would you want to learn before committing capital?” Reward targeted questions about addressable procedure types, referral sources, case origin, payer mix, capacity, avoidable hospital costs, and execution—not a generic hospital-growth list. If the candidate asks what demand the ASC can actually serve, release ex2."
+   },
+   {
+    "kind": "market_sizing",
+    "intent": "Ask, “How much annual demand could this site realistically serve?” The candidate estimates the outpatient-eligible pool, applies the proposed capture rate, and recognizes that the facility—not forecast demand—is the binding capacity constraint. Ex2 supplies catchment, eligibility, and capture inputs; the capacity assumption is in ex3."
+   },
+   {
+    "kind": "quant",
+    "intent": "Ask, “What is driving the economics, and should they build?” Release ex3. The candidate should compare ASC contribution with the contribution Harborview gives up on transferred cases, then account for fixed operating costs, capital cost, the supplied annuity factor, and capacity. Ask for a base NPV and a capacity-constrained investment-hurdle check. Do not prescribe the order of calculations."
+   },
+   {
+    "kind": "pivot",
+    "intent": "After the candidate gives a base-case view, say: “The state will provide a capital grant if Harborview reserves part of the center for Medicaid patients. Does that change your answer?” Release ex4. The candidate should recompute the changed case mix and net upfront investment, not merely subtract the grant from capex. Challenge conviction with “Are you sure the Medicaid obligation only hurts?” A strong candidate notes that the reserved volume also reduces the number of internal commercial cases that can be transferred. Then ask, “Are you sure the grant-backed plan is robust?” A strong candidate tests the internal-transfer share and identifies the break-even threshold."
+   },
+   {
+    "kind": "synthesis",
+    "intent": "Require a sixty-second CEO answer: decide, state the grant-backed NPV and the internal-transfer threshold, quantify the downside scenario, identify the key validation and mitigation, and say what would change the recommendation. Accept a conditional build with explicit gates; do not accept a summary that reports only ASC standalone profit."
+   }
+  ],
+  "numbers_plan": "The arithmetic spine is intentionally chained across procedure volume, capture, capacity, source mix, unit contribution, displaced hospital contribution, annual cash flow, and NPV. In the base case, the candidate estimates an eligible outpatient pool of {eligible_outpatient_cases}, captures {forecast_captured_cases}, and is capped at {facility_capacity_cases}. At the base internal-transfer share, the center produces {base_asc_contribution}, but Harborview gives up {base_displaced_hospital_contribution}; after {annual_fixed_cost}, annual incremental cash flow is {base_annual_cash_flow} and NPV is {base_npv}. The hurdle requires {hurdle_annual_cash_flow} of annual cash flow, or {breakeven_cases} cases at the base mix—{breakeven_capacity_utilization} of capacity—so more demand alone cannot rescue the base case. Under the pivot, recompute case mix, displaced contribution, cash flow, and NPV using the grant and Medicaid obligation: the expected result is {grant_case_npv}. Then test a high-transfer scenario; it yields {high_transfer_npv}. The internal-transfer break-even is {breakeven_internal_transfer_share}. The annuity factor is provided as an input; candidates do not compound or derive it.",
+  "exhibits_plan": [
+   "ex1 — Harborview outpatient procedure trend: a line chart comparing total outpatient surgery cases with the ASC-addressable procedure subset across three historical periods; include a comparable-scale inpatient trend as a distractor. Source-style footnote: Harborview finance and scheduling systems. The chart’s headline growth is real but is not the growth rate of the addressable subset.",
+   "ex2 — Catchment and referral opportunity: a compact table with population, annual procedure rate, outpatient-eligible share, proposed capture rate, and referral-source split. Include a plausible but irrelevant imaging utilization row as a distractor. Source-style footnote: Harborview referral study and planning assumptions. Candidates need to combine the addressable-volume logic here with the procedure mix and trend in ex1.",
+   "ex3 — Base ASC economics and capacity: a table of facility capacity, ASC contribution per case, contribution Harborview retains today on an internal hospital case, annual fixed cash operating cost, initial capex, discount rate, project horizon, and supplied annuity factor. Include building area as a distractor. Source-style footnote: Harborview operations and facilities estimates. Label unit contribution clearly as contribution after variable cash costs, not revenue or allocated profit.",
+   "ex4 — State access proposal: a table with grant amount, Medicaid share of facility capacity, Medicaid ASC contribution per case, and the instruction that Medicaid cases replace commercial cases within the fixed capacity; apply the base internal-transfer share to the remaining commercial cases. Source-style footnote: preliminary state program terms, subject to award. This exhibit enables the pivot and scenario comparison; it does not show NPV results."
+  ],
+  "core_variables": [
+   {
+    "name": "catchment_population_count_k",
+    "value": 1600.0,
+    "unit": "count_k",
+    "label": "Adult catchment population",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "annual_target_procedure_rate",
+    "value": 0.02,
+    "unit": "pct",
+    "label": "Annual target-procedure rate per catchment resident",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "outpatient_eligible_share",
+    "value": 0.375,
+    "unit": "pct",
+    "label": "Share of target procedures suitable for outpatient surgery",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "capture_rate",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Share of outpatient-eligible procedures Harborview expects to capture",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "facility_capacity_cases_count_k",
+    "value": 4.0,
+    "unit": "count_k",
+    "label": "Annual ASC capacity",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "internal_transfer_share",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Base share of captured commercial cases transferred from Harborview’s hospital",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "asc_contribution_per_case_usd_k",
+    "value": 2.0,
+    "unit": "usd_k",
+    "label": "ASC contribution per commercial case after variable cash costs",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "hospital_contribution_per_transferred_case_usd_k",
+    "value": 1.25,
+    "unit": "usd_k",
+    "label": "Hospital contribution Harborview gives up per transferred case after avoidable costs",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "annual_fixed_cost_usd_m",
+    "value": 3.2,
+    "unit": "usd_m",
+    "label": "ASC annual fixed cash operating cost",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "initial_capex_usd_m",
+    "value": 16.0,
+    "unit": "usd_m",
+    "label": "ASC construction and equipment cost paid at year zero",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "discount_rate",
+    "value": 0.08,
+    "unit": "pct",
+    "label": "Discount rate used for project valuation",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "project_horizon",
+    "value": 10.0,
+    "unit": "years",
+    "label": "Years of flat annual cash flow; no terminal value",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "annuity_factor",
+    "value": 6.7,
+    "unit": "multiple",
+    "label": "Supplied present-value annuity factor for the project horizon and discount rate",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "state_grant_usd_m",
+    "value": 10.0,
+    "unit": "usd_m",
+    "label": "State capital grant, received at year zero if access conditions are met",
+    "revealed_in": "ex4",
+    "role": "input"
+   },
+   {
+    "name": "medicaid_reserved_share",
+    "value": 0.25,
+    "unit": "pct",
+    "label": "Share of facility capacity reserved for Medicaid cases under the grant",
+    "revealed_in": "ex4",
+    "role": "input"
+   },
+   {
+    "name": "medicaid_asc_contribution_per_case_usd_k",
+    "value": 1.2,
+    "unit": "usd_k",
+    "label": "ASC contribution per Medicaid case after variable cash costs",
+    "revealed_in": "ex4",
+    "role": "input"
+   },
+   {
+    "name": "high_transfer_share",
+    "value": 0.9,
+    "unit": "pct",
+    "label": "Stress-case share of remaining commercial cases transferred from Harborview’s hospital",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "historical_total_outpatient_y1_count_k",
+    "value": 9.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, first period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_total_outpatient_y2_count_k",
+    "value": 10.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, second period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_total_outpatient_y3_count_k",
+    "value": 12.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, third period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_addressable_y1_count_k",
+    "value": 3.0,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, first period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_addressable_y2_count_k",
+    "value": 3.2,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, second period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_addressable_y3_count_k",
+    "value": 3.4,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, third period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_inpatient_growth",
+    "value": 0.08,
+    "unit": "pct",
+    "label": "Historical inpatient case growth, shown only as context",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "imaging_utilization_pct",
+    "value": 0.72,
+    "unit": "pct",
+    "label": "Imaging utilization in the catchment, unrelated to the ASC decision",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "building_area_sqft",
+    "value": 42000.0,
+    "unit": "count",
+    "label": "Proposed building area, not a binding capacity input",
+    "revealed_in": "ex3",
+    "role": "distractor"
+   }
+  ],
+  "core_calculations": [
+   {
+    "id": "eligible_target_cases",
+    "label": "Annual target procedures in the catchment",
+    "expression": "catchment_population_count_k * annual_target_procedure_rate",
+    "unit": "count_k",
+    "expected_value": 32.0,
+    "decimals": 1
+   },
+   {
+    "id": "eligible_outpatient_cases",
+    "label": "Annual outpatient-eligible target procedures",
+    "expression": "eligible_target_cases * outpatient_eligible_share",
+    "unit": "count_k",
+    "expected_value": 12.0,
+    "decimals": 1
+   },
+   {
+    "id": "forecast_captured_cases",
+    "label": "Forecast annual cases at the proposed capture rate",
+    "expression": "eligible_outpatient_cases * capture_rate",
+    "unit": "count_k",
+    "expected_value": 4.8,
+    "decimals": 1
+   },
+   {
+    "id": "feasible_cases",
+    "label": "Cases the facility can serve at capacity",
+    "expression": "min(forecast_captured_cases, facility_capacity_cases_count_k)",
+    "unit": "count_k",
+    "expected_value": 4.0,
+    "decimals": 1
+   },
+   {
+    "id": "base_internal_cases",
+    "label": "Base-case cases transferred from Harborview’s hospital",
+    "expression": "feasible_cases * internal_transfer_share",
+    "unit": "count_k",
+    "expected_value": 2.4,
+    "decimals": 1
+   },
+   {
+    "id": "base_external_cases",
+    "label": "Base-case cases new to Harborview",
+    "expression": "feasible_cases - base_internal_cases",
+    "unit": "count_k",
+    "expected_value": 1.6,
+    "decimals": 1
+   },
+   {
+    "id": "base_asc_contribution",
+    "label": "Base-case ASC contribution before fixed cost",
+    "expression": "feasible_cases * asc_contribution_per_case_usd_k",
+    "unit": "usd_m",
+    "expected_value": 8.0,
+    "decimals": 1
+   },
+   {
+    "id": "base_displaced_hospital_contribution",
+    "label": "Contribution lost on cases transferred from the hospital",
+    "expression": "base_internal_cases * hospital_contribution_per_transferred_case_usd_k",
+    "unit": "usd_m",
+    "expected_value": 3.0,
+    "decimals": 1
+   },
+   {
+    "id": "base_annual_cash_flow",
+    "label": "Base-case annual incremental system cash flow",
+    "expression": "base_asc_contribution - base_displaced_hospital_contribution - annual_fixed_cost_usd_m",
+    "unit": "usd_m",
+    "expected_value": 1.8,
+    "decimals": 1
+   },
+   {
+    "id": "base_npv",
+    "label": "Base-case NPV at year zero",
+    "expression": "base_annual_cash_flow * annuity_factor - initial_capex_usd_m",
+    "unit": "usd_m",
+    "expected_value": -3.94,
+    "decimals": 1
+   },
+   {
+    "id": "hurdle_annual_cash_flow",
+    "label": "Annual cash flow required to recover capex on an NPV basis",
+    "expression": "initial_capex_usd_m / annuity_factor",
+    "unit": "usd_m",
+    "expected_value": 2.388059701,
+    "decimals": 1
+   },
+   {
+    "id": "base_net_contribution_per_case",
+    "label": "Base-case incremental contribution per served case, before fixed cost",
+    "expression": "asc_contribution_per_case_usd_k - internal_transfer_share * hospital_contribution_per_transferred_case_usd_k",
+    "unit": "usd_k",
+    "expected_value": 1.25,
+    "decimals": 2
+   },
+   {
+    "id": "breakeven_cases",
+    "label": "Annual cases needed to achieve zero NPV at the base mix",
+    "expression": "(annual_fixed_cost_usd_m + hurdle_annual_cash_flow) / base_net_contribution_per_case",
+    "unit": "count_k",
+    "expected_value": 4.470447761,
+    "decimals": 2
+   },
+   {
+    "id": "breakeven_capacity_utilization",
+    "label": "Capacity utilization required for zero NPV at the base mix",
+    "expression": "breakeven_cases / facility_capacity_cases_count_k",
+    "unit": "pct",
+    "expected_value": 1.11761194,
+    "decimals": 1
+   },
+   {
+    "id": "grant_medicaid_cases",
+    "label": "Annual Medicaid cases required under the grant",
+    "expression": "facility_capacity_cases_count_k * medicaid_reserved_share",
+    "unit": "count_k",
+    "expected_value": 1.0,
+    "decimals": 1
+   },
+   {
+    "id": "grant_commercial_cases",
+    "label": "Annual commercial cases remaining within capacity under the grant",
+    "expression": "facility_capacity_cases_count_k - grant_medicaid_cases",
+    "unit": "count_k",
+    "expected_value": 3.0,
+    "decimals": 1
+   },
+   {
+    "id": "grant_internal_cases",
+    "label": "Commercial cases transferred from Harborview’s hospital under the grant case",
+    "expression": "grant_commercial_cases * internal_transfer_share",
+    "unit": "count_k",
+    "expected_value": 1.8,
+    "decimals": 1
+   },
+   {
+    "id": "grant_asc_contribution",
+    "label": "ASC contribution under the grant case",
+    "expression": "grant_commercial_cases * asc_contribution_per_case_usd_k + grant_medicaid_cases * medicaid_asc_contribution_per_case_usd_k",
+    "unit": "usd_m",
+    "expected_value": 7.2,
+    "decimals": 1
+   },
+   {
+    "id": "grant_displaced_contribution",
+    "label": "Hospital contribution lost under the grant case",
+    "expression": "grant_internal_cases * hospital_contribution_per_transferred_case_usd_k",
+    "unit": "usd_m",
+    "expected_value": 2.25,
+    "decimals": 2
+   },
+   {
+    "id": "grant_annual_cash_flow",
+    "label": "Annual incremental system cash flow under the grant case",
+    "expression": "grant_asc_contribution - grant_displaced_contribution - annual_fixed_cost_usd_m",
+    "unit": "usd_m",
+    "expected_value": 1.75,
+    "decimals": 2
+   },
+   {
+    "id": "grant_net_capex",
+    "label": "Year-zero capex after the grant",
+    "expression": "initial_capex_usd_m - state_grant_usd_m",
+    "unit": "usd_m",
+    "expected_value": 6.0,
+    "decimals": 1
+   },
+   {
+    "id": "grant_case_npv",
+    "label": "NPV under the grant case at the base transfer share",
+    "expression": "grant_annual_cash_flow * annuity_factor - grant_net_capex",
+    "unit": "usd_m",
+    "expected_value": 5.725,
+    "decimals": 1
+   },
+   {
+    "id": "high_transfer_internal_cases",
+    "label": "Hospital transfers in the high-transfer grant scenario",
+    "expression": "grant_commercial_cases * high_transfer_share",
+    "unit": "count_k",
+    "expected_value": 2.7,
+    "decimals": 1
+   },
+   {
+    "id": "high_transfer_displaced_contribution",
+    "label": "Hospital contribution lost in the high-transfer grant scenario",
+    "expression": "high_transfer_internal_cases * hospital_contribution_per_transferred_case_usd_k",
+    "unit": "usd_m",
+    "expected_value": 3.375,
+    "decimals": 2
+   },
+   {
+    "id": "high_transfer_annual_cash_flow",
+    "label": "Annual cash flow in the high-transfer grant scenario",
+    "expression": "grant_asc_contribution - high_transfer_displaced_contribution - annual_fixed_cost_usd_m",
+    "unit": "usd_m",
+    "expected_value": 0.625,
+    "decimals": 2
+   },
+   {
+    "id": "high_transfer_npv",
+    "label": "NPV in the high-transfer grant scenario",
+    "expression": "high_transfer_annual_cash_flow * annuity_factor - grant_net_capex",
+    "unit": "usd_m",
+    "expected_value": -1.8125,
+    "decimals": 1
+   },
+   {
+    "id": "breakeven_internal_transfer_share",
+    "label": "Maximum internal-transfer share among commercial cases for zero NPV under the grant",
+    "expression": "(grant_asc_contribution - annual_fixed_cost_usd_m - grant_net_capex / annuity_factor) / (grant_commercial_cases * hospital_contribution_per_transferred_case_usd_k)",
+    "unit": "pct",
+    "expected_value": 0.827880597,
+    "decimals": 1
+   }
+  ]
+ },
+ "draft": {
+  "title": "The Operating-Room Shortcut",
+  "client": "Harborview Health",
+  "industry": "U.S. healthcare delivery",
+  "case_type": "Ambulatory surgery center build decision; market sizing, cannibalization, capacity-constrained unit economics, NPV, and scenario analysis",
+  "difficulty": "instant_offer",
+  "format": "candidate_led",
+  "duration_minutes": 50,
+  "concepts_tested": [
+   "Ambiguous problem scoping",
+   "Healthcare procedure-market sizing",
+   "Separating headline growth from addressable demand",
+   "Capacity-constrained economics",
+   "Cannibalization and contribution displacement",
+   "Fixed-cost and capital-investment analysis",
+   "NPV using a supplied annuity factor",
+   "Mix effects",
+   "Sensitivity analysis and break-even thresholds",
+   "Interpreting integrated exhibits",
+   "Judgment under uncertainty",
+   "Executive synthesis under time pressure"
+  ],
+  "situation_summary": "Harborview’s outpatient procedures appear to be surging, prompting its CEO to consider a freestanding ambulatory surgery center (ASC). The apparent opportunity is complicated by a slower-growing addressable procedure pool, limited facility capacity, and the risk of shifting profitable hospital cases rather than adding system value. A state access grant changes the economics but imposes a Medicaid case-mix requirement.",
+  "prompt": "Harborview Health is a nonprofit regional health system. Its CEO is considering a freestanding ambulatory surgery center after seeing strong growth in outpatient surgery across the region. The proposal is attracting support because it could improve access and appears to offer attractive standalone economics. The board is concerned, however, that the center may simply move profitable cases out of Harborview’s hospital. The CEO wants to know whether Harborview should build, what would make the investment attractive, and what evidence would justify changing the decision. How would you approach the question?",
+  "clarifying": [
+   {
+    "question": "Should we judge the center on its standalone economics, or on the change in Harborview’s overall economics?",
+    "answer": "Use Harborview-wide incremental cash economics. Cases shifted from Harborview’s hospital count only for the difference between the ASC contribution and the hospital contribution that Harborview gives up."
+   },
+   {
+    "question": "What is Harborview trying to optimize, and are there constraints beyond financial return?",
+    "answer": "The board wants a financially responsible decision that also protects patient access. No formal minimum return hurdle has been set; use NPV at the supplied discount rate and make any access trade-offs explicit."
+   },
+   {
+    "question": "What time period and cash-flow convention should I use?",
+    "answer": "Use flat annual cash flows over {project_horizon}, with no terminal value. The initial investment is paid at year zero, the annual cash flows start in the first operating year, and the supplied annuity factor already reflects the project horizon and discount rate."
+   },
+   {
+    "question": "Are operating costs and hospital contribution figures incremental cash amounts?",
+    "answer": "Yes. ASC case contributions are after variable cash costs; the hospital contribution is what Harborview would give up after avoidable costs if an existing case moves; annual fixed costs are incremental cash operating costs."
+   }
+  ],
+  "variables": [
+   {
+    "name": "catchment_population_count_k",
+    "value": 1600.0,
+    "unit": "count_k",
+    "label": "Commercial-insured adult catchment population",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "annual_target_procedure_rate",
+    "value": 0.02,
+    "unit": "pct",
+    "label": "Annual target-procedure rate among the commercial-insured catchment",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "outpatient_eligible_share",
+    "value": 0.375,
+    "unit": "pct",
+    "label": "Share of commercial target procedures suitable for outpatient surgery",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "capture_rate",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Share of outpatient-eligible commercial procedures Harborview expects to capture",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "medicaid_eligible_demand_cases_count_k",
+    "value": 1.2,
+    "unit": "count_k",
+    "label": "Annual eligible Medicaid demand available to the proposed center",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "medicaid_internal_transfer_share",
+    "value": 0.0,
+    "unit": "pct",
+    "label": "Share of reserved Medicaid cases transferred from Harborview’s hospital",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "facility_capacity_cases_count_k",
+    "value": 4.0,
+    "unit": "count_k",
+    "label": "Annual ASC capacity",
+    "revealed_in": "q4",
+    "role": "input"
+   },
+   {
+    "name": "internal_transfer_share",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Base share of captured commercial cases transferred from Harborview’s hospital",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "asc_contribution_per_case_usd_k",
+    "value": 2.0,
+    "unit": "usd_k",
+    "label": "ASC contribution per commercial case after variable cash costs",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "hospital_contribution_per_transferred_case_usd_k",
+    "value": 1.25,
+    "unit": "usd_k",
+    "label": "Hospital contribution Harborview gives up per transferred commercial case after avoidable costs",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "annual_fixed_cost_usd_m",
+    "value": 3.2,
+    "unit": "usd_m",
+    "label": "ASC annual fixed cash operating cost",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "initial_capex_usd_m",
+    "value": 16.0,
+    "unit": "usd_m",
+    "label": "ASC construction and equipment cost paid at year zero",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "discount_rate",
+    "value": 0.08,
+    "unit": "pct",
+    "label": "Discount rate used for project valuation",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "project_horizon",
+    "value": 10.0,
+    "unit": "years",
+    "label": "Years of flat annual cash flow; no terminal value",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "annuity_factor",
+    "value": 6.7,
+    "unit": "multiple",
+    "label": "Supplied present-value annuity factor for the project horizon and discount rate",
+    "revealed_in": "ex3",
+    "role": "input"
+   },
+   {
+    "name": "state_grant_usd_m",
+    "value": 10.0,
+    "unit": "usd_m",
+    "label": "State capital grant, received at year zero if access conditions are met",
+    "revealed_in": "ex4",
+    "role": "input"
+   },
+   {
+    "name": "medicaid_reserved_share",
+    "value": 0.25,
+    "unit": "pct",
+    "label": "Share of facility capacity reserved for Medicaid cases under the grant",
+    "revealed_in": "ex4",
+    "role": "input"
+   },
+   {
+    "name": "medicaid_asc_contribution_per_case_usd_k",
+    "value": 1.2,
+    "unit": "usd_k",
+    "label": "ASC contribution per Medicaid case after variable cash costs",
+    "revealed_in": "ex4",
+    "role": "input"
+   },
+   {
+    "name": "high_transfer_share",
+    "value": 0.9,
+    "unit": "pct",
+    "label": "Stress-case share of remaining commercial cases transferred from Harborview’s hospital",
+    "revealed_in": "interviewer",
+    "role": "input"
+   },
+   {
+    "name": "synthesis_seconds",
+    "value": 60.0,
+    "unit": "other",
+    "label": "CEO synthesis time limit in seconds",
+    "revealed_in": "q7",
+    "role": "input"
+   },
+   {
+    "name": "historical_total_outpatient_y1_count_k",
+    "value": 9.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, first period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_total_outpatient_y2_count_k",
+    "value": 10.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, second period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_total_outpatient_y3_count_k",
+    "value": 12.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, third period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_addressable_y1_count_k",
+    "value": 3.0,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, first period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_addressable_y2_count_k",
+    "value": 3.2,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, second period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_addressable_y3_count_k",
+    "value": 3.4,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, third period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_inpatient_growth",
+    "value": 0.08,
+    "unit": "pct",
+    "label": "Historical inpatient case growth, shown only as context",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_inpatient_y1_count_k",
+    "value": 8.0,
+    "unit": "count_k",
+    "label": "Historical inpatient cases, first period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_inpatient_y2_count_k",
+    "value": 8.6,
+    "unit": "count_k",
+    "label": "Historical inpatient cases, second period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "historical_inpatient_y3_count_k",
+    "value": 9.3,
+    "unit": "count_k",
+    "label": "Historical inpatient cases, third period",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "imaging_utilization_pct",
+    "value": 0.72,
+    "unit": "pct",
+    "label": "Imaging utilization in the catchment, unrelated to the ASC decision",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "building_area_sqft",
+    "value": 42000.0,
+    "unit": "count",
+    "label": "Proposed building area, not a binding capacity input",
+    "revealed_in": "ex3",
+    "role": "distractor"
+   }
+  ],
+  "framework": [
+   {
+    "name": "System-level demand and access",
+    "points": [
+     "Separate the full outpatient surgery market from the procedure types the ASC can safely and appropriately serve.",
+     "Distinguish cases new to Harborview from cases transferred from its hospital.",
+     "Test referral access, payer mix, catchment reach, and whether reserved capacity serves patients Harborview otherwise would not reach."
+    ]
+   },
+   {
+    "name": "Incremental economics and capital",
+    "points": [
+     "Build ASC contribution by payer and case origin.",
+     "Subtract hospital contribution lost on transferred cases and incremental fixed costs.",
+     "Compare annual system cash flow with the investment required using a consistent time basis and the supplied valuation convention."
+    ]
+   },
+   {
+    "name": "Operational feasibility",
+    "points": [
+     "Check whether forecast demand can be served within the facility’s staffed and equipped capacity.",
+     "Understand staffing, scheduling, referral conversion, and ramp-up risks.",
+     "Identify the binding constraint rather than assuming that a large catchment or building footprint means usable capacity."
+    ]
+   },
+   {
+    "name": "Strategic, access, and execution conditions",
+    "points": [
+     "Assess the implications of payer mix, access commitments, and grant terms.",
+     "Identify which assumptions could reverse the investment decision.",
+     "Define the validation gates, mitigations, and implementation sequence required before committing capital."
+    ]
+   }
+  ],
+  "framework_notes": "A strong candidate should explicitly define the decision as Harborview-wide incremental value, not ASC standalone profit. The opening is deliberately ambiguous: if the candidate never asks whether transferred hospital cases count as new growth, the interviewer’s clarifying answer should correct the scope. Do not mention the state grant until the pivot. Reward concise hypotheses and targeted information requests over an exhaustive generic hospital framework.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Frame the decision",
+    "kind": "framework",
+    "ask": "How would you structure the decision for Harborview’s CEO, and what is the first assumption you would want to clarify?",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "If asked whether to evaluate standalone or system-wide economics: use Harborview-wide incremental cash economics. A transferred case is not wholly new revenue, because Harborview loses the hospital contribution on that case.",
+     "If asked about timing: annual cash flows are flat over {project_horizon}; the initial investment is paid at year zero; no terminal value is included; the supplied annuity factor corresponds to the stated discount rate and horizon."
+    ],
+    "calculations": [],
+    "model_answer": "I would evaluate demand and case origin, system-wide economics, capacity and execution, and access or strategic conditions. The most important scope clarification is whether the CEO wants standalone ASC performance or incremental Harborview value. I would use system-wide value: a transferred case is not wholly new, because Harborview loses the hospital contribution on that case. I would also ask what return and access constraints the board considers acceptable before interpreting the result.",
+    "what_great_looks_like": [
+     "Asks whether economics should be assessed at the ASC or Harborview-system level before building a model.",
+     "States a falsifiable initial hypothesis: headline outpatient growth may overstate ASC-addressable growth, and hospital transfers may make standalone margins misleading.",
+     "Identifies demand, case origin, capacity, fixed cost, capital, and access as distinct decision drivers."
+    ],
+    "common_mistakes": [
+     "Assuming all ASC cases are incremental to Harborview.",
+     "Beginning with a generic market-growth framework without clarifying the objective.",
+     "Treating access as a soft consideration that can be ignored once the financial calculation is complete."
+    ],
+    "hints": [
+     "What would Harborview lose if an existing hospital case moved to the new center?",
+     "Would a profitable standalone center necessarily create value for the health system?"
+    ],
+    "pushback": [
+     "Are you evaluating whether the ASC makes money, or whether Harborview is better off building it? A strong candidate clarifies that standalone contribution is only one input and reframes the decision around incremental system cash flows."
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Diagnose the growth signal",
+    "kind": "exhibit_read",
+    "ask": "What is driving the apparent growth, and what does it imply for this decision?",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Total outpatient cases rise from {historical_total_outpatient_y1_count_k} to {historical_total_outpatient_y3_count_k}, but the ASC-addressable subset rises only from {historical_addressable_y1_count_k} to {historical_addressable_y3_count_k}. The faster headline trend is not evidence that the specific procedures this facility can perform are growing at the same rate. The inpatient series and its {historical_inpatient_growth} growth are additional context, not demand that can be added to the outpatient opportunity. I would not extrapolate the headline trend into an ASC forecast; I would build a procedure-specific demand estimate and then test it against capacity and case origin.",
+    "what_great_looks_like": [
+     "Notices that total outpatient growth outpaces growth in the addressable subset.",
+     "Separates historical growth from incremental demand Harborview can capture.",
+     "Does not add inpatient cases or unrelated data to the outpatient opportunity."
+    ],
+    "common_mistakes": [
+     "Using total outpatient growth as the forecast growth rate for eligible ASC procedures.",
+     "Treating historical cases as incremental new cases rather than a mix of system transfers and external referrals.",
+     "Ignoring the difference between the trend chart and the later catchment-based market estimate."
+    ],
+    "hints": [
+     "Which line on the chart maps most directly to the proposed facility’s scope?",
+     "Does this chart tell us whether future cases would be new to Harborview?"
+    ],
+    "pushback": [
+     "The total outpatient trend looks compelling. Why not use it as the facility forecast? A strong candidate says the growth is not procedure-specific enough and does not establish case origin, capture, or future demand."
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Prioritize what to learn",
+    "kind": "brainstorm",
+    "ask": "What would you want to learn before committing capital, and which uncertainty would you resolve first?",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "If the candidate asks for the catchment-based commercial outpatient-eligible demand and planned capture assumptions, release ex2.",
+     "If the candidate asks what case-origin data matter, explain that commercial cases may either be transferred from Harborview’s hospital or be new to Harborview; the base internal-transfer share is shown in ex2. The exhibit also identifies separate eligible Medicaid demand and states that those patients are new to Harborview rather than transfers.",
+     "If the candidate asks about costs, clarify that the relevant measures are incremental cash costs and contribution, rather than allocated accounting profit."
+    ],
+    "calculations": [],
+    "model_answer": "I would prioritize the number of eligible cases the site can actually attract, the split between new-to-Harborview and transferred commercial cases, and the capacity and per-case economics needed to turn that demand into cash flow. I would also validate staffing, payer mix, referral conversion, and whether access requirements constrain commercial volume. The highest-value early diligence is case-origin evidence, because a change in transfer mix can change system value even when ASC utilization stays high.",
+    "what_great_looks_like": [
+     "Ranks questions by their likelihood of changing the decision rather than listing every possible data request.",
+     "Requests procedure-level demand, referral and case-origin data, payer economics, avoidable hospital costs, and staffed capacity.",
+     "Recognizes that utilization alone cannot resolve cannibalization."
+    ],
+    "common_mistakes": [
+     "Asking for generic market share or total market growth without defining the addressable procedures.",
+     "Focusing on reimbursement or revenue without contribution and avoidable cost.",
+     "Treating building size as a proxy for operating capacity."
+    ],
+    "hints": [
+     "What uncertainty could reverse your conclusion even if the center is full?",
+     "Which data would distinguish a new patient from a patient moved from another Harborview site?"
+    ],
+    "pushback": [
+     "Wouldn’t a high utilization rate be enough to demonstrate success? A strong candidate explains that a full facility can still destroy value if it displaces sufficient hospital contribution or has too much fixed and capital cost."
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Size realistic demand",
+    "kind": "market_sizing",
+    "ask": "How much annual demand could this site realistically serve?",
+    "exhibit_ids": [
+     "ex2"
+    ],
+    "info_to_share": [
+     "The proposed site has annual staffed design capacity of {facility_capacity_cases_count_k} cases. This is the operating ceiling for the demand estimate; actual staffing and throughput still require validation."
+    ],
+    "calculations": [
+     {
+      "id": "eligible_target_cases",
+      "label": "Annual commercial target procedures in the catchment",
+      "expression": "catchment_population_count_k * annual_target_procedure_rate",
+      "unit": "count_k",
+      "expected_value": 32.0,
+      "decimals": 1
+     },
+     {
+      "id": "eligible_outpatient_cases",
+      "label": "Annual outpatient-eligible commercial target procedures",
+      "expression": "eligible_target_cases * outpatient_eligible_share",
+      "unit": "count_k",
+      "expected_value": 12.0,
+      "decimals": 1
+     },
+     {
+      "id": "forecast_captured_cases",
+      "label": "Forecast annual captured commercial cases",
+      "expression": "eligible_outpatient_cases * capture_rate",
+      "unit": "count_k",
+      "expected_value": 4.8,
+      "decimals": 1
+     },
+     {
+      "id": "feasible_cases",
+      "label": "Commercial cases the facility can serve at capacity before the grant pivot",
+      "expression": "min(forecast_captured_cases, facility_capacity_cases_count_k)",
+      "unit": "count_k",
+      "expected_value": 4.0,
+      "decimals": 1
+     }
+    ],
+    "model_answer": "The commercial catchment contains {eligible_target_cases} target procedures per year, of which {eligible_outpatient_cases} are outpatient-eligible. At the planned capture rate, the forecast is {forecast_captured_cases} commercial cases. The facility can serve only {feasible_cases}, so capacity—not the catchment-sized demand estimate—is the current operating ceiling. This commercial-only demand funnel is consistent with the historical exhibit’s slower growth in the ASC-addressable subset. The grant’s Medicaid obligation can be checked against separate eligible Medicaid demand; the commercial forecast does not include Medicaid cases.",
+    "what_great_looks_like": [
+     "Carries the units consistently from commercial-insured population to annual cases.",
+     "Applies outpatient eligibility before capture.",
+     "Caps the forecast at capacity and distinguishes served volume from newly captured system demand.",
+     "Combines the historical addressable trend with the current commercial demand funnel rather than extrapolating headline outpatient growth."
+    ],
+    "common_mistakes": [
+     "Applying the capture rate to the entire adult population.",
+     "Applying the outpatient-eligible share after capture or omitting it.",
+     "Using forecast commercial demand above capacity in the economics.",
+     "Equating captured cases with cases new to Harborview."
+    ],
+    "hints": [
+     "Start with annual target procedures in the commercial-insured catchment, not all residents as potential cases.",
+     "What is the final constraint between forecast demand and cases actually served?"
+    ],
+    "pushback": [
+     "Your demand estimate is above the facility’s rated volume. Can Harborview model all forecast cases as revenue? A strong candidate caps served volume at capacity and notes that actual staffed capacity must be validated."
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Test base-case system economics",
+    "kind": "quant",
+    "ask": "What is driving the economics, and should Harborview build on the base case?",
+    "exhibit_ids": [
+     "ex3"
+    ],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "base_internal_cases",
+      "label": "Base-case commercial cases transferred from Harborview’s hospital",
+      "expression": "feasible_cases * internal_transfer_share",
+      "unit": "count_k",
+      "expected_value": 2.4,
+      "decimals": 1
+     },
+     {
+      "id": "base_asc_contribution",
+      "label": "Base-case ASC contribution before fixed cost",
+      "expression": "feasible_cases * asc_contribution_per_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 8.0,
+      "decimals": 1
+     },
+     {
+      "id": "base_displaced_hospital_contribution",
+      "label": "Contribution lost on commercial cases transferred from the hospital",
+      "expression": "base_internal_cases * hospital_contribution_per_transferred_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 3.0,
+      "decimals": 1
+     },
+     {
+      "id": "base_annual_cash_flow",
+      "label": "Base-case annual incremental system cash flow",
+      "expression": "base_asc_contribution - base_displaced_hospital_contribution - annual_fixed_cost_usd_m",
+      "unit": "usd_m",
+      "expected_value": 1.8,
+      "decimals": 1
+     },
+     {
+      "id": "base_npv",
+      "label": "Base-case NPV at year zero",
+      "expression": "base_annual_cash_flow * annuity_factor - initial_capex_usd_m",
+      "unit": "usd_m",
+      "expected_value": -3.94,
+      "decimals": 1
+     },
+     {
+      "id": "hurdle_annual_cash_flow",
+      "label": "Annual cash flow required to recover capex on an NPV basis",
+      "expression": "initial_capex_usd_m / annuity_factor",
+      "unit": "usd_m",
+      "expected_value": 2.388059701,
+      "decimals": 1
+     },
+     {
+      "id": "breakeven_cases",
+      "label": "Annual commercial cases needed to achieve zero NPV at the base mix",
+      "expression": "(annual_fixed_cost_usd_m + hurdle_annual_cash_flow) / (asc_contribution_per_case_usd_k - internal_transfer_share * hospital_contribution_per_transferred_case_usd_k)",
+      "unit": "count_k",
+      "expected_value": 4.470447761,
+      "decimals": 2
+     },
+     {
+      "id": "breakeven_capacity_utilization",
+      "label": "Capacity utilization required for zero NPV at the base mix",
+      "expression": "breakeven_cases / facility_capacity_cases_count_k",
+      "unit": "pct",
+      "expected_value": 1.11761194,
+      "decimals": 1
+     }
+    ],
+    "model_answer": "At capacity, {base_internal_cases} cases are transfers from Harborview’s hospital. The ASC generates {base_asc_contribution} before fixed cost, but the system gives up {base_displaced_hospital_contribution} in hospital contribution. After {annual_fixed_cost_usd_m} of fixed cost, annual incremental cash flow is {base_annual_cash_flow}, giving a base NPV of {base_npv}. The required annual cash flow to recover the investment on an NPV basis is {hurdle_annual_cash_flow}. At the base mix, the center would need {breakeven_cases} commercial cases, or {breakeven_capacity_utilization} of capacity, to reach zero NPV. Since capacity is only {facility_capacity_cases_count_k}, the base case does not clear the investment hurdle even at full utilization. The first-pass conclusion is not to build on the unassisted base case; more demand alone cannot fix the capacity-constrained shortfall.",
+    "what_great_looks_like": [
+     "Uses contribution, not revenue, and subtracts the hospital contribution lost on transferred cases.",
+     "Keeps annual cash flow distinct from year-zero capital spending.",
+     "Uses the supplied annuity factor rather than deriving a discount factor.",
+     "Finds that the unassisted case needs more volume than physical capacity and makes that constraint decision-relevant.",
+     "States the counter-intuitive implication: demand growth alone does not rescue the unassisted case once capacity binds."
+    ],
+    "common_mistakes": [
+     "Counting full ASC contribution on transferred cases without subtracting hospital contribution.",
+     "Subtracting the full hospital revenue rather than the contribution after avoidable costs.",
+     "Comparing annual cash flow directly with initial capex.",
+     "Using forecast demand above capacity to claim the project can reach its hurdle.",
+     "Treating a positive annual cash flow as proof of an attractive investment."
+    ],
+    "hints": [
+     "What contribution does Harborview give up on commercial cases it already performs?",
+     "Can the facility physically serve the number of cases needed to clear the investment hurdle?",
+     "Use the annuity factor provided rather than calculating a multi-year discount factor."
+    ],
+    "pushback": [
+     "Are you sure the answer is no if the ASC is full and makes positive annual cash flow? A strong candidate says positive annual cash flow does not by itself recover the upfront investment at the stated discount rate; the capacity-constrained NPV remains negative.",
+     "Could faster market growth overturn your conclusion? A strong candidate distinguishes market demand from facility throughput and says volume growth alone cannot overcome a break-even case requirement above capacity."
+    ]
+   },
+   {
+    "id": "q6",
+    "title": "Reassess the grant-backed plan",
+    "kind": "pivot",
+    "ask": "The state will provide a capital grant if Harborview reserves part of the center for Medicaid patients. Does that change your answer? What would it take to change your view again?",
+    "exhibit_ids": [
+     "ex4"
+    ],
+    "info_to_share": [
+     "If the candidate asks how to stress the case-origin assumption, share that the high-transfer scenario assumes {high_transfer_share} of the remaining commercial cases are transferred from Harborview’s hospital.",
+     "The grant is received at year zero if the stated access conditions are met. Reserved Medicaid cases replace commercial cases within the fixed facility capacity; they are not added on top of capacity.",
+     "The separate commercial demand funnel forecasts sufficient commercial cases to fill the commercial portion of capacity, and eligible Medicaid demand is sufficient to fill the reserved portion. Reserved Medicaid cases are new to Harborview; they do not displace hospital cases or hospital contribution.",
+     "For the grant case, apply the base internal-transfer share to the remaining commercial cases unless the interviewer supplies the high-transfer scenario."
+    ],
+    "calculations": [
+     {
+      "id": "grant_medicaid_cases",
+      "label": "Annual Medicaid cases required under the grant",
+      "expression": "facility_capacity_cases_count_k * medicaid_reserved_share",
+      "unit": "count_k",
+      "expected_value": 1.0,
+      "decimals": 1
+     },
+     {
+      "id": "grant_commercial_cases",
+      "label": "Annual commercial cases remaining within capacity under the grant",
+      "expression": "facility_capacity_cases_count_k - grant_medicaid_cases",
+      "unit": "count_k",
+      "expected_value": 3.0,
+      "decimals": 1
+     },
+     {
+      "id": "grant_asc_contribution",
+      "label": "ASC contribution under the grant case",
+      "expression": "grant_commercial_cases * asc_contribution_per_case_usd_k + grant_medicaid_cases * medicaid_asc_contribution_per_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 7.2,
+      "decimals": 1
+     },
+     {
+      "id": "grant_displaced_contribution",
+      "label": "Hospital contribution lost on transferred commercial cases under the grant case",
+      "expression": "grant_commercial_cases * internal_transfer_share * hospital_contribution_per_transferred_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 2.25,
+      "decimals": 2
+     },
+     {
+      "id": "grant_annual_cash_flow",
+      "label": "Annual incremental system cash flow under the grant case",
+      "expression": "grant_asc_contribution - grant_displaced_contribution - annual_fixed_cost_usd_m",
+      "unit": "usd_m",
+      "expected_value": 1.75,
+      "decimals": 2
+     },
+     {
+      "id": "grant_net_capex",
+      "label": "Year-zero capex after the grant",
+      "expression": "initial_capex_usd_m - state_grant_usd_m",
+      "unit": "usd_m",
+      "expected_value": 6.0,
+      "decimals": 1
+     },
+     {
+      "id": "grant_case_npv",
+      "label": "NPV under the grant case at the base transfer share",
+      "expression": "grant_annual_cash_flow * annuity_factor - grant_net_capex",
+      "unit": "usd_m",
+      "expected_value": 5.725,
+      "decimals": 1
+     },
+     {
+      "id": "high_transfer_displaced_contribution",
+      "label": "Hospital contribution lost in the high-transfer grant scenario",
+      "expression": "grant_commercial_cases * high_transfer_share * hospital_contribution_per_transferred_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 3.375,
+      "decimals": 2
+     },
+     {
+      "id": "high_transfer_annual_cash_flow",
+      "label": "Annual cash flow in the high-transfer scenario",
+      "expression": "grant_asc_contribution - high_transfer_displaced_contribution - annual_fixed_cost_usd_m",
+      "unit": "usd_m",
+      "expected_value": 0.625,
+      "decimals": 2
+     },
+     {
+      "id": "high_transfer_npv",
+      "label": "NPV in the high-transfer scenario",
+      "expression": "high_transfer_annual_cash_flow * annuity_factor - grant_net_capex",
+      "unit": "usd_m",
+      "expected_value": -1.8125,
+      "decimals": 1
+     },
+     {
+      "id": "breakeven_internal_transfer_share",
+      "label": "Maximum internal-transfer share among commercial cases for zero NPV under the grant",
+      "expression": "(grant_asc_contribution - annual_fixed_cost_usd_m - grant_net_capex / annuity_factor) / (grant_commercial_cases * hospital_contribution_per_transferred_case_usd_k)",
+      "unit": "pct",
+      "expected_value": 0.827860696,
+      "decimals": 1
+     }
+    ],
+    "model_answer": "The grant-backed plan reserves {grant_medicaid_cases} cases for Medicaid and leaves {grant_commercial_cases} commercial cases within the same capacity. The commercial cases produce {grant_asc_contribution} in ASC contribution together with the reserved Medicaid cases; Harborview gives up {grant_displaced_contribution} in hospital contribution on transferred commercial cases. After fixed costs, annual incremental system cash flow is {grant_annual_cash_flow}, compared with {base_annual_cash_flow} in the all-commercial base case. The Medicaid reservation therefore nearly offsets its lower ASC contribution by avoiding some hospital cannibalization, but annual cash flow is slightly lower; the grant, which reduces year-zero capex to {grant_net_capex}, is what makes NPV positive. At the base transfer share, grant-case NPV is {grant_case_npv}. The result is not robust to every case mix: under the high-transfer scenario, NPV is {high_transfer_npv}. The zero-NPV ceiling is an internal-transfer share of {breakeven_internal_transfer_share} among commercial cases. I would make the build conditional on a credible grant award and validated case-origin data.",
+    "what_great_looks_like": [
+     "Checks that eligible Medicaid demand can fill the reserved capacity and that commercial demand is a separate, commercial-only funnel.",
+     "Treats Medicaid volume as replacing commercial volume within capacity, not adding cases on top.",
+     "Uses the explicit assumption that Medicaid cases are new to Harborview, so no hospital contribution is lost on those cases.",
+     "Explains that the Medicaid reservation almost offsets its lower ASC contribution through less commercial cannibalization, but slightly reduces annual cash flow; the grant drives positive NPV.",
+     "Tests the high-transfer scenario and derives a clear break-even transfer-share threshold.",
+     "Recognizes that the pivot reverses the base recommendation, while the scenario test shows the grant-backed recommendation remains conditional."
+    ],
+    "common_mistakes": [
+     "Assuming the commercial demand funnel includes Medicaid cases or failing to verify demand for the reserved slots.",
+     "Subtracting the grant from capex but leaving the original all-commercial case mix unchanged.",
+     "Adding Medicaid cases on top of commercial capacity.",
+     "Treating the grant as annual revenue or including it in operating cash flow.",
+     "Treating Medicaid cases as incremental without using the explicit new-to-Harborview case-origin assumption.",
+     "Claiming the Medicaid mix improves annual economics or that the grant-backed result is robust without testing commercial transfers."
+    ],
+    "hints": [
+     "Does the reserved Medicaid volume add capacity, or replace some of the commercial volume?",
+     "Is the commercial demand funnel payer-specific, and is there enough separate eligible Medicaid demand?",
+     "What happens to hospital cannibalization when the number of commercial cases falls?",
+     "How high can the internal-transfer share rise before the grant case reaches zero NPV?"
+    ],
+    "pushback": [
+     "Are you sure the Medicaid obligation only hurts? A strong candidate says the lower per-case ASC contribution is partly offset because fewer commercial cases are available to cannibalize hospital contribution; annual cash flow still falls slightly, while the grant is what turns NPV positive.",
+     "Are you sure the grant-backed case is attractive enough to approve unconditionally? A strong candidate points to the negative high-transfer NPV and the break-even transfer-share ceiling, and recommends diligence and an explicit gate rather than an unconditional build."
+    ]
+   },
+   {
+    "id": "q7",
+    "title": "Deliver the CEO recommendation",
+    "kind": "synthesis",
+    "ask": "You have {synthesis_seconds} seconds with the CEO. Should Harborview build, what is the precise economic case, what is the most important quantified risk, and what would change your recommendation?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I recommend a conditional build, not an unconditional approval. The unassisted case has an NPV of {base_npv}; at the base mix it would need {breakeven_cases}, or {breakeven_capacity_utilization} of capacity, to break even, which exceeds the facility’s {facility_capacity_cases_count_k} capacity. The grant-backed case reserves {grant_medicaid_cases} Medicaid cases, meets that obligation with separate eligible demand that is new to Harborview, and has an NPV of {grant_case_npv} at the base commercial transfer assumption. The key risk is that remaining commercial volume is more transfer-heavy than assumed: under the high-transfer scenario, NPV falls to {high_transfer_npv}; the break-even threshold is an internal-transfer share of {breakeven_internal_transfer_share}. I would proceed only after confirming the grant award and independently validating referral origin and avoidable hospital contribution. If that diligence indicates a transfer share above the threshold, renegotiate the access or commercial-volume terms, redesign the operating model, or do not build. I would also confirm staffed capacity and the grant’s enforceable conditions before authorizing construction.",
+    "what_great_looks_like": [
+     "Gives a direct decision in the opening sentence.",
+     "Uses system-level NPV, not standalone ASC contribution, as the decision metric.",
+     "Quantifies the grant-case opportunity and the transfer-mix downside, then names a decision gate tied to the threshold.",
+     "Separates known model results from assumptions that need validation.",
+     "Names practical next steps, risks, and what would reverse the recommendation without overloading the answer."
+    ],
+    "common_mistakes": [
+     "Reporting only the positive grant-case NPV without the transfer-mix risk.",
+     "Recommending an unconditional build despite the negative stress-case NPV.",
+     "Ending with a list of analyses rather than a decision.",
+     "Using a precise number without stating what it measures or whether it is annual or present value."
+    ],
+    "hints": [
+     "Lead with your decision, then the base and pivot results, then the one condition that matters most.",
+     "What single piece of evidence should Harborview obtain before signing a construction contract?"
+    ],
+    "pushback": [
+     "The CEO asks: “So, yes or no?” A strong candidate says “yes, conditionally,” states the grant-backed NPV and the transfer-share gate, and explains that failure to validate those terms changes the decision to no.",
+     "The CEO asks: “What single fact would change your mind?” A strong candidate identifies verified commercial case origin relative to the break-even transfer threshold, alongside certainty of the grant award."
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Outpatient growth is not the same as addressable growth",
+    "subtitle": "Historical annual cases by procedure group",
+    "kind": "line",
+    "columns": [
+     "Period",
+     "Total outpatient surgery cases",
+     "ASC-addressable cases",
+     "Inpatient cases"
+    ],
+    "rows": [
+     {
+      "label": "First period",
+      "cells": [
+       "=historical_total_outpatient_y1_count_k",
+       "=historical_addressable_y1_count_k",
+       "=historical_inpatient_y1_count_k"
+      ]
+     },
+     {
+      "label": "Second period",
+      "cells": [
+       "=historical_total_outpatient_y2_count_k",
+       "=historical_addressable_y2_count_k",
+       "=historical_inpatient_y2_count_k"
+      ]
+     },
+     {
+      "label": "Third period",
+      "cells": [
+       "=historical_total_outpatient_y3_count_k",
+       "=historical_addressable_y3_count_k",
+       "=historical_inpatient_y3_count_k"
+      ]
+     }
+    ],
+    "value_unit": "count_k",
+    "column_units": null,
+    "footnote": "Annual cases in thousands. Inpatient cases grew at {historical_inpatient_growth} annually but are not part of the outpatient ASC opportunity. Source: Harborview finance and scheduling systems.",
+    "text_body": null
+   },
+   {
+    "id": "ex2",
+    "title": "Catchment and referral opportunity",
+    "subtitle": "Commercial demand funnel and separate Medicaid access pool",
+    "kind": "table",
+    "columns": [
+     "Metric",
+     "Value",
+     "Unit / interpretation"
+    ],
+    "rows": [
+     {
+      "label": "Commercial-insured adult catchment population",
+      "cells": [
+       "=catchment_population_count_k",
+       "thousand adults"
+      ]
+     },
+     {
+      "label": "Annual commercial target-procedure rate",
+      "cells": [
+       "=annual_target_procedure_rate",
+       "of commercial-insured catchment population"
+      ]
+     },
+     {
+      "label": "Outpatient-eligible share of commercial target procedures",
+      "cells": [
+       "=outpatient_eligible_share",
+       "of commercial target procedures"
+      ]
+     },
+     {
+      "label": "Planned Harborview capture rate for eligible commercial procedures",
+      "cells": [
+       "=capture_rate",
+       "of outpatient-eligible commercial procedures"
+      ]
+     },
+     {
+      "label": "Internal hospital transfers, base commercial mix",
+      "cells": [
+       "=internal_transfer_share",
+       "of captured commercial cases"
+      ]
+     },
+     {
+      "label": "External / new-to-Harborview commercial cases",
+      "cells": [
+       "=1 - internal_transfer_share",
+       "of captured commercial cases"
+      ]
+     },
+     {
+      "label": "Annual eligible Medicaid demand",
+      "cells": [
+       "=medicaid_eligible_demand_cases_count_k",
+       "thousand cases; separate from commercial funnel"
+      ]
+     },
+     {
+      "label": "Reserved Medicaid cases sourced from Harborview hospital",
+      "cells": [
+       "=medicaid_internal_transfer_share",
+       "share; zero means all reserved cases are new to Harborview"
+      ]
+     },
+     {
+      "label": "Imaging utilization (context only)",
+      "cells": [
+       "=imaging_utilization_pct",
+       "unrelated to ASC procedures"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other",
+     "other"
+    ],
+    "footnote": "Commercial demand and capture estimates exclude Medicaid cases. Medicaid demand is an independent pool; the planning assumption is that eligible reserved cases are new to Harborview rather than transfers. Imaging utilization is included as a distractor. Source: Harborview referral study and planning estimates.",
+    "text_body": null
+   },
+   {
+    "id": "ex3",
+    "title": "Base ASC economics and facility limits",
+    "subtitle": "Annual steady-state cash assumptions unless specified otherwise",
+    "kind": "table",
+    "columns": [
+     "Assumption",
+     "Value",
+     "Unit / interpretation"
+    ],
+    "rows": [
+     {
+      "label": "Annual facility capacity",
+      "cells": [
+       "=facility_capacity_cases_count_k",
+       "thousand cases"
+      ]
+     },
+     {
+      "label": "ASC contribution per commercial case",
+      "cells": [
+       "=asc_contribution_per_case_usd_k",
+       "thousand dollars per case; after variable cash costs"
+      ]
+     },
+     {
+      "label": "Hospital contribution given up per transferred commercial case",
+      "cells": [
+       "=hospital_contribution_per_transferred_case_usd_k",
+       "thousand dollars per case; after avoidable costs"
+      ]
+     },
+     {
+      "label": "Annual fixed cash operating cost",
+      "cells": [
+       "=annual_fixed_cost_usd_m",
+       "million dollars per year"
+      ]
+     },
+     {
+      "label": "Construction and equipment investment",
+      "cells": [
+       "=initial_capex_usd_m",
+       "million dollars at year zero"
+      ]
+     },
+     {
+      "label": "Discount rate",
+      "cells": [
+       "=discount_rate",
+       "annual rate"
+      ]
+     },
+     {
+      "label": "Project horizon",
+      "cells": [
+       "=project_horizon",
+       "years; flat annual cash flow; no terminal value"
+      ]
+     },
+     {
+      "label": "Supplied annuity factor",
+      "cells": [
+       "=annuity_factor",
+       "multiple; use directly"
+      ]
+     },
+     {
+      "label": "Proposed building area",
+      "cells": [
+       "=building_area_sqft",
+       "square feet; not the stated capacity constraint"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other",
+     "other"
+    ],
+    "footnote": "ASC contribution is after variable cash costs. Hospital contribution is the amount Harborview gives up on a transferred commercial case. Annual fixed costs are incremental cash costs. Source: Harborview operations and facilities estimates.",
+    "text_body": null
+   },
+   {
+    "id": "ex4",
+    "title": "Preliminary state access proposal",
+    "subtitle": "Grant is conditional on the stated Medicaid reservation",
+    "kind": "table",
+    "columns": [
+     "Term",
+     "Value",
+     "Unit / interpretation"
+    ],
+    "rows": [
+     {
+      "label": "Capital grant",
+      "cells": [
+       "=state_grant_usd_m",
+       "million dollars at year zero, if conditions are met"
+      ]
+     },
+     {
+      "label": "Capacity reserved for Medicaid cases",
+      "cells": [
+       "=medicaid_reserved_share",
+       "of fixed facility capacity"
+      ]
+     },
+     {
+      "label": "Medicaid ASC contribution per case",
+      "cells": [
+       "=medicaid_asc_contribution_per_case_usd_k",
+       "thousand dollars per case; after variable cash costs"
+      ]
+     },
+     {
+      "label": "Capacity treatment",
+      "cells": [
+       "Fixed",
+       "Medicaid cases replace commercial cases; do not add volume"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other",
+     "other"
+    ],
+    "footnote": "Preliminary state program terms, subject to award. The reserved share uses existing facility capacity. Eligible Medicaid demand and case origin are provided separately in the catchment exhibit.",
+    "text_body": null
+   }
+  ],
+  "recommendation": {
+   "answer": "Conditionally build only if Harborview secures the grant and validates case origin. The unassisted base NPV is {base_npv}; at the grant-backed base transfer mix, NPV is {grant_case_npv}. The grant-backed case has slightly lower annual cash flow than the all-commercial base because the Medicaid reservation only partly offsets its lower ASC contribution through avoided commercial cannibalization; the grant drives the positive NPV. The case is not robust: under the high-transfer scenario, grant-case NPV is {high_transfer_npv}, and the grant-backed zero-NPV threshold is an internal-transfer share of {breakeven_internal_transfer_share}.",
+   "risks": [
+    "Case-origin data may show that commercial volume is more transfer-heavy than assumed. Under the high-transfer scenario, grant-case NPV is {high_transfer_npv}; the break-even share is {breakeven_internal_transfer_share}.",
+    "The grant is preliminary and conditional; without it, the base case has an NPV of {base_npv}.",
+    "Actual staffed capacity, referral conversion, and contribution by payer may differ from the planning assumptions.",
+    "The stated flat-cash-flow convention may not reflect ramp-up or future reimbursement and operating-cost changes; validate before final investment approval."
+   ],
+   "next_steps": [
+    "Obtain written confirmation of grant eligibility, timing, award certainty, and enforceable Medicaid requirements.",
+    "Audit referral and scheduling data to independently establish commercial case origin and avoidable hospital contribution.",
+    "Validate that separate eligible Medicaid demand can meet the reservation and that those patients are genuinely new to Harborview.",
+    "Confirm that the facility can staff and serve the modeled cases while meeting the Medicaid reservation.",
+    "Return to the board with a gated investment decision; renegotiate or decline if validated transfer mix exceeds the break-even threshold."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Problem framing and hypothesis",
+    "strong": "Clarifies the system-wide objective, distinguishes incremental from transferred cases, and develops a concise, testable hypothesis about addressable demand and cannibalization.",
+    "weak": "Accepts standalone ASC economics or generic outpatient growth without defining what constitutes value for Harborview."
+   },
+   {
+    "dimension": "Exhibit interpretation and prioritization",
+    "strong": "Spots that total outpatient growth outpaces growth in the addressable subset; treats the inpatient and imaging data as distractors; prioritizes case origin and capacity.",
+    "weak": "Extrapolates the headline trend, combines unrelated markets, or recites exhibit values without explaining their relevance."
+   },
+   {
+    "dimension": "Quantitative accuracy and unit discipline",
+    "strong": "Builds the commercial demand funnel, caps cases at capacity, checks separate Medicaid demand and origin, subtracts displaced hospital contribution, distinguishes annual cash flow from year-zero capex, and uses the supplied annuity factor correctly.",
+    "weak": "Double-counts transferred cases, exceeds capacity, confuses revenue and contribution, or mixes annual and present-value amounts."
+   },
+   {
+    "dimension": "Diagnosis and counter-intuitive insight",
+    "strong": "Recognizes that the unassisted case cannot meet its hurdle at capacity; understands that the Medicaid mix nearly offsets its lower ASC contribution by avoiding some hospital cannibalization but slightly reduces annual cash flow; correctly attributes positive NPV primarily to the grant.",
+    "weak": "Assumes the grant’s lower Medicaid contribution must be the only effect, claims the Medicaid mix improves annual economics, or assumes positive ASC contribution proves the center should be built."
+   },
+   {
+    "dimension": "Sensitivity and judgment",
+    "strong": "Tests the high-transfer scenario, interprets the break-even share as an actionable gate, and recommends conditionally rather than overclaiming certainty.",
+    "weak": "Treats the grant-backed NPV as robust or does not identify what evidence would reverse the recommendation."
+   },
+   {
+    "dimension": "Communication and executive synthesis",
+    "strong": "Delivers a crisp decision, precise NPV figures, the quantified downside and threshold, key risks, and practical next steps within the time limit.",
+    "weak": "Provides a calculation dump, equivocates without a decision, or omits the key risk and mitigation."
+   },
+   {
+    "dimension": "Performance tier: strong",
+    "strong": "Accurately frames system-level economics, interprets the exhibits, completes the core demand and NPV analysis, handles capacity and cannibalization correctly, and gives a justified conditional recommendation with the principal risk.",
+    "weak": "Needs repeated direction to distinguish transferred from incremental cases, misses the capacity constraint, or cannot support a recommendation with the economics."
+   },
+   {
+    "dimension": "Performance tier: exceptional / offer-on-the-spot",
+    "strong": "Independently identifies and resolves the commercial-only demand, Medicaid-demand, and Medicaid-origin assumptions; integrates the case-mix effect with the grant’s capital effect; quantifies the high-transfer downside and break-even threshold; prioritizes decisive diligence; and calmly defends a conditional recommendation under both pushbacks.",
+    "weak": "Reaches a plausible conclusion but does not independently test the demand/origin assumptions, misses the slightly negative annual mix effect, or cannot defend the decision gate when challenged."
+   }
+  ],
+  "interviewer_notes": "Run this as a candidate-led case. Suggested pacing: framing and clarification, roughly five minutes; growth read and targeted diligence, roughly seven minutes; demand sizing, roughly six minutes; base economics and hurdle, roughly twelve minutes; grant pivot and sensitivity, roughly twelve minutes; CEO synthesis, roughly three minutes, with remaining time for probing. Release ex1 after the candidate frames the problem. Release ex2 when the candidate asks for addressable demand or relevant catchment assumptions; do not hand it out during the opening. The exhibit explicitly separates commercial demand from Medicaid demand and identifies reserved Medicaid cases as new to Harborview. Share staffed design capacity in q4 when the candidate explores demand feasibility. Release ex3 when the candidate moves to economics. After the candidate gives a base-case view, introduce the grant pivot and release ex4. Share the high-transfer assumption only if the candidate tests case-origin risk or when prompted for a stress test. Challenge the candidate at least twice: first on whether a full, positive-cash-flow center should be built; then on whether the grant-backed NPV is robust. The key is not arithmetic speed alone: the candidate must understand that the unassisted break-even volume exceeds capacity, verify that the grant’s payer mix is demand-feasible, recognize that Medicaid cases are new to Harborview, and understand that the Medicaid reservation slightly reduces annual cash flow while the grant turns the NPV positive. The decisive judgment is the transfer-share risk. Accept alternate calculations or recommendation phrasing when units, counterfactual, and decision logic are sound. The final answer should be conditional: validate the grant and case-origin mix, with the calculated break-even transfer share as the gate."
+ },
+ "rendered": {
+  "title": "The Operating-Room Shortcut",
+  "client": "Harborview Health",
+  "industry": "U.S. healthcare delivery",
+  "case_type": "Ambulatory surgery center build decision; market sizing, cannibalization, capacity-constrained unit economics, NPV, and scenario analysis",
+  "difficulty": "instant_offer",
+  "format": "candidate_led",
+  "duration_minutes": 50,
+  "concepts_tested": [
+   "Ambiguous problem scoping",
+   "Healthcare procedure-market sizing",
+   "Separating headline growth from addressable demand",
+   "Capacity-constrained economics",
+   "Cannibalization and contribution displacement",
+   "Fixed-cost and capital-investment analysis",
+   "NPV using a supplied annuity factor",
+   "Mix effects",
+   "Sensitivity analysis and break-even thresholds",
+   "Interpreting integrated exhibits",
+   "Judgment under uncertainty",
+   "Executive synthesis under time pressure"
+  ],
+  "situation_summary": "Harborview’s outpatient procedures appear to be surging, prompting its CEO to consider a freestanding ambulatory surgery center (ASC). The apparent opportunity is complicated by a slower-growing addressable procedure pool, limited facility capacity, and the risk of shifting profitable hospital cases rather than adding system value. A state access grant changes the economics but imposes a Medicaid case-mix requirement.",
+  "prompt": "Harborview Health is a nonprofit regional health system. Its CEO is considering a freestanding ambulatory surgery center after seeing strong growth in outpatient surgery across the region. The proposal is attracting support because it could improve access and appears to offer attractive standalone economics. The board is concerned, however, that the center may simply move profitable cases out of Harborview’s hospital. The CEO wants to know whether Harborview should build, what would make the investment attractive, and what evidence would justify changing the decision. How would you approach the question?",
+  "clarifying": [
+   {
+    "question": "Should we judge the center on its standalone economics, or on the change in Harborview’s overall economics?",
+    "answer": "Use Harborview-wide incremental cash economics. Cases shifted from Harborview’s hospital count only for the difference between the ASC contribution and the hospital contribution that Harborview gives up."
+   },
+   {
+    "question": "What is Harborview trying to optimize, and are there constraints beyond financial return?",
+    "answer": "The board wants a financially responsible decision that also protects patient access. No formal minimum return hurdle has been set; use NPV at the supplied discount rate and make any access trade-offs explicit."
+   },
+   {
+    "question": "What time period and cash-flow convention should I use?",
+    "answer": "Use flat annual cash flows over 10 years, with no terminal value. The initial investment is paid at year zero, the annual cash flows start in the first operating year, and the supplied annuity factor already reflects the project horizon and discount rate."
+   },
+   {
+    "question": "Are operating costs and hospital contribution figures incremental cash amounts?",
+    "answer": "Yes. ASC case contributions are after variable cash costs; the hospital contribution is what Harborview would give up after avoidable costs if an existing case moves; annual fixed costs are incremental cash operating costs."
+   }
+  ],
+  "variables": [
+   {
+    "name": "catchment_population_count_k",
+    "value": 1600.0,
+    "unit": "count_k",
+    "label": "Commercial-insured adult catchment population",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "1,600K"
+   },
+   {
+    "name": "annual_target_procedure_rate",
+    "value": 0.02,
+    "unit": "pct",
+    "label": "Annual target-procedure rate among the commercial-insured catchment",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "2%"
+   },
+   {
+    "name": "outpatient_eligible_share",
+    "value": 0.375,
+    "unit": "pct",
+    "label": "Share of commercial target procedures suitable for outpatient surgery",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "37.5%"
+   },
+   {
+    "name": "capture_rate",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Share of outpatient-eligible commercial procedures Harborview expects to capture",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "40%"
+   },
+   {
+    "name": "medicaid_eligible_demand_cases_count_k",
+    "value": 1.2,
+    "unit": "count_k",
+    "label": "Annual eligible Medicaid demand available to the proposed center",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "1.2K"
+   },
+   {
+    "name": "medicaid_internal_transfer_share",
+    "value": 0.0,
+    "unit": "pct",
+    "label": "Share of reserved Medicaid cases transferred from Harborview’s hospital",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "0%"
+   },
+   {
+    "name": "facility_capacity_cases_count_k",
+    "value": 4.0,
+    "unit": "count_k",
+    "label": "Annual ASC capacity",
+    "revealed_in": "q4",
+    "role": "input",
+    "display": "4K"
+   },
+   {
+    "name": "internal_transfer_share",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Base share of captured commercial cases transferred from Harborview’s hospital",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "60%"
+   },
+   {
+    "name": "asc_contribution_per_case_usd_k",
+    "value": 2.0,
+    "unit": "usd_k",
+    "label": "ASC contribution per commercial case after variable cash costs",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "$2K"
+   },
+   {
+    "name": "hospital_contribution_per_transferred_case_usd_k",
+    "value": 1.25,
+    "unit": "usd_k",
+    "label": "Hospital contribution Harborview gives up per transferred commercial case after avoidable costs",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "$1.25K"
+   },
+   {
+    "name": "annual_fixed_cost_usd_m",
+    "value": 3.2,
+    "unit": "usd_m",
+    "label": "ASC annual fixed cash operating cost",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "$3.2M"
+   },
+   {
+    "name": "initial_capex_usd_m",
+    "value": 16.0,
+    "unit": "usd_m",
+    "label": "ASC construction and equipment cost paid at year zero",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "$16M"
+   },
+   {
+    "name": "discount_rate",
+    "value": 0.08,
+    "unit": "pct",
+    "label": "Discount rate used for project valuation",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "8%"
+   },
+   {
+    "name": "project_horizon",
+    "value": 10.0,
+    "unit": "years",
+    "label": "Years of flat annual cash flow; no terminal value",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "10 years"
+   },
+   {
+    "name": "annuity_factor",
+    "value": 6.7,
+    "unit": "multiple",
+    "label": "Supplied present-value annuity factor for the project horizon and discount rate",
+    "revealed_in": "ex3",
+    "role": "input",
+    "display": "6.7x"
+   },
+   {
+    "name": "state_grant_usd_m",
+    "value": 10.0,
+    "unit": "usd_m",
+    "label": "State capital grant, received at year zero if access conditions are met",
+    "revealed_in": "ex4",
+    "role": "input",
+    "display": "$10M"
+   },
+   {
+    "name": "medicaid_reserved_share",
+    "value": 0.25,
+    "unit": "pct",
+    "label": "Share of facility capacity reserved for Medicaid cases under the grant",
+    "revealed_in": "ex4",
+    "role": "input",
+    "display": "25%"
+   },
+   {
+    "name": "medicaid_asc_contribution_per_case_usd_k",
+    "value": 1.2,
+    "unit": "usd_k",
+    "label": "ASC contribution per Medicaid case after variable cash costs",
+    "revealed_in": "ex4",
+    "role": "input",
+    "display": "$1.2K"
+   },
+   {
+    "name": "high_transfer_share",
+    "value": 0.9,
+    "unit": "pct",
+    "label": "Stress-case share of remaining commercial cases transferred from Harborview’s hospital",
+    "revealed_in": "interviewer",
+    "role": "input",
+    "display": "90%"
+   },
+   {
+    "name": "synthesis_seconds",
+    "value": 60.0,
+    "unit": "other",
+    "label": "CEO synthesis time limit in seconds",
+    "revealed_in": "q7",
+    "role": "input",
+    "display": "60"
+   },
+   {
+    "name": "historical_total_outpatient_y1_count_k",
+    "value": 9.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, first period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "9K"
+   },
+   {
+    "name": "historical_total_outpatient_y2_count_k",
+    "value": 10.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, second period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "10K"
+   },
+   {
+    "name": "historical_total_outpatient_y3_count_k",
+    "value": 12.0,
+    "unit": "count_k",
+    "label": "Historical total outpatient surgery cases, third period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "12K"
+   },
+   {
+    "name": "historical_addressable_y1_count_k",
+    "value": 3.0,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, first period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "3K"
+   },
+   {
+    "name": "historical_addressable_y2_count_k",
+    "value": 3.2,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, second period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "3.2K"
+   },
+   {
+    "name": "historical_addressable_y3_count_k",
+    "value": 3.4,
+    "unit": "count_k",
+    "label": "Historical ASC-addressable cases, third period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "3.4K"
+   },
+   {
+    "name": "historical_inpatient_growth",
+    "value": 0.08,
+    "unit": "pct",
+    "label": "Historical inpatient case growth, shown only as context",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "8%"
+   },
+   {
+    "name": "historical_inpatient_y1_count_k",
+    "value": 8.0,
+    "unit": "count_k",
+    "label": "Historical inpatient cases, first period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "8K"
+   },
+   {
+    "name": "historical_inpatient_y2_count_k",
+    "value": 8.6,
+    "unit": "count_k",
+    "label": "Historical inpatient cases, second period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "8.6K"
+   },
+   {
+    "name": "historical_inpatient_y3_count_k",
+    "value": 9.3,
+    "unit": "count_k",
+    "label": "Historical inpatient cases, third period",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "9.3K"
+   },
+   {
+    "name": "imaging_utilization_pct",
+    "value": 0.72,
+    "unit": "pct",
+    "label": "Imaging utilization in the catchment, unrelated to the ASC decision",
+    "revealed_in": "ex2",
+    "role": "distractor",
+    "display": "72%"
+   },
+   {
+    "name": "building_area_sqft",
+    "value": 42000.0,
+    "unit": "count",
+    "label": "Proposed building area, not a binding capacity input",
+    "revealed_in": "ex3",
+    "role": "distractor",
+    "display": "42,000"
+   }
+  ],
+  "framework": [
+   {
+    "name": "System-level demand and access",
+    "points": [
+     "Separate the full outpatient surgery market from the procedure types the ASC can safely and appropriately serve.",
+     "Distinguish cases new to Harborview from cases transferred from its hospital.",
+     "Test referral access, payer mix, catchment reach, and whether reserved capacity serves patients Harborview otherwise would not reach."
+    ]
+   },
+   {
+    "name": "Incremental economics and capital",
+    "points": [
+     "Build ASC contribution by payer and case origin.",
+     "Subtract hospital contribution lost on transferred cases and incremental fixed costs.",
+     "Compare annual system cash flow with the investment required using a consistent time basis and the supplied valuation convention."
+    ]
+   },
+   {
+    "name": "Operational feasibility",
+    "points": [
+     "Check whether forecast demand can be served within the facility’s staffed and equipped capacity.",
+     "Understand staffing, scheduling, referral conversion, and ramp-up risks.",
+     "Identify the binding constraint rather than assuming that a large catchment or building footprint means usable capacity."
+    ]
+   },
+   {
+    "name": "Strategic, access, and execution conditions",
+    "points": [
+     "Assess the implications of payer mix, access commitments, and grant terms.",
+     "Identify which assumptions could reverse the investment decision.",
+     "Define the validation gates, mitigations, and implementation sequence required before committing capital."
+    ]
+   }
+  ],
+  "framework_notes": "A strong candidate should explicitly define the decision as Harborview-wide incremental value, not ASC standalone profit. The opening is deliberately ambiguous: if the candidate never asks whether transferred hospital cases count as new growth, the interviewer’s clarifying answer should correct the scope. Do not mention the state grant until the pivot. Reward concise hypotheses and targeted information requests over an exhaustive generic hospital framework.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Frame the decision",
+    "kind": "framework",
+    "ask": "How would you structure the decision for Harborview’s CEO, and what is the first assumption you would want to clarify?",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "If asked whether to evaluate standalone or system-wide economics: use Harborview-wide incremental cash economics. A transferred case is not wholly new revenue, because Harborview loses the hospital contribution on that case.",
+     "If asked about timing: annual cash flows are flat over 10 years; the initial investment is paid at year zero; no terminal value is included; the supplied annuity factor corresponds to the stated discount rate and horizon."
+    ],
+    "calculations": [],
+    "model_answer": "I would evaluate demand and case origin, system-wide economics, capacity and execution, and access or strategic conditions. The most important scope clarification is whether the CEO wants standalone ASC performance or incremental Harborview value. I would use system-wide value: a transferred case is not wholly new, because Harborview loses the hospital contribution on that case. I would also ask what return and access constraints the board considers acceptable before interpreting the result.",
+    "what_great_looks_like": [
+     "Asks whether economics should be assessed at the ASC or Harborview-system level before building a model.",
+     "States a falsifiable initial hypothesis: headline outpatient growth may overstate ASC-addressable growth, and hospital transfers may make standalone margins misleading.",
+     "Identifies demand, case origin, capacity, fixed cost, capital, and access as distinct decision drivers."
+    ],
+    "common_mistakes": [
+     "Assuming all ASC cases are incremental to Harborview.",
+     "Beginning with a generic market-growth framework without clarifying the objective.",
+     "Treating access as a soft consideration that can be ignored once the financial calculation is complete."
+    ],
+    "hints": [
+     "What would Harborview lose if an existing hospital case moved to the new center?",
+     "Would a profitable standalone center necessarily create value for the health system?"
+    ],
+    "pushback": [
+     "Are you evaluating whether the ASC makes money, or whether Harborview is better off building it? A strong candidate clarifies that standalone contribution is only one input and reframes the decision around incremental system cash flows."
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Diagnose the growth signal",
+    "kind": "exhibit_read",
+    "ask": "What is driving the apparent growth, and what does it imply for this decision?",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Total outpatient cases rise from 9K to 12K, but the ASC-addressable subset rises only from 3K to 3.4K. The faster headline trend is not evidence that the specific procedures this facility can perform are growing at the same rate. The inpatient series and its 8% growth are additional context, not demand that can be added to the outpatient opportunity. I would not extrapolate the headline trend into an ASC forecast; I would build a procedure-specific demand estimate and then test it against capacity and case origin.",
+    "what_great_looks_like": [
+     "Notices that total outpatient growth outpaces growth in the addressable subset.",
+     "Separates historical growth from incremental demand Harborview can capture.",
+     "Does not add inpatient cases or unrelated data to the outpatient opportunity."
+    ],
+    "common_mistakes": [
+     "Using total outpatient growth as the forecast growth rate for eligible ASC procedures.",
+     "Treating historical cases as incremental new cases rather than a mix of system transfers and external referrals.",
+     "Ignoring the difference between the trend chart and the later catchment-based market estimate."
+    ],
+    "hints": [
+     "Which line on the chart maps most directly to the proposed facility’s scope?",
+     "Does this chart tell us whether future cases would be new to Harborview?"
+    ],
+    "pushback": [
+     "The total outpatient trend looks compelling. Why not use it as the facility forecast? A strong candidate says the growth is not procedure-specific enough and does not establish case origin, capture, or future demand."
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Prioritize what to learn",
+    "kind": "brainstorm",
+    "ask": "What would you want to learn before committing capital, and which uncertainty would you resolve first?",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "If the candidate asks for the catchment-based commercial outpatient-eligible demand and planned capture assumptions, release ex2.",
+     "If the candidate asks what case-origin data matter, explain that commercial cases may either be transferred from Harborview’s hospital or be new to Harborview; the base internal-transfer share is shown in ex2. The exhibit also identifies separate eligible Medicaid demand and states that those patients are new to Harborview rather than transfers.",
+     "If the candidate asks about costs, clarify that the relevant measures are incremental cash costs and contribution, rather than allocated accounting profit."
+    ],
+    "calculations": [],
+    "model_answer": "I would prioritize the number of eligible cases the site can actually attract, the split between new-to-Harborview and transferred commercial cases, and the capacity and per-case economics needed to turn that demand into cash flow. I would also validate staffing, payer mix, referral conversion, and whether access requirements constrain commercial volume. The highest-value early diligence is case-origin evidence, because a change in transfer mix can change system value even when ASC utilization stays high.",
+    "what_great_looks_like": [
+     "Ranks questions by their likelihood of changing the decision rather than listing every possible data request.",
+     "Requests procedure-level demand, referral and case-origin data, payer economics, avoidable hospital costs, and staffed capacity.",
+     "Recognizes that utilization alone cannot resolve cannibalization."
+    ],
+    "common_mistakes": [
+     "Asking for generic market share or total market growth without defining the addressable procedures.",
+     "Focusing on reimbursement or revenue without contribution and avoidable cost.",
+     "Treating building size as a proxy for operating capacity."
+    ],
+    "hints": [
+     "What uncertainty could reverse your conclusion even if the center is full?",
+     "Which data would distinguish a new patient from a patient moved from another Harborview site?"
+    ],
+    "pushback": [
+     "Wouldn’t a high utilization rate be enough to demonstrate success? A strong candidate explains that a full facility can still destroy value if it displaces sufficient hospital contribution or has too much fixed and capital cost."
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Size realistic demand",
+    "kind": "market_sizing",
+    "ask": "How much annual demand could this site realistically serve?",
+    "exhibit_ids": [
+     "ex2"
+    ],
+    "info_to_share": [
+     "The proposed site has annual staffed design capacity of 4K cases. This is the operating ceiling for the demand estimate; actual staffing and throughput still require validation."
+    ],
+    "calculations": [
+     {
+      "id": "eligible_target_cases",
+      "label": "Annual commercial target procedures in the catchment",
+      "expression": "catchment_population_count_k * annual_target_procedure_rate",
+      "unit": "count_k",
+      "expected_value": 32.0,
+      "decimals": 1,
+      "value": 32.0,
+      "display": "32K",
+      "expression_display": "[Commercial-insured adult catchment population] × [Annual target-procedure rate among the commercial-insured catchment]"
+     },
+     {
+      "id": "eligible_outpatient_cases",
+      "label": "Annual outpatient-eligible commercial target procedures",
+      "expression": "eligible_target_cases * outpatient_eligible_share",
+      "unit": "count_k",
+      "expected_value": 12.0,
+      "decimals": 1,
+      "value": 12.0,
+      "display": "12K",
+      "expression_display": "[Annual commercial target procedures in the catchment] × [Share of commercial target procedures suitable for outpatient surgery]"
+     },
+     {
+      "id": "forecast_captured_cases",
+      "label": "Forecast annual captured commercial cases",
+      "expression": "eligible_outpatient_cases * capture_rate",
+      "unit": "count_k",
+      "expected_value": 4.8,
+      "decimals": 1,
+      "value": 4.800000000000001,
+      "display": "4.8K",
+      "expression_display": "[Annual outpatient-eligible commercial target procedures] × [Share of outpatient-eligible commercial procedures Harborview expects to capture]"
+     },
+     {
+      "id": "feasible_cases",
+      "label": "Commercial cases the facility can serve at capacity before the grant pivot",
+      "expression": "min(forecast_captured_cases, facility_capacity_cases_count_k)",
+      "unit": "count_k",
+      "expected_value": 4.0,
+      "decimals": 1,
+      "value": 4.0,
+      "display": "4K",
+      "expression_display": "min([Forecast annual captured commercial cases], [Annual ASC capacity])"
+     }
+    ],
+    "model_answer": "The commercial catchment contains 32K target procedures per year, of which 12K are outpatient-eligible. At the planned capture rate, the forecast is 4.8K commercial cases. The facility can serve only 4K, so capacity—not the catchment-sized demand estimate—is the current operating ceiling. This commercial-only demand funnel is consistent with the historical exhibit’s slower growth in the ASC-addressable subset. The grant’s Medicaid obligation can be checked against separate eligible Medicaid demand; the commercial forecast does not include Medicaid cases.",
+    "what_great_looks_like": [
+     "Carries the units consistently from commercial-insured population to annual cases.",
+     "Applies outpatient eligibility before capture.",
+     "Caps the forecast at capacity and distinguishes served volume from newly captured system demand.",
+     "Combines the historical addressable trend with the current commercial demand funnel rather than extrapolating headline outpatient growth."
+    ],
+    "common_mistakes": [
+     "Applying the capture rate to the entire adult population.",
+     "Applying the outpatient-eligible share after capture or omitting it.",
+     "Using forecast commercial demand above capacity in the economics.",
+     "Equating captured cases with cases new to Harborview."
+    ],
+    "hints": [
+     "Start with annual target procedures in the commercial-insured catchment, not all residents as potential cases.",
+     "What is the final constraint between forecast demand and cases actually served?"
+    ],
+    "pushback": [
+     "Your demand estimate is above the facility’s rated volume. Can Harborview model all forecast cases as revenue? A strong candidate caps served volume at capacity and notes that actual staffed capacity must be validated."
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Test base-case system economics",
+    "kind": "quant",
+    "ask": "What is driving the economics, and should Harborview build on the base case?",
+    "exhibit_ids": [
+     "ex3"
+    ],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "base_internal_cases",
+      "label": "Base-case commercial cases transferred from Harborview’s hospital",
+      "expression": "feasible_cases * internal_transfer_share",
+      "unit": "count_k",
+      "expected_value": 2.4,
+      "decimals": 1,
+      "value": 2.4,
+      "display": "2.4K",
+      "expression_display": "[Commercial cases the facility can serve at capacity before the grant pivot] × [Base share of captured commercial cases transferred from Harborview’s hospital]"
+     },
+     {
+      "id": "base_asc_contribution",
+      "label": "Base-case ASC contribution before fixed cost",
+      "expression": "feasible_cases * asc_contribution_per_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 8.0,
+      "decimals": 1,
+      "value": 8.0,
+      "display": "$8M",
+      "expression_display": "[Commercial cases the facility can serve at capacity before the grant pivot] × [ASC contribution per commercial case after variable cash costs]"
+     },
+     {
+      "id": "base_displaced_hospital_contribution",
+      "label": "Contribution lost on commercial cases transferred from the hospital",
+      "expression": "base_internal_cases * hospital_contribution_per_transferred_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 3.0,
+      "decimals": 1,
+      "value": 3.0,
+      "display": "$3M",
+      "expression_display": "[Base-case commercial cases transferred from Harborview’s hospital] × [Hospital contribution Harborview gives up per transferred commercial case after avoidable costs]"
+     },
+     {
+      "id": "base_annual_cash_flow",
+      "label": "Base-case annual incremental system cash flow",
+      "expression": "base_asc_contribution - base_displaced_hospital_contribution - annual_fixed_cost_usd_m",
+      "unit": "usd_m",
+      "expected_value": 1.8,
+      "decimals": 1,
+      "value": 1.7999999999999998,
+      "display": "$1.8M",
+      "expression_display": "[Base-case ASC contribution before fixed cost] - [Contribution lost on commercial cases transferred from the hospital] - [ASC annual fixed cash operating cost]"
+     },
+     {
+      "id": "base_npv",
+      "label": "Base-case NPV at year zero",
+      "expression": "base_annual_cash_flow * annuity_factor - initial_capex_usd_m",
+      "unit": "usd_m",
+      "expected_value": -3.94,
+      "decimals": 1,
+      "value": -3.9400000000000013,
+      "display": "-$3.9M",
+      "expression_display": "[Base-case annual incremental system cash flow] × [Supplied present-value annuity factor for the project horizon and discount rate] - [ASC construction and equipment cost paid at year zero]"
+     },
+     {
+      "id": "hurdle_annual_cash_flow",
+      "label": "Annual cash flow required to recover capex on an NPV basis",
+      "expression": "initial_capex_usd_m / annuity_factor",
+      "unit": "usd_m",
+      "expected_value": 2.388059701,
+      "decimals": 1,
+      "value": 2.388059701492537,
+      "display": "$2.4M",
+      "expression_display": "[ASC construction and equipment cost paid at year zero] ÷ [Supplied present-value annuity factor for the project horizon and discount rate]"
+     },
+     {
+      "id": "breakeven_cases",
+      "label": "Annual commercial cases needed to achieve zero NPV at the base mix",
+      "expression": "(annual_fixed_cost_usd_m + hurdle_annual_cash_flow) / (asc_contribution_per_case_usd_k - internal_transfer_share * hospital_contribution_per_transferred_case_usd_k)",
+      "unit": "count_k",
+      "expected_value": 4.470447761,
+      "decimals": 2,
+      "value": 4.47044776119403,
+      "display": "4.47K",
+      "expression_display": "([ASC annual fixed cash operating cost] + [Annual cash flow required to recover capex on an NPV basis]) ÷ ([ASC contribution per commercial case after variable cash costs] - [Base share of captured commercial cases transferred from Harborview’s hospital] × [Hospital contribution Harborview gives up per transferred commercial case after avoidable costs])"
+     },
+     {
+      "id": "breakeven_capacity_utilization",
+      "label": "Capacity utilization required for zero NPV at the base mix",
+      "expression": "breakeven_cases / facility_capacity_cases_count_k",
+      "unit": "pct",
+      "expected_value": 1.11761194,
+      "decimals": 1,
+      "value": 1.1176119402985074,
+      "display": "111.8%",
+      "expression_display": "[Annual commercial cases needed to achieve zero NPV at the base mix] ÷ [Annual ASC capacity]"
+     }
+    ],
+    "model_answer": "At capacity, 2.4K cases are transfers from Harborview’s hospital. The ASC generates $8M before fixed cost, but the system gives up $3M in hospital contribution. After $3.2M of fixed cost, annual incremental cash flow is $1.8M, giving a base NPV of -$3.9M. The required annual cash flow to recover the investment on an NPV basis is $2.4M. At the base mix, the center would need 4.47K commercial cases, or 111.8% of capacity, to reach zero NPV. Since capacity is only 4K, the base case does not clear the investment hurdle even at full utilization. The first-pass conclusion is not to build on the unassisted base case; more demand alone cannot fix the capacity-constrained shortfall.",
+    "what_great_looks_like": [
+     "Uses contribution, not revenue, and subtracts the hospital contribution lost on transferred cases.",
+     "Keeps annual cash flow distinct from year-zero capital spending.",
+     "Uses the supplied annuity factor rather than deriving a discount factor.",
+     "Finds that the unassisted case needs more volume than physical capacity and makes that constraint decision-relevant.",
+     "States the counter-intuitive implication: demand growth alone does not rescue the unassisted case once capacity binds."
+    ],
+    "common_mistakes": [
+     "Counting full ASC contribution on transferred cases without subtracting hospital contribution.",
+     "Subtracting the full hospital revenue rather than the contribution after avoidable costs.",
+     "Comparing annual cash flow directly with initial capex.",
+     "Using forecast demand above capacity to claim the project can reach its hurdle.",
+     "Treating a positive annual cash flow as proof of an attractive investment."
+    ],
+    "hints": [
+     "What contribution does Harborview give up on commercial cases it already performs?",
+     "Can the facility physically serve the number of cases needed to clear the investment hurdle?",
+     "Use the annuity factor provided rather than calculating a multi-year discount factor."
+    ],
+    "pushback": [
+     "Are you sure the answer is no if the ASC is full and makes positive annual cash flow? A strong candidate says positive annual cash flow does not by itself recover the upfront investment at the stated discount rate; the capacity-constrained NPV remains negative.",
+     "Could faster market growth overturn your conclusion? A strong candidate distinguishes market demand from facility throughput and says volume growth alone cannot overcome a break-even case requirement above capacity."
+    ]
+   },
+   {
+    "id": "q6",
+    "title": "Reassess the grant-backed plan",
+    "kind": "pivot",
+    "ask": "The state will provide a capital grant if Harborview reserves part of the center for Medicaid patients. Does that change your answer? What would it take to change your view again?",
+    "exhibit_ids": [
+     "ex4"
+    ],
+    "info_to_share": [
+     "If the candidate asks how to stress the case-origin assumption, share that the high-transfer scenario assumes 90% of the remaining commercial cases are transferred from Harborview’s hospital.",
+     "The grant is received at year zero if the stated access conditions are met. Reserved Medicaid cases replace commercial cases within the fixed facility capacity; they are not added on top of capacity.",
+     "The separate commercial demand funnel forecasts sufficient commercial cases to fill the commercial portion of capacity, and eligible Medicaid demand is sufficient to fill the reserved portion. Reserved Medicaid cases are new to Harborview; they do not displace hospital cases or hospital contribution.",
+     "For the grant case, apply the base internal-transfer share to the remaining commercial cases unless the interviewer supplies the high-transfer scenario."
+    ],
+    "calculations": [
+     {
+      "id": "grant_medicaid_cases",
+      "label": "Annual Medicaid cases required under the grant",
+      "expression": "facility_capacity_cases_count_k * medicaid_reserved_share",
+      "unit": "count_k",
+      "expected_value": 1.0,
+      "decimals": 1,
+      "value": 1.0,
+      "display": "1K",
+      "expression_display": "[Annual ASC capacity] × [Share of facility capacity reserved for Medicaid cases under the grant]"
+     },
+     {
+      "id": "grant_commercial_cases",
+      "label": "Annual commercial cases remaining within capacity under the grant",
+      "expression": "facility_capacity_cases_count_k - grant_medicaid_cases",
+      "unit": "count_k",
+      "expected_value": 3.0,
+      "decimals": 1,
+      "value": 3.0,
+      "display": "3K",
+      "expression_display": "[Annual ASC capacity] - [Annual Medicaid cases required under the grant]"
+     },
+     {
+      "id": "grant_asc_contribution",
+      "label": "ASC contribution under the grant case",
+      "expression": "grant_commercial_cases * asc_contribution_per_case_usd_k + grant_medicaid_cases * medicaid_asc_contribution_per_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 7.2,
+      "decimals": 1,
+      "value": 7.2,
+      "display": "$7.2M",
+      "expression_display": "[Annual commercial cases remaining within capacity under the grant] × [ASC contribution per commercial case after variable cash costs] + [Annual Medicaid cases required under the grant] × [ASC contribution per Medicaid case after variable cash costs]"
+     },
+     {
+      "id": "grant_displaced_contribution",
+      "label": "Hospital contribution lost on transferred commercial cases under the grant case",
+      "expression": "grant_commercial_cases * internal_transfer_share * hospital_contribution_per_transferred_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 2.25,
+      "decimals": 2,
+      "value": 2.25,
+      "display": "$2.25M",
+      "expression_display": "[Annual commercial cases remaining within capacity under the grant] × [Base share of captured commercial cases transferred from Harborview’s hospital] × [Hospital contribution Harborview gives up per transferred commercial case after avoidable costs]"
+     },
+     {
+      "id": "grant_annual_cash_flow",
+      "label": "Annual incremental system cash flow under the grant case",
+      "expression": "grant_asc_contribution - grant_displaced_contribution - annual_fixed_cost_usd_m",
+      "unit": "usd_m",
+      "expected_value": 1.75,
+      "decimals": 2,
+      "value": 1.75,
+      "display": "$1.75M",
+      "expression_display": "[ASC contribution under the grant case] - [Hospital contribution lost on transferred commercial cases under the grant case] - [ASC annual fixed cash operating cost]"
+     },
+     {
+      "id": "grant_net_capex",
+      "label": "Year-zero capex after the grant",
+      "expression": "initial_capex_usd_m - state_grant_usd_m",
+      "unit": "usd_m",
+      "expected_value": 6.0,
+      "decimals": 1,
+      "value": 6.0,
+      "display": "$6M",
+      "expression_display": "[ASC construction and equipment cost paid at year zero] - [State capital grant, received at year zero if access conditions are met]"
+     },
+     {
+      "id": "grant_case_npv",
+      "label": "NPV under the grant case at the base transfer share",
+      "expression": "grant_annual_cash_flow * annuity_factor - grant_net_capex",
+      "unit": "usd_m",
+      "expected_value": 5.725,
+      "decimals": 1,
+      "value": 5.725,
+      "display": "$5.7M",
+      "expression_display": "[Annual incremental system cash flow under the grant case] × [Supplied present-value annuity factor for the project horizon and discount rate] - [Year-zero capex after the grant]"
+     },
+     {
+      "id": "high_transfer_displaced_contribution",
+      "label": "Hospital contribution lost in the high-transfer grant scenario",
+      "expression": "grant_commercial_cases * high_transfer_share * hospital_contribution_per_transferred_case_usd_k",
+      "unit": "usd_m",
+      "expected_value": 3.375,
+      "decimals": 2,
+      "value": 3.375,
+      "display": "$3.38M",
+      "expression_display": "[Annual commercial cases remaining within capacity under the grant] × [Stress-case share of remaining commercial cases transferred from Harborview’s hospital] × [Hospital contribution Harborview gives up per transferred commercial case after avoidable costs]"
+     },
+     {
+      "id": "high_transfer_annual_cash_flow",
+      "label": "Annual cash flow in the high-transfer scenario",
+      "expression": "grant_asc_contribution - high_transfer_displaced_contribution - annual_fixed_cost_usd_m",
+      "unit": "usd_m",
+      "expected_value": 0.625,
+      "decimals": 2,
+      "value": 0.625,
+      "display": "$0.63M",
+      "expression_display": "[ASC contribution under the grant case] - [Hospital contribution lost in the high-transfer grant scenario] - [ASC annual fixed cash operating cost]"
+     },
+     {
+      "id": "high_transfer_npv",
+      "label": "NPV in the high-transfer scenario",
+      "expression": "high_transfer_annual_cash_flow * annuity_factor - grant_net_capex",
+      "unit": "usd_m",
+      "expected_value": -1.8125,
+      "decimals": 1,
+      "value": -1.8125,
+      "display": "-$1.8M",
+      "expression_display": "[Annual cash flow in the high-transfer scenario] × [Supplied present-value annuity factor for the project horizon and discount rate] - [Year-zero capex after the grant]"
+     },
+     {
+      "id": "breakeven_internal_transfer_share",
+      "label": "Maximum internal-transfer share among commercial cases for zero NPV under the grant",
+      "expression": "(grant_asc_contribution - annual_fixed_cost_usd_m - grant_net_capex / annuity_factor) / (grant_commercial_cases * hospital_contribution_per_transferred_case_usd_k)",
+      "unit": "pct",
+      "expected_value": 0.827860696,
+      "decimals": 1,
+      "value": 0.827860696517413,
+      "display": "82.8%",
+      "expression_display": "([ASC contribution under the grant case] - [ASC annual fixed cash operating cost] - [Year-zero capex after the grant] ÷ [Supplied present-value annuity factor for the project horizon and discount rate]) ÷ ([Annual commercial cases remaining within capacity under the grant] × [Hospital contribution Harborview gives up per transferred commercial case after avoidable costs])"
+     }
+    ],
+    "model_answer": "The grant-backed plan reserves 1K cases for Medicaid and leaves 3K commercial cases within the same capacity. The commercial cases produce $7.2M in ASC contribution together with the reserved Medicaid cases; Harborview gives up $2.25M in hospital contribution on transferred commercial cases. After fixed costs, annual incremental system cash flow is $1.75M, compared with $1.8M in the all-commercial base case. The Medicaid reservation therefore nearly offsets its lower ASC contribution by avoiding some hospital cannibalization, but annual cash flow is slightly lower; the grant, which reduces year-zero capex to $6M, is what makes NPV positive. At the base transfer share, grant-case NPV is $5.7M. The result is not robust to every case mix: under the high-transfer scenario, NPV is -$1.8M. The zero-NPV ceiling is an internal-transfer share of 82.8% among commercial cases. I would make the build conditional on a credible grant award and validated case-origin data.",
+    "what_great_looks_like": [
+     "Checks that eligible Medicaid demand can fill the reserved capacity and that commercial demand is a separate, commercial-only funnel.",
+     "Treats Medicaid volume as replacing commercial volume within capacity, not adding cases on top.",
+     "Uses the explicit assumption that Medicaid cases are new to Harborview, so no hospital contribution is lost on those cases.",
+     "Explains that the Medicaid reservation almost offsets its lower ASC contribution through less commercial cannibalization, but slightly reduces annual cash flow; the grant drives positive NPV.",
+     "Tests the high-transfer scenario and derives a clear break-even transfer-share threshold.",
+     "Recognizes that the pivot reverses the base recommendation, while the scenario test shows the grant-backed recommendation remains conditional."
+    ],
+    "common_mistakes": [
+     "Assuming the commercial demand funnel includes Medicaid cases or failing to verify demand for the reserved slots.",
+     "Subtracting the grant from capex but leaving the original all-commercial case mix unchanged.",
+     "Adding Medicaid cases on top of commercial capacity.",
+     "Treating the grant as annual revenue or including it in operating cash flow.",
+     "Treating Medicaid cases as incremental without using the explicit new-to-Harborview case-origin assumption.",
+     "Claiming the Medicaid mix improves annual economics or that the grant-backed result is robust without testing commercial transfers."
+    ],
+    "hints": [
+     "Does the reserved Medicaid volume add capacity, or replace some of the commercial volume?",
+     "Is the commercial demand funnel payer-specific, and is there enough separate eligible Medicaid demand?",
+     "What happens to hospital cannibalization when the number of commercial cases falls?",
+     "How high can the internal-transfer share rise before the grant case reaches zero NPV?"
+    ],
+    "pushback": [
+     "Are you sure the Medicaid obligation only hurts? A strong candidate says the lower per-case ASC contribution is partly offset because fewer commercial cases are available to cannibalize hospital contribution; annual cash flow still falls slightly, while the grant is what turns NPV positive.",
+     "Are you sure the grant-backed case is attractive enough to approve unconditionally? A strong candidate points to the negative high-transfer NPV and the break-even transfer-share ceiling, and recommends diligence and an explicit gate rather than an unconditional build."
+    ]
+   },
+   {
+    "id": "q7",
+    "title": "Deliver the CEO recommendation",
+    "kind": "synthesis",
+    "ask": "You have 60 seconds with the CEO. Should Harborview build, what is the precise economic case, what is the most important quantified risk, and what would change your recommendation?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I recommend a conditional build, not an unconditional approval. The unassisted case has an NPV of -$3.9M; at the base mix it would need 4.47K, or 111.8% of capacity, to break even, which exceeds the facility’s 4K capacity. The grant-backed case reserves 1K Medicaid cases, meets that obligation with separate eligible demand that is new to Harborview, and has an NPV of $5.7M at the base commercial transfer assumption. The key risk is that remaining commercial volume is more transfer-heavy than assumed: under the high-transfer scenario, NPV falls to -$1.8M; the break-even threshold is an internal-transfer share of 82.8%. I would proceed only after confirming the grant award and independently validating referral origin and avoidable hospital contribution. If that diligence indicates a transfer share above the threshold, renegotiate the access or commercial-volume terms, redesign the operating model, or do not build. I would also confirm staffed capacity and the grant’s enforceable conditions before authorizing construction.",
+    "what_great_looks_like": [
+     "Gives a direct decision in the opening sentence.",
+     "Uses system-level NPV, not standalone ASC contribution, as the decision metric.",
+     "Quantifies the grant-case opportunity and the transfer-mix downside, then names a decision gate tied to the threshold.",
+     "Separates known model results from assumptions that need validation.",
+     "Names practical next steps, risks, and what would reverse the recommendation without overloading the answer."
+    ],
+    "common_mistakes": [
+     "Reporting only the positive grant-case NPV without the transfer-mix risk.",
+     "Recommending an unconditional build despite the negative stress-case NPV.",
+     "Ending with a list of analyses rather than a decision.",
+     "Using a precise number without stating what it measures or whether it is annual or present value."
+    ],
+    "hints": [
+     "Lead with your decision, then the base and pivot results, then the one condition that matters most.",
+     "What single piece of evidence should Harborview obtain before signing a construction contract?"
+    ],
+    "pushback": [
+     "The CEO asks: “So, yes or no?” A strong candidate says “yes, conditionally,” states the grant-backed NPV and the transfer-share gate, and explains that failure to validate those terms changes the decision to no.",
+     "The CEO asks: “What single fact would change your mind?” A strong candidate identifies verified commercial case origin relative to the break-even transfer threshold, alongside certainty of the grant award."
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Outpatient growth is not the same as addressable growth",
+    "subtitle": "Historical annual cases by procedure group",
+    "kind": "line",
+    "columns": [
+     "Period",
+     "Total outpatient surgery cases",
+     "ASC-addressable cases",
+     "Inpatient cases"
+    ],
+    "rows": [
+     {
+      "label": "First period",
+      "cells": [
+       "=historical_total_outpatient_y1_count_k",
+       "=historical_addressable_y1_count_k",
+       "=historical_inpatient_y1_count_k"
+      ]
+     },
+     {
+      "label": "Second period",
+      "cells": [
+       "=historical_total_outpatient_y2_count_k",
+       "=historical_addressable_y2_count_k",
+       "=historical_inpatient_y2_count_k"
+      ]
+     },
+     {
+      "label": "Third period",
+      "cells": [
+       "=historical_total_outpatient_y3_count_k",
+       "=historical_addressable_y3_count_k",
+       "=historical_inpatient_y3_count_k"
+      ]
+     }
+    ],
+    "value_unit": "count_k",
+    "column_units": null,
+    "footnote": "Annual cases in thousands. Inpatient cases grew at 8% annually but are not part of the outpatient ASC opportunity. Source: Harborview finance and scheduling systems.",
+    "text_body": null,
+    "grid": [
+     [
+      9.0,
+      3.0,
+      8.0
+     ],
+     [
+      10.0,
+      3.2,
+      8.6
+     ],
+     [
+      12.0,
+      3.4,
+      9.3
+     ]
+    ],
+    "display": [
+     [
+      "9K",
+      "3K",
+      "8K"
+     ],
+     [
+      "10K",
+      "3.2K",
+      "8.6K"
+     ],
+     [
+      "12K",
+      "3.4K",
+      "9.3K"
+     ]
+    ],
+    "units": [
+     "count_k",
+     "count_k",
+     "count_k"
+    ]
+   },
+   {
+    "id": "ex2",
+    "title": "Catchment and referral opportunity",
+    "subtitle": "Commercial demand funnel and separate Medicaid access pool",
+    "kind": "table",
+    "columns": [
+     "Metric",
+     "Value",
+     "Unit / interpretation"
+    ],
+    "rows": [
+     {
+      "label": "Commercial-insured adult catchment population",
+      "cells": [
+       "=catchment_population_count_k",
+       "thousand adults"
+      ]
+     },
+     {
+      "label": "Annual commercial target-procedure rate",
+      "cells": [
+       "=annual_target_procedure_rate",
+       "of commercial-insured catchment population"
+      ]
+     },
+     {
+      "label": "Outpatient-eligible share of commercial target procedures",
+      "cells": [
+       "=outpatient_eligible_share",
+       "of commercial target procedures"
+      ]
+     },
+     {
+      "label": "Planned Harborview capture rate for eligible commercial procedures",
+      "cells": [
+       "=capture_rate",
+       "of outpatient-eligible commercial procedures"
+      ]
+     },
+     {
+      "label": "Internal hospital transfers, base commercial mix",
+      "cells": [
+       "=internal_transfer_share",
+       "of captured commercial cases"
+      ]
+     },
+     {
+      "label": "External / new-to-Harborview commercial cases",
+      "cells": [
+       "=1 - internal_transfer_share",
+       "of captured commercial cases"
+      ]
+     },
+     {
+      "label": "Annual eligible Medicaid demand",
+      "cells": [
+       "=medicaid_eligible_demand_cases_count_k",
+       "thousand cases; separate from commercial funnel"
+      ]
+     },
+     {
+      "label": "Reserved Medicaid cases sourced from Harborview hospital",
+      "cells": [
+       "=medicaid_internal_transfer_share",
+       "share; zero means all reserved cases are new to Harborview"
+      ]
+     },
+     {
+      "label": "Imaging utilization (context only)",
+      "cells": [
+       "=imaging_utilization_pct",
+       "unrelated to ASC procedures"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other",
+     "other"
+    ],
+    "footnote": "Commercial demand and capture estimates exclude Medicaid cases. Medicaid demand is an independent pool; the planning assumption is that eligible reserved cases are new to Harborview rather than transfers. Imaging utilization is included as a distractor. Source: Harborview referral study and planning estimates.",
+    "text_body": null,
+    "grid": [
+     [
+      1600.0,
+      "thousand adults"
+     ],
+     [
+      0.02,
+      "of commercial-insured catchment population"
+     ],
+     [
+      0.375,
+      "of commercial target procedures"
+     ],
+     [
+      0.4,
+      "of outpatient-eligible commercial procedures"
+     ],
+     [
+      0.6,
+      "of captured commercial cases"
+     ],
+     [
+      0.4,
+      "of captured commercial cases"
+     ],
+     [
+      1.2,
+      "thousand cases; separate from commercial funnel"
+     ],
+     [
+      0.0,
+      "share; zero means all reserved cases are new to Harborview"
+     ],
+     [
+      0.72,
+      "unrelated to ASC procedures"
+     ]
+    ],
+    "display": [
+     [
+      "1,600K",
+      "thousand adults"
+     ],
+     [
+      "2%",
+      "of commercial-insured catchment population"
+     ],
+     [
+      "37.5%",
+      "of commercial target procedures"
+     ],
+     [
+      "40%",
+      "of outpatient-eligible commercial procedures"
+     ],
+     [
+      "60%",
+      "of captured commercial cases"
+     ],
+     [
+      "0.4",
+      "of captured commercial cases"
+     ],
+     [
+      "1.2K",
+      "thousand cases; separate from commercial funnel"
+     ],
+     [
+      "0%",
+      "share; zero means all reserved cases are new to Harborview"
+     ],
+     [
+      "72%",
+      "unrelated to ASC procedures"
+     ]
+    ],
+    "units": [
+     "other",
+     "other"
+    ]
+   },
+   {
+    "id": "ex3",
+    "title": "Base ASC economics and facility limits",
+    "subtitle": "Annual steady-state cash assumptions unless specified otherwise",
+    "kind": "table",
+    "columns": [
+     "Assumption",
+     "Value",
+     "Unit / interpretation"
+    ],
+    "rows": [
+     {
+      "label": "Annual facility capacity",
+      "cells": [
+       "=facility_capacity_cases_count_k",
+       "thousand cases"
+      ]
+     },
+     {
+      "label": "ASC contribution per commercial case",
+      "cells": [
+       "=asc_contribution_per_case_usd_k",
+       "thousand dollars per case; after variable cash costs"
+      ]
+     },
+     {
+      "label": "Hospital contribution given up per transferred commercial case",
+      "cells": [
+       "=hospital_contribution_per_transferred_case_usd_k",
+       "thousand dollars per case; after avoidable costs"
+      ]
+     },
+     {
+      "label": "Annual fixed cash operating cost",
+      "cells": [
+       "=annual_fixed_cost_usd_m",
+       "million dollars per year"
+      ]
+     },
+     {
+      "label": "Construction and equipment investment",
+      "cells": [
+       "=initial_capex_usd_m",
+       "million dollars at year zero"
+      ]
+     },
+     {
+      "label": "Discount rate",
+      "cells": [
+       "=discount_rate",
+       "annual rate"
+      ]
+     },
+     {
+      "label": "Project horizon",
+      "cells": [
+       "=project_horizon",
+       "years; flat annual cash flow; no terminal value"
+      ]
+     },
+     {
+      "label": "Supplied annuity factor",
+      "cells": [
+       "=annuity_factor",
+       "multiple; use directly"
+      ]
+     },
+     {
+      "label": "Proposed building area",
+      "cells": [
+       "=building_area_sqft",
+       "square feet; not the stated capacity constraint"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other",
+     "other"
+    ],
+    "footnote": "ASC contribution is after variable cash costs. Hospital contribution is the amount Harborview gives up on a transferred commercial case. Annual fixed costs are incremental cash costs. Source: Harborview operations and facilities estimates.",
+    "text_body": null,
+    "grid": [
+     [
+      4.0,
+      "thousand cases"
+     ],
+     [
+      2.0,
+      "thousand dollars per case; after variable cash costs"
+     ],
+     [
+      1.25,
+      "thousand dollars per case; after avoidable costs"
+     ],
+     [
+      3.2,
+      "million dollars per year"
+     ],
+     [
+      16.0,
+      "million dollars at year zero"
+     ],
+     [
+      0.08,
+      "annual rate"
+     ],
+     [
+      10.0,
+      "years; flat annual cash flow; no terminal value"
+     ],
+     [
+      6.7,
+      "multiple; use directly"
+     ],
+     [
+      42000.0,
+      "square feet; not the stated capacity constraint"
+     ]
+    ],
+    "display": [
+     [
+      "4K",
+      "thousand cases"
+     ],
+     [
+      "$2K",
+      "thousand dollars per case; after variable cash costs"
+     ],
+     [
+      "$1.25K",
+      "thousand dollars per case; after avoidable costs"
+     ],
+     [
+      "$3.2M",
+      "million dollars per year"
+     ],
+     [
+      "$16M",
+      "million dollars at year zero"
+     ],
+     [
+      "8%",
+      "annual rate"
+     ],
+     [
+      "10 years",
+      "years; flat annual cash flow; no terminal value"
+     ],
+     [
+      "6.7x",
+      "multiple; use directly"
+     ],
+     [
+      "42,000",
+      "square feet; not the stated capacity constraint"
+     ]
+    ],
+    "units": [
+     "other",
+     "other"
+    ]
+   },
+   {
+    "id": "ex4",
+    "title": "Preliminary state access proposal",
+    "subtitle": "Grant is conditional on the stated Medicaid reservation",
+    "kind": "table",
+    "columns": [
+     "Term",
+     "Value",
+     "Unit / interpretation"
+    ],
+    "rows": [
+     {
+      "label": "Capital grant",
+      "cells": [
+       "=state_grant_usd_m",
+       "million dollars at year zero, if conditions are met"
+      ]
+     },
+     {
+      "label": "Capacity reserved for Medicaid cases",
+      "cells": [
+       "=medicaid_reserved_share",
+       "of fixed facility capacity"
+      ]
+     },
+     {
+      "label": "Medicaid ASC contribution per case",
+      "cells": [
+       "=medicaid_asc_contribution_per_case_usd_k",
+       "thousand dollars per case; after variable cash costs"
+      ]
+     },
+     {
+      "label": "Capacity treatment",
+      "cells": [
+       "Fixed",
+       "Medicaid cases replace commercial cases; do not add volume"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other",
+     "other"
+    ],
+    "footnote": "Preliminary state program terms, subject to award. The reserved share uses existing facility capacity. Eligible Medicaid demand and case origin are provided separately in the catchment exhibit.",
+    "text_body": null,
+    "grid": [
+     [
+      10.0,
+      "million dollars at year zero, if conditions are met"
+     ],
+     [
+      0.25,
+      "of fixed facility capacity"
+     ],
+     [
+      1.2,
+      "thousand dollars per case; after variable cash costs"
+     ],
+     [
+      "Fixed",
+      "Medicaid cases replace commercial cases; do not add volume"
+     ]
+    ],
+    "display": [
+     [
+      "$10M",
+      "million dollars at year zero, if conditions are met"
+     ],
+     [
+      "25%",
+      "of fixed facility capacity"
+     ],
+     [
+      "$1.2K",
+      "thousand dollars per case; after variable cash costs"
+     ],
+     [
+      "Fixed",
+      "Medicaid cases replace commercial cases; do not add volume"
+     ]
+    ],
+    "units": [
+     "other",
+     "other"
+    ]
+   }
+  ],
+  "recommendation": {
+   "answer": "Conditionally build only if Harborview secures the grant and validates case origin. The unassisted base NPV is -$3.9M; at the grant-backed base transfer mix, NPV is $5.7M. The grant-backed case has slightly lower annual cash flow than the all-commercial base because the Medicaid reservation only partly offsets its lower ASC contribution through avoided commercial cannibalization; the grant drives the positive NPV. The case is not robust: under the high-transfer scenario, grant-case NPV is -$1.8M, and the grant-backed zero-NPV threshold is an internal-transfer share of 82.8%.",
+   "risks": [
+    "Case-origin data may show that commercial volume is more transfer-heavy than assumed. Under the high-transfer scenario, grant-case NPV is -$1.8M; the break-even share is 82.8%.",
+    "The grant is preliminary and conditional; without it, the base case has an NPV of -$3.9M.",
+    "Actual staffed capacity, referral conversion, and contribution by payer may differ from the planning assumptions.",
+    "The stated flat-cash-flow convention may not reflect ramp-up or future reimbursement and operating-cost changes; validate before final investment approval."
+   ],
+   "next_steps": [
+    "Obtain written confirmation of grant eligibility, timing, award certainty, and enforceable Medicaid requirements.",
+    "Audit referral and scheduling data to independently establish commercial case origin and avoidable hospital contribution.",
+    "Validate that separate eligible Medicaid demand can meet the reservation and that those patients are genuinely new to Harborview.",
+    "Confirm that the facility can staff and serve the modeled cases while meeting the Medicaid reservation.",
+    "Return to the board with a gated investment decision; renegotiate or decline if validated transfer mix exceeds the break-even threshold."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Problem framing and hypothesis",
+    "strong": "Clarifies the system-wide objective, distinguishes incremental from transferred cases, and develops a concise, testable hypothesis about addressable demand and cannibalization.",
+    "weak": "Accepts standalone ASC economics or generic outpatient growth without defining what constitutes value for Harborview."
+   },
+   {
+    "dimension": "Exhibit interpretation and prioritization",
+    "strong": "Spots that total outpatient growth outpaces growth in the addressable subset; treats the inpatient and imaging data as distractors; prioritizes case origin and capacity.",
+    "weak": "Extrapolates the headline trend, combines unrelated markets, or recites exhibit values without explaining their relevance."
+   },
+   {
+    "dimension": "Quantitative accuracy and unit discipline",
+    "strong": "Builds the commercial demand funnel, caps cases at capacity, checks separate Medicaid demand and origin, subtracts displaced hospital contribution, distinguishes annual cash flow from year-zero capex, and uses the supplied annuity factor correctly.",
+    "weak": "Double-counts transferred cases, exceeds capacity, confuses revenue and contribution, or mixes annual and present-value amounts."
+   },
+   {
+    "dimension": "Diagnosis and counter-intuitive insight",
+    "strong": "Recognizes that the unassisted case cannot meet its hurdle at capacity; understands that the Medicaid mix nearly offsets its lower ASC contribution by avoiding some hospital cannibalization but slightly reduces annual cash flow; correctly attributes positive NPV primarily to the grant.",
+    "weak": "Assumes the grant’s lower Medicaid contribution must be the only effect, claims the Medicaid mix improves annual economics, or assumes positive ASC contribution proves the center should be built."
+   },
+   {
+    "dimension": "Sensitivity and judgment",
+    "strong": "Tests the high-transfer scenario, interprets the break-even share as an actionable gate, and recommends conditionally rather than overclaiming certainty.",
+    "weak": "Treats the grant-backed NPV as robust or does not identify what evidence would reverse the recommendation."
+   },
+   {
+    "dimension": "Communication and executive synthesis",
+    "strong": "Delivers a crisp decision, precise NPV figures, the quantified downside and threshold, key risks, and practical next steps within the time limit.",
+    "weak": "Provides a calculation dump, equivocates without a decision, or omits the key risk and mitigation."
+   },
+   {
+    "dimension": "Performance tier: strong",
+    "strong": "Accurately frames system-level economics, interprets the exhibits, completes the core demand and NPV analysis, handles capacity and cannibalization correctly, and gives a justified conditional recommendation with the principal risk.",
+    "weak": "Needs repeated direction to distinguish transferred from incremental cases, misses the capacity constraint, or cannot support a recommendation with the economics."
+   },
+   {
+    "dimension": "Performance tier: exceptional / offer-on-the-spot",
+    "strong": "Independently identifies and resolves the commercial-only demand, Medicaid-demand, and Medicaid-origin assumptions; integrates the case-mix effect with the grant’s capital effect; quantifies the high-transfer downside and break-even threshold; prioritizes decisive diligence; and calmly defends a conditional recommendation under both pushbacks.",
+    "weak": "Reaches a plausible conclusion but does not independently test the demand/origin assumptions, misses the slightly negative annual mix effect, or cannot defend the decision gate when challenged."
+   }
+  ],
+  "interviewer_notes": "Run this as a candidate-led case. Suggested pacing: framing and clarification, roughly five minutes; growth read and targeted diligence, roughly seven minutes; demand sizing, roughly six minutes; base economics and hurdle, roughly twelve minutes; grant pivot and sensitivity, roughly twelve minutes; CEO synthesis, roughly three minutes, with remaining time for probing. Release ex1 after the candidate frames the problem. Release ex2 when the candidate asks for addressable demand or relevant catchment assumptions; do not hand it out during the opening. The exhibit explicitly separates commercial demand from Medicaid demand and identifies reserved Medicaid cases as new to Harborview. Share staffed design capacity in q4 when the candidate explores demand feasibility. Release ex3 when the candidate moves to economics. After the candidate gives a base-case view, introduce the grant pivot and release ex4. Share the high-transfer assumption only if the candidate tests case-origin risk or when prompted for a stress test. Challenge the candidate at least twice: first on whether a full, positive-cash-flow center should be built; then on whether the grant-backed NPV is robust. The key is not arithmetic speed alone: the candidate must understand that the unassisted break-even volume exceeds capacity, verify that the grant’s payer mix is demand-feasible, recognize that Medicaid cases are new to Harborview, and understand that the Medicaid reservation slightly reduces annual cash flow while the grant turns the NPV positive. The decisive judgment is the transfer-share risk. Accept alternate calculations or recommendation phrasing when units, counterfactual, and decision logic are sound. The final answer should be conditional: validate the grant and case-origin mix, with the calculated break-even transfer share as the gate."
+ },
+ "quality": {
+  "status": "verified",
+  "checks": [],
+  "reviews": [
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Exhibit 4 / q6 grant-case economics",
+      "problem": "The grant calculation subtracts hospital contribution only for transferred commercial cases, implicitly treating all 1K reserved Medicaid cases as new to Harborview. No exhibit or share fact states that. If any reserved Medicaid cases move from Harborview’s hospital, their lost hospital contribution must also be deducted. The potential impact is material: every 1K Medicaid transfers at the stated $1.25K contribution would reduce annual cash flow by $1.25M and NPV by $8.375M using the supplied 6.7x factor—more than enough to reverse the reported +$5.725M NPV.",
+      "fix": "State explicitly that reserved Medicaid cases are incremental/new to Harborview, or provide their hospital-transfer share and foregone hospital contribution and include them in the grant-case calculation and sensitivity."
+     },
+     {
+      "severity": "major",
+      "where": "Exhibit 2 demand funnel / q6 grant case",
+      "problem": "The 4.8K captured-case estimate is not identified as commercial-only, and the exhibit gives no Medicaid-eligible demand or payer mix. Yet q6 assumes 1K Medicaid cases can be served alongside 3K commercial cases. The candidate cannot verify that the grant mix is demand-feasible, nor determine whether the 4.8K funnel already includes Medicaid cases.",
+      "fix": "Label the demand funnel as commercial-only and provide/assume at least 1K annual eligible Medicaid cases, or provide payer mix and recalculate the feasible commercial and Medicaid volumes."
+     },
+     {
+      "severity": "major",
+      "where": "q6 'What great looks like' / Rubric, Diagnosis and counter-intuitive insight",
+      "problem": "The rubric says the Medicaid obligation can improve system value by displacing cannibalizing commercial cases. At the stated base mix, a commercial case has expected incremental contribution of $2.00K − 60% × $1.25K = $1.25K, versus $1.20K for a Medicaid case (assuming no Medicaid hospital displacement). Replacing 1K commercial cases with 1K Medicaid cases therefore reduces annual cash flow by $0.05M: the grant case is $1.75M versus $1.80M in the all-commercial base. The reservation partially offsets its lower ASC contribution by avoiding some hospital cannibalization, but does not improve annual economics; the $10M grant is what makes NPV positive.",
+      "fix": "Change the insight to say the Medicaid mix nearly offsets its contribution penalty by avoiding foregone hospital contribution, while slightly reducing annual cash flow; attribute the positive NPV primarily to the grant."
+     },
+     {
+      "severity": "major",
+      "where": "Rubric, 'Exceptional / offer-on-the-spot signal'",
+      "problem": "The rubric does not actually distinguish strong from exceptional performance: it gives a single 'strong' description under the exceptional heading and contrasts it only with weak performance. The requested offer-on-the-spot bar is therefore not calibrated separately from a competent strong answer.",
+      "fix": "Add explicit tiers: define strong as accurate, system-level analysis and a justified conditional recommendation; define exceptional as independently identifying and resolving the Medicaid demand/origin assumptions, quantifying the sensitivity, prioritizing the decisive diligence, and defending the recommendation under pushback."
+     },
+     {
+      "severity": "minor",
+      "where": "Interviewer notes, final paragraph",
+      "problem": "The notes call the numeric spine 'twenty-four linked calculations,' but the listed calculations total 23: q4 has 4, q5 has 8, and q6 has 11.",
+      "fix": "Change 'twenty-four' to 'twenty-three' (or add and identify the intended 24th calculation)."
+     },
+     {
+      "severity": "minor",
+      "where": "Exhibit 1, inpatient-growth note",
+      "problem": "The table gives 8.0K, 8.6K, and 9.3K, which imply approximately 7.5% and 8.1% annual growth (about 7.8% CAGR), not exactly 8% each year. This is consistent with rounded values but the note states 8% without qualification.",
+      "fix": "Label the series as growing 'about 8% annually' or provide values consistent with an exact 8% rate."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The case has the requested structure and difficulty features, and the stated arithmetic is otherwise consistent: demand is 32K → 12K → 4.8K, capped at 4K; base NPV is $1.8M × 6.7 − $16M = −$3.94M; grant-case NPV is $1.75M × 6.7 − $6M = $5.725M; high-transfer NPV is $0.625M × 6.7 − $6M = −$1.8125M; and the grant-case transfer-share break-even is about 82.8%. However, the grant case is not fully runnable or supported until Medicaid demand and case origin are specified, and the rubric’s claimed Medicaid insight is directionally wrong. Fix those substantive issues before publication."
+   },
+   {
+    "issues": [
+     {
+      "severity": "minor",
+      "where": "Exhibits ex1–ex3, especially ex2’s “1,600K | thousand adults” and “1.2K | thousand cases”; ex2 also reports the external share as “0.4” while internal transfer is “60%”",
+      "problem": "The scale labels are redundant and potentially ambiguous: “1,600K” already denotes 1.6 million, while “thousand adults” can read as an additional scale; likewise “1.2K” plus “thousand cases.” The external share is a fraction while the related share is a percentage. The intended calculations are consistent, but candidates could reasonably pause to confirm units.",
+      "fix": "Use one convention throughout: either show actual counts (e.g., 1.6M adults, 1,200 Medicaid cases, 4,000 capacity cases) or show values in thousands (e.g., 1,600; 1.2; 4.0) and label the table “000s.” Express the external share as 40%."
+     },
+     {
+      "severity": "minor",
+      "where": "Recommendation — Risks",
+      "problem": "The sentence ending “the break-even share is 82.8%.; The grant…” has stray punctuation that interrupts the recommendation.",
+      "fix": "Replace “82.8%.;” with “82.8%. The grant…”"
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The core arithmetic, cash-flow timing, capacity treatment, grant scenario, high-transfer sensitivity, and recommendation are internally consistent. The previously raised Medicaid demand/origin and performance-tier rubric issues are resolved: the commercial and Medicaid pools are distinct, Medicaid cases are explicitly new to Harborview, and strong versus exceptional performance is differentiated. The case also meets the requested structure and difficulty features: seven sections, four exhibits, a multi-step calculation chain, an exhibit-linked pivot, pushbacks, and a quantified synthesis. I found only the unit-label clarity and punctuation issues listed above."
+   }
+  ],
+  "fix_rounds": 2,
+  "history": [
+   {
+    "step": "number check",
+    "issues": [
+     {
+      "severity": "blocker",
+      "where": "sections[6].ask",
+      "problem": "placeholder {synthesis_seconds} doesn't match any variable or calculation"
+     },
+     {
+      "severity": "major",
+      "where": "q4 calculation feasible_cases",
+      "problem": "uses facility_capacity_cases_count_k (Annual ASC capacity, revealed in 'ex3') before the candidate is given it. Put it in the prompt, a clarifying answer, this or an earlier section's 'share if asked', or an exhibit handed out by this section — or mark it 'assumption' if the candidate should assume it"
+     },
+     {
+      "severity": "major",
+      "where": "case shape",
+      "problem": "instant_offer should have at most 8 sections, 5 exhibits and 24 calculations; this has 7, 4 and 27. Cut supporting arithmetic (keep the numeric spine) rather than adding analyses"
+     }
+    ]
+   },
+   {
+    "step": "Independent review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Exhibit 4 / q6 grant-case economics",
+      "problem": "The grant calculation subtracts hospital contribution only for transferred commercial cases, implicitly treating all 1K reserved Medicaid cases as new to Harborview. No exhibit or share fact states that. If any reserved Medicaid cases move from Harborview’s hospital, their lost hospital contribution must also be deducted. The potential impact is material: every 1K Medicaid transfers at the stated $1.25K contribution would reduce annual cash flow by $1.25M and NPV by $8.375M using the supplied 6.7x factor—more than enough to reverse the reported +$5.725M NPV.",
+      "fix": "State explicitly that reserved Medicaid cases are incremental/new to Harborview, or provide their hospital-transfer share and foregone hospital contribution and include them in the grant-case calculation and sensitivity."
+     },
+     {
+      "severity": "major",
+      "where": "Exhibit 2 demand funnel / q6 grant case",
+      "problem": "The 4.8K captured-case estimate is not identified as commercial-only, and the exhibit gives no Medicaid-eligible demand or payer mix. Yet q6 assumes 1K Medicaid cases can be served alongside 3K commercial cases. The candidate cannot verify that the grant mix is demand-feasible, nor determine whether the 4.8K funnel already includes Medicaid cases.",
+      "fix": "Label the demand funnel as commercial-only and provide/assume at least 1K annual eligible Medicaid cases, or provide payer mix and recalculate the feasible commercial and Medicaid volumes."
+     },
+     {
+      "severity": "major",
+      "where": "q6 'What great looks like' / Rubric, Diagnosis and counter-intuitive insight",
+      "problem": "The rubric says the Medicaid obligation can improve system value by displacing cannibalizing commercial cases. At the stated base mix, a commercial case has expected incremental contribution of $2.00K − 60% × $1.25K = $1.25K, versus $1.20K for a Medicaid case (assuming no Medicaid hospital displacement). Replacing 1K commercial cases with 1K Medicaid cases therefore reduces annual cash flow by $0.05M: the grant case is $1.75M versus $1.80M in the all-commercial base. The reservation partially offsets its lower ASC contribution by avoiding some hospital cannibalization, but does not improve annual economics; the $10M grant is what makes NPV positive.",
+      "fix": "Change the insight to say the Medicaid mix nearly offsets its contribution penalty by avoiding foregone hospital contribution, while slightly reducing annual cash flow; attribute the positive NPV primarily to the grant."
+     },
+     {
+      "severity": "major",
+      "where": "Rubric, 'Exceptional / offer-on-the-spot signal'",
+      "problem": "The rubric does not actually distinguish strong from exceptional performance: it gives a single 'strong' description under the exceptional heading and contrasts it only with weak performance. The requested offer-on-the-spot bar is therefore not calibrated separately from a competent strong answer.",
+      "fix": "Add explicit tiers: define strong as accurate, system-level analysis and a justified conditional recommendation; define exceptional as independently identifying and resolving the Medicaid demand/origin assumptions, quantifying the sensitivity, prioritizing the decisive diligence, and defending the recommendation under pushback."
+     }
+    ]
+   }
+  ],
+  "model": "gpt-6-luna",
+  "engine": "luna"
+ },
+ "usage": {
+  "model": "gpt-6-luna",
+  "input": 71884,
+  "cached": 18014,
+  "output": 62094,
+  "requests": 6,
+  "seconds": 425.2,
+  "usd": 0.037942,
+  "calls": 6,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6749,
+    "cached": 0,
+    "output": 12288,
+    "requests": 1,
+    "seconds": 86.3,
+    "usd": 0.006984
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 11476,
+    "cached": 4816,
+    "output": 14289,
+    "requests": 1,
+    "seconds": 104.7,
+    "usd": 0.008022
+   },
+   {
+    "step": "Fix 3 number-check issues",
+    "role": "writer",
+    "input": 15552,
+    "cached": 4816,
+    "output": 10251,
+    "requests": 1,
+    "seconds": 52.4,
+    "usd": 0.006513
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 10661,
+    "cached": 1783,
+    "output": 8260,
+    "requests": 1,
+    "seconds": 71.4,
+    "usd": 0.005254
+   },
+   {
+    "step": "Fix 4 independent review findings",
+    "role": "writer",
+    "input": 15903,
+    "cached": 4816,
+    "output": 11212,
+    "requests": 1,
+    "seconds": 56.7,
+    "usd": 0.007037
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 11543,
+    "cached": 1783,
+    "output": 5794,
+    "requests": 1,
+    "seconds": 53.7,
+    "usd": 0.004132
+   }
+  ]
+ },
+ "second_opinion": {
+  "model": "gpt-5.6-terra",
+  "at": "2026-10-20T21:10:27.668462+00:00",
+  "difficulty_fit": "about_right",
+  "summary": "The numerical model is internally consistent and runnable. Recomputed results: base commercial demand is 32K × 37.5% × 40% = 4.8K, capped at 4K; base transfers are 4K × 60% = 2.4K; base ASC contribution is $8.0M, lost hospital contribution is $3.0M, annual system cash flow is $1.8M, and NPV is $1.8M × 6.7 − $16M = −$3.94M. The NPV-zero annual cash-flow requirement is $16M/6.7 = $2.388M; at a $1.25K per-commercial-case system contribution, break-even volume is (3.2 + 2.388)/1.25 = 4.470K, or 111.8% of 4K capacity. Under the grant, Medicaid volume is 1K and commercial volume is 3K; ASC contribution is $7.2M, displaced hospital contribution is $2.25M, annual cash flow is $1.75M, net capex is $6M, and NPV is $1.75M × 6.7 − $6M = $5.725M. At 90% commercial transfers, displaced contribution is $3.375M, annual cash flow is $0.625M, and NPV is −$1.8125M. The zero-NPV transfer-share ceiling is (7.2 − 3.2 − 6/6.7)/(3 × 1.25) = 82.786%, or 82.8%. All displayed rounded values and conclusions match these computations; the grant-driven reversal, capacity constraint, cannibalization treatment, timing, and conditional recommendation are sound. The case meets the requested Instant Offer shape: 7 sections, 4 exhibits, roughly 24 listed quantitative steps, a capacity/NPV/cannibalization chain, pivot, pushbacks, ambiguous opening, and differentiated exceptional-performance rubric. The only substantive polish issue is the unsupported cross-exhibit comparability sentence noted above.",
+  "issues": [
+   {
+    "severity": "minor",
+    "where": "q4 model answer: “This commercial-only demand funnel is consistent with the historical exhibit’s slower growth in the ASC-addressable subset.”",
+    "problem": "This is an unsupported like-for-like comparison. ex1 supplies historical annual cases from “Harborview finance and scheduling systems,” without specifying that they cover the same commercial-insured catchment, payer population, procedure definition, or forecast period as ex2’s 1,600K commercial-insured catchment funnel. The arithmetic is correct—commercial target procedures are 1,600K × 2% = 32K; outpatient-eligible cases are 32K × 37.5% = 12K; planned captured commercial cases are 12K × 40% = 4.8K; and served pre-grant volume is capped at 4K—but those calculations do not establish consistency with ex1’s 3.0K to 3.4K historical addressable series.",
+    "fix": "Delete that sentence, or explicitly label ex1 as the same commercial catchment and procedure scope and state the periods being compared. Deleting it is the minimal fix because the decision does not need the comparison."
+   },
+   {
+    "severity": "minor",
+    "where": "Rubric, “Performance tier” entries",
+    "problem": "The tier labels are malformed and unnecessarily confusing: “Performance tier: strong: strong = … | weak = …” and “Performance tier: exceptional / offer-on-the-spot: strong = … | weak = …”. The substantive distinction is present, but an interviewer scanning the rubric could misread “strong” as the rating within the exceptional tier.",
+    "fix": "Relabel as “Performance tier — Strong” and “Performance tier — Exceptional / offer-on-the-spot,” each followed by “Meets” versus “Does not meet” (or simply the respective descriptors)."
+   }
+  ],
+  "usage": {
+   "model": "gpt-5.6-terra",
+   "input": 11277,
+   "cached": 1787,
+   "output": 2828,
+   "requests": 1,
+   "seconds": 26.6,
+   "usd": 0.057957,
+   "calls": 1,
+   "steps": [
+    {
+     "step": "Cross-audit",
+     "role": "reviewer",
+     "input": 11277,
+     "cached": 1787,
+     "output": 2828,
+     "requests": 1,
+     "seconds": 26.6,
+     "usd": 0.057957
+    }
+   ]
+  }
+ }
+}

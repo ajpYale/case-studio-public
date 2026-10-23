@@ -1,0 +1,706 @@
+{
+ "draft": {
+  "title": "Cold Space, Hot Economics",
+  "client": "HarborLock Storage",
+  "industry": "Self-storage / commercial real estate",
+  "case_type": "Growth investment and profitability",
+  "difficulty": "medium",
+  "format": "interviewer_led",
+  "duration_minutes": 30,
+  "concepts_tested": [
+   "incremental contribution analysis",
+   "opportunity cost of displaced capacity",
+   "simple payback",
+   "exhibit interpretation",
+   "B2B go-to-market"
+  ],
+  "situation_summary": "HarborLock must choose whether to convert standard self-storage units at Harbor or Seaport into climate-controlled capacity while meeting a {payback_hurdle} payback hurdle.",
+  "prompt": "HarborLock Storage operates urban self-storage facilities and is considering converting existing standard units into climate-controlled units. Management believes climate-controlled storage is a fast-growing premium category, but it can fund only {conversions_fundable} conversion this year and requires investments to pay back within {payback_hurdle}. Your client wants to know which facility, if either, it should convert and how it should commercialize the new capacity.",
+  "clarifying": [
+   {
+    "question": "What is the decision criterion and when would HarborLock reject both sites?",
+    "answer": "Use simple payback: conversion capex is paid today and is divided by stabilized annual incremental contribution. Recommend no conversion if neither site meets the {payback_hurdle} hurdle."
+   },
+   {
+    "question": "Are the units already occupied, and what happens to their existing revenue after conversion?",
+    "answer": "The proposed units are currently standard units. Conversion permanently displaces their current standard-storage contribution; this opportunity cost must be included."
+   },
+   {
+    "question": "Should we include fixed overhead, taxes, financing, or demand ramp-up?",
+    "answer": "No. The provided operating costs are variable costs, incremental fixed overhead is assumed immaterial, and management wants an unlevered simple-payback comparison at stabilized occupancy."
+   },
+   {
+    "question": "Can both facilities be converted, and are there material construction constraints?",
+    "answer": "The capital budget permits only {conversions_fundable} conversion this year. Each site can complete its proposed conversion without closing other units."
+   },
+   {
+    "question": "What does climate-controlled storage mean in this context?",
+    "answer": "The conversion adds temperature and humidity control suitable for climate-sensitive household goods, records, wine, art, and selected commercial inventory; it does not create regulated pharmaceutical warehousing."
+   }
+  ],
+  "variables": [
+   {
+    "name": "payback_hurdle",
+    "value": 4.0,
+    "unit": "years",
+    "label": "Maximum acceptable simple payback period",
+    "revealed_in": "prompt",
+    "role": "input"
+   },
+   {
+    "name": "conversions_fundable",
+    "value": 1.0,
+    "unit": "count",
+    "label": "Number of facility conversions fundable this year",
+    "revealed_in": "prompt",
+    "role": "input"
+   },
+   {
+    "name": "harbor_conversion_units",
+    "value": 120.0,
+    "unit": "count",
+    "label": "Standard units proposed for conversion at Harbor",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "harbor_climate_occupancy",
+    "value": 0.9,
+    "unit": "pct",
+    "label": "Expected stabilized climate-controlled occupancy at Harbor",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "harbor_climate_monthly_rent",
+    "value": 250.0,
+    "unit": "usd",
+    "label": "Monthly rent per occupied climate-controlled unit at Harbor",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "harbor_climate_monthly_cost",
+    "value": 45.0,
+    "unit": "usd",
+    "label": "Monthly variable operating cost per occupied climate-controlled unit at Harbor",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "harbor_standard_occupancy",
+    "value": 0.98,
+    "unit": "pct",
+    "label": "Current standard-unit occupancy for units proposed for conversion at Harbor",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "harbor_standard_monthly_rent",
+    "value": 160.0,
+    "unit": "usd",
+    "label": "Monthly rent per occupied standard unit at Harbor",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "harbor_standard_monthly_cost",
+    "value": 15.0,
+    "unit": "usd",
+    "label": "Monthly variable operating cost per occupied standard unit at Harbor",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "harbor_conversion_capex",
+    "value": 300000.0,
+    "unit": "usd",
+    "label": "One-time conversion capex at Harbor",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "seaport_conversion_units",
+    "value": 160.0,
+    "unit": "count",
+    "label": "Standard units proposed for conversion at Seaport",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "seaport_climate_occupancy",
+    "value": 0.75,
+    "unit": "pct",
+    "label": "Expected stabilized climate-controlled occupancy at Seaport",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "seaport_climate_monthly_rent",
+    "value": 220.0,
+    "unit": "usd",
+    "label": "Monthly rent per occupied climate-controlled unit at Seaport",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "seaport_climate_monthly_cost",
+    "value": 45.0,
+    "unit": "usd",
+    "label": "Monthly variable operating cost per occupied climate-controlled unit at Seaport",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "seaport_standard_occupancy",
+    "value": 0.72,
+    "unit": "pct",
+    "label": "Current standard-unit occupancy for units proposed for conversion at Seaport",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "seaport_standard_monthly_rent",
+    "value": 125.0,
+    "unit": "usd",
+    "label": "Monthly rent per occupied standard unit at Seaport",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "seaport_standard_monthly_cost",
+    "value": 15.0,
+    "unit": "usd",
+    "label": "Monthly variable operating cost per occupied standard unit at Seaport",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "seaport_conversion_capex",
+    "value": 320000.0,
+    "unit": "usd",
+    "label": "One-time conversion capex at Seaport",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "hospital_supplier_inquiries",
+    "value": 84.0,
+    "unit": "count",
+    "label": "Qualified recent climate-storage inquiries from hospital suppliers near Seaport",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "hospital_supplier_conversion_rate",
+    "value": 0.42,
+    "unit": "pct",
+    "label": "Historical inquiry-to-lease conversion rate for hospital suppliers",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "wine_collector_inquiries",
+    "value": 56.0,
+    "unit": "count",
+    "label": "Qualified recent climate-storage inquiries from wine collectors",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "household_inquiries",
+    "value": 72.0,
+    "unit": "count",
+    "label": "Qualified recent climate-storage inquiries from households",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "legal_records_inquiries",
+    "value": 48.0,
+    "unit": "count",
+    "label": "Qualified recent climate-storage inquiries from legal-records firms",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "art_dealer_inquiries",
+    "value": 30.0,
+    "unit": "count",
+    "label": "Qualified recent climate-storage inquiries from art dealers",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Demand and commercial attractiveness",
+    "points": [
+     "Assess each facility's credible demand for climate-controlled units, customer segments, willingness to pay, and expected occupancy.",
+     "Distinguish recurring commercial demand from price-sensitive consumer demand."
+    ]
+   },
+   {
+    "name": "Incremental site economics",
+    "points": [
+     "Build climate-controlled contribution using converted units, expected occupancy, rent, and variable operating cost.",
+     "Subtract the contribution from standard units displaced; compare capex payback with {payback_hurdle}."
+    ]
+   },
+   {
+    "name": "Execution feasibility",
+    "points": [
+     "Check construction disruption, building-system readiness, staffing, access requirements, and operational complexity.",
+     "Evaluate occupancy ramp-up risk and the ability to preserve premium pricing."
+    ]
+   },
+   {
+    "name": "Commercialization and strategic fit",
+    "points": [
+     "Identify targeted acquisition channels, partnerships, and contract structures for the selected site.",
+     "Set capacity-allocation and performance gates before pursuing a later conversion."
+    ]
+   }
+  ],
+  "framework_notes": "A strong candidate explicitly frames this as an incremental-profit decision, not a premium-rent comparison. If a candidate starts with revenue alone, ask what happens to current standard-unit customers. Accept equivalent tailored structures that isolate demand, displaced contribution, feasibility, and commercialization.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the decision",
+    "kind": "framework",
+    "ask": "How would you structure the decision of whether and where to make the conversion?",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "Management's objective is to deploy the limited capital into the conversion with the strongest risk-adjusted commercial case, provided it meets the simple-payback hurdle."
+    ],
+    "calculations": [],
+    "model_answer": "I would assess demand and willingness to pay, calculate incremental contribution net of standard-unit contribution displaced, test execution and occupancy risks, and define a targeted go-to-market plan. The pivotal comparison is likely payback versus {payback_hurdle}, but I would first confirm that current standard-unit economics are captured as an opportunity cost.",
+    "what_great_looks_like": [
+     "Creates a site-specific, incremental-profit structure rather than a generic growth framework.",
+     "Asks whether the converted units are occupied and clarifies the payback definition.",
+     "Flags that stabilized occupancy may differ from an early occupancy ramp."
+    ],
+    "common_mistakes": [
+     "Comparing climate rents without considering standard units displaced.",
+     "Treating the payback hurdle as an annual margin target.",
+     "Assuming that market growth alone proves site-level demand."
+    ],
+    "hints": [
+     "What contribution does HarborLock give up when a standard unit becomes climate-controlled?"
+    ],
+    "pushback": [
+     "Suppose Harbor has the higher climate rent. Is that enough to choose it? What else would you need?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Read the facility economics",
+    "kind": "exhibit_read",
+    "ask": "Please review the facility comparison. What stands out, and which inputs would you use to determine the better investment?",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [
+     "The expected climate occupancies are stabilized estimates from comparable HarborLock facilities, not occupancy in the opening month.",
+     "The conversion-unit counts are the full and feasible proposed scopes at each facility."
+    ],
+    "calculations": [],
+    "model_answer": "Harbor has the stronger headline climate pricing and occupancy, while Seaport has more proposed units but lower climate occupancy and slightly higher capex. However, Harbor's standard units are almost fully occupied and earn a higher standard rent, so its displaced contribution is likely much larger. I would calculate climate contribution and subtract displaced standard contribution for each site before comparing payback with {payback_hurdle}.",
+    "what_great_looks_like": [
+     "Identifies the apparently attractive Harbor climate rent but does not select it prematurely.",
+     "Selects both climate and standard occupancy, rent, and cost inputs, plus capex.",
+     "Recognizes that Seaport's lower standard occupancy could reduce the conversion opportunity cost."
+    ],
+    "common_mistakes": [
+     "Using revenue rather than contribution.",
+     "Subtracting displaced standard revenue but failing to add back variable costs avoided.",
+     "Using overall site occupancy rather than occupancy for the proposed conversion units."
+    ],
+    "hints": [
+     "Build two contribution streams for each site: the new climate business and the standard business being removed."
+    ],
+    "pushback": [
+     "Which input in this exhibit could reverse a decision based only on premium rent?"
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Calculate incremental contribution and payback",
+    "kind": "quant",
+    "ask": "Please calculate annual incremental contribution and simple payback for each facility. Which option clears the hurdle?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "harbor_climate_revenue",
+      "label": "Annual climate-controlled revenue at Harbor",
+      "expression": "harbor_conversion_units * harbor_climate_occupancy * harbor_climate_monthly_rent * 12",
+      "unit": "usd",
+      "expected_value": 324000.0,
+      "decimals": 0
+     },
+     {
+      "id": "harbor_climate_cost",
+      "label": "Annual climate-controlled variable operating cost at Harbor",
+      "expression": "harbor_conversion_units * harbor_climate_occupancy * harbor_climate_monthly_cost * 12",
+      "unit": "usd",
+      "expected_value": 58320.0,
+      "decimals": 0
+     },
+     {
+      "id": "harbor_standard_revenue",
+      "label": "Annual standard-storage revenue displaced at Harbor",
+      "expression": "harbor_conversion_units * harbor_standard_occupancy * harbor_standard_monthly_rent * 12",
+      "unit": "usd",
+      "expected_value": 225792.0,
+      "decimals": 0
+     },
+     {
+      "id": "harbor_standard_cost",
+      "label": "Annual standard-storage variable cost avoided at Harbor",
+      "expression": "harbor_conversion_units * harbor_standard_occupancy * harbor_standard_monthly_cost * 12",
+      "unit": "usd",
+      "expected_value": 21168.0,
+      "decimals": 0
+     },
+     {
+      "id": "harbor_incremental_contribution",
+      "label": "Annual incremental contribution from conversion at Harbor",
+      "expression": "harbor_climate_revenue - harbor_climate_cost - (harbor_standard_revenue - harbor_standard_cost)",
+      "unit": "usd",
+      "expected_value": 61056.0,
+      "decimals": 0
+     },
+     {
+      "id": "harbor_payback",
+      "label": "Simple payback period for Harbor conversion",
+      "expression": "harbor_conversion_capex / harbor_incremental_contribution",
+      "unit": "years",
+      "expected_value": 4.91352496150444,
+      "decimals": 1
+     },
+     {
+      "id": "seaport_climate_revenue",
+      "label": "Annual climate-controlled revenue at Seaport",
+      "expression": "seaport_conversion_units * seaport_climate_occupancy * seaport_climate_monthly_rent * 12",
+      "unit": "usd",
+      "expected_value": 316800.0,
+      "decimals": 0
+     },
+     {
+      "id": "seaport_climate_cost",
+      "label": "Annual climate-controlled variable operating cost at Seaport",
+      "expression": "seaport_conversion_units * seaport_climate_occupancy * seaport_climate_monthly_cost * 12",
+      "unit": "usd",
+      "expected_value": 64800.0,
+      "decimals": 0
+     },
+     {
+      "id": "seaport_standard_revenue",
+      "label": "Annual standard-storage revenue displaced at Seaport",
+      "expression": "seaport_conversion_units * seaport_standard_occupancy * seaport_standard_monthly_rent * 12",
+      "unit": "usd",
+      "expected_value": 172800.0,
+      "decimals": 0
+     },
+     {
+      "id": "seaport_standard_cost",
+      "label": "Annual standard-storage variable cost avoided at Seaport",
+      "expression": "seaport_conversion_units * seaport_standard_occupancy * seaport_standard_monthly_cost * 12",
+      "unit": "usd",
+      "expected_value": 20736.0,
+      "decimals": 0
+     },
+     {
+      "id": "seaport_incremental_contribution",
+      "label": "Annual incremental contribution from conversion at Seaport",
+      "expression": "seaport_climate_revenue - seaport_climate_cost - (seaport_standard_revenue - seaport_standard_cost)",
+      "unit": "usd",
+      "expected_value": 99936.0,
+      "decimals": 0
+     },
+     {
+      "id": "seaport_payback",
+      "label": "Simple payback period for Seaport conversion",
+      "expression": "seaport_conversion_capex / seaport_incremental_contribution",
+      "unit": "years",
+      "expected_value": 3.201024163882492,
+      "decimals": 1
+     }
+    ],
+    "model_answer": "At Harbor, climate revenue is {harbor_climate_revenue} and climate variable cost is {harbor_climate_cost}. The conversion displaces standard revenue of {harbor_standard_revenue}, while avoiding standard variable cost of {harbor_standard_cost}, yielding annual incremental contribution of {harbor_incremental_contribution}. Its payback is {harbor_payback}, which misses {payback_hurdle}.\n\nAt Seaport, climate revenue is {seaport_climate_revenue} and climate variable cost is {seaport_climate_cost}. Displaced standard revenue is {seaport_standard_revenue}, with avoided standard cost of {seaport_standard_cost}, producing {seaport_incremental_contribution} of annual incremental contribution. Seaport pays back in {seaport_payback}, within {payback_hurdle}. Recommend Seaport on economics.",
+    "what_great_looks_like": [
+     "Calculates contribution, not revenue, for both the new and displaced uses.",
+     "Uses full precision in the payback division and rounds only for communication.",
+     "States the counterintuitive insight: Harbor's superior climate economics do not offset its larger standard-unit opportunity cost."
+    ],
+    "common_mistakes": [
+     "Comparing {harbor_climate_revenue} with {seaport_climate_revenue} as profit.",
+     "Omitting avoided standard variable costs.",
+     "Dividing capex by climate revenue or climate contribution instead of incremental contribution.",
+     "Selecting Harbor based on its higher expected climate occupancy."
+    ],
+    "hints": [
+     "For each site, incremental contribution equals climate contribution minus current standard contribution.",
+     "Calculate the standard business as revenue less variable cost; it is not a sunk cost."
+    ],
+    "pushback": [
+     "Why can Seaport win despite lower climate rent and occupancy and higher capex?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Build the Seaport demand engine",
+    "kind": "brainstorm",
+    "ask": "Assume we choose Seaport. How should HarborLock fill the new climate-controlled capacity quickly while protecting premium pricing?",
+    "exhibit_ids": [
+     "ex2"
+    ],
+    "info_to_share": [
+     "Seaport is near a hospital district. Hospital suppliers value predictable access and account management more than discounts.",
+     "HarborLock can offer business customers contracted blocks of units, but it should avoid long commitments that prevent serving higher-value demand."
+    ],
+    "calculations": [],
+    "model_answer": "Prioritize hospital suppliers because they generate the largest qualified inquiry pool at {hospital_supplier_inquiries} and have a historical inquiry-to-lease conversion rate of {hospital_supplier_conversion_rate}. Build a direct B2B program through hospital procurement contacts, medical-equipment distributors, and local logistics partners; sell predictable access, monitored conditions, and account management rather than discounts. Reserve some capacity for legal-records firms and high-value consumer segments such as wine collectors and art dealers. Use search, referral partnerships, and a premium online booking flow for households, but avoid broad discounting that would dilute price and attract short-term demand.",
+    "what_great_looks_like": [
+     "Prioritizes segment-specific channels rather than generic advertising.",
+     "Uses commercial contracting, service reliability, and account management as value propositions for hospital suppliers.",
+     "Balances recurring B2B demand with flexibility for premium consumer demand.",
+     "Suggests pricing fences such as differentiated access terms, minimum commitments, or service bundles rather than list-price reductions."
+    ],
+    "common_mistakes": [
+     "Recommending blanket discounts to maximize occupancy.",
+     "Assuming all inquiries have equal conversion quality or customer value.",
+     "Committing all capacity to a single customer type before validating demand."
+    ],
+    "hints": [
+     "Which inquiry segment combines meaningful demand with a reason to value service rather than price?",
+     "How can the client offer commercial customers reliability without lowering the public premium price?"
+    ],
+    "pushback": [
+     "A regional manager says hospital suppliers want predictable access. What would you offer besides a lower monthly rate?"
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Respond to the hospital-district opportunity",
+    "kind": "pivot",
+    "ask": "The regional manager wants Seaport to pursue the hospital district aggressively. What channel mix, capacity policy, and risk mitigations would you recommend?",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "The manager is concerned that a slow opening ramp would delay cash recovery, while a large contracted block could crowd out later premium demand."
+    ],
+    "calculations": [],
+    "model_answer": "Launch with a targeted commercial-sales motion toward hospital suppliers and related distributors, supported by referral partners and premium digital acquisition for consumer segments. Hold back a portion of converted capacity initially rather than allocating all units to contracted blocks; use contracted minimum terms, renewal options, and service-level commitments to create predictability without discounting. Track booked units, realized rent, lead-to-lease conversion, and customer concentration against the stabilized occupancy assumption of {seaport_climate_occupancy}. If demand lags, broaden partnerships before reducing price; if demand exceeds plan, preserve price and selectively expand commercial allocations.",
+    "what_great_looks_like": [
+     "Makes a clear trade-off between dependable contracted utilization and upside from flexible premium inventory.",
+     "Provides operational mitigations: pre-leasing, phased release of capacity, access protocols, staff training, and building-system commissioning.",
+     "Defines leading indicators and decision gates tied to occupancy and realized rent."
+    ],
+    "common_mistakes": [
+     "Treating stabilized occupancy as immediate occupancy.",
+     "Giving all capacity to commercial contracts without considering concentration and upside risk.",
+     "Solving demand risk solely through discounts."
+    ],
+    "hints": [
+     "How could HarborLock reduce ramp risk before construction is complete?",
+     "What would you monitor weekly or monthly to decide whether the commercial strategy is working?"
+    ],
+    "pushback": [
+     "What would make you pause a future Harbor conversion even if climate demand at Seaport is strong?"
+    ]
+   },
+   {
+    "id": "q6",
+    "title": "Executive synthesis",
+    "kind": "synthesis",
+    "ask": "Please give your recommendation to HarborLock's executive team.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Recommend converting Seaport and retaining Harbor as standard storage for now. Seaport generates {seaport_incremental_contribution} of annual incremental contribution and a {seaport_payback} payback, meeting the {payback_hurdle} hurdle. Harbor generates only {harbor_incremental_contribution} of incremental contribution and takes {harbor_payback}, because converting nearly full, higher-rent standard units sacrifices too much existing contribution.\n\nCommercialize Seaport through targeted hospital-supplier and adjacent B2B partnerships, with premium consumer channels as a complementary demand source. Protect price through service-led contracts and capacity reservations rather than broad discounts. Key risks are an occupancy ramp below {seaport_climate_occupancy}, commercial-customer concentration, and execution issues with climate-control operations. Mitigate them with pre-leasing, staged capacity release, service-level terms, commissioning controls, and a dashboard of occupancy, realized rent, conversion, and concentration. Revisit Harbor only after validating Seaport demand and identifying lower-opportunity-cost standard capacity or stronger climate pricing.",
+    "what_great_looks_like": [
+     "Leads with a decisive recommendation and directly compares both investments.",
+     "Explains the opportunity-cost insight rather than simply repeating payback.",
+     "Names risks, practical mitigations, and a specific future decision gate."
+    ],
+    "common_mistakes": [
+     "Recommending both sites despite the capital constraint of {conversions_fundable}.",
+     "Failing to state that Harbor misses the hurdle.",
+     "Presenting the calculation without a commercialization plan or implementation risks."
+    ],
+    "hints": [
+     "Start with the decision, then economics, then risks and actions."
+    ],
+    "pushback": [
+     "The CEO says Harbor has the more premium customer base. Defend your recommendation in one sentence."
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Conversion economics by facility",
+    "subtitle": "Proposed conversion scope and stabilized operating assumptions",
+    "kind": "table",
+    "columns": [
+     "Metric",
+     "Harbor",
+     "Seaport"
+    ],
+    "rows": [
+     {
+      "label": "Units proposed for conversion",
+      "cells": [
+       "=harbor_conversion_units",
+       "=seaport_conversion_units"
+      ]
+     },
+     {
+      "label": "Expected stabilized climate occupancy",
+      "cells": [
+       "=harbor_climate_occupancy",
+       "=seaport_climate_occupancy"
+      ]
+     },
+     {
+      "label": "Climate monthly rent per occupied unit",
+      "cells": [
+       "=harbor_climate_monthly_rent",
+       "=seaport_climate_monthly_rent"
+      ]
+     },
+     {
+      "label": "Climate monthly variable cost per occupied unit",
+      "cells": [
+       "=harbor_climate_monthly_cost",
+       "=seaport_climate_monthly_cost"
+      ]
+     },
+     {
+      "label": "Current standard occupancy of proposed units",
+      "cells": [
+       "=harbor_standard_occupancy",
+       "=seaport_standard_occupancy"
+      ]
+     },
+     {
+      "label": "Standard monthly rent per occupied unit",
+      "cells": [
+       "=harbor_standard_monthly_rent",
+       "=seaport_standard_monthly_rent"
+      ]
+     },
+     {
+      "label": "Standard monthly variable cost per occupied unit",
+      "cells": [
+       "=harbor_standard_monthly_cost",
+       "=seaport_standard_monthly_cost"
+      ]
+     },
+     {
+      "label": "One-time conversion capex",
+      "cells": [
+       "=harbor_conversion_capex",
+       "=seaport_conversion_capex"
+      ]
+     }
+    ],
+    "value_unit": "other",
+    "column_units": [
+     "other",
+     "other"
+    ],
+    "footnote": "Source: HarborLock operating data and comparable-facility estimates. Climate occupancy is stabilized occupancy; capex is paid at conversion.",
+    "text_body": null
+   },
+   {
+    "id": "ex2",
+    "title": "Who is asking about climate-controlled storage?",
+    "subtitle": "Qualified recent inquiries near Seaport, by customer type",
+    "kind": "bar",
+    "columns": [
+     "Customer type",
+     "Qualified inquiries"
+    ],
+    "rows": [
+     {
+      "label": "Hospital suppliers",
+      "cells": [
+       "=hospital_supplier_inquiries"
+      ]
+     },
+     {
+      "label": "Households",
+      "cells": [
+       "=household_inquiries"
+      ]
+     },
+     {
+      "label": "Wine collectors",
+      "cells": [
+       "=wine_collector_inquiries"
+      ]
+     },
+     {
+      "label": "Legal-records firms",
+      "cells": [
+       "=legal_records_inquiries"
+      ]
+     },
+     {
+      "label": "Art dealers",
+      "cells": [
+       "=art_dealer_inquiries"
+      ]
+     }
+    ],
+    "value_unit": "count",
+    "column_units": null,
+    "footnote": "Source: HarborLock CRM review. Hospital suppliers historically convert inquiries to leases at {hospital_supplier_conversion_rate} and report predictable access as more important than discounts.",
+    "text_body": null
+   }
+  ],
+  "recommendation": {
+   "answer": "Convert Seaport this year and keep Harbor's proposed units in standard storage. Seaport delivers {seaport_incremental_contribution} of annual incremental contribution and a {seaport_payback} payback, within the {payback_hurdle} hurdle. Harbor's {harbor_payback} payback misses the hurdle because its high standard occupancy and rent create a larger contribution opportunity cost. Commercialize Seaport through hospital-supplier and adjacent B2B partnerships, while maintaining premium consumer channels and price discipline.",
+   "risks": [
+    "Stabilized occupancy may fall below {seaport_climate_occupancy}; mitigate with pre-leasing, targeted partnerships, and staged unit release.",
+    "A large hospital-supplier contract could create concentration risk or displace higher-value demand; use limited initial blocks, minimum terms, and renewal options.",
+    "Climate-control commissioning or access failures could undermine the premium promise; complete system testing, operating training, and service-level processes before launch."
+   ],
+   "next_steps": [
+    "Validate a hospital-supplier pipeline using the {hospital_supplier_inquiries} qualified inquiries and a targeted account list.",
+    "Pre-lease commercial blocks while preserving flexible inventory for premium household and specialty demand.",
+    "Set a launch dashboard for occupancy, realized rent, conversion, service performance, and customer concentration; use results to determine whether Harbor merits a later reassessment."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Problem structuring",
+    "strong": "Builds a site-specific structure covering demand, incremental economics, feasibility, and commercialization; asks about displacement and payback timing.",
+    "weak": "Uses a generic growth framework or assumes higher climate rent decides the answer."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Recognizes Harbor's high standard occupancy and rent as the likely economic trap and selects all required climate and displaced-standard inputs.",
+    "weak": "Focuses only on climate rent, climate occupancy, or capex."
+   },
+   {
+    "dimension": "Quantitative analysis",
+    "strong": "Calculates each contribution stream correctly, nets displaced standard contribution, and compares {harbor_payback} and {seaport_payback} with {payback_hurdle}.",
+    "weak": "Uses revenue as profit, omits avoided standard variable cost, or calculates payback on the wrong denominator."
+   },
+   {
+    "dimension": "Commercial judgment",
+    "strong": "Proposes targeted hospital-supplier partnerships, premium value propositions, capacity discipline, and non-discount pricing fences.",
+    "weak": "Relies on broad advertising or blanket discounts without considering customer economics or capacity trade-offs."
+   },
+   {
+    "dimension": "Synthesis and communication",
+    "strong": "Gives a crisp Seaport recommendation, explains the counterintuitive opportunity-cost insight, and presents risks, mitigations, and decision gates.",
+    "weak": "Hedges without a decision, recommends both facilities despite the constraint, or omits implementation risks."
+   }
+  ],
+  "interviewer_notes": "Run this as a directed first-round case. Allow the candidate to structure before sharing ex1. The necessary clarifying question is whether standard-unit contribution is displaced; if it is not asked, provide that fact after the candidate describes an economics approach, then see whether they incorporate it. In the quant section, require both site calculations and let the candidate organize the work; a clean shortcut is to calculate climate contribution and standard contribution separately. The key insight is that Harbor's superior climate rent and expected climate occupancy are misleading because its current standard units are nearly full and valuable. Release ex2 only after the economics decision, then test practical commercialization judgment. In the pivot, reward candidates who distinguish stabilized economics from ramp risk and who preserve pricing through service, contracts, and capacity allocation. A strong candidate can finish in the allotted time with a concise final synthesis; if time is tight, shorten the brainstorm but retain the final recommendation."
+ }
+}

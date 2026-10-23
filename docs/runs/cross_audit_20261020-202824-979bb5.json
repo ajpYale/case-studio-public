@@ -1,0 +1,40 @@
+{
+ "case_id": "20261020-202824-979bb5",
+ "title": "Plugged In, Priced Out",
+ "difficulty": "hard",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "All displayed numerical results recompute correctly on the stated base and upgraded-capacity scenario. Eligible calls are 126 + 118 + 86 = 330, excluding 1,420 container calls. Expected connections are 330 × 62% = 204.6; contribution is $78,500 − $49,250 = $29,250; annual base operating cash flow is 204.6 × $29,250 − $1.34M = $4.64455M. The 15-year, 8.5% annuity factor is 8.30424, giving operating PV of $38.5694M and base NPV of $9.3694M after $42.8M − $13.6M = $29.2M net capex. The staged-case figures and conclusion are also correct conditional on the upgrade being mandatory. The case otherwise meets the requested hard-case shape: six sections, three sequential exhibits with a clear distractor, a linked multi-step NPV model, a meaningful capacity/capex pivot, non-round inputs, and an integrated recommendation. The one material runnability gap is the unspecified no-upgrade operating alternative at the pivot.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q5 pivot prompt and its model answer/calculations",
+   "problem": "The capacity/payment condition is not fully specified, yet the key treats the $5.2M payment as unavoidable. The prompt says the utility can support 230 connections from year 5 “only if” Port Alder pays. That establishes that payment is required for 230, but does not say what capacity is available in years 5–15 if the port declines the payment, or whether the project may continue at 80 connections. That is a live decision alternative in a capital-investment case, and a candidate can reasonably challenge the key’s assumption rather than automatically subtract $5.2M. The stated constrained-case arithmetic is correct conditional on buying the upgrade: early cash flow = 80 × $29,250 − $1.34M = $1.000M; the 4-year PV factor at 8.5% is 3.2756; the remaining factor is 8.30424 − 3.2756 = 5.02864; later PV = $4.64455M × 5.02864 = $23.3558M; and NPV = $3.2756M + $23.3558M − $29.2M − $5.2M = −$7.7686M. But the candidate is not told that this conditional scenario is the only feasible project configuration.",
+   "fix": "Add one explicit sentence at the pivot: “To continue shore-power operations after year 4, Port Alder must make the $5.2M payment; without it, the utility will not provide service after year 4.” Alternatively, explicitly state that Port Alder may remain at 80 connections for years 5–15 and provide that as a required alternative scenario with its capacity/economic treatment."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 7708,
+  "cached": 0,
+  "output": 2983,
+  "requests": 1,
+  "seconds": 28.0,
+  "usd": 0.055005,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 7708,
+    "cached": 0,
+    "output": 2983,
+    "requests": 1,
+    "seconds": 28.0,
+    "usd": 0.055005
+   }
+  ]
+ }
+}

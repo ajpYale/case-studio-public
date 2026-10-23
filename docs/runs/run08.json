@@ -1,0 +1,73 @@
+{
+ "label": "run08-io-luna",
+ "difficulty": "instant_offer",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 18.8,
+ "stages": [
+  "Planning the storyline",
+  "Correcting the plan's core math",
+  "Writing the full case",
+  "Checking every number",
+  "Independent review",
+  "Revising 4 reviewer findings",
+  "Fixing 12 consistency issues in the math",
+  "Fixing 12 consistency issues in the math",
+  "Second review",
+  "Revising 3 reviewer findings",
+  "Third review",
+  "Revising 1 reviewer finding",
+  "Fourth review",
+  "Revising 3 reviewer findings",
+  "Final review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-210123-e7d51f",
+ "title": "The Crate Comeback",
+ "quality": "review_flags",
+ "fix_rounds": 6,
+ "calls": 14,
+ "input": 170601,
+ "cached": 68484,
+ "output": 121148,
+ "usd": 0.07398,
+ "reviews": [
+  {
+   "fit": "too_easy",
+   "serious": [
+    "major | q6 break_even_contract_turns; q7 Model answer; Recommendation; Risks | The exact zero-NPV threshold is 0.6392 / (1.04 × 4.9) = 0.125432M annual turns. Rounding it down to 0.125M is not safe: at exactly 0.125M, NPV is (0.992 + 0.125 × 1.04) × 4.9 − 5.5 = −$0.0022M. Also, the board requires positive NPV, so the exact break-even volume itself yields zero, not an acceptabl",
+    "major | q5 Ask and q5 Model answer / interviewer notes | q5 asks the candidate to calculate the annual contract volume needed for zero NPV before the contract contribution economics are available. Its own guidance says not to calculate that threshold until those economics are known. The question therefore requests an answer the candidate cannot yet calcul",
+    "major | Overall difficulty and section prompts | Despite 21 listed calculations, the case is substantially scaffolded for an instant-offer case: successive questions explicitly direct the candidate to calculate lane contribution, short-haul-only NPV, contract economics, capacity, breakeven, and downside. The math is mostly direct arithmetic, and t"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Exhibit 3; q5–q7 model answers and NPV calculations | The NPV chain treats the 2028 short-haul forecast of 1.2M turns as the stable annual volume in each of the depot’s seven operating years. Exhibit 3 says cash flows are stable, but neither the exhibit nor the shares state that 2028 is the operating-year run rate. The candidate could reasonably use an",
+    "major | q6 break_even_contract_turns and q7/q8 synthesis | The key expects the exact threshold of 0.125432M and calls for a precise CEO answer. Reproducing that precision requires dividing 5.5 by 4.9 and then dividing the resulting gap by 1.04; that five-significant-figure result is not realistic hand arithmetic in about a minute. The supplied factor makes ",
+    "major | q7 and q8 | These are duplicate CEO-synthesis sections: the ask, share, model answer, rubric guidance, and hints are effectively identical. This creates an unexplained second one-minute synthesis and inflates the section count without adding a distinct task; the interviewer notes describe only one final synthes"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q6 pushback guidance vs. q7 Model answer, Rubric (Exceptional), and Recommendation | The case gives conflicting decision gates. q6 says a strong candidate should either secure the full proposed volume/economics or return to the board with explicit risk tolerance, and the exceptional rubric calls for a robust gate. But q7 and the Recommendation make 0.126M turns the build condition. "
+   ]
+  },
+  {
+   "fit": "too_easy",
+   "serious": [
+    "major | Clarifying answers; q5–q7 NPV chain; interviewer notes | The model treats all 1.2M short-haul turns and the 0.4M contract turns as incremental cash flows, but the no-build case only says existing operations continue unchanged. It never establishes whether those turns are genuinely new to FreshLoop or could be served through existing operations. If any are",
+    "major | q4–q6 asks and interviewer notes; overall difficulty | The case remains substantially scaffolded for an instant-offer case. q4 directs the candidate to assess lane economics, q5 explicitly says to include only short-haul turns and asks for the no-contract NPV, and q6 explicitly asks for the contract-volume threshold and downside test. The interviewer no"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q5–q7 model answers, Rubric, Recommendation / Risks / Next steps | The positive-NPV recommendation conditions capex on securing the cooperative’s 0.4M turns, but the other 1.2M annual short-haul turns are only a planning forecast and are not stated to be committed or otherwise validated. The modeled full-contract NPV of $1.3992M assumes all 1.2M short-haul turns re"
+   ]
+  }
+ ],
+ "remaining_checks": []
+}

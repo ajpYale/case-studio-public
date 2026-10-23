@@ -1,0 +1,43 @@
+{
+ "label": "run11-io-luna-tuned",
+ "difficulty": "instant_offer",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 7.2,
+ "stages": [
+  "Planning the storyline",
+  "Writing the full case",
+  "Checking every number",
+  "Fixing 3 consistency issues in the math",
+  "Independent review",
+  "Revising 4 reviewer findings",
+  "Second review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-211027-c94b35",
+ "title": "The Operating-Room Shortcut",
+ "quality": "verified",
+ "fix_rounds": 2,
+ "calls": 6,
+ "input": 71884,
+ "cached": 18014,
+ "output": 62094,
+ "usd": 0.037942,
+ "reviews": [
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | Exhibit 4 / q6 grant-case economics | The grant calculation subtracts hospital contribution only for transferred commercial cases, implicitly treating all 1K reserved Medicaid cases as new to Harborview. No exhibit or share fact states that. If any reserved Medicaid cases move from Harborview’s hospital, their lost hospital contribution",
+    "major | Exhibit 2 demand funnel / q6 grant case | The 4.8K captured-case estimate is not identified as commercial-only, and the exhibit gives no Medicaid-eligible demand or payer mix. Yet q6 assumes 1K Medicaid cases can be served alongside 3K commercial cases. The candidate cannot verify that the grant mix is demand-feasible, nor determine whether",
+    "major | q6 'What great looks like' / Rubric, Diagnosis and counter-intuitive insight | The rubric says the Medicaid obligation can improve system value by displacing cannibalizing commercial cases. At the stated base mix, a commercial case has expected incremental contribution of $2.00K − 60% × $1.25K = $1.25K, versus $1.20K for a Medicaid case (assuming no Medicaid hospital displacem",
+    "major | Rubric, 'Exceptional / offer-on-the-spot signal' | The rubric does not actually distinguish strong from exceptional performance: it gives a single 'strong' description under the exceptional heading and contrasts it only with weak performance. The requested offer-on-the-spot bar is therefore not calibrated separately from a competent strong answer."
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

@@ -1,0 +1,56 @@
+{
+ "label": "run05-io-luna",
+ "difficulty": "instant_offer",
+ "engine": "luna",
+ "status": "done",
+ "minutes": 13.0,
+ "stages": [
+  "Planning the storyline",
+  "Correcting the plan's core math",
+  "Writing the full case",
+  "Checking every number",
+  "Fixing 2 consistency issues in the math",
+  "Independent review",
+  "Revising 6 reviewer findings",
+  "Second review",
+  "Revising 3 reviewer findings",
+  "Fixing 1 consistency issue in the math",
+  "Third review",
+  "Formatting",
+  "Saving the PDF to Generated Cases"
+ ],
+ "case_id": "20261020-204203-a17e6f",
+ "title": "The PFAS Capacity Bet",
+ "quality": "verified",
+ "fix_rounds": 4,
+ "calls": 10,
+ "input": 120660,
+ "cached": 41558,
+ "output": 95969,
+ "usd": 0.058256,
+ "reviews": [
+  {
+   "fit": "too_easy",
+   "serious": [
+    "blocker | Clarifying answers, q4/q5 calculation logic, and the recommendation | The counterfactual for the 5K routine and 1K complex incremental tests is ambiguous and the answer key may overstate investment value. The prompt says the alternatives include “continuing to subcontract eligible tests,” but the key credits the investment with the full internal contribution on new wo",
+    "major | Exhibit ex5 and q5/q6 NPV comparison | The lease’s term is not given. The NPV calculation applies the annual $0.45M fee and lease capacity for all five years, but the exhibit contains no lease-duration value (its first row is “Lease term | Value | Unit,” yet no lease-term row follows). A shorter term, renewal risk, or different pricing a",
+    "major | Exhibit ex3, q4/q5 NPV calculations, and Recommendation | The NPV basis silently omits taxes and any year-five residual/salvage value for the purchased instrument. These omissions are not necessarily wrong as simplifications, but are not stated, and tax treatment and terminal value can affect the buy-versus-lease comparison. The supplied annuity factor alo",
+    "major | q6 model answer and q7 stress-test section; Instant Offer difficulty requirements | The requested CEO answer must include quantified risks, and the case calls for a sensitivity/scenario comparison. The key gives the lease’s positive NPV ($0.45492M) and calls it modest, but does not quantify how much deterioration would erase it; q7 only lists qualitative checks and says to refresh ",
+    "major | Prompt objective and q6/q7 recommendation | Reliable turnaround time is a stated board objective, but the case provides no service-level target, workload timing/seasonality, or lease availability/turnaround data. Capacity is modeled only as an annual total, which cannot establish whether the lease can meet turnaround needs. The answer sensibl"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": [
+    "major | q5 lease capacity calculation; q6–q7 lease NPV, downside cushion, and recommendation | The lease has a separate 95% minimum availability commitment for reserved slots, but the model calculates usable lease capacity as 12.5K × 80% × 85% = 8.5K without applying or explicitly excluding that 95%. If it is an additional capacity constraint, usable capacity is 8.075K; after the 7K-equivalen",
+    "major | Exhibit ex5 and q5 lease economics | The answer key subtracts the $0.65M annual dedicated-lab operating cost from lease benefits, but the case does not explicitly say that this cost is incurred under the shared-use lease or that it is excluded from the $0.45M lease fee. That assumption materially drives the recommendation: at the state",
+    "major | Clarifying answer on new pipeline; q5 lease option and recommendation | The new pipeline is only available if tests are performed in Nereid’s own accredited lab, while the lease is described as shared-use capacity offered by a regional laboratory partner. The case never establishes that the leased instrument can be used in Nereid’s accredited lab (or that partner-site t"
+   ]
+  },
+  {
+   "fit": "about_right",
+   "serious": []
+  }
+ ],
+ "remaining_checks": []
+}

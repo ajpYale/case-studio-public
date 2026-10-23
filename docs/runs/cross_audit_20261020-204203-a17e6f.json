@@ -1,0 +1,52 @@
+{
+ "case_id": "20261020-204203-a17e6f",
+ "title": "The PFAS Capacity Bet",
+ "difficulty": "instant_offer",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "The underlying economics, allocation logic, capacity conversions, and displayed arithmetic are otherwise internally consistent. Recomputed checks: market revenue rises 30% ($31.2M / $24M − 1), while implied volume remains 120K samples in both years ($24M/$200 and $31.2M/$260); pre-pivot owned capacity is 12K and gross benefit is $1.500M; post-pivot capacities are 10.2K owned and 8.5K leased; respective gross benefits are $1.356M and $1.220M; annual net cash flows are $0.706M and $0.120M; the lease’s break-even gross benefit is $1.100M and its $0.120M cushion is 9.836%, correctly rounded to 9.8%. The case has the requested seven sections, five exhibits, pivot, integrated-exhibit diagnosis, counter-intuitive market conclusion, pushbacks, and 20+ labeled computations. Fix the calculator-level NPV precision and disclose the discount rate before publishing.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q4 and q5 NPV calculations; q6/recommendation precise NPV figures",
+   "problem": "The case is not hand-runnable under its own interview-ready standard. It asks candidates to multiply non-round annual cash flows by a five-significant-figure annuity factor and report six-decimal NPV outputs: e.g., q5 ownership is $0.706M × 3.791 − $3.3M = −$0.623554M, and q4 is $0.85M × 3.791 − $3.3M = −$0.07765M. Those are calculator-level computations, not calculations a candidate can reliably complete by hand in about a minute. The exact arithmetic in the key is correct, but the precision creates an unrunnable quant step and false precision in the CEO answer.",
+   "fix": "State that candidates must use a rounded 3.8x annuity factor, and revise every dependent key result consistently: pre-pivot buy NPV = $0.85M × 3.8 − $3.3M = about −$0.07M; post-pivot buy NPV = $0.706M × 3.8 − $3.3M = about −$0.62M; lease NPV = $0.12M × 3.8 = about $0.46M. Ask for results rounded to $0.01M rather than six decimal places."
+  },
+  {
+   "severity": "major",
+   "where": "Finance assumptions / stated Instant Offer difficulty requirements",
+   "problem": "The case gives a present-value annuity factor of 3.791x but never states the discount rate behind the NPV. The factor does make the calculations reproducible, but the requested difficulty specification explicitly calls for an NPV or perpetuity with a given discount rate. A candidate also cannot articulate the financial hurdle or test a discount-rate sensitivity from the materials. For reference, a five-year year-end annuity factor of 3.791x corresponds to approximately a 10% annual discount rate.",
+   "fix": "Add to Exhibit 3 or the q4 share fact: “Use a 10% annual discount rate; for hand calculation, use the supplied five-year annuity factor of 3.8x [or 3.791x if retaining calculator precision].” Keep the supplied factor as the mandated calculation input so all answer-key results remain reproducible."
+  },
+  {
+   "severity": "minor",
+   "where": "Clarifying answer, q1 share, q5/q6/q7 service language, and recommendation",
+   "problem": "The turnaround requirement is repeatedly written as “within 5 days business days,” which is grammatically ambiguous. The intended target is evidently “within 5 business days.” This does not alter any math, but it is a board-level operating requirement and should be stated cleanly.",
+   "fix": "Replace every occurrence of “within 5 days business days” with “within 5 business days.”"
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 11189,
+  "cached": 0,
+  "output": 2406,
+  "requests": 1,
+  "seconds": 22.5,
+  "usd": 0.056784,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 11189,
+    "cached": 0,
+    "output": 2406,
+    "requests": 1,
+    "seconds": 22.5,
+    "usd": 0.056784
+   }
+  ]
+ }
+}

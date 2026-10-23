@@ -1,0 +1,46 @@
+{
+ "case_id": "20261020-205309-3d59ff",
+ "title": "The Organics Contract That Crowds Out Its Best Customers",
+ "difficulty": "hard",
+ "original_status": "verified",
+ "original_model": "gpt-6-luna",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "All displayed quantitative results and comparative claims in the model answer recompute correctly. Initial food-scrap volume is 80,000 × 60% × 0.5 = 24K tons/year. Initial per-ton contribution is $78 + (80% × 0.25 × $40) − $30 − (20% × $55) = $45, or $1.08M annually; 24K tons against 18K spare capacity displaces 6K tons of yard waste ($0.30M), leaving $0.78M and $3.0M / $0.78M = 3.846 years, correctly shown as 3.8 years. Under the pivot, per-ton contribution is $78 + (65% × 0.25 × $40) − $30 − (35% × $55) = $35.25; 30K tons yields $1.0575M gross, displaces 12K tons ($0.60M), and leaves $0.4575M. Total capex is $4.2M, payback is 9.1803 years, term-end unrecovered capex is $1.9125M, and the required fee for a four-year payback is $97.75/ton. The case consistently uses annual volumes, incremental contribution, the stated commissioning timing, and simple payback; it explicitly handles the capacity opportunity cost, added capital, absence of take-or-pay protection, and lack of residual/renewal value. It has the requested hard-case elements: seven sections, three exhibits with useful distractors, a linked capacity/payback chain, a material pivot, and a candidate-led structure. The only findings are a circular q3 comparison instruction and avoidably messy pivot arithmetic.",
+ "issues": [
+  {
+   "severity": "minor",
+   "where": "q3 Ask",
+   "problem": "The wording asks the candidate to “compare” the household-based estimate with the opportunity Northstar should use as its initial operating case, but no separate city volume estimate or alternative operating-case volume has been provided at this point. The intended answer simply derives 24K tons/year and uses that same number, so there is nothing distinct to compare.",
+   "fix": "Change the ask to: “Estimate annual food-scrap volume from the service areas and explain whether it is an appropriate initial operating case.”"
+  },
+  {
+   "severity": "minor",
+   "where": "q6 calculations and model answer; repeated in q7 and Recommendation",
+   "problem": "The pivot arithmetic is correct, but several outputs are needlessly precision-heavy for a live hand-calculation case: gross contribution is exactly $1.0575M, net contribution is exactly $0.4575M, payback is 9.18033 years, and unrecovered investment is $1.9125M. A candidate can estimate the displayed rounded answers, but preserving exact values through the seven linked calculations is unnecessarily awkward and creates avoidable rounding-risk—especially because the case correctly prohibits using rounded intermediates as exact values.",
+   "fix": "Adjust one or two pivot inputs so the pivot unit contribution and annual contribution are clean, then recalculate the displayed key consistently. For example, choose pivot economics that yield a round per-ton contribution and round annual net contribution (and therefore clean payback and term-end recovery), while retaining the same capacity-displacement and contamination logic."
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 9494,
+  "cached": 1658,
+  "output": 4305,
+  "requests": 1,
+  "seconds": 39.7,
+  "usd": 0.071521,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 9494,
+    "cached": 1658,
+    "output": 4305,
+    "requests": 1,
+    "seconds": 39.7,
+    "usd": 0.071521
+   }
+  ]
+ }
+}

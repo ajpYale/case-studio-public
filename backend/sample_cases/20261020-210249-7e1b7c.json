@@ -1,0 +1,1977 @@
+{
+ "id": "20261020-210249-7e1b7c",
+ "created_at": "2026-10-20T21:02:49.074618+00:00",
+ "request": {
+  "difficulty": "medium",
+  "case_type": null,
+  "industry": null,
+  "format": null,
+  "notes": null,
+  "engine": "luna",
+  "confirm_cost": false
+ },
+ "plan": {
+  "title": "The Wellness Plan That Attracts the Wrong Clients",
+  "client": "Pinehaven Veterinary Group",
+  "industry": "Veterinary services",
+  "case_type": "Growth strategy / customer-segment economics",
+  "situation": "Pinehaven, a fictional regional veterinary group, is considering an annual wellness plan to build recurring revenue and improve client retention. The plan covers routine preventive care, not illness or emergency treatment. Launch requires a one-time investment of {launch_cost}; management will proceed only if the investment pays back within {payback_hurdle}. The group wants to know whether to launch broadly or change the offer or target first.",
+  "core_question": "Should Pinehaven launch its wellness plan, and if so, which clients should it target to meet its payback hurdle?",
+  "key_insight": "The clients most likely to enroll are not the most profitable plan members. Higher-spending clients already generate meaningful contribution from covered services, so moving them onto the plan can reduce contribution. Lower-spending clients create the plan's economic upside. A broad launch just meets the hurdle, while targeting historically lower-use clients clears it with more headroom.",
+  "twist": "The pilot's paid enrollment is higher among historically high-use clients, even though lower-use clients generate nearly all of the incremental contribution. Stated interest is materially higher than paid enrollment, so a forecast based on survey interest would overstate adoption.",
+  "storyline": [
+   {
+    "kind": "framework",
+    "intent": "Read the situation and ask the candidate to structure the decision. A tailored structure should cover: incremental economics by client segment (including cannibalized existing spend), paid adoption and retention, operational feasibility, and launch risks/alternatives. If asked, clarify that the plan covers preventive services only; the relevant success metric is incremental contribution versus the current business, not plan revenue; and {eligible_households} households are eligible. Do not volunteer segment economics yet."
+   },
+   {
+    "kind": "brainstorm",
+    "intent": "Ask: “Before we look at the pilot, what could Pinehaven do to make a wellness plan attractive and profitable?” A solid answer covers segment-targeted offers, plan design and pricing, reminders that increase preventive visits, retention, and clinic execution. Excellent answers distinguish increasing paid conversion from attracting already-profitable clients, and mention guardrails such as utilization limits, exclusions stated clearly, and monitoring service quality. Do not let the brainstorm become a generic list; ask which ideas protect incremental contribution."
+   },
+   {
+    "kind": "exhibit_read",
+    "intent": "Hand out Exhibit 1 after the candidate asks for segment-level economics or explains how they would test cannibalization. Ask what the current customer mix suggests and which figures matter for incremental economics. The key read is that high-use clients have substantially more existing contribution from covered services. The exhibit also includes spending on services excluded from the plan; that is not displaced by plan enrollment and should not be counted as plan value."
+   },
+   {
+    "kind": "quant",
+    "intent": "Ask the candidate to calculate incremental annual contribution per enrolled household in each segment, then evaluate broad rollout using the paid pilot conversion rates in Exhibit 2. They should compare plan contribution (price less expected plan service cost and administration) with the contribution Pinehaven already earns from covered services. Provide {admin_cost} per enrolled household as the annual administration cost if it was not noticed in Exhibit 1. Expected checks: high-use incremental contribution is negative; low-use incremental contribution is positive; calculate enrolled households by segment and the combined annual contribution."
+   },
+   {
+    "kind": "pivot",
+    "intent": "Ask: “The broad plan only just meets the hurdle. What would you change?” If the candidate has not noticed the adoption mismatch, point them to actual paid enrollment versus stated intent in Exhibit 2. Ask them to test a targeted launch that invites lower-use households while keeping the same launch investment. They should distinguish survey interest from paid behavior, recognize high-use enrollment dilutes value, and calculate the targeted payback."
+   },
+   {
+    "kind": "synthesis",
+    "intent": "Ask for a concise recommendation with the decision, economics, risks, and next steps. Strong answer: do not launch indiscriminately; target lower-use households, whose modeled contribution supports a payback of {low_segment_payback}, versus {broad_payback} for the broad pilot mix. The broad case has no cushion against the hurdle. Recommend a controlled targeted rollout, track paid conversion, actual utilization, renewals, and clinic capacity, and revisit plan price/design if observed economics deteriorate. Accept a broader launch only if the candidate explicitly addresses the thin margin versus the hurdle and proposes safeguards."
+   }
+  ],
+  "numbers_plan": "Use annual per-household contribution, not plan revenue, as the economic basis. For each segment: current contribution from covered care = current covered-service revenue minus its variable cost. Incremental plan contribution per enrollee = plan price minus expected plan service cost minus administration cost minus current contribution displaced. Multiply by paid pilot enrollment: eligible households × segment share × actual paid conversion. Add segment contributions and divide the one-time launch investment by annual incremental contribution for simple payback. Repeat for lower-use households only, assuming the same launch investment. Do not use stated survey interest as conversion, include excluded-service spend, or subtract the one-time launch investment from recurring annual contribution before calculating payback.",
+  "exhibits_plan": [
+   "Exhibit 1 — Annual economics by eligible household segment (table; source-style footnote: Pinehaven client billing and service-cost analysis, illustrative annual averages). Rows: historically high-use and historically low-use. Columns: segment share, current annual covered-service spend ($/household), current variable cost of covered services ($/household), expected annual plan service cost ($/enrollee), and annual spend on services excluded from the plan ($/household; distractor). Use formulas/placeholders for every numeric cell that feeds the case: segment shares and values must reference the matching core_variables. The excluded-service column is deliberately not part of plan contribution.",
+   "Exhibit 2 — Wellness-plan interest and pilot conversion by segment (grouped bar chart; unit: %; source-style footnote: Pinehaven pilot enrollment records and post-visit survey). Categories: historically high-use and historically low-use. Series: stated intent to enroll and actual paid enrollment. The candidate should use actual paid enrollment for the rollout economics; stated intent is a distractor and overstates conversion."
+  ],
+  "core_variables": [
+   {
+    "name": "eligible_households",
+    "value": 10000.0,
+    "unit": "count",
+    "label": "Households eligible for the wellness plan",
+    "revealed_in": "clarifying",
+    "role": "input"
+   },
+   {
+    "name": "launch_cost",
+    "value": 250.0,
+    "unit": "usd_k",
+    "label": "One-time plan launch investment",
+    "revealed_in": "prompt",
+    "role": "input"
+   },
+   {
+    "name": "payback_hurdle",
+    "value": 2.0,
+    "unit": "years",
+    "label": "Maximum acceptable simple payback",
+    "revealed_in": "prompt",
+    "role": "input"
+   },
+   {
+    "name": "plan_price",
+    "value": 360.0,
+    "unit": "per_unit_usd",
+    "label": "Annual wellness-plan price per enrolled household",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "admin_cost",
+    "value": 20.0,
+    "unit": "per_unit_usd",
+    "label": "Annual administration cost per enrolled household",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_share",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Share of eligible households historically high-use",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "low_use_share",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Share of eligible households historically low-use",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_current_covered_spend",
+    "value": 300.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's current annual spend on covered services",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_current_variable_cost",
+    "value": 180.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's current annual variable cost for covered services",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_plan_service_cost",
+    "value": 240.0,
+    "unit": "per_unit_usd",
+    "label": "Expected annual plan service cost per high-use enrollee",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "low_use_current_covered_spend",
+    "value": 120.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's current annual spend on covered services",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "low_use_current_variable_cost",
+    "value": 70.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's current annual variable cost for covered services",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "low_use_plan_service_cost",
+    "value": 120.0,
+    "unit": "per_unit_usd",
+    "label": "Expected annual plan service cost per low-use enrollee",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_excluded_service_spend",
+    "value": 500.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's annual spend on services excluded from the plan",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "low_use_excluded_service_spend",
+    "value": 450.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's annual spend on services excluded from the plan",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "high_use_paid_adoption",
+    "value": 0.35,
+    "unit": "pct",
+    "label": "Actual paid enrollment rate among high-use pilot households",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "low_use_paid_adoption",
+    "value": 0.15,
+    "unit": "pct",
+    "label": "Actual paid enrollment rate among low-use pilot households",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "high_use_stated_intent",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "High-use survey respondents stating intent to enroll",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "low_use_stated_intent",
+    "value": 0.45,
+    "unit": "pct",
+    "label": "Low-use survey respondents stating intent to enroll",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   }
+  ],
+  "core_calculations": [
+   {
+    "id": "high_use_baseline_contribution",
+    "label": "Current annual contribution from covered services per high-use household",
+    "expression": "high_use_current_covered_spend - high_use_current_variable_cost",
+    "unit": "per_unit_usd",
+    "expected_value": 120.0,
+    "decimals": 0
+   },
+   {
+    "id": "low_use_baseline_contribution",
+    "label": "Current annual contribution from covered services per low-use household",
+    "expression": "low_use_current_covered_spend - low_use_current_variable_cost",
+    "unit": "per_unit_usd",
+    "expected_value": 50.0,
+    "decimals": 0
+   },
+   {
+    "id": "high_use_incremental_contribution",
+    "label": "Incremental annual contribution per high-use enrollee versus current business",
+    "expression": "plan_price - high_use_plan_service_cost - admin_cost - high_use_baseline_contribution",
+    "unit": "per_unit_usd",
+    "expected_value": -20.0,
+    "decimals": 0
+   },
+   {
+    "id": "low_use_incremental_contribution",
+    "label": "Incremental annual contribution per low-use enrollee versus current business",
+    "expression": "plan_price - low_use_plan_service_cost - admin_cost - low_use_baseline_contribution",
+    "unit": "per_unit_usd",
+    "expected_value": 170.0,
+    "decimals": 0
+   },
+   {
+    "id": "high_use_enrollees",
+    "label": "High-use households enrolled at actual pilot paid conversion",
+    "expression": "eligible_households * high_use_share * high_use_paid_adoption",
+    "unit": "count",
+    "expected_value": 1400.0,
+    "decimals": 0
+   },
+   {
+    "id": "low_use_enrollees",
+    "label": "Low-use households enrolled at actual pilot paid conversion",
+    "expression": "eligible_households * low_use_share * low_use_paid_adoption",
+    "unit": "count",
+    "expected_value": 900.0,
+    "decimals": 0
+   },
+   {
+    "id": "broad_annual_incremental_contribution",
+    "label": "Annual incremental contribution at the broad pilot enrollment mix",
+    "expression": "(high_use_enrollees * high_use_incremental_contribution + low_use_enrollees * low_use_incremental_contribution) / 1000",
+    "unit": "usd_k",
+    "expected_value": 125.0,
+    "decimals": 0
+   },
+   {
+    "id": "broad_payback",
+    "label": "Simple payback for broad rollout at pilot conversion",
+    "expression": "launch_cost / broad_annual_incremental_contribution",
+    "unit": "years",
+    "expected_value": 2.0,
+    "decimals": 1
+   },
+   {
+    "id": "low_segment_annual_contribution",
+    "label": "Annual incremental contribution from targeting low-use households only",
+    "expression": "low_use_enrollees * low_use_incremental_contribution / 1000",
+    "unit": "usd_k",
+    "expected_value": 153.0,
+    "decimals": 0
+   },
+   {
+    "id": "low_segment_payback",
+    "label": "Simple payback when targeting low-use households only",
+    "expression": "launch_cost / low_segment_annual_contribution",
+    "unit": "years",
+    "expected_value": 1.6339869281045751,
+    "decimals": 1
+   }
+  ]
+ },
+ "draft": {
+  "title": "The Wellness Plan That Attracts the Wrong Clients",
+  "client": "Pinehaven Veterinary Group",
+  "industry": "Veterinary services",
+  "case_type": "Growth strategy / customer-segment economics",
+  "difficulty": "medium",
+  "format": "interviewer_led",
+  "duration_minutes": 30,
+  "concepts_tested": [
+   "Customer segmentation",
+   "Incremental contribution and cannibalization",
+   "Paid conversion versus stated intent",
+   "Simple payback",
+   "Targeted rollout decision"
+  ],
+  "situation_summary": "Pinehaven Veterinary Group is evaluating an annual wellness plan. Pilot enrollment is strongest among historically high-use clients, but those clients may be less attractive economically because the plan replaces contribution from services they already buy.",
+  "prompt": "Pinehaven Veterinary Group is a regional veterinary-services provider considering an annual wellness plan to improve client retention and create recurring revenue. Launching the plan requires a one-time investment of {launch_cost}, and management will proceed only if the investment pays back within {payback_hurdle}. The pilot has generated interest, but leadership is unsure whether to launch broadly or adjust the offer and target first. Should Pinehaven launch the plan, and if so, which clients should it target?",
+  "clarifying": [
+   {
+    "question": "What services does the wellness plan cover, and what is the right measure of success?",
+    "answer": "The plan covers routine preventive care, not illness or emergency treatment. Assess the plan on incremental contribution versus Pinehaven's current business, rather than plan revenue alone. Retention benefits are not quantified and should be excluded from the direct plan economics; Pinehaven should test whether the targeted plan generates incremental retention value."
+   },
+   {
+    "question": "How large is the eligible customer base?",
+    "answer": "There are {eligible_households} eligible households. Pinehaven can distinguish historically high-use from historically low-use households based on their prior use of covered preventive services."
+   },
+   {
+    "question": "Is the launch investment recurring, and how should we treat the plan's annual economics?",
+    "answer": "The launch investment is a one-time cost paid at launch. The plan is operational immediately after launch, full-year contribution starts in the first operating year, and there is no ramp-up. Compare it with annual incremental contribution to calculate simple payback; assume annual contribution remains steady for this analysis."
+   },
+   {
+    "question": "Does plan enrollment replace existing purchases, or does it only add new service revenue?",
+    "answer": "For this exercise, assume enrollment displaces all of each enrolled household's current contribution from covered preventive services. Use a displacement share of {covered_contribution_displacement_share}. Services excluded from the plan are not displaced. Compare the plan's net contribution with the displaced covered-service contribution."
+   }
+  ],
+  "variables": [
+   {
+    "name": "eligible_households",
+    "value": 10000.0,
+    "unit": "count",
+    "label": "Households eligible for the wellness plan",
+    "revealed_in": "clarifying",
+    "role": "input"
+   },
+   {
+    "name": "launch_cost",
+    "value": 250.0,
+    "unit": "usd_k",
+    "label": "One-time plan launch investment",
+    "revealed_in": "prompt",
+    "role": "input"
+   },
+   {
+    "name": "payback_hurdle",
+    "value": 2.0,
+    "unit": "years",
+    "label": "Maximum acceptable simple payback",
+    "revealed_in": "prompt",
+    "role": "input"
+   },
+   {
+    "name": "covered_contribution_displacement_share",
+    "value": 1.0,
+    "unit": "pct",
+    "label": "Share of current covered-service contribution displaced by enrollment",
+    "revealed_in": "clarifying",
+    "role": "input"
+   },
+   {
+    "name": "plan_price",
+    "value": 360.0,
+    "unit": "per_unit_usd",
+    "label": "Annual wellness-plan price per enrolled household",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "admin_cost",
+    "value": 20.0,
+    "unit": "per_unit_usd",
+    "label": "Annual administration cost per enrolled household",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_share",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Share of eligible households historically high-use",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "low_use_share",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Share of eligible households historically low-use",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_current_covered_spend",
+    "value": 300.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's current annual spend on covered services",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_current_variable_cost",
+    "value": 180.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's current annual variable cost for covered services",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_plan_service_cost",
+    "value": 240.0,
+    "unit": "per_unit_usd",
+    "label": "Expected annual plan service cost per high-use enrollee",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "low_use_current_covered_spend",
+    "value": 120.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's current annual spend on covered services",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "low_use_current_variable_cost",
+    "value": 70.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's current annual variable cost for covered services",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "low_use_plan_service_cost",
+    "value": 120.0,
+    "unit": "per_unit_usd",
+    "label": "Expected annual plan service cost per low-use enrollee",
+    "revealed_in": "ex1",
+    "role": "input"
+   },
+   {
+    "name": "high_use_excluded_service_spend",
+    "value": 500.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's annual spend on services excluded from the plan",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "low_use_excluded_service_spend",
+    "value": 450.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's annual spend on services excluded from the plan",
+    "revealed_in": "ex1",
+    "role": "distractor"
+   },
+   {
+    "name": "high_use_paid_adoption",
+    "value": 0.35,
+    "unit": "pct",
+    "label": "Actual paid enrollment rate among high-use pilot households",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "low_use_paid_adoption",
+    "value": 0.15,
+    "unit": "pct",
+    "label": "Actual paid enrollment rate among low-use pilot households",
+    "revealed_in": "ex2",
+    "role": "input"
+   },
+   {
+    "name": "high_use_stated_intent",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "High-use survey respondents stating intent to enroll",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   },
+   {
+    "name": "low_use_stated_intent",
+    "value": 0.45,
+    "unit": "pct",
+    "label": "Low-use survey respondents stating intent to enroll",
+    "revealed_in": "ex2",
+    "role": "distractor"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Segment economics and cannibalization",
+    "points": [
+     "Compare incremental contribution per enrolled household by historical use segment.",
+     "Separate covered-service contribution displaced by enrollment from excluded-service spending that remains outside the plan.",
+     "Test plan price, expected service utilization, and administration cost."
+    ]
+   },
+   {
+    "name": "Realizable adoption and retention",
+    "points": [
+     "Use paid enrollment behavior rather than survey intent to forecast take-up.",
+     "Estimate enrollment by segment and consider renewals and client retention; quantify retention separately if evidence becomes available.",
+     "Check whether the pilot conversion mix is representative of a broader launch."
+    ]
+   },
+   {
+    "name": "Launch economics and operating feasibility",
+    "points": [
+     "Compare annual direct incremental contribution with the one-time launch investment and payback hurdle.",
+     "Assess clinic capacity, service utilization, and the ability to administer the plan consistently.",
+     "Consider whether targeting or plan redesign improves the economics without undermining client value."
+    ]
+   },
+   {
+    "name": "Risks and implementation choices",
+    "points": [
+     "Identify customer, service-quality, and execution risks.",
+     "Consider a controlled rollout, monitoring metrics, and decision gates before scaling.",
+     "Define what would cause Pinehaven to revisit pricing, plan design, or target segment."
+    ]
+   }
+  ],
+  "framework_notes": "Reward a structure that explicitly compares incremental contribution with the existing business by customer segment. The key is not simply to estimate plan revenue: enrolled high-use clients shift all contribution from covered services into a fixed-price plan under the exercise assumption. A strong candidate also distinguishes paid adoption from stated interest, recognizes that retention value is outside the modeled economics unless quantified, and keeps operational feasibility and client experience in view.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the decision",
+    "kind": "framework",
+    "ask": "How would you assess whether Pinehaven should launch the wellness plan, and how would you decide which clients to target?",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "If asked about plan scope, explain that it covers routine preventive services and excludes illness and emergency treatment.",
+     "If asked about the success metric, explain that Pinehaven cares about incremental contribution versus the existing business, not plan revenue by itself.",
+     "If asked about retention, explain that retention benefits are not quantified and should be excluded from the direct plan economics; they should be tested separately.",
+     "If asked about the eligible population, share {eligible_households} eligible households.",
+     "If asked whether enrollment replaces current purchases, state that for this exercise all current covered-service contribution for an enrolled household is displaced; share {covered_contribution_displacement_share}.",
+     "Do not volunteer segment economics or pilot conversion data at this point."
+    ],
+    "calculations": [],
+    "model_answer": "I would compare the plan's direct incremental contribution with Pinehaven's current contribution separately for high-use and low-use clients, accounting for covered services displaced when a household enrolls. I would then use paid enrollment by segment to estimate annual contribution under broad and targeted launches, compare each with the one-time investment and {payback_hurdle} hurdle, and assess clinic capacity, client experience, and execution risks. Because retention impact is not quantified, I would treat any retention upside as a separate hypothesis to test rather than include it in the initial economics.",
+    "what_great_looks_like": [
+     "Defines incremental contribution rather than treating plan revenue as profit.",
+     "Identifies customer segmentation and cannibalization as central to the decision.",
+     "Asks how actual paid enrollment differs by segment and whether the eligible population is known.",
+     "Includes operational feasibility and an implementable rollout choice.",
+     "Recognizes that unquantified retention benefits should not be silently added to the economics."
+    ],
+    "common_mistakes": [
+     "Using total plan revenue as the success measure.",
+     "Treating all eligible households as economically identical.",
+     "Assuming stated interest will translate directly into paid enrollment.",
+     "Counting retention benefits without evidence or quantification."
+    ],
+    "hints": [
+     "Which current customer behavior changes when a household enrolls?",
+     "Would a household that currently uses more covered services have the same incremental value as a household that uses fewer?",
+     "What benefits are not captured if the analysis only compares direct plan economics?"
+    ],
+    "pushback": [
+     "If total plan enrollment looks strong, is that enough to conclude the plan creates value?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Generate ways to improve the offer",
+    "kind": "brainstorm",
+    "ask": "Before we look at the pilot, what could Pinehaven do to make a wellness plan attractive and profitable?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Pinehaven could tailor outreach or offers toward lower-use households, adjust covered services or pricing to better align expected utilization with plan economics, and use reminders to increase appropriate preventive-care visits and retention. It should also ensure clinics can deliver the included services reliably and communicate exclusions clearly. The strongest ideas improve paid conversion among economically attractive clients rather than merely driving enrollment among existing high contributors; Pinehaven should monitor actual utilization, retention, and service quality as it tests changes.",
+    "what_great_looks_like": [
+     "Suggests segment-targeted acquisition or plan design rather than undifferentiated promotion.",
+     "Separates improving paid conversion from attracting clients who already generate substantial covered-service contribution.",
+     "Connects reminders, preventive care, retention, and clinic execution to plan value.",
+     "Proposes guardrails for utilization, clear exclusions, service quality, and measurement of retention effects."
+    ],
+    "common_mistakes": [
+     "Offering generic marketing ideas without explaining how they affect plan economics.",
+     "Assuming higher enrollment is always better.",
+     "Ignoring the possibility that plan members use more services than expected.",
+     "Treating a retention hypothesis as proven value."
+    ],
+    "hints": [
+     "Which customer segments might be most valuable to attract, and which might be costly to convert?",
+     "How could Pinehaven increase conversion without weakening contribution per member?",
+     "How might you test whether the plan improves retention?"
+    ],
+    "pushback": [
+     "If a promotion raises enrollment, what would you want to check before calling it successful?"
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Read the segment economics",
+    "kind": "exhibit_read",
+    "ask": "Review Exhibit 1. What does the current customer mix suggest, and which figures matter for estimating the plan's incremental economics?",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "High-use households currently spend more on covered services and generate more contribution from those services than low-use households. Under the exercise assumption, all of that current covered-service contribution is displaced for an enrolled household. The annual spend on excluded services is not displaced by enrollment and should not be counted as plan contribution. I would compare plan price less expected service cost and administration cost with the displaced covered-service contribution for each segment.",
+    "what_great_looks_like": [
+     "Identifies that high-use households have meaningfully greater existing covered-service contribution.",
+     "States and applies the assumption that all current covered-service contribution is displaced for enrollees.",
+     "Separates covered services from excluded-service spending.",
+     "Recognizes the common plan price and administration cost and proposes a like-for-like annual comparison.",
+     "Does not prematurely infer that the largest-spending segment is the best target."
+    ],
+    "common_mistakes": [
+     "Counting excluded-service spend as revenue generated by the plan.",
+     "Subtracting current covered-service revenue without accounting for its variable cost.",
+     "Treating expected plan service cost as the only cost of enrollment.",
+     "Leaving the displacement assumption unstated or applying only a portion of current contribution without support."
+    ],
+    "hints": [
+     "What contribution does Pinehaven earn today from covered services in each segment?",
+     "Which exhibit column is not part of the wellness plan?",
+     "What displacement assumption did Pinehaven provide for this exercise?"
+    ],
+    "pushback": [
+     "Does a client who spends more today necessarily create more incremental value by joining the plan?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Calculate broad-launch economics",
+    "kind": "quant",
+    "ask": "Use Exhibit 2's actual paid enrollment rates, rather than survey intent, to estimate the annual incremental contribution from a broad rollout at the pilot mix. Does broad rollout meet the payback hurdle?",
+    "exhibit_ids": [
+     "ex2"
+    ],
+    "info_to_share": [
+     "The plan is operational immediately after launch, full-year contribution starts in the first operating year, and there is no ramp-up; assume annual contribution remains steady.",
+     "If the candidate does not identify the common plan administration cost in Exhibit 1, point them to the annual administration-cost input shown there.",
+     "Use simple payback: one-time launch investment divided by annual incremental contribution.",
+     "For each enrollee, subtract all current covered-service contribution under the exercise assumption: the displacement share is {covered_contribution_displacement_share}."
+    ],
+    "calculations": [
+     {
+      "id": "high_use_baseline_contribution",
+      "label": "Current annual contribution from covered services per high-use household",
+      "expression": "high_use_current_covered_spend - high_use_current_variable_cost",
+      "unit": "per_unit_usd",
+      "expected_value": 120.0,
+      "decimals": 0
+     },
+     {
+      "id": "low_use_baseline_contribution",
+      "label": "Current annual contribution from covered services per low-use household",
+      "expression": "low_use_current_covered_spend - low_use_current_variable_cost",
+      "unit": "per_unit_usd",
+      "expected_value": 50.0,
+      "decimals": 0
+     },
+     {
+      "id": "high_use_incremental_contribution",
+      "label": "Incremental annual contribution per high-use enrollee versus current business",
+      "expression": "plan_price - high_use_plan_service_cost - admin_cost - high_use_baseline_contribution * covered_contribution_displacement_share",
+      "unit": "per_unit_usd",
+      "expected_value": -20.0,
+      "decimals": 0
+     },
+     {
+      "id": "low_use_incremental_contribution",
+      "label": "Incremental annual contribution per low-use enrollee versus current business",
+      "expression": "plan_price - low_use_plan_service_cost - admin_cost - low_use_baseline_contribution * covered_contribution_displacement_share",
+      "unit": "per_unit_usd",
+      "expected_value": 170.0,
+      "decimals": 0
+     },
+     {
+      "id": "high_use_enrollees",
+      "label": "High-use households enrolled at actual pilot paid conversion",
+      "expression": "eligible_households * high_use_share * high_use_paid_adoption",
+      "unit": "count",
+      "expected_value": 1400.0,
+      "decimals": 0
+     },
+     {
+      "id": "low_use_enrollees",
+      "label": "Low-use households enrolled at actual pilot paid conversion",
+      "expression": "eligible_households * low_use_share * low_use_paid_adoption",
+      "unit": "count",
+      "expected_value": 900.0,
+      "decimals": 0
+     },
+     {
+      "id": "broad_annual_incremental_contribution",
+      "label": "Annual incremental contribution at the broad pilot enrollment mix",
+      "expression": "(high_use_enrollees * high_use_incremental_contribution + low_use_enrollees * low_use_incremental_contribution) / 1000",
+      "unit": "usd_k",
+      "expected_value": 125.0,
+      "decimals": 0
+     },
+     {
+      "id": "broad_payback",
+      "label": "Simple payback for broad rollout at pilot conversion",
+      "expression": "launch_cost / broad_annual_incremental_contribution",
+      "unit": "years",
+      "expected_value": 2.0,
+      "decimals": 1
+     }
+    ],
+    "model_answer": "Current covered-service contribution is {high_use_baseline_contribution} per high-use household and {low_use_baseline_contribution} per low-use household. Applying the stated full-displacement assumption, direct incremental annual contribution is {high_use_incremental_contribution} per high-use enrollee and {low_use_incremental_contribution} per low-use enrollee after plan service and administration costs. Applying actual paid conversion gives {high_use_enrollees} high-use and {low_use_enrollees} low-use enrollees. The combined annual direct incremental contribution is {broad_annual_incremental_contribution}, for payback of {broad_payback}. Broad rollout meets the {payback_hurdle} hurdle exactly, leaving essentially no cushion. These results exclude any unquantified retention benefit.",
+    "what_great_looks_like": [
+     "Uses actual paid enrollment, not stated intent.",
+     "Builds contribution in a clear sequence: current contribution, incremental contribution per enrollee, segment enrollment, then total annual contribution and payback.",
+     "Interprets the negative high-use economics and positive low-use economics correctly under the explicit displacement assumption.",
+     "Notes that meeting the hurdle exactly is not the same as having a robust business case.",
+     "Clearly labels the result as direct plan economics, excluding unquantified retention effects."
+    ],
+    "common_mistakes": [
+     "Using stated survey intent as the enrollment forecast.",
+     "Failing to subtract current contribution from covered services.",
+     "Subtracting the one-time launch cost from annual contribution instead of using it in payback.",
+     "Combining annual dollars with thousands of dollars without converting units.",
+     "Assuming a retention uplift despite no retention data."
+    ],
+    "hints": [
+     "First calculate what Pinehaven currently contributes from covered services in each segment.",
+     "Then compare the plan's net contribution per member with all current covered-service contribution displaced under the exercise assumption.",
+     "Use actual paid conversion in Exhibit 2 and keep track of the thousands conversion."
+    ],
+    "pushback": [
+     "The broad case technically meets the hurdle. How confident should management be in a result with no modeled headroom?",
+     "What would happen if the forecast used stated intent instead of paid enrollment?",
+     "How might quantified retention benefits change the decision, and what evidence would you need?"
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Pivot to a targeted launch",
+    "kind": "pivot",
+    "ask": "The broad plan only just meets the hurdle on direct plan economics. What would you change? Test a launch aimed only at historically low-use households, keeping the same launch investment.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "low_segment_annual_contribution",
+      "label": "Annual direct incremental contribution from targeting low-use households only",
+      "expression": "low_use_enrollees * low_use_incremental_contribution / 1000",
+      "unit": "usd_k",
+      "expected_value": 153.0,
+      "decimals": 0
+     },
+     {
+      "id": "low_segment_payback",
+      "label": "Simple payback when targeting low-use households only",
+      "expression": "launch_cost / low_segment_annual_contribution",
+      "unit": "years",
+      "expected_value": 1.6339869281045751,
+      "decimals": 1
+     }
+    ],
+    "model_answer": "The pilot's actual paid conversion is higher among high-use households, but the unit economics show that high-use enrollment reduces direct incremental contribution. At the observed low-use paid conversion, targeting low-use households produces annual direct incremental contribution of {low_segment_annual_contribution} and payback of {low_segment_payback}, compared with {broad_payback} under the broad pilot mix. The targeted option clears the hurdle with more headroom. Stated interest is materially higher than paid enrollment in both segments, so it should not be used as the forecast. This comparison does not include retention value; Pinehaven should test whether the targeted plan improves retention before attributing any such benefit.",
+    "what_great_looks_like": [
+     "Connects the mismatch between paid adoption and segment economics: the more likely-to-enroll segment is less attractive incrementally.",
+     "Uses the low-use paid conversion and keeps the launch investment unchanged.",
+     "Recognizes the targeted payback is below the hurdle while broad rollout has no buffer.",
+     "Treats survey intent as a useful qualitative signal, not a substitute for paid conversion.",
+     "Keeps the conclusion limited to direct plan economics and identifies retention as a separate test."
+    ],
+    "common_mistakes": [
+     "Assuming high-use clients are the best target because their paid enrollment rate is higher.",
+     "Using stated intent in place of paid conversion.",
+     "Changing the launch investment or assuming a different target-segment conversion rate without support.",
+     "Presenting the targeted direct economics as if they capture any retention impact."
+    ],
+    "hints": [
+     "Which segment has positive incremental contribution per enrollee?",
+     "Use the low-use enrollees already calculated from the observed pilot conversion.",
+     "What would you track to test any retention impact?"
+    ],
+    "pushback": [
+     "Would targeting low-use households still be attractive if their stated interest, rather than paid conversion, were used?",
+     "What evidence would you want before scaling the targeted approach?"
+    ]
+   },
+   {
+    "id": "q6",
+    "title": "Make a recommendation",
+    "kind": "synthesis",
+    "ask": "Give Pinehaven a concise recommendation with the economics, key risks, and next steps.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would not launch the plan indiscriminately. I recommend a controlled launch targeted initially at historically low-use households: at observed paid conversion, that segment generates {low_segment_annual_contribution} in annual direct incremental contribution and a simple payback of {low_segment_payback}, versus {broad_payback} for the broad pilot mix. The broad case only just meets the {payback_hurdle} hurdle, and high-use enrollment reduces direct value because it replaces all contribution Pinehaven currently earns from covered services under the exercise assumption. These economics exclude retention benefits because they are not quantified; the recommendation is conditional on testing whether the targeted plan produces incremental retention value. The main risks are lower-than-pilot paid conversion, higher-than-expected service utilization, and clinic-capacity or service-quality issues. Pilot the targeted offer with clear plan exclusions; track paid conversion, covered-service utilization, renewals, retention versus an appropriate comparison group, contribution versus the current business, and clinic capacity. Revisit pricing or plan design before expanding if observed economics weaken.",
+    "what_great_looks_like": [
+     "Leads with a clear decision and target segment.",
+     "Uses payback and annual direct incremental contribution to support the recommendation.",
+     "Explains why broad enrollment is not automatically better and distinguishes pilot behavior from survey intent.",
+     "Explicitly limits the modeled conclusion to direct plan economics and recommends testing retention impact.",
+     "Offers concrete implementation steps, monitoring metrics, and mitigations for customer and operational risks."
+    ],
+    "common_mistakes": [
+     "Recommending broad launch solely because the modeled payback equals the hurdle.",
+     "Giving a recommendation without stating the target segment or the economic rationale.",
+     "Listing risks without a practical mitigation or monitoring plan.",
+     "Treating unquantified retention value as established or ignoring it entirely."
+    ],
+    "hints": [
+     "What changes when you compare value per enrollee with propensity to enroll?",
+     "What should Pinehaven monitor before broadening the rollout?",
+     "How could Pinehaven test whether retention creates additional value?"
+    ],
+    "pushback": [
+     "What specific result from the targeted pilot would make you pause expansion?",
+     "How would you protect client trust if actual plan utilization exceeds the forecast?",
+     "What retention evidence would cause you to update the direct-economics recommendation?"
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Annual economics by eligible household segment",
+    "subtitle": "Annual averages",
+    "kind": "table",
+    "columns": [
+     "Segment / plan input",
+     "Eligible share",
+     "Current covered spend / plan price",
+     "Current variable cost / administration cost",
+     "Expected plan service cost",
+     "Excluded-service spend"
+    ],
+    "rows": [
+     {
+      "label": "Historically high-use",
+      "cells": [
+       "=high_use_share",
+       "=high_use_current_covered_spend",
+       "=high_use_current_variable_cost",
+       "=high_use_plan_service_cost",
+       "=high_use_excluded_service_spend"
+      ]
+     },
+     {
+      "label": "Historically low-use",
+      "cells": [
+       "=low_use_share",
+       "=low_use_current_covered_spend",
+       "=low_use_current_variable_cost",
+       "=low_use_plan_service_cost",
+       "=low_use_excluded_service_spend"
+      ]
+     },
+     {
+      "label": "Annual plan price per enrollee",
+      "cells": [
+       "—",
+       "=plan_price",
+       "—",
+       "—",
+       "—"
+      ]
+     },
+     {
+      "label": "Annual administration cost per enrollee",
+      "cells": [
+       "—",
+       "—",
+       "=admin_cost",
+       "—",
+       "—"
+      ]
+     }
+    ],
+    "value_unit": "per_unit_usd",
+    "column_units": [
+     "pct",
+     "per_unit_usd",
+     "per_unit_usd",
+     "per_unit_usd",
+     "per_unit_usd"
+    ],
+    "footnote": "Source: Pinehaven client billing and service-cost analysis. Plan price and administration cost apply to either segment. For this exercise, enrollment displaces all current covered-service contribution for an enrolled household; excluded-service spending is outside the plan.",
+    "text_body": null
+   },
+   {
+    "id": "ex2",
+    "title": "Stated intent overstates paid enrollment",
+    "subtitle": "Share of households in each segment",
+    "kind": "bar",
+    "columns": [
+     "Customer segment",
+     "Stated intent to enroll",
+     "Actual paid enrollment"
+    ],
+    "rows": [
+     {
+      "label": "Historically high-use",
+      "cells": [
+       "=high_use_stated_intent",
+       "=high_use_paid_adoption"
+      ]
+     },
+     {
+      "label": "Historically low-use",
+      "cells": [
+       "=low_use_stated_intent",
+       "=low_use_paid_adoption"
+      ]
+     }
+    ],
+    "value_unit": "pct",
+    "column_units": [
+     "pct",
+     "pct"
+    ],
+    "footnote": "Source: Pinehaven pilot enrollment records and post-visit survey. Use actual paid enrollment for rollout economics; stated intent is not paid conversion.",
+    "text_body": null
+   }
+  ],
+  "recommendation": {
+   "answer": "Do not launch broadly as currently designed. Run a controlled launch targeted at historically low-use households. On direct plan economics at observed paid conversion, this segment supports annual incremental contribution of {low_segment_annual_contribution} and payback of {low_segment_payback}, while the broad pilot mix has payback of {broad_payback} and no meaningful cushion against the {payback_hurdle} hurdle. These results use the exercise assumption that all current covered-service contribution is displaced for enrolled households and exclude unquantified retention benefits, so the recommendation is conditional on testing whether the targeted plan produces incremental retention value.",
+   "risks": [
+    "Paid conversion among low-use households may not hold at scale; survey intent is materially higher than paid enrollment.",
+    "Actual plan utilization could exceed the expected service cost and erode contribution.",
+    "Clinic capacity, inconsistent delivery, or unclear exclusions could harm service quality and client trust.",
+    "Targeting only lower-use households may constrain enrollment if the addressable segment converts less well outside the pilot.",
+    "The plan may affect retention, but that benefit is not included in the modeled economics and could change the relative value of the segments."
+   ],
+   "next_steps": [
+    "Run a controlled, targeted launch to historically low-use households using actual paid conversion as the enrollment benchmark.",
+    "Track paid enrollment, plan service utilization, renewals, incremental contribution versus the current business, and clinic capacity.",
+    "Measure retention against a suitable comparison group and quantify any incremental contribution from retained clients before including it in the business case.",
+    "Set a review gate before expansion; revisit pricing, covered services, or administration if realized direct unit economics deteriorate.",
+    "Validate that targeted outreach and plan communications make covered services and exclusions clear to clients."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Problem structuring",
+    "strong": "Builds a tailored decision framework around segment-level incremental contribution, adoption, launch economics, operational feasibility, and risks; clarifies plan scope, success metric, and the displacement assumption.",
+    "weak": "Uses a generic growth framework, focuses on revenue alone, or fails to distinguish customer segments."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Identifies high-use clients' greater existing covered-service contribution, applies the stated full-displacement assumption, excludes unrelated service spending, and spots the gap between stated intent and paid enrollment.",
+    "weak": "Treats all spending as plan-related or reads stated intent as realized demand."
+   },
+   {
+    "dimension": "Quantitative accuracy",
+    "strong": "Correctly calculates both segments' baseline and incremental contribution, applies paid conversion to the eligible population, converts to thousands, and calculates simple payback using the stated timing and displacement assumptions.",
+    "weak": "Omits displaced contribution, applies an unsupported partial displacement, mixes units, or compares annual contribution directly with one-time investment without calculating payback."
+   },
+   {
+    "dimension": "Business judgment",
+    "strong": "Recognizes that the segment with higher paid adoption has negative direct incremental contribution, favors a targeted test, and balances economics with customer and operational risks; treats retention value as unquantified until tested.",
+    "weak": "Equates enrollment with value, recommends broad rollout without addressing the lack of headroom, or assumes unmeasured retention benefits."
+   },
+   {
+    "dimension": "Communication and synthesis",
+    "strong": "Gives a concise, decisive recommendation with evidence, clearly scoped economics, caveats, and practical next steps.",
+    "weak": "Recites calculations without a clear decision, target, or implementation plan."
+   }
+  ],
+  "interviewer_notes": "Suggested pacing: opening structure and clarifications, then brainstorm, Exhibit 1 interpretation, broad economics and Exhibit 2, targeted pivot, and executive synthesis. Release Exhibit 1 after the candidate asks for segment-level economics or explains how they would test cannibalization; if they do not, offer a light prompt about comparing the plan with current client behavior. Clarify, if asked, that all current covered-service contribution for an enrolled household is displaced under the exercise assumption. Release Exhibit 2 with the broad-launch calculation. If the candidate asks about timing, clarify that the plan is operational immediately after launch, full-year contribution starts in the first operating year, and there is no ramp-up. The central insight is that the higher-paid-conversion segment is economically unattractive on direct plan economics: high-use enrollees displace meaningful existing contribution, while low-use enrollees create incremental value. Ensure the candidate uses actual paid conversion rather than stated intent, excludes non-plan spending, applies the full-displacement assumption consistently, and does not deduct the one-time launch investment from annual contribution before calculating payback. Retention benefits are not quantified; reward candidates who keep them outside the modeled economics and propose a way to test them. Accept a broad launch only if the candidate explicitly acknowledges the thin direct-economics case and proposes credible safeguards."
+ },
+ "rendered": {
+  "title": "The Wellness Plan That Attracts the Wrong Clients",
+  "client": "Pinehaven Veterinary Group",
+  "industry": "Veterinary services",
+  "case_type": "Growth strategy / customer-segment economics",
+  "difficulty": "medium",
+  "format": "interviewer_led",
+  "duration_minutes": 30,
+  "concepts_tested": [
+   "Customer segmentation",
+   "Incremental contribution and cannibalization",
+   "Paid conversion versus stated intent",
+   "Simple payback",
+   "Targeted rollout decision"
+  ],
+  "situation_summary": "Pinehaven Veterinary Group is evaluating an annual wellness plan. Pilot enrollment is strongest among historically high-use clients, but those clients may be less attractive economically because the plan replaces contribution from services they already buy.",
+  "prompt": "Pinehaven Veterinary Group is a regional veterinary-services provider considering an annual wellness plan to improve client retention and create recurring revenue. Launching the plan requires a one-time investment of $250K, and management will proceed only if the investment pays back within 2 years. The pilot has generated interest, but leadership is unsure whether to launch broadly or adjust the offer and target first. Should Pinehaven launch the plan, and if so, which clients should it target?",
+  "clarifying": [
+   {
+    "question": "What services does the wellness plan cover, and what is the right measure of success?",
+    "answer": "The plan covers routine preventive care, not illness or emergency treatment. Assess the plan on incremental contribution versus Pinehaven's current business, rather than plan revenue alone. Retention benefits are not quantified and should be excluded from the direct plan economics; Pinehaven should test whether the targeted plan generates incremental retention value."
+   },
+   {
+    "question": "How large is the eligible customer base?",
+    "answer": "There are 10,000 eligible households. Pinehaven can distinguish historically high-use from historically low-use households based on their prior use of covered preventive services."
+   },
+   {
+    "question": "Is the launch investment recurring, and how should we treat the plan's annual economics?",
+    "answer": "The launch investment is a one-time cost paid at launch. The plan is operational immediately after launch, full-year contribution starts in the first operating year, and there is no ramp-up. Compare it with annual incremental contribution to calculate simple payback; assume annual contribution remains steady for this analysis."
+   },
+   {
+    "question": "Does plan enrollment replace existing purchases, or does it only add new service revenue?",
+    "answer": "For this exercise, assume enrollment displaces all of each enrolled household's current contribution from covered preventive services. Use a displacement share of 100%. Services excluded from the plan are not displaced. Compare the plan's net contribution with the displaced covered-service contribution."
+   }
+  ],
+  "variables": [
+   {
+    "name": "eligible_households",
+    "value": 10000.0,
+    "unit": "count",
+    "label": "Households eligible for the wellness plan",
+    "revealed_in": "clarifying",
+    "role": "input",
+    "display": "10,000"
+   },
+   {
+    "name": "launch_cost",
+    "value": 250.0,
+    "unit": "usd_k",
+    "label": "One-time plan launch investment",
+    "revealed_in": "prompt",
+    "role": "input",
+    "display": "$250K"
+   },
+   {
+    "name": "payback_hurdle",
+    "value": 2.0,
+    "unit": "years",
+    "label": "Maximum acceptable simple payback",
+    "revealed_in": "prompt",
+    "role": "input",
+    "display": "2 years"
+   },
+   {
+    "name": "covered_contribution_displacement_share",
+    "value": 1.0,
+    "unit": "pct",
+    "label": "Share of current covered-service contribution displaced by enrollment",
+    "revealed_in": "clarifying",
+    "role": "input",
+    "display": "100%"
+   },
+   {
+    "name": "plan_price",
+    "value": 360.0,
+    "unit": "per_unit_usd",
+    "label": "Annual wellness-plan price per enrolled household",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$360"
+   },
+   {
+    "name": "admin_cost",
+    "value": 20.0,
+    "unit": "per_unit_usd",
+    "label": "Annual administration cost per enrolled household",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$20"
+   },
+   {
+    "name": "high_use_share",
+    "value": 0.4,
+    "unit": "pct",
+    "label": "Share of eligible households historically high-use",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "40%"
+   },
+   {
+    "name": "low_use_share",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "Share of eligible households historically low-use",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "60%"
+   },
+   {
+    "name": "high_use_current_covered_spend",
+    "value": 300.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's current annual spend on covered services",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$300"
+   },
+   {
+    "name": "high_use_current_variable_cost",
+    "value": 180.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's current annual variable cost for covered services",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$180"
+   },
+   {
+    "name": "high_use_plan_service_cost",
+    "value": 240.0,
+    "unit": "per_unit_usd",
+    "label": "Expected annual plan service cost per high-use enrollee",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$240"
+   },
+   {
+    "name": "low_use_current_covered_spend",
+    "value": 120.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's current annual spend on covered services",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$120"
+   },
+   {
+    "name": "low_use_current_variable_cost",
+    "value": 70.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's current annual variable cost for covered services",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$70"
+   },
+   {
+    "name": "low_use_plan_service_cost",
+    "value": 120.0,
+    "unit": "per_unit_usd",
+    "label": "Expected annual plan service cost per low-use enrollee",
+    "revealed_in": "ex1",
+    "role": "input",
+    "display": "$120"
+   },
+   {
+    "name": "high_use_excluded_service_spend",
+    "value": 500.0,
+    "unit": "per_unit_usd",
+    "label": "High-use household's annual spend on services excluded from the plan",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "$500"
+   },
+   {
+    "name": "low_use_excluded_service_spend",
+    "value": 450.0,
+    "unit": "per_unit_usd",
+    "label": "Low-use household's annual spend on services excluded from the plan",
+    "revealed_in": "ex1",
+    "role": "distractor",
+    "display": "$450"
+   },
+   {
+    "name": "high_use_paid_adoption",
+    "value": 0.35,
+    "unit": "pct",
+    "label": "Actual paid enrollment rate among high-use pilot households",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "35%"
+   },
+   {
+    "name": "low_use_paid_adoption",
+    "value": 0.15,
+    "unit": "pct",
+    "label": "Actual paid enrollment rate among low-use pilot households",
+    "revealed_in": "ex2",
+    "role": "input",
+    "display": "15%"
+   },
+   {
+    "name": "high_use_stated_intent",
+    "value": 0.6,
+    "unit": "pct",
+    "label": "High-use survey respondents stating intent to enroll",
+    "revealed_in": "ex2",
+    "role": "distractor",
+    "display": "60%"
+   },
+   {
+    "name": "low_use_stated_intent",
+    "value": 0.45,
+    "unit": "pct",
+    "label": "Low-use survey respondents stating intent to enroll",
+    "revealed_in": "ex2",
+    "role": "distractor",
+    "display": "45%"
+   }
+  ],
+  "framework": [
+   {
+    "name": "Segment economics and cannibalization",
+    "points": [
+     "Compare incremental contribution per enrolled household by historical use segment.",
+     "Separate covered-service contribution displaced by enrollment from excluded-service spending that remains outside the plan.",
+     "Test plan price, expected service utilization, and administration cost."
+    ]
+   },
+   {
+    "name": "Realizable adoption and retention",
+    "points": [
+     "Use paid enrollment behavior rather than survey intent to forecast take-up.",
+     "Estimate enrollment by segment and consider renewals and client retention; quantify retention separately if evidence becomes available.",
+     "Check whether the pilot conversion mix is representative of a broader launch."
+    ]
+   },
+   {
+    "name": "Launch economics and operating feasibility",
+    "points": [
+     "Compare annual direct incremental contribution with the one-time launch investment and payback hurdle.",
+     "Assess clinic capacity, service utilization, and the ability to administer the plan consistently.",
+     "Consider whether targeting or plan redesign improves the economics without undermining client value."
+    ]
+   },
+   {
+    "name": "Risks and implementation choices",
+    "points": [
+     "Identify customer, service-quality, and execution risks.",
+     "Consider a controlled rollout, monitoring metrics, and decision gates before scaling.",
+     "Define what would cause Pinehaven to revisit pricing, plan design, or target segment."
+    ]
+   }
+  ],
+  "framework_notes": "Reward a structure that explicitly compares incremental contribution with the existing business by customer segment. The key is not simply to estimate plan revenue: enrolled high-use clients shift all contribution from covered services into a fixed-price plan under the exercise assumption. A strong candidate also distinguishes paid adoption from stated interest, recognizes that retention value is outside the modeled economics unless quantified, and keeps operational feasibility and client experience in view.",
+  "sections": [
+   {
+    "id": "q1",
+    "title": "Structure the decision",
+    "kind": "framework",
+    "ask": "How would you assess whether Pinehaven should launch the wellness plan, and how would you decide which clients to target?",
+    "exhibit_ids": [],
+    "info_to_share": [
+     "If asked about plan scope, explain that it covers routine preventive services and excludes illness and emergency treatment.",
+     "If asked about the success metric, explain that Pinehaven cares about incremental contribution versus the existing business, not plan revenue by itself.",
+     "If asked about retention, explain that retention benefits are not quantified and should be excluded from the direct plan economics; they should be tested separately.",
+     "If asked about the eligible population, share 10,000 eligible households.",
+     "If asked whether enrollment replaces current purchases, state that for this exercise all current covered-service contribution for an enrolled household is displaced; share 100%.",
+     "Do not volunteer segment economics or pilot conversion data at this point."
+    ],
+    "calculations": [],
+    "model_answer": "I would compare the plan's direct incremental contribution with Pinehaven's current contribution separately for high-use and low-use clients, accounting for covered services displaced when a household enrolls. I would then use paid enrollment by segment to estimate annual contribution under broad and targeted launches, compare each with the one-time investment and 2 years hurdle, and assess clinic capacity, client experience, and execution risks. Because retention impact is not quantified, I would treat any retention upside as a separate hypothesis to test rather than include it in the initial economics.",
+    "what_great_looks_like": [
+     "Defines incremental contribution rather than treating plan revenue as profit.",
+     "Identifies customer segmentation and cannibalization as central to the decision.",
+     "Asks how actual paid enrollment differs by segment and whether the eligible population is known.",
+     "Includes operational feasibility and an implementable rollout choice.",
+     "Recognizes that unquantified retention benefits should not be silently added to the economics."
+    ],
+    "common_mistakes": [
+     "Using total plan revenue as the success measure.",
+     "Treating all eligible households as economically identical.",
+     "Assuming stated interest will translate directly into paid enrollment.",
+     "Counting retention benefits without evidence or quantification."
+    ],
+    "hints": [
+     "Which current customer behavior changes when a household enrolls?",
+     "Would a household that currently uses more covered services have the same incremental value as a household that uses fewer?",
+     "What benefits are not captured if the analysis only compares direct plan economics?"
+    ],
+    "pushback": [
+     "If total plan enrollment looks strong, is that enough to conclude the plan creates value?"
+    ]
+   },
+   {
+    "id": "q2",
+    "title": "Generate ways to improve the offer",
+    "kind": "brainstorm",
+    "ask": "Before we look at the pilot, what could Pinehaven do to make a wellness plan attractive and profitable?",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "Pinehaven could tailor outreach or offers toward lower-use households, adjust covered services or pricing to better align expected utilization with plan economics, and use reminders to increase appropriate preventive-care visits and retention. It should also ensure clinics can deliver the included services reliably and communicate exclusions clearly. The strongest ideas improve paid conversion among economically attractive clients rather than merely driving enrollment among existing high contributors; Pinehaven should monitor actual utilization, retention, and service quality as it tests changes.",
+    "what_great_looks_like": [
+     "Suggests segment-targeted acquisition or plan design rather than undifferentiated promotion.",
+     "Separates improving paid conversion from attracting clients who already generate substantial covered-service contribution.",
+     "Connects reminders, preventive care, retention, and clinic execution to plan value.",
+     "Proposes guardrails for utilization, clear exclusions, service quality, and measurement of retention effects."
+    ],
+    "common_mistakes": [
+     "Offering generic marketing ideas without explaining how they affect plan economics.",
+     "Assuming higher enrollment is always better.",
+     "Ignoring the possibility that plan members use more services than expected.",
+     "Treating a retention hypothesis as proven value."
+    ],
+    "hints": [
+     "Which customer segments might be most valuable to attract, and which might be costly to convert?",
+     "How could Pinehaven increase conversion without weakening contribution per member?",
+     "How might you test whether the plan improves retention?"
+    ],
+    "pushback": [
+     "If a promotion raises enrollment, what would you want to check before calling it successful?"
+    ]
+   },
+   {
+    "id": "q3",
+    "title": "Read the segment economics",
+    "kind": "exhibit_read",
+    "ask": "Review Exhibit 1. What does the current customer mix suggest, and which figures matter for estimating the plan's incremental economics?",
+    "exhibit_ids": [
+     "ex1"
+    ],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "High-use households currently spend more on covered services and generate more contribution from those services than low-use households. Under the exercise assumption, all of that current covered-service contribution is displaced for an enrolled household. The annual spend on excluded services is not displaced by enrollment and should not be counted as plan contribution. I would compare plan price less expected service cost and administration cost with the displaced covered-service contribution for each segment.",
+    "what_great_looks_like": [
+     "Identifies that high-use households have meaningfully greater existing covered-service contribution.",
+     "States and applies the assumption that all current covered-service contribution is displaced for enrollees.",
+     "Separates covered services from excluded-service spending.",
+     "Recognizes the common plan price and administration cost and proposes a like-for-like annual comparison.",
+     "Does not prematurely infer that the largest-spending segment is the best target."
+    ],
+    "common_mistakes": [
+     "Counting excluded-service spend as revenue generated by the plan.",
+     "Subtracting current covered-service revenue without accounting for its variable cost.",
+     "Treating expected plan service cost as the only cost of enrollment.",
+     "Leaving the displacement assumption unstated or applying only a portion of current contribution without support."
+    ],
+    "hints": [
+     "What contribution does Pinehaven earn today from covered services in each segment?",
+     "Which exhibit column is not part of the wellness plan?",
+     "What displacement assumption did Pinehaven provide for this exercise?"
+    ],
+    "pushback": [
+     "Does a client who spends more today necessarily create more incremental value by joining the plan?"
+    ]
+   },
+   {
+    "id": "q4",
+    "title": "Calculate broad-launch economics",
+    "kind": "quant",
+    "ask": "Use Exhibit 2's actual paid enrollment rates, rather than survey intent, to estimate the annual incremental contribution from a broad rollout at the pilot mix. Does broad rollout meet the payback hurdle?",
+    "exhibit_ids": [
+     "ex2"
+    ],
+    "info_to_share": [
+     "The plan is operational immediately after launch, full-year contribution starts in the first operating year, and there is no ramp-up; assume annual contribution remains steady.",
+     "If the candidate does not identify the common plan administration cost in Exhibit 1, point them to the annual administration-cost input shown there.",
+     "Use simple payback: one-time launch investment divided by annual incremental contribution.",
+     "For each enrollee, subtract all current covered-service contribution under the exercise assumption: the displacement share is 100%."
+    ],
+    "calculations": [
+     {
+      "id": "high_use_baseline_contribution",
+      "label": "Current annual contribution from covered services per high-use household",
+      "expression": "high_use_current_covered_spend - high_use_current_variable_cost",
+      "unit": "per_unit_usd",
+      "expected_value": 120.0,
+      "decimals": 0,
+      "value": 120.0,
+      "display": "$120",
+      "expression_display": "[High-use household's current annual spend on covered services] - [High-use household's current annual variable cost for covered services]"
+     },
+     {
+      "id": "low_use_baseline_contribution",
+      "label": "Current annual contribution from covered services per low-use household",
+      "expression": "low_use_current_covered_spend - low_use_current_variable_cost",
+      "unit": "per_unit_usd",
+      "expected_value": 50.0,
+      "decimals": 0,
+      "value": 50.0,
+      "display": "$50",
+      "expression_display": "[Low-use household's current annual spend on covered services] - [Low-use household's current annual variable cost for covered services]"
+     },
+     {
+      "id": "high_use_incremental_contribution",
+      "label": "Incremental annual contribution per high-use enrollee versus current business",
+      "expression": "plan_price - high_use_plan_service_cost - admin_cost - high_use_baseline_contribution * covered_contribution_displacement_share",
+      "unit": "per_unit_usd",
+      "expected_value": -20.0,
+      "decimals": 0,
+      "value": -20.0,
+      "display": "-$20",
+      "expression_display": "[Annual wellness-plan price per enrolled household] - [Expected annual plan service cost per high-use enrollee] - [Annual administration cost per enrolled household] - [Current annual contribution from covered services per high-use household] × [Share of current covered-service contribution displaced by enrollment]"
+     },
+     {
+      "id": "low_use_incremental_contribution",
+      "label": "Incremental annual contribution per low-use enrollee versus current business",
+      "expression": "plan_price - low_use_plan_service_cost - admin_cost - low_use_baseline_contribution * covered_contribution_displacement_share",
+      "unit": "per_unit_usd",
+      "expected_value": 170.0,
+      "decimals": 0,
+      "value": 170.0,
+      "display": "$170",
+      "expression_display": "[Annual wellness-plan price per enrolled household] - [Expected annual plan service cost per low-use enrollee] - [Annual administration cost per enrolled household] - [Current annual contribution from covered services per low-use household] × [Share of current covered-service contribution displaced by enrollment]"
+     },
+     {
+      "id": "high_use_enrollees",
+      "label": "High-use households enrolled at actual pilot paid conversion",
+      "expression": "eligible_households * high_use_share * high_use_paid_adoption",
+      "unit": "count",
+      "expected_value": 1400.0,
+      "decimals": 0,
+      "value": 1400.0,
+      "display": "1,400",
+      "expression_display": "[Households eligible for the wellness plan] × [Share of eligible households historically high-use] × [Actual paid enrollment rate among high-use pilot households]"
+     },
+     {
+      "id": "low_use_enrollees",
+      "label": "Low-use households enrolled at actual pilot paid conversion",
+      "expression": "eligible_households * low_use_share * low_use_paid_adoption",
+      "unit": "count",
+      "expected_value": 900.0,
+      "decimals": 0,
+      "value": 900.0,
+      "display": "900",
+      "expression_display": "[Households eligible for the wellness plan] × [Share of eligible households historically low-use] × [Actual paid enrollment rate among low-use pilot households]"
+     },
+     {
+      "id": "broad_annual_incremental_contribution",
+      "label": "Annual incremental contribution at the broad pilot enrollment mix",
+      "expression": "(high_use_enrollees * high_use_incremental_contribution + low_use_enrollees * low_use_incremental_contribution) / 1000",
+      "unit": "usd_k",
+      "expected_value": 125.0,
+      "decimals": 0,
+      "value": 125.0,
+      "display": "$125K",
+      "expression_display": "([High-use households enrolled at actual pilot paid conversion] × [Incremental annual contribution per high-use enrollee versus current business] + [Low-use households enrolled at actual pilot paid conversion] × [Incremental annual contribution per low-use enrollee versus current business]) ÷ 1000"
+     },
+     {
+      "id": "broad_payback",
+      "label": "Simple payback for broad rollout at pilot conversion",
+      "expression": "launch_cost / broad_annual_incremental_contribution",
+      "unit": "years",
+      "expected_value": 2.0,
+      "decimals": 1,
+      "value": 2.0,
+      "display": "2 years",
+      "expression_display": "[One-time plan launch investment] ÷ [Annual incremental contribution at the broad pilot enrollment mix]"
+     }
+    ],
+    "model_answer": "Current covered-service contribution is $120 per high-use household and $50 per low-use household. Applying the stated full-displacement assumption, direct incremental annual contribution is -$20 per high-use enrollee and $170 per low-use enrollee after plan service and administration costs. Applying actual paid conversion gives 1,400 high-use and 900 low-use enrollees. The combined annual direct incremental contribution is $125K, for payback of 2 years. Broad rollout meets the 2 years hurdle exactly, leaving essentially no cushion. These results exclude any unquantified retention benefit.",
+    "what_great_looks_like": [
+     "Uses actual paid enrollment, not stated intent.",
+     "Builds contribution in a clear sequence: current contribution, incremental contribution per enrollee, segment enrollment, then total annual contribution and payback.",
+     "Interprets the negative high-use economics and positive low-use economics correctly under the explicit displacement assumption.",
+     "Notes that meeting the hurdle exactly is not the same as having a robust business case.",
+     "Clearly labels the result as direct plan economics, excluding unquantified retention effects."
+    ],
+    "common_mistakes": [
+     "Using stated survey intent as the enrollment forecast.",
+     "Failing to subtract current contribution from covered services.",
+     "Subtracting the one-time launch cost from annual contribution instead of using it in payback.",
+     "Combining annual dollars with thousands of dollars without converting units.",
+     "Assuming a retention uplift despite no retention data."
+    ],
+    "hints": [
+     "First calculate what Pinehaven currently contributes from covered services in each segment.",
+     "Then compare the plan's net contribution per member with all current covered-service contribution displaced under the exercise assumption.",
+     "Use actual paid conversion in Exhibit 2 and keep track of the thousands conversion."
+    ],
+    "pushback": [
+     "The broad case technically meets the hurdle. How confident should management be in a result with no modeled headroom?",
+     "What would happen if the forecast used stated intent instead of paid enrollment?",
+     "How might quantified retention benefits change the decision, and what evidence would you need?"
+    ]
+   },
+   {
+    "id": "q5",
+    "title": "Pivot to a targeted launch",
+    "kind": "pivot",
+    "ask": "The broad plan only just meets the hurdle on direct plan economics. What would you change? Test a launch aimed only at historically low-use households, keeping the same launch investment.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [
+     {
+      "id": "low_segment_annual_contribution",
+      "label": "Annual direct incremental contribution from targeting low-use households only",
+      "expression": "low_use_enrollees * low_use_incremental_contribution / 1000",
+      "unit": "usd_k",
+      "expected_value": 153.0,
+      "decimals": 0,
+      "value": 153.0,
+      "display": "$153K",
+      "expression_display": "[Low-use households enrolled at actual pilot paid conversion] × [Incremental annual contribution per low-use enrollee versus current business] ÷ 1000"
+     },
+     {
+      "id": "low_segment_payback",
+      "label": "Simple payback when targeting low-use households only",
+      "expression": "launch_cost / low_segment_annual_contribution",
+      "unit": "years",
+      "expected_value": 1.6339869281045751,
+      "decimals": 1,
+      "value": 1.6339869281045751,
+      "display": "1.6 years",
+      "expression_display": "[One-time plan launch investment] ÷ [Annual direct incremental contribution from targeting low-use households only]"
+     }
+    ],
+    "model_answer": "The pilot's actual paid conversion is higher among high-use households, but the unit economics show that high-use enrollment reduces direct incremental contribution. At the observed low-use paid conversion, targeting low-use households produces annual direct incremental contribution of $153K and payback of 1.6 years, compared with 2 years under the broad pilot mix. The targeted option clears the hurdle with more headroom. Stated interest is materially higher than paid enrollment in both segments, so it should not be used as the forecast. This comparison does not include retention value; Pinehaven should test whether the targeted plan improves retention before attributing any such benefit.",
+    "what_great_looks_like": [
+     "Connects the mismatch between paid adoption and segment economics: the more likely-to-enroll segment is less attractive incrementally.",
+     "Uses the low-use paid conversion and keeps the launch investment unchanged.",
+     "Recognizes the targeted payback is below the hurdle while broad rollout has no buffer.",
+     "Treats survey intent as a useful qualitative signal, not a substitute for paid conversion.",
+     "Keeps the conclusion limited to direct plan economics and identifies retention as a separate test."
+    ],
+    "common_mistakes": [
+     "Assuming high-use clients are the best target because their paid enrollment rate is higher.",
+     "Using stated intent in place of paid conversion.",
+     "Changing the launch investment or assuming a different target-segment conversion rate without support.",
+     "Presenting the targeted direct economics as if they capture any retention impact."
+    ],
+    "hints": [
+     "Which segment has positive incremental contribution per enrollee?",
+     "Use the low-use enrollees already calculated from the observed pilot conversion.",
+     "What would you track to test any retention impact?"
+    ],
+    "pushback": [
+     "Would targeting low-use households still be attractive if their stated interest, rather than paid conversion, were used?",
+     "What evidence would you want before scaling the targeted approach?"
+    ]
+   },
+   {
+    "id": "q6",
+    "title": "Make a recommendation",
+    "kind": "synthesis",
+    "ask": "Give Pinehaven a concise recommendation with the economics, key risks, and next steps.",
+    "exhibit_ids": [],
+    "info_to_share": [],
+    "calculations": [],
+    "model_answer": "I would not launch the plan indiscriminately. I recommend a controlled launch targeted initially at historically low-use households: at observed paid conversion, that segment generates $153K in annual direct incremental contribution and a simple payback of 1.6 years, versus 2 years for the broad pilot mix. The broad case only just meets the 2 years hurdle, and high-use enrollment reduces direct value because it replaces all contribution Pinehaven currently earns from covered services under the exercise assumption. These economics exclude retention benefits because they are not quantified; the recommendation is conditional on testing whether the targeted plan produces incremental retention value. The main risks are lower-than-pilot paid conversion, higher-than-expected service utilization, and clinic-capacity or service-quality issues. Pilot the targeted offer with clear plan exclusions; track paid conversion, covered-service utilization, renewals, retention versus an appropriate comparison group, contribution versus the current business, and clinic capacity. Revisit pricing or plan design before expanding if observed economics weaken.",
+    "what_great_looks_like": [
+     "Leads with a clear decision and target segment.",
+     "Uses payback and annual direct incremental contribution to support the recommendation.",
+     "Explains why broad enrollment is not automatically better and distinguishes pilot behavior from survey intent.",
+     "Explicitly limits the modeled conclusion to direct plan economics and recommends testing retention impact.",
+     "Offers concrete implementation steps, monitoring metrics, and mitigations for customer and operational risks."
+    ],
+    "common_mistakes": [
+     "Recommending broad launch solely because the modeled payback equals the hurdle.",
+     "Giving a recommendation without stating the target segment or the economic rationale.",
+     "Listing risks without a practical mitigation or monitoring plan.",
+     "Treating unquantified retention value as established or ignoring it entirely."
+    ],
+    "hints": [
+     "What changes when you compare value per enrollee with propensity to enroll?",
+     "What should Pinehaven monitor before broadening the rollout?",
+     "How could Pinehaven test whether retention creates additional value?"
+    ],
+    "pushback": [
+     "What specific result from the targeted pilot would make you pause expansion?",
+     "How would you protect client trust if actual plan utilization exceeds the forecast?",
+     "What retention evidence would cause you to update the direct-economics recommendation?"
+    ]
+   }
+  ],
+  "exhibits": [
+   {
+    "id": "ex1",
+    "title": "Annual economics by eligible household segment",
+    "subtitle": "Annual averages",
+    "kind": "table",
+    "columns": [
+     "Segment / plan input",
+     "Eligible share",
+     "Current covered spend / plan price",
+     "Current variable cost / administration cost",
+     "Expected plan service cost",
+     "Excluded-service spend"
+    ],
+    "rows": [
+     {
+      "label": "Historically high-use",
+      "cells": [
+       "=high_use_share",
+       "=high_use_current_covered_spend",
+       "=high_use_current_variable_cost",
+       "=high_use_plan_service_cost",
+       "=high_use_excluded_service_spend"
+      ]
+     },
+     {
+      "label": "Historically low-use",
+      "cells": [
+       "=low_use_share",
+       "=low_use_current_covered_spend",
+       "=low_use_current_variable_cost",
+       "=low_use_plan_service_cost",
+       "=low_use_excluded_service_spend"
+      ]
+     },
+     {
+      "label": "Annual plan price per enrollee",
+      "cells": [
+       "—",
+       "=plan_price",
+       "—",
+       "—",
+       "—"
+      ]
+     },
+     {
+      "label": "Annual administration cost per enrollee",
+      "cells": [
+       "—",
+       "—",
+       "=admin_cost",
+       "—",
+       "—"
+      ]
+     }
+    ],
+    "value_unit": "per_unit_usd",
+    "column_units": [
+     "pct",
+     "per_unit_usd",
+     "per_unit_usd",
+     "per_unit_usd",
+     "per_unit_usd"
+    ],
+    "footnote": "Source: Pinehaven client billing and service-cost analysis. Plan price and administration cost apply to either segment. For this exercise, enrollment displaces all current covered-service contribution for an enrolled household; excluded-service spending is outside the plan.",
+    "text_body": null,
+    "grid": [
+     [
+      0.4,
+      300.0,
+      180.0,
+      240.0,
+      500.0
+     ],
+     [
+      0.6,
+      120.0,
+      70.0,
+      120.0,
+      450.0
+     ],
+     [
+      "—",
+      360.0,
+      "—",
+      "—",
+      "—"
+     ],
+     [
+      "—",
+      "—",
+      20.0,
+      "—",
+      "—"
+     ]
+    ],
+    "display": [
+     [
+      "40%",
+      "$300",
+      "$180",
+      "$240",
+      "$500"
+     ],
+     [
+      "60%",
+      "$120",
+      "$70",
+      "$120",
+      "$450"
+     ],
+     [
+      "—",
+      "$360",
+      "—",
+      "—",
+      "—"
+     ],
+     [
+      "—",
+      "—",
+      "$20",
+      "—",
+      "—"
+     ]
+    ],
+    "units": [
+     "pct",
+     "per_unit_usd",
+     "per_unit_usd",
+     "per_unit_usd",
+     "per_unit_usd"
+    ]
+   },
+   {
+    "id": "ex2",
+    "title": "Stated intent overstates paid enrollment",
+    "subtitle": "Share of households in each segment",
+    "kind": "bar",
+    "columns": [
+     "Customer segment",
+     "Stated intent to enroll",
+     "Actual paid enrollment"
+    ],
+    "rows": [
+     {
+      "label": "Historically high-use",
+      "cells": [
+       "=high_use_stated_intent",
+       "=high_use_paid_adoption"
+      ]
+     },
+     {
+      "label": "Historically low-use",
+      "cells": [
+       "=low_use_stated_intent",
+       "=low_use_paid_adoption"
+      ]
+     }
+    ],
+    "value_unit": "pct",
+    "column_units": [
+     "pct",
+     "pct"
+    ],
+    "footnote": "Source: Pinehaven pilot enrollment records and post-visit survey. Use actual paid enrollment for rollout economics; stated intent is not paid conversion.",
+    "text_body": null,
+    "grid": [
+     [
+      0.6,
+      0.35
+     ],
+     [
+      0.45,
+      0.15
+     ]
+    ],
+    "display": [
+     [
+      "60%",
+      "35%"
+     ],
+     [
+      "45%",
+      "15%"
+     ]
+    ],
+    "units": [
+     "pct",
+     "pct"
+    ]
+   }
+  ],
+  "recommendation": {
+   "answer": "Do not launch broadly as currently designed. Run a controlled launch targeted at historically low-use households. On direct plan economics at observed paid conversion, this segment supports annual incremental contribution of $153K and payback of 1.6 years, while the broad pilot mix has payback of 2 years and no meaningful cushion against the 2 years hurdle. These results use the exercise assumption that all current covered-service contribution is displaced for enrolled households and exclude unquantified retention benefits, so the recommendation is conditional on testing whether the targeted plan produces incremental retention value.",
+   "risks": [
+    "Paid conversion among low-use households may not hold at scale; survey intent is materially higher than paid enrollment.",
+    "Actual plan utilization could exceed the expected service cost and erode contribution.",
+    "Clinic capacity, inconsistent delivery, or unclear exclusions could harm service quality and client trust.",
+    "Targeting only lower-use households may constrain enrollment if the addressable segment converts less well outside the pilot.",
+    "The plan may affect retention, but that benefit is not included in the modeled economics and could change the relative value of the segments."
+   ],
+   "next_steps": [
+    "Run a controlled, targeted launch to historically low-use households using actual paid conversion as the enrollment benchmark.",
+    "Track paid enrollment, plan service utilization, renewals, incremental contribution versus the current business, and clinic capacity.",
+    "Measure retention against a suitable comparison group and quantify any incremental contribution from retained clients before including it in the business case.",
+    "Set a review gate before expansion; revisit pricing, covered services, or administration if realized direct unit economics deteriorate.",
+    "Validate that targeted outreach and plan communications make covered services and exclusions clear to clients."
+   ]
+  },
+  "rubric": [
+   {
+    "dimension": "Problem structuring",
+    "strong": "Builds a tailored decision framework around segment-level incremental contribution, adoption, launch economics, operational feasibility, and risks; clarifies plan scope, success metric, and the displacement assumption.",
+    "weak": "Uses a generic growth framework, focuses on revenue alone, or fails to distinguish customer segments."
+   },
+   {
+    "dimension": "Exhibit interpretation",
+    "strong": "Identifies high-use clients' greater existing covered-service contribution, applies the stated full-displacement assumption, excludes unrelated service spending, and spots the gap between stated intent and paid enrollment.",
+    "weak": "Treats all spending as plan-related or reads stated intent as realized demand."
+   },
+   {
+    "dimension": "Quantitative accuracy",
+    "strong": "Correctly calculates both segments' baseline and incremental contribution, applies paid conversion to the eligible population, converts to thousands, and calculates simple payback using the stated timing and displacement assumptions.",
+    "weak": "Omits displaced contribution, applies an unsupported partial displacement, mixes units, or compares annual contribution directly with one-time investment without calculating payback."
+   },
+   {
+    "dimension": "Business judgment",
+    "strong": "Recognizes that the segment with higher paid adoption has negative direct incremental contribution, favors a targeted test, and balances economics with customer and operational risks; treats retention value as unquantified until tested.",
+    "weak": "Equates enrollment with value, recommends broad rollout without addressing the lack of headroom, or assumes unmeasured retention benefits."
+   },
+   {
+    "dimension": "Communication and synthesis",
+    "strong": "Gives a concise, decisive recommendation with evidence, clearly scoped economics, caveats, and practical next steps.",
+    "weak": "Recites calculations without a clear decision, target, or implementation plan."
+   }
+  ],
+  "interviewer_notes": "Suggested pacing: opening structure and clarifications, then brainstorm, Exhibit 1 interpretation, broad economics and Exhibit 2, targeted pivot, and executive synthesis. Release Exhibit 1 after the candidate asks for segment-level economics or explains how they would test cannibalization; if they do not, offer a light prompt about comparing the plan with current client behavior. Clarify, if asked, that all current covered-service contribution for an enrolled household is displaced under the exercise assumption. Release Exhibit 2 with the broad-launch calculation. If the candidate asks about timing, clarify that the plan is operational immediately after launch, full-year contribution starts in the first operating year, and there is no ramp-up. The central insight is that the higher-paid-conversion segment is economically unattractive on direct plan economics: high-use enrollees displace meaningful existing contribution, while low-use enrollees create incremental value. Ensure the candidate uses actual paid conversion rather than stated intent, excludes non-plan spending, applies the full-displacement assumption consistently, and does not deduct the one-time launch investment from annual contribution before calculating payback. Retention benefits are not quantified; reward candidates who keep them outside the modeled economics and propose a way to test them. Accept a broad launch only if the candidate explicitly acknowledges the thin direct-economics case and proposes credible safeguards."
+ },
+ "quality": {
+  "status": "verified",
+  "checks": [],
+  "reviews": [
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Clarifying answers / q4 payback setup",
+      "problem": "The investment timing is stated (the $250K is paid at launch), but the timing of contribution is not. The 2-year result assumes the full annual contribution begins in year 1 with no launch delay or ramp-up; that assumption matters especially because broad rollout lands exactly on the 2-year hurdle.",
+      "fix": "State explicitly that the plan is operational immediately after launch, full-year contribution starts in year 1, and there is no ramp-up."
+     },
+     {
+      "severity": "major",
+      "where": "Prompt, q6 recommendation, and Recommendation",
+      "problem": "Retention is a stated objective, but the modeled economics count only plan contribution net of displaced covered-service contribution. No retention uplift or retained-client contribution is provided, and the recommendation does not clearly limit its conclusion to direct plan economics. If the plan changes retention, that value could alter the comparison between segments or the launch decision.",
+      "fix": "State that retention benefits are excluded from the modeled economics because they are not quantified, and frame the recommendation as conditional on testing whether the targeted plan produces incremental retention value."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The arithmetic and comparisons check out: current covered-service contribution is $120/$50 per high-/low-use household; incremental contribution is -$20/$170; paid enrollment yields 1,400/900 enrollees; broad contribution is $125K with 2.0-year payback; low-use-only contribution is $153K with about 1.63-year payback (reported appropriately as 1.6). The case fits the requested medium format. The main fixes are to make payback timing explicit and to bound the recommendation because the stated retention objective is not included in the modeled value."
+   },
+   {
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Clarifying answer on cannibalization; q3 model answer; q4 incremental-contribution calculations",
+      "problem": "The key subtracts the full current covered-service contribution for every enrollee ($120 per high-use household and $50 per low-use household), but the case only says that “some” covered services are already purchased and that those services “may” be displaced. It never establishes that enrollment replaces all of each household’s current covered-service contribution. That assumption drives the key result: the high-use segment is shown at -$20 per enrollee, and the low-use segment at +$170.",
+      "fix": "State explicitly that, for this exercise, enrollment displaces all of each enrolled household’s current covered-service contribution. If only part is displaced, provide the assumed share instead and use it consistently."
+     },
+     {
+      "severity": "minor",
+      "where": "Exhibit 1 column headings and shared plan-input rows",
+      "problem": "The combined headings “Current covered spend / plan price” and “Current variable cost / administration cost” make the $360 plan price and $20 administration cost harder to distinguish from segment-specific current-business figures. The row labels clarify the intent, so the inputs are recoverable, but the layout is unnecessarily ambiguous.",
+      "fix": "Use separate columns for current covered spend and current variable cost, and show plan price and administration cost as clearly labeled shared plan inputs."
+     },
+     {
+      "severity": "minor",
+      "where": "Difficulty calibration; q4 and q5 calculation list",
+      "problem": "The case lists 10 calculation steps (8 in q4 and 2 in q5), above the requested 5–8 calculation target, though still within the stated overall 5–12 range. The arithmetic is simple enough that this does not make the case too difficult, but it is at the high end of the requested quant load.",
+      "fix": "If adhering strictly to the 5–8 target, combine or remove two intermediate calculation prompts while retaining the segment contribution, enrollment, total contribution, and payback chain."
+     }
+    ],
+    "difficulty_fit": "about_right",
+    "summary": "The arithmetic and stated payback conclusions check out: baseline covered-service contribution is $120 high-use and $50 low-use; incremental contribution is -$20 and +$170 per enrollee; broad enrollment is 1,400 high-use and 900 low-use households, yielding -$28K + $153K = $125K annual contribution and $250K/$125K = 2.0 years payback. Low-use targeting yields $153K annual contribution and $250K/$153K ≈ 1.63 years, rounded to 1.6. The earlier timing and retention concerns are resolved. The material remaining issue is that the case does not explicitly support the full-displacement assumption that underlies the unit economics."
+   },
+   {
+    "issues": [],
+    "difficulty_fit": "about_right",
+    "summary": "No material or minor issues found. The inputs are available in the stated sequence, the exhibit calculations reconcile, and the recommendation follows from the economics. Broad rollout yields 1,400 high-use and 900 low-use enrollees, contributing -$28K + $153K = $125K annually and paying back the $250K launch investment in 2.0 years. Targeting low-use households yields $153K annually and payback of $250K / $153K = 1.63 years (rounded to 1.6). The case fits the requested medium difficulty: six sections, two exhibits with distractors, a brainstorm, and linked calculations that are manageable by hand."
+   }
+  ],
+  "fix_rounds": 2,
+  "history": [
+   {
+    "step": "Independent review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Clarifying answers / q4 payback setup",
+      "problem": "The investment timing is stated (the $250K is paid at launch), but the timing of contribution is not. The 2-year result assumes the full annual contribution begins in year 1 with no launch delay or ramp-up; that assumption matters especially because broad rollout lands exactly on the 2-year hurdle.",
+      "fix": "State explicitly that the plan is operational immediately after launch, full-year contribution starts in year 1, and there is no ramp-up."
+     },
+     {
+      "severity": "major",
+      "where": "Prompt, q6 recommendation, and Recommendation",
+      "problem": "Retention is a stated objective, but the modeled economics count only plan contribution net of displaced covered-service contribution. No retention uplift or retained-client contribution is provided, and the recommendation does not clearly limit its conclusion to direct plan economics. If the plan changes retention, that value could alter the comparison between segments or the launch decision.",
+      "fix": "State that retention benefits are excluded from the modeled economics because they are not quantified, and frame the recommendation as conditional on testing whether the targeted plan produces incremental retention value."
+     }
+    ]
+   },
+   {
+    "step": "Second review",
+    "issues": [
+     {
+      "severity": "major",
+      "where": "Clarifying answer on cannibalization; q3 model answer; q4 incremental-contribution calculations",
+      "problem": "The key subtracts the full current covered-service contribution for every enrollee ($120 per high-use household and $50 per low-use household), but the case only says that “some” covered services are already purchased and that those services “may” be displaced. It never establishes that enrollment replaces all of each household’s current covered-service contribution. That assumption drives the key result: the high-use segment is shown at -$20 per enrollee, and the low-use segment at +$170.",
+      "fix": "State explicitly that, for this exercise, enrollment displaces all of each enrolled household’s current covered-service contribution. If only part is displaced, provide the assumed share instead and use it consistently."
+     }
+    ]
+   }
+  ],
+  "model": "gpt-6-luna",
+  "engine": "luna"
+ },
+ "usage": {
+  "model": "gpt-6-luna",
+  "input": 60858,
+  "cached": 22996,
+  "output": 39642,
+  "requests": 7,
+  "seconds": 289.8,
+  "usd": 0.024761,
+  "calls": 7,
+  "steps": [
+   {
+    "step": "Plan the storyline",
+    "role": "planner",
+    "input": 6081,
+    "cached": 3973,
+    "output": 7512,
+    "requests": 1,
+    "seconds": 69.8,
+    "usd": 0.004056
+   },
+   {
+    "step": "Write the full case",
+    "role": "writer",
+    "input": 8839,
+    "cached": 4687,
+    "output": 8495,
+    "requests": 1,
+    "seconds": 53.7,
+    "usd": 0.00481
+   },
+   {
+    "step": "Independent review",
+    "role": "reviewer",
+    "input": 6956,
+    "cached": 1654,
+    "output": 3923,
+    "requests": 1,
+    "seconds": 38.2,
+    "usd": 0.002638
+   },
+   {
+    "step": "Fix 2 independent review findings",
+    "role": "writer",
+    "input": 11327,
+    "cached": 4687,
+    "output": 6697,
+    "requests": 1,
+    "seconds": 35.0,
+    "usd": 0.004222
+   },
+   {
+    "step": "Second review",
+    "role": "reviewer",
+    "input": 7713,
+    "cached": 1654,
+    "output": 4235,
+    "requests": 1,
+    "seconds": 37.6,
+    "usd": 0.002888
+   },
+   {
+    "step": "Fix 1 second review finding",
+    "role": "writer",
+    "input": 11894,
+    "cached": 4687,
+    "output": 6765,
+    "requests": 1,
+    "seconds": 35.3,
+    "usd": 0.004327
+   },
+   {
+    "step": "Third review",
+    "role": "reviewer",
+    "input": 8048,
+    "cached": 1654,
+    "output": 2015,
+    "requests": 1,
+    "seconds": 20.2,
+    "usd": 0.00182
+   }
+  ]
+ },
+ "second_opinion": {
+  "model": "gpt-5.6-terra",
+  "at": "2026-10-20T21:02:49.074618+00:00",
+  "difficulty_fit": "about_right",
+  "summary": "The case is otherwise runnable and internally consistent. Recomputed economics are: high-use baseline covered-service contribution = $300 − $180 = $120; low-use = $120 − $70 = $50; plan contribution before displacement is $360 − $240 − $20 = $100 for high-use and $360 − $120 − $20 = $220 for low-use; therefore incremental contribution is $100 − $120 = −$20 and $220 − $50 = $170, respectively. Actual paid enrollment is 10,000 × 40% × 35% = 1,400 high-use households and 10,000 × 60% × 15% = 900 low-use households. Broad annual incremental contribution is 1,400 × (−$20) + 900 × $170 = $125K, and $250K / $125K = 2.0 years. Low-use-only contribution is 900 × $170 = $153K; payback is about 1.6 years. The recommendation, displacement treatment, use of paid rather than stated adoption, and like-for-like annual simple-payback comparison all follow from the supplied facts. It meets the requested medium-case shape: six sections including a brainstorm, two exhibits with relevant distractors, linked but hand-solvable arithmetic, a genuine segment-economics pivot, and appropriate light ambiguity through clarifying questions.",
+  "issues": [
+   {
+    "severity": "minor",
+    "where": "q5, Calc low_segment_payback",
+    "problem": "The calculation is internally mislabeled: $250K / $153K = 1.6339869... years, not “exact 1.63399,” while the displayed result is 1.6 years. The model answer’s 1.6 years is a sensible one-decimal rounding, but it is not exact.",
+    "fix": "Write the calculation as “= 1.6339869... years, or approximately 1.6 years,” and remove the claim that 1.63399 is exact."
+   }
+  ],
+  "usage": {
+   "model": "gpt-5.6-terra",
+   "input": 7976,
+   "cached": 1787,
+   "output": 1680,
+   "requests": 1,
+   "seconds": 16.5,
+   "usd": 0.035929,
+   "calls": 1,
+   "steps": [
+    {
+     "step": "Cross-audit",
+     "role": "reviewer",
+     "input": 7976,
+     "cached": 1787,
+     "output": 1680,
+     "requests": 1,
+     "seconds": 16.5,
+     "usd": 0.035929
+    }
+   ]
+  }
+ }
+}

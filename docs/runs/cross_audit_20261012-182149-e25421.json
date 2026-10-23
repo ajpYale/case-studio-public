@@ -1,0 +1,64 @@
+{
+ "case_id": "20261012-182149-e25421",
+ "title": "The Airport Express Bid",
+ "difficulty": "hard",
+ "original_status": "verified",
+ "original_model": "gpt-5.6-terra",
+ "audit_model": "gpt-5.6-terra",
+ "fit": "about_right",
+ "summary": "The case is largely mathematically sound and meets the requested hard-case shape: 7 sections, 3 exhibits, 14 linked calculations, distractor data, a meaningful grid pivot, explicit cannibalization, discounting, fleet-spare logic, and a four-step demand-to-NPV chain. Core calculations check: addressable trips are 15.8M × 62% × 35% = 3.4286M; riders = 0.411432M; revenue = $7.71435M; lost legacy contribution = $0.398266M; annual OCF = $2.237781M; seven-year year-end annuity PV at 10.5% = $10.7174M; fleet capex = 8 × $0.72M + $0.96M + $0.34M = $7.06M; base NPV = $3.6574M; and grid-upgrade NPV = −$0.5926M. The material should not enter the library until it defines support timing/form, because its central $0.61M bid threshold otherwise cannot be reproduced for all recommended support mechanisms.",
+ "issues": [
+  {
+   "severity": "major",
+   "where": "q6 pivot; q7 model answer, Recommendation, and interviewer notes",
+   "problem": "The $0.603M/$0.61M support threshold is correct only if airport support is an upfront, dollar-for-dollar reduction in signing-date capex. The case never specifies the timing or form of “airport support.” This matters because the final recommendation expressly permits “a concession-fee structure,” which would normally be received over the seven operating years: a nominal $0.61M of future fee relief has a present value below $0.61M at 10.5% and therefore would not preserve the required $0.01M NPV buffer. Recomputed values under the implicit upfront-credit assumption are: PV of OCF = $2.237780624M × 4.7893026 = $10.7174M; base NPV = $10.7174M − $7.06M = $3.6574M; post-grid NPV = $3.6574M − $4.25M = −$0.5926M; required time-0 support = $4.25M − $3.6574M + $0.01M = $0.6026M, rounded up to $0.61M. The arithmetic is right, but the timing assumption required to use it is absent.",
+   "fix": "State in q6 that any airport support used for this threshold is an irrevocable upfront credit/reimbursement paid at signing (and explicitly value any fee relief by its discounted present value instead). Replace the final “concession-fee structure that delivers at least $0.61M of support” with “upfront support with a present value of at least $0.61M.”"
+  },
+  {
+   "severity": "major",
+   "where": "q5 model answer and q7/Recommendation operational-feasibility conclusion",
+   "problem": "The case proves only that one specified peak bank has enough seats: 6 × 48 × 2 = 576 seats, versus 494 peak passengers. It does not provide an annual operating schedule, number of peak banks/days, off-peak departures, annual seat capacity, or state that this peak is the binding service requirement. Consequently, the broader claim that “the service appears passenger-capacity feasible,” and the final operational recommendation, are not fully supported against the annual demand model of 411,432 riders. The 576-versus-494 calculation itself is correct; what is unsupported is extrapolating it to all annual service.",
+   "fix": "Add one explicit sentence to ex3 or the q5 share: “This is the binding peak bank; the drafted timetable has sufficient service in all other periods to carry the annual target demand.” Alternatively provide the annual departure schedule and ask candidates to compare annual seats with 411,432 riders."
+  },
+  {
+   "severity": "minor",
+   "where": "q6 share and charging-power calculations",
+   "problem": "The pivot states that the depot connection is “limited to 0.9” without attaching a unit. The subsequent instruction to convert kilowatts to megawatts makes MW inferable, and the intended computation is correct: 8 × 360 kWh ÷ 2 h = 1,440 kW = 1.44 MW; 1.44 − 0.90 = 0.54 MW. Still, a key input should be explicitly labeled at the point of release.",
+   "fix": "Change the pivot wording to “limited to 0.90 MW.”"
+  },
+  {
+   "severity": "minor",
+   "where": "q6 calculation expression for required_airport_grid_contribution_rounded",
+   "problem": "The displayed result is correct for this value—$0.602591M rounds up to $0.61M in $0.01M increments—but `round(required_airport_grid_contribution / airport_support_increment + 0.5)` is an opaque and language-dependent way to express a mandatory upward rounding rule. It can fail at exact increment boundaries depending on the language’s tie-breaking convention. The requirement is a ceiling, not ordinary rounding.",
+   "fix": "Use `ceil(required_airport_grid_contribution / airport_support_increment) × airport_support_increment`; it still returns $0.61M here."
+  },
+  {
+   "severity": "minor",
+   "where": "q7 model answer; q7 “What great looks like”; Communication rubric",
+   "problem": "The evaluation materials say a strong final recommendation names owners and sequences next steps, but the q7 model answer only says MetroVale “should validate,” “lock,” and “retain” protections. It does not assign owners. This is a guide/rubric mismatch rather than an economic error.",
+   "fix": "Add concise ownership: e.g., “Bid team negotiates support and protections before submission; operations and utility partners validate grid scope before coach orders; commercial team secures airline/hotel/platform channels before launch.”"
+  }
+ ],
+ "usage": {
+  "model": "gpt-5.6-terra",
+  "input": 8669,
+  "cached": 1562,
+  "output": 3929,
+  "requests": 1,
+  "seconds": 36.5,
+  "usd": 0.065167,
+  "calls": 1,
+  "steps": [
+   {
+    "step": "Cross-audit",
+    "role": "reviewer",
+    "input": 8669,
+    "cached": 1562,
+    "output": 3929,
+    "requests": 1,
+    "seconds": 36.5,
+    "usd": 0.065167
+   }
+  ]
+ }
+}
