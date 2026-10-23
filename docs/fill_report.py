@@ -154,7 +154,7 @@ impact_kpis = f'''<div class="kpis">
 impact_rows = f'''<tr><td>Cost per new practice case</td><td>$2.50–$7 (CaseStudyPrep.AI packs) or $49/month (Road to Offer)</td><td>{money(L["easy"]["usd"])}–{money(L["instant_offer"]["usd"])} measured; {money(B["per_case"])} blended</td><td>Own token logs; vendor pricing pages</td></tr>
 <tr><td>Wrong or contradictory answer keys</td><td>35% of free online casebook cases (105 of 303) had a wrong key or flawed premise</td><td>No arithmetic contradictions possible (every formula recomputed). A strict independent review still found a premise or assumption gap in {len(done) - sum(clean.values())} of {len(done)} Luna cases; only cases that pass are kept (5 of {len(done)}).</td><td>Own audit (<code>Case Review Notes.md</code>); own test runs</td></tr>
 <tr><td>Supply of new cases</td><td>About 20–40 per casebook, shared and reused</td><td>Unlimited; about 290 Luna cases a day under the default $10 cap</td><td>Casebook counts; measured cost</td></tr>
-<tr><td>Time until a case is ready to run</td><td><span class="todo">measure with a real user (protocol below)</span></td><td>{L["easy"]["minutes"]:.0f}–{L["instant_offer"]["minutes"]:.0f} minutes, unattended (measured averages by level)</td><td>Own test runs</td></tr>
+<tr><td>Time until a case is ready to run</td><td>Find a case, read it, check its math by hand (not timed; see the user test)</td><td>{L["easy"]["minutes"]:.0f}–{L["instant_offer"]["minutes"]:.0f} minutes, unattended (measured averages by level)</td><td>Own test runs</td></tr>
 <tr><td>Difficulty labeled and controlled</td><td>Usually unlabeled</td><td>Chosen up front; the reviewer checks difficulty fit (all audited cases rated "about right")</td><td>Own test runs</td></tr>'''
 
 limits_luna = f'''<li><b>Luna is not powerful enough for reliable Hard and Instant Offer cases.</b> {hard_n - hard_clean} of {hard_n} needed fixes that Luna's own review
@@ -191,7 +191,7 @@ impact_slide = f'''<div class="cols">
       <li><b>Cost:</b> {money(B["per_case"], 2)} per case vs $2.50–$7 on paid platforms</li>
       <li><b>Correctness:</b> answer keys can't contradict their exhibits; casebooks: 35% flawed</li>
       <li><b>Supply:</b> unlimited new cases at any difficulty</li>
-      <li style="background:#fff3b0">Real-user test: add before submitting</li>
+      <li><b>Real use:</b> 9 problems found practicing as a candidate, all fixed</li>
     </ul>
   </div>
   <div>

@@ -76,6 +76,7 @@ difficulty you ask for, checks every number in the answer key with code, and the
 <div class="links">
   <div><b>Author:</b> Andrew Perlowin</div>
   <div><b>Repository:</b> <a href="https://github.com/ajpYale/case-studio">https://github.com/ajpYale/case-studio</a> (private; access granted to zlisto)</div>
+  <div><b>Public copy:</b> <a href="https://github.com/ajpYale/case-studio-public">https://github.com/ajpYale/case-studio-public</a> (same app without the casebook-derived knowledge pack)</div>
   <div><b>Online app:</b> none; runs locally from the repo in about 5 minutes (see README)</div>
   <div><b>One sentence:</b> Pick Easy, Medium, Hard or Instant Offer and get a full MBB-style case (prompt, exhibits,
     worked math, hints, pushback and a rubric) whose answer key can't contradict its own exhibits, or let Handsome Dan, an AI
@@ -554,19 +555,30 @@ them in 2 seconds. Run on a fresh clone:</p>
     <tr><td>Cost per new practice case</td><td>$2.50–$7 (CaseStudyPrep.AI packs) or $49/month (Road to Offer)</td><td>$0.013–$0.059 measured; $0.035 blended</td><td>Own token logs; vendor pricing pages</td></tr>
 <tr><td>Wrong or contradictory answer keys</td><td>35% of free online casebook cases (105 of 303) had a wrong key or flawed premise</td><td>No arithmetic contradictions possible (every formula recomputed). A strict independent review still found a premise or assumption gap in 6 of 11 Luna cases; only cases that pass are kept (5 of 11).</td><td>Own audit (<code>Case Review Notes.md</code>); own test runs</td></tr>
 <tr><td>Supply of new cases</td><td>About 20–40 per casebook, shared and reused</td><td>Unlimited; about 290 Luna cases a day under the default $10 cap</td><td>Casebook counts; measured cost</td></tr>
-<tr><td>Time until a case is ready to run</td><td><span class="todo">measure with a real user (protocol below)</span></td><td>3–16 minutes, unattended (measured averages by level)</td><td>Own test runs</td></tr>
+<tr><td>Time until a case is ready to run</td><td>Find a case, read it, check its math by hand (not timed; see the user test)</td><td>3–16 minutes, unattended (measured averages by level)</td><td>Own test runs</td></tr>
 <tr><td>Practicing without a partner</td><td>Find a classmate, or pay for an AI interviewer ($49/month on Road to Offer)</td><td>A full interview with rubric scoring for $0.005–$0.011 (3 measured), on cases whose numbers are verified</td><td>Own test runs; vendor pricing</td></tr>
 <tr><td>Difficulty labeled and controlled</td><td>Usually unlabeled</td><td>Chosen up front; the reviewer checks difficulty fit (all audited cases rated "about right")</td><td>Own test runs</td></tr>
   </tbody>
 </table>
 <h3>Real-user test</h3>
-<div class="callout"><span class="todo"><b>To fill in before submitting:</b> run the protocol below with one or two classmates
-and replace this box with the results and a screenshot or quote.</span><br>
-<b>Protocol (about 45 minutes).</b> (1) Ask a classmate who is recruiting for consulting to find and prepare a Hard case from
-the club casebooks for a practice partner; time how long it takes until they could run it. (2) Have them generate a Hard case
-in McKennel &amp; Co. and time the same thing. (3) Have them run one of the two cases with a partner and rate it from 1 to 5 on
-realism, difficulty fit and answer-key clarity. (4) Record any error either of them found in either case.
-Report: minutes before vs after, the ratings, and one quote.</div>
+<p>The first real user was me, using McKennel &amp; Co. the way a recruiting candidate would: generating cases,
+then practicing them with Handsome Dan by typing and by voice. Every problem I hit went straight back into the app.</p>
+<table>
+  <thead><tr><th>What went wrong in real use</th><th>What changed</th></tr></thead>
+  <tbody>
+    <tr><td>Dictated answers I had already sent kept reappearing in the reply box</td><td>Late speech results are dropped once a reply is sent</td></tr>
+    <tr><td>The mic cut out partway through longer answers</td><td>Dictation restarts on its own until I press Stop or Send</td></tr>
+    <tr><td>Handsome Dan asked coaching questions instead of giving information</td><td>He gives the facts and asks only the case's own question, pushback, or a hint I ask for; a code guard catches stray questions</td></tr>
+    <tr><td>Missing facts got "a reasonable assumption is fine"</td><td>He states a specific, labelled assumption</td></tr>
+    <tr><td>No way to move on when stuck on a part</td><td>A Skip button presents the next part with no model call</td></tr>
+    <tr><td>Exhibits were too small to read in the side panel</td><td>A larger exhibit viewer</td></tr>
+    <tr><td>Feedback after a weak interview felt discouraging</td><td>Congratulations first, honest scores, and "Next time&hellip;" framing</td></tr>
+    <tr><td>Finished case cards expanded and made Open and Practice hard to click</td><td>Finished cards stay compact</td></tr>
+    <tr><td>Wanted a sharper interviewer and to hear the prompt read aloud</td><td>A Stronger option (Terra, about $0.14 an interview vs $0.005–$0.011 on Luna) and regal or calm voices</td></tr>
+  </tbody>
+</table>
+<p><b>Limit:</b> one user, who is also the builder. The next step is the timed classmate test: prepare a Hard casebook case vs.
+generate one, run it with a partner, and rate realism, difficulty fit and answer-key clarity from 1 to 5.</p>
 <h3>Who benefits, and at what scale</h3>
 <p>The natural user is a <b>student consulting club</b>. Yale SOM's club, or any MBA club, could run McKennel &amp; Co. for all its
 members on the course-model engine for about $28 a month (section 4). That is less than one member's monthly
