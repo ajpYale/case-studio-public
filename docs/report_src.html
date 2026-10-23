@@ -358,7 +358,8 @@ the prompt or every reply aloud in a regal or a calm voice (browser speech, no e
 <h3>Models and why</h3>
 <p>The app has two engines, chosen in the sidebar. <b>Luna</b> (the default) runs every agent on <code>gpt-6-luna</code>, the
 course model. <b>Stronger</b> runs on <code>gpt-5.6-terra</code>, or <code>gpt-5.6-sol</code> for Instant Offer, for users
-who need the hardest cases to come out clean. Sol costs about 50 times more per input token than Luna
+who need the hardest cases to come out clean. (Professor Zaman approved offering stronger models alongside Luna as long as
+the app runs on Luna: Luna is the default for every agent, and Terra and Sol are used only when the user opts in.) Sol costs about 50 times more per input token than Luna
 ($5.00 vs $0.10 per million, course price list), so the app asks for confirmation before <em>every</em> Sol run, and the
 server refuses a Sol request that wasn't confirmed. All calls go through Portkey's OpenAI-compatible endpoint using the
 <b>Responses API</b>. That isn't optional for Luna: on Chat Completions it rejects structured output (see the test log).

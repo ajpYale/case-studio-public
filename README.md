@@ -85,6 +85,9 @@ level, each checked by a stronger model). To make a new one, pick **Easy** and *
 
 ## Models: Luna by default, stronger models as an option
 
+Professor Zaman approved offering stronger models alongside Luna as long as the app runs on Luna. Luna is
+the default for every agent; Terra and Sol are used only when you opt in.
+
 | Engine | Models | Measured cost per case | Time |
 |---|---|---|---|
 | **Luna** (default) | `gpt-6-luna` for every step | Easy $0.013 · Medium $0.029 · Hard $0.040 · Instant Offer $0.059 | 3–16 min |
