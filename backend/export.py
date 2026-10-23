@@ -71,7 +71,9 @@ async def export_pdf(case_id: str, difficulty: str, title: str, base_url: str, e
     if target.exists():  # re-saving: remove the old file so we don't mistake it for the new one
         target.unlink()
     url = f"{base_url.rstrip('/')}/?print={case_id}"
-    with tempfile.TemporaryDirectory() as profile:  # throwaway profile: never touches the user's browser data
+    # Throwaway profile: never touches the user's browser data. On Windows, Edge's helper processes
+    # can still hold a cache file when we finish, so a failed cleanup must not fail the case.
+    with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as profile:
         proc = await asyncio.create_subprocess_exec(
             browser, "--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
             f"--user-data-dir={profile}", "--no-pdf-header-footer", "--virtual-time-budget=20000",
