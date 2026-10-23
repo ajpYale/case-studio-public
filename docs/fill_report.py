@@ -191,7 +191,7 @@ impact_slide = f'''<div class="cols">
       <li><b>Cost:</b> {money(B["per_case"], 2)} per case vs $2.50–$7 on paid platforms</li>
       <li><b>Correctness:</b> answer keys can't contradict their exhibits; casebooks: 35% flawed</li>
       <li><b>Supply:</b> unlimited new cases at any difficulty</li>
-      <li><b>Real use:</b> 9 problems found practicing as a candidate, all fixed</li>
+      <li><b>Real use:</b> narrated demo video; 9 problems found practicing as a candidate, all fixed</li>
     </ul>
   </div>
   <div>

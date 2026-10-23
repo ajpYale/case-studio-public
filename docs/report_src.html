@@ -41,6 +41,12 @@
   pre { background: #0f1b2b; color: #dfe9f5; padding: 12px 14px; overflow-x: auto; line-height: 1.45; border-radius: 3px; }
   ol.steps li, ul li { margin-bottom: 6px; }
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  table.compact { font-size: 0.86em; }
+  table.compact td, table.compact th { padding-top: 3px; padding-bottom: 3px; }
+  table.compact td:first-child { width: 42%; }
+  .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .three figure { margin: 8px 0 10px; }
+  .three figcaption { font-size: 0.85em; }
   .src { font-size: 12.5px; color: var(--muted); }
   @page { size: letter; margin: 0.6in; }
   @media print {
@@ -56,6 +62,8 @@
     figure.diagram svg { max-height: 4.1in; }
     figure img { max-height: 2.8in; }
     .two figure img { max-height: 2.6in; }
+    .three figure img { max-height: 1.0in; }
+    .three figure { margin: 4px 0 6px; }
     .log-table { font-size: 7.5pt; }
     .log-table td { padding: 3px 6px; }
     pre { font-size: 7pt; }
@@ -539,7 +547,7 @@ them in 2 seconds. Run on a fresh clone:</p>
     himself (that the contract could displace existing business). Numbers are guarded by code, but insights aren't. I added a rule
     that Handsome Dan acknowledges hints of an idea neutrally and never explains them. In my own use of the app he also asked too many coaching questions. His rules now say he supplies information, and asks only the case's own questions, its pushback lines, or a hint the candidate requests. In a third live interview on the same Easy case, Handsome Dan answered clarifying questions plainly, handed over data as statements, and asked only the case's own section questions and pushback lines (2 of his 8 messages ended in a question). A new code <b>question guard</b> now backs this up: a reply with any other question is rewritten once (tested).</li>
 </ul>
-<figure class="half"><img src="screenshots/runs/run15-hard-luna-final-03-error.png" alt="Gateway error"><figcaption>A real failed run (HTTP 500 from the gateway). Retries were added, and the message is now plain English.</figcaption></figure>
+<figure class="half"><img src="screenshots/runs/run15-hard-luna-final-03-error.png" alt="Gateway error" style="max-height:1.7in"><figcaption>A real failed run (HTTP 500 from the gateway). Retries were added, and the message is now plain English.</figcaption></figure>
 
 <!-- 7. IMPACT -->
 <h2>6. Impact</h2>
@@ -564,7 +572,7 @@ them in 2 seconds. Run on a fresh clone:</p>
 <h3>Real-user test</h3>
 <p>The first real user was me, using McKennel &amp; Co. the way a recruiting candidate would: generating cases,
 then practicing them with Handsome Dan by typing and by voice. Every problem I hit went straight back into the app.</p>
-<table>
+<table class="compact">
   <thead><tr><th>What went wrong in real use</th><th>What changed</th></tr></thead>
   <tbody>
     <tr><td>Dictated answers I had already sent kept reappearing in the reply box</td><td>Late speech results are dropped once a reply is sent</td></tr>
@@ -578,6 +586,12 @@ then practicing them with Handsome Dan by typing and by voice. Every problem I h
     <tr><td>Wanted a sharper interviewer and to hear the prompt read aloud</td><td>A Stronger option (Terra, about $0.14 an interview vs $0.005–$0.011 on Luna) and regal or calm voices</td></tr>
   </tbody>
 </table>
+<p><b>Recorded evidence:</b> a narrated 2:51 screen recording of one real session (generate on Luna, open from the Library, practice, get scored) is submitted on Canvas as the demo video. Three frames:</p>
+<div class="three">
+  <figure><img src="screenshots/video/video-run-room.jpg" alt="Run room during the recorded session"><figcaption>A case finishes Verified: 5 Luna calls, $0.011.</figcaption></figure>
+  <figure><img src="screenshots/video/video-practice.jpg" alt="Practice with Handsome Dan"><figcaption>Practice: exhibit in the panel, congratulations at the end.</figcaption></figure>
+  <figure><img src="screenshots/video/video-scorecard.jpg" alt="Scorecard"><figcaption>Scorecard: encouragement first, an honest 1/5.</figcaption></figure>
+</div>
 <p><b>Limit:</b> one user, who is also the builder. The next step is the timed classmate test: prepare a Hard casebook case vs.
 generate one, run it with a partner, and rate realism, difficulty fit and answer-key clarity from 1 to 5.</p>
 <h3>Who benefits, and at what scale</h3>
