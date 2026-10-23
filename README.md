@@ -27,6 +27,7 @@ the footer.
 **Public copy.** This repository leaves out the knowledge pack distilled from MBA casebooks, so the app
 runs on the hand-written starter pack (see below). Everything else is the same as the course submission. Report and slides: `docs/report.html` and `docs/slides.html`
 (open by double-clicking).
+Demo video at 2× speed (1:26, narrated): `docs/demo_2x.mp4`.
 
 ---
 
