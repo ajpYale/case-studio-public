@@ -74,6 +74,7 @@ class CandidateMessage(BaseModel):
 class PracticeRequest(BaseModel):
     case_id: str | None = None
     difficulty: Literal["easy", "medium", "hard", "instant_offer"] | None = None
+    case_type: str | None = Field(None, max_length=60)  # e.g. "profitability", from the progress suggestion
     engine: Literal["luna", "strong"] = "luna"  # who plays Handsome Dan and scores: Luna or Terra
 
 
@@ -130,9 +131,15 @@ def pick_case(req: PracticeRequest) -> str:
         return req.case_id
     pool = [c for c in generator.list_cases() if c["status"] == "verified"
             and (req.difficulty is None or c["difficulty"] == req.difficulty)]
+    if req.case_type:
+        import progress  # (imported here: progress imports this module)
+        typed = [c for c in pool if progress.case_type_key(c["case_type"]) == progress.case_type_key(req.case_type)]
+        pool = typed or pool  # no case of that type at this level yet: any case at the level will do
     if not pool:
         raise LookupError("There's no verified case at that level in the library yet. Generate one first.")
-    return random.choice(pool)["id"]
+    practiced = {json.loads(f.read_text(encoding="utf-8")).get("case_id") for f in SESSIONS_DIR.glob("*.json")}         if SESSIONS_DIR.is_dir() else set()
+    fresh = [c for c in pool if c["id"] not in practiced]  # prefer a case you haven't practiced
+    return random.choice(fresh or pool)["id"]
 
 
 def start(req: PracticeRequest) -> dict:
@@ -141,9 +148,12 @@ def start(req: PracticeRequest) -> dict:
     opening = (f"Hi, I'm {INTERVIEWER}, and I'll be your interviewer today. Here's the situation.\n\n{rendered['prompt']}\n\n"
                "Take a moment. Feel free to ask any clarifying questions, and when you're ready, walk me through "
                "how you'd structure the problem.")
+    now = time.time()
+    first = draft.sections[0].id if draft.sections else ""
     s = {"id": uuid.uuid4().hex[:12], "case_id": case_id, "created": datetime.now(timezone.utc).isoformat(),
-         "status": "active", "section": draft.sections[0].id if draft.sections else "", "released": [],
-         "transcript": [{"role": "interviewer", "text": opening, "exhibits": [], "at": time.time()}],
+         "status": "active", "section": first, "released": [],
+         "section_log": [{"section": first, "at": now}],
+         "transcript": [{"role": "interviewer", "text": opening, "exhibits": [], "at": now}],
          "engine": req.engine,
          "usage": {"model": generator.STRONG_MODEL if req.engine == "strong" else generator.LUNA_MODEL, "steps": []},
          "leaks_blocked": 0, "scorecard": None}
@@ -156,7 +166,10 @@ def view(s: dict) -> dict:
     """The candidate's side of a session: no answer key, only exhibits already handed over."""
     case, draft, vals, rendered = _case(s["case_id"])
     number = {e.id: i + 1 for i, e in enumerate(draft.exhibits)}
-    exhibits = [{**e, "number": number[e["id"]]} for e in rendered["exhibits"] if e["id"] in s["released"]]
+    images = case.get("images") or {}  # a converted casebook case keeps each exhibit's original image
+    exhibits = [{**e, "number": number[e["id"]]} | ({"image_url": f"/api/practice/{s['id']}/images/{e['id']}.png"}
+                                                    if e["id"] in images else {})
+                for e in rendered["exhibits"] if e["id"] in s["released"]]
     idx = next((i for i, sec in enumerate(draft.sections) if sec.id == s["section"]), 0)
     m = _meter(s)
     out = {"id": s["id"], "status": s["status"], "client": draft.client, "industry": draft.industry,
@@ -167,11 +180,83 @@ def view(s: dict) -> dict:
            "engine": s.get("engine", "luna"),
            "usage": {k: v for k, v in m.summary().items() if k != "steps"} | {"budget_usd": m.budget_usd},
            "leaks_blocked": s.get("leaks_blocked", 0), "questions_blocked": s.get("questions_blocked", 0),
-           "scorecard": s.get("scorecard"),
+           "scorecard": s.get("scorecard"), "pacing": pacing(s, draft),
            "candidate_turns": sum(t["role"] == "candidate" and not t.get("skipped") for t in s["transcript"])}
     if s["status"] == "scored":  # the title can give the answer away, so it's only shown at the end
         out.update(title=draft.title, case_id=s["case_id"])
     return out
+
+
+# ------------------------------------------------------------------------ pacing
+
+OVER_TARGET = 1.5  # a part that takes more than 1.5x its share of the case's time is flagged
+
+
+def _enter_section(s: dict, section_id: str, at: float | None = None) -> None:
+    log = s.setdefault("section_log", [])
+    if not log or log[-1]["section"] != section_id:
+        log.append({"section": section_id, "at": at or time.time()})
+
+
+def _end(s: dict) -> None:
+    s.setdefault("ended_at", time.time())
+
+
+def pacing(s: dict, draft: CaseDraft) -> dict:
+    """Time spent per part against a target: the case's own length split evenly across its parts.
+
+    Parts are numbered, never named (a section title can give the answer away)."""
+    ids = [sec.id for sec in draft.sections]
+    target_total = max(1, draft.duration_minutes) * 60
+    per_part = target_total / max(1, len(ids))
+    start = s["transcript"][0]["at"] if s["transcript"] else time.time()
+    if s["status"] == "active":
+        end = time.time()
+    else:
+        end = s.get("ended_at") or max(t.get("at", start) for t in s["transcript"])
+    log = s.get("section_log") or [{"section": ids[0] if ids else "", "at": start}]
+    spent = {sid: 0.0 for sid in ids}
+    for i, entry in enumerate(log):
+        until = log[i + 1]["at"] if i + 1 < len(log) else end
+        if entry["section"] in spent:
+            spent[entry["section"]] += max(0.0, until - entry["at"])
+    skipped_from = set()
+    for t in s["transcript"]:  # a part counts as skipped if the candidate skipped it without answering
+        if t.get("skipped"):
+            before = [e for e in log if e["at"] <= t.get("at", 0)]
+            if before:
+                skipped_from.add(before[-1]["section"])
+    current = s.get("section")
+    reached = {e["section"] for e in log}
+    parts = []
+    for k, sid in enumerate(ids, 1):
+        if s["status"] == "active" and sid == current:
+            state = "current"
+        elif sid in reached:
+            state = "done"
+        else:
+            state = "upcoming"
+        secs = round(spent.get(sid, 0.0))
+        parts.append({"part": k, "seconds": secs, "target_seconds": round(per_part), "status": state,
+                      "skipped": sid in skipped_from, "over": secs > OVER_TARGET * per_part})
+    return {"elapsed_seconds": round(end - start), "target_seconds": target_total, "running": s["status"] == "active",
+            "parts": parts}
+
+
+def _clock(sec: float) -> str:
+    sec = max(0, round(sec))
+    return f"{sec // 60}:{sec % 60:02d}"
+
+
+def pacing_text(p: dict) -> str:
+    lines = [f"Total {_clock(p['elapsed_seconds'])} against a {_clock(p['target_seconds'])} case."]
+    for part in p["parts"]:
+        if part["status"] == "upcoming":
+            lines.append(f"- Part {part['part']}: not reached")
+            continue
+        note = " (skipped)" if part["skipped"] else " (well over target)" if part["over"] else ""
+        lines.append(f"- Part {part['part']}: {_clock(part['seconds'])} (target {_clock(part['target_seconds'])}){note}")
+    return "\n".join(lines)
 
 
 def _meter(s: dict) -> generator.Meter:
@@ -342,12 +427,14 @@ async def reply(sid: str, text: str) -> dict:
                 turn.message = turn.message.replace(tok, "[your number]")
         if turn.section_id in ids and ids.index(turn.section_id) >= ids.index(s["section"]):
             s["section"] = turn.section_id
+            _enter_section(s, s["section"])
         allowed = {e for sec in draft.sections[: ids.index(s["section"]) + 1] for e in sec.exhibit_ids}
         new = [e for e in turn.release_exhibits if e in allowed and e not in s["released"]]
         s["released"].extend(new)
         s["transcript"].append({"role": "interviewer", "text": turn.message, "exhibits": new, "at": time.time()})
         if turn.case_complete:
             s["status"] = "complete"
+            _end(s)
         s["usage"]["steps"] = meter.steps
         _save(s)
         return view(s)
@@ -366,10 +453,12 @@ async def skip(sid: str) -> dict:
         case, draft, vals, rendered = _case(s["case_id"])
         ids = [sec.id for sec in draft.sections]
         i = ids.index(s["section"]) if s["section"] in ids else 0
+        skipped_at = time.time()
         s["transcript"].append({"role": "candidate", "text": "(Skipped this part without answering.)", "skipped": True,
-                                "exhibits": [], "at": time.time()})
+                                "exhibits": [], "at": skipped_at})
         if i + 1 >= len(ids):
             s["status"] = "complete"
+            _end(s)
             s["transcript"].append({"role": "interviewer", "exhibits": [], "at": time.time(),
                                     "text": "And that's the end of the case. Congratulations on making it all the way through: working a full case start to finish is exactly how you get better. Press “Score my case” and I'll walk you through how it went."})
         else:
@@ -377,6 +466,7 @@ async def skip(sid: str) -> dict:
             new = [e for e in nxt.exhibit_ids if e not in s["released"]]
             s["released"].extend(new)
             s["section"] = nxt.id
+            _enter_section(s, nxt.id, at=skipped_at + 0.001)  # strictly after the skip, so it's charged to the part skipped
             titles = {e["id"]: e["title"] for e in rendered["exhibits"]}
             handed = " ".join(f"Here's an exhibit: {titles[e]}." for e in new if e in titles)
             facts = shown.get("info_to_share") or []
@@ -386,6 +476,19 @@ async def skip(sid: str) -> dict:
                                                                      shown["ask"], data) if x)})
         _save(s)
         return view(s)
+
+
+def flag(sid: str, category: str, note: str) -> dict:
+    """Report a problem from inside an interview. The case id stays on the server, so the candidate
+    learns nothing about the case by reporting."""
+    s = load(sid)
+    if s is None:
+        raise KeyError(sid)
+    case, draft, vals, rendered = _case(s["case_id"])
+    ids = [sec.id for sec in draft.sections]
+    part = ids.index(s["section"]) + 1 if s["section"] in ids else 1
+    generator.add_flag(s["case_id"], category, note, where=f"Practice, part {part}", source="practice")
+    return {"ok": True}
 
 
 async def score(sid: str) -> dict:
@@ -399,10 +502,14 @@ async def score(sid: str) -> dict:
             raise ValueError("Answer at least one question before asking for a score.")
         case, draft, vals, rendered = _case(s["case_id"])
         meter = _meter(s)
+        if s["status"] == "active":  # scored before the end: the clock stops at the last message
+            s["ended_at"] = max(t.get("at", 0) for t in s["transcript"])
         card = await generator._ask(
             meter, "scorer", "Score the interview",
             "# Interviewer guide\n" + generator._review_text(rendered)
-            + f"\n\n# Transcript\n{_transcript_text(s)}\n\nScore this interview.", agent=_agents(meter.model)["scorer"])
+            + f"\n\n# Transcript\n{_transcript_text(s)}"
+            + f"\n\n# Pacing (measured by the app)\n{pacing_text(pacing({**s, 'status': 'complete'}, draft))}"
+            + "\n\nScore this interview.", agent=_agents(meter.model)["scorer"])
         s["scorecard"], s["status"] = card.model_dump(), "scored"
         s["usage"]["steps"] = meter.steps
         _save(s)

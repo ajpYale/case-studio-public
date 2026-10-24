@@ -36,12 +36,15 @@
 
 <section class="title">
   <p class="eyebrow">MGT 409 · Final Project · Andrew Perlowin</p>
+  <p style="border:2px solid #bd5319;background:#fbeee6;color:#1f1f1f;padding:10px 14px;border-radius:6px;margin:0 0 18px;font-size:0.5em;max-width:600px"><b>Work in progress: please do not grade this deck.</b>
+  It is from the <code>post-submission</code> branch, where I'm continuing to build the app. The graded submission is the
+  <code>main</code> branch, unchanged since the deadline.</p>
   <h1 style="font-size:2.6em;margin:0">McKennel &amp; Co.</h1>
   <div class="bar"></div>
   <p class="sub" style="max-width:600px">AI agents that write complete, interviewer-ready consulting practice cases on demand,
   with an answer key checked by code, and then interview you on them.</p>
   <img src="screenshots/shell/shell-run.png" alt="" style="position:absolute;right:0;top:120px;width:470px;border:1px solid #ddd;box-shadow:0 6px 20px rgba(0,0,0,.08)">
-  <p class="note" style="margin-top:40px">Repo: <a href="https://github.com/ajpYale/case-studio">github.com/ajpYale/case-studio</a> (private) · Public copy: <a href="https://github.com/ajpYale/case-studio-public">github.com/ajpYale/case-studio-public</a><br>Runs locally in ~5 minutes</p>
+  <p class="note" style="margin-top:40px">Repo: <a href="https://github.com/ajpYale/case-studio">github.com/ajpYale/case-studio</a> (private) · Public copy: <a href="https://github.com/ajpYale/case-studio-public">github.com/ajpYale/case-studio-public</a><br>Runs locally in ~5 minutes · this deck: the <code>post-submission</code> branch</p>
 </section>
 
 <section>
@@ -173,7 +176,7 @@
 </section>
 
 <section>
-  <h2>Demo: the run room, with 3 cases in parallel</h2>
+  <h2>Demo: the Bulldog Case Generator (BCG), 3 cases in parallel</h2>
   <div class="cols">
     <img class="shot" src="screenshots/batch/03-running-75s.png" alt="Run room">
     <img class="shot" src="screenshots/final-io-guide.png" alt="Interviewer guide">
@@ -272,7 +275,8 @@
         <li><b>Invented numbers</b> caught by 29 code checks</li>
         <li><b>Answer-key leaks</b>: key never sent to the browser; code leak guard on every reply</li>
         <li><b>Overspending</b>: per-call, per-case and daily caps; Sol asks every run</li>
-        <li><b>36 automated safety tests</b>, no model calls, all passing</li>
+        <li><b>Network guard</b>: other devices see only a live case's read-only view</li>
+        <li><b>67 automated tests</b> (38 safety, 27 new features, 2 pages), no model calls, all passing</li>
       </ul>
     </div>
     <div>
@@ -302,6 +306,89 @@
 </section>
 
 <section>
+  <h2>Since submission: from case writer to practice platform</h2>
+  <div class="cols">
+    <ul>
+      <li><b>Solver check:</b> an agent works each case from the candidate's side; misses go back to the writer</li>
+      <li><b>Live partner mode:</b> the candidate follows on a phone or second computer via QR code</li>
+      <li><b>Casebook cases:</b> 450 real cases, converted on demand into full, checked cases</li>
+    </ul>
+    <ul>
+      <li><b>Practice:</b> an interview clock, pacing, progress over time with a suggested next case</li>
+      <li><b>Flag a problem:</b> user reports reach the reviewer for future cases</li>
+      <li><b>Reliability:</b> jobs survive restarts; PDFs without Edge; clearable board</li>
+    </ul>
+  </div>
+  <p class="note" style="color:#bd5319"><b>Ongoing work, not graded:</b> all on the <code>post-submission</code> branch;
+  <code>main</code> is the graded submission, unchanged.</p>
+</section>
+
+<section>
+  <h2>A solver agent checks the key from the candidate's side</h2>
+  <div class="cols">
+    <div>
+      <ul>
+        <li>Gets only what the candidate gets: prompt, clarifying answers, shared facts, exhibits. Never the key.</li>
+        <li>Code compares its answers with the key; a miss means a missing fact or a question that reads two ways</li>
+        <li>7 Luna test cases: <b>1 real gap caught</b> (a hurdle defined two ways, $1.7M vs $0.5M), fixed for ½¢</li>
+        <li>Costs <b>4–7%</b> of a case</li>
+      </ul>
+    </div>
+    <img class="shot" src="screenshots/post/solver-check.png" alt="Solver check" style="max-height:440px">
+  </div>
+</section>
+
+<section>
+  <h2>Live partner mode: run any case with a classmate</h2>
+  <div class="cols">
+    <div>
+      <img class="shot" src="screenshots/post/live-host.png" alt="Interviewer's live panel" style="max-height:200px">
+      <ul style="margin-top:18px">
+        <li>The interviewer keeps the guide; the candidate scans a QR code</li>
+        <li>They see only the prompt and the exhibits you release, live</li>
+        <li>No model calls; other devices can reach nothing else (403)</li>
+      </ul>
+    </div>
+    <img class="shot" src="screenshots/post/live-phone.png" alt="Candidate's phone" style="max-height:470px">
+  </div>
+</section>
+
+<section>
+  <h2>Real casebook cases, run like generated ones</h2>
+  <div class="cols">
+    <div>
+      <table>
+        <thead><tr><th>Step</th><th>Measured</th></tr></thead>
+        <tbody>
+          <tr><td>Find exhibits (Luna vision + crop snapping)</td><td>Counts match the annotations in 4 of 5 cases</td></tr>
+          <tr><td>Convert faithfully, check every number</td><td>9 cases · 0.5–2.2¢ · ~2 min · all checks pass</td></tr>
+          <tr><td>Independent review</td><td>3–8 major notes per case on the casebook itself</td></tr>
+          <tr><td>All 450 cases</td><td>About $4.50–$11</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Original exhibit images by default (exact), redrawn charts on a toggle. Casebooks stay on the user's computer.</p>
+    </div>
+    <img class="shot" src="screenshots/post/convert-all-confirm.png" alt="Convert all confirmation" style="max-height:300px">
+  </div>
+</section>
+
+<section>
+  <h2>Practice that keeps score over time</h2>
+  <div class="cols">
+    <div>
+      <img class="shot" src="screenshots/post/progress.png" alt="Progress" style="max-height:330px">
+      <p class="cap">Skills across interviews, trends, and the next case to practice. Clearing is archived and undoable.</p>
+    </div>
+    <div>
+      <img class="shot" src="screenshots/post/practice-clock.png" alt="Interview clock" style="max-height:60px">
+      <p class="cap">An interview clock against each part's share of the case.</p>
+      <img class="shot" src="screenshots/post/flag-dialog.png" alt="Flag a problem" style="max-height:230px;margin-top:18px">
+      <p class="cap">Flag a problem: open reports reach the reviewer agent for future cases.</p>
+    </div>
+  </div>
+</section>
+
+<section>
   <h2>Limits and next steps</h2>
   <div class="cols">
     <div>
@@ -310,15 +397,17 @@
         <li>Luna is not reliable on Hard and Instant Offer (5 of 7 had a major issue); use Second opinion or Stronger</li>
         <li>AI review samples problems; it can't prove there are none</li>
         <li>Handsome Dan's voice is the browser's; insight leaks are rule-based, not code-guarded</li>
-        <li>Local, single-user; 2 of 15 runs hit gateway errors</li>
+        <li>Local, single-user; live mode only on the same network</li>
+        <li>Converted casebook cases keep the casebook's own flaws, on purpose</li>
       </ul>
     </div>
     <div>
       <p class="eyebrow">Next</p>
       <ul>
-        <li>Give Handsome Dan a voice, and test him on saved transcripts</li>
-        <li>Hosted club library with member ratings as the quality signal</li>
-        <li>Two independent cheap reviewers before a case counts as verified</li>
+        <li>Number checks during practice: Handsome Dan reacts to a wrong result without giving the answer</li>
+        <li>Hosted club library with sign-in; members run the club's casebook cases but can't download them</li>
+        <li>Terra audit of new Hard cases to measure the solver (~25¢)</li>
+        <li>Browser tests in CI</li>
       </ul>
     </div>
   </div>

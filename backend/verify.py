@@ -284,15 +284,22 @@ def _cell_text(ex: Exhibit, row, j: int, value, units: list[str], vals: Values) 
     return fmt(value, unit)
 
 
+_TOTAL_ROW = re.compile(r"^(?:grand\s+|sub-?)?total\b|^sum\b", re.I)  # "Total", "Subtotal", "Sum" - not "Summary"
+
+
 def _total_checks(ex: Exhibit, grid: list[list]) -> list[Issue]:
     issues = []
     labels = [r.label.strip().lower() for r in ex.rows]
+    start = 0  # a table can hold several blocks, each ending in its own total row
     for i, lab in enumerate(labels):
-        if lab.startswith(("total", "sum")) and i > 0:
+        if _TOTAL_ROW.match(lab):
+            block, start = (start, i), i + 1
+            if block[1] - block[0] < 1:
+                continue
             for col in range(len(ex.columns) - 1):
                 if column_unit(ex, col) in ("pct", "ratio", "multiple", "per_unit_usd"):
                     continue
-                parts = [g[col] for g in grid[:i] if col < len(g) and isinstance(g[col], float)]
+                parts = [g[col] for g in grid[block[0]:block[1]] if col < len(g) and isinstance(g[col], float)]
                 tot = grid[i][col] if col < len(grid[i]) else None
                 if isinstance(tot, float) and len(parts) >= 2:
                     s = sum(parts)
@@ -345,7 +352,9 @@ def _fill_all(obj, vals: Values):
     return obj
 
 
-def check(draft: CaseDraft) -> tuple[Values, list[Issue]]:
+def check(draft: CaseDraft, design: bool = True) -> tuple[Values, list[Issue]]:
+    """All the code checks. `design=False` skips the rules for writing new cases (size per level, pushback,
+    hints, chart mix), e.g. for a casebook case converted as it is; every number check still runs."""
     vals, issues = compute(draft)
 
     for path, text in _walk_text(draft.model_dump()):
@@ -398,26 +407,27 @@ def check(draft: CaseDraft) -> tuple[Values, list[Issue]]:
         if v.role == "input" and v.name not in referenced:
             issues.append(Issue("minor", f"variable {v.name}", "defined but never used (mark it 'distractor' if intentional)"))
 
-    n_sec, n_ex, n_calc = SHAPE[draft.difficulty]
     calcs = sum(len(s.calculations) for s in draft.sections)
-    if len(draft.sections) < n_sec or len(draft.exhibits) < n_ex or calcs < n_calc:
-        issues.append(Issue("major", "case shape",
-                            f"{draft.difficulty} needs at least {n_sec} sections, {n_ex} exhibits and {n_calc} calculations; "
-                            f"this has {len(draft.sections)}, {len(draft.exhibits)} and {calcs}"))
-    if draft.difficulty == "instant_offer" and not any(
-            re.search(r"exceptional|offer", f"{r.dimension} {r.strong}", re.I) for r in draft.rubric):
-        issues.append(Issue("major", "rubric", "Instant Offer needs a rubric line that separates strong from exceptional "
-                                               "(offer-on-the-spot) performance"))
-    if draft.difficulty in ("hard", "instant_offer"):
-        pushbacks = sum(len(s.pushback) for s in draft.sections)
-        if pushbacks < 2:
-            issues.append(Issue("major", "pushback", f"{draft.difficulty} needs at least two interviewer pushback "
-                                                     f"challenges with what a strong candidate says; this has {pushbacks}"))
-        quant = [s for s in draft.sections if s.calculations]
-        if quant and sum(1 for s in quant if s.hints) < len(quant) / 2:
-            issues.append(Issue("minor", "hints", "give hints for most quantitative sections"))
-    if draft.difficulty != "easy" and draft.exhibits and all(e.kind in ("table", "text") for e in draft.exhibits):
-        issues.append(Issue("minor", "exhibits", "no charts — turn a trend or comparison into a line or bar chart"))
+    if design:
+        n_sec, n_ex, n_calc = SHAPE[draft.difficulty]
+        if len(draft.sections) < n_sec or len(draft.exhibits) < n_ex or calcs < n_calc:
+            issues.append(Issue("major", "case shape",
+                                f"{draft.difficulty} needs at least {n_sec} sections, {n_ex} exhibits and {n_calc} calculations; "
+                                f"this has {len(draft.sections)}, {len(draft.exhibits)} and {calcs}"))
+        if draft.difficulty == "instant_offer" and not any(
+                re.search(r"exceptional|offer", f"{r.dimension} {r.strong}", re.I) for r in draft.rubric):
+            issues.append(Issue("major", "rubric", "Instant Offer needs a rubric line that separates strong from exceptional "
+                                                   "(offer-on-the-spot) performance"))
+        if draft.difficulty in ("hard", "instant_offer"):
+            pushbacks = sum(len(s.pushback) for s in draft.sections)
+            if pushbacks < 2:
+                issues.append(Issue("major", "pushback", f"{draft.difficulty} needs at least two interviewer pushback "
+                                                         f"challenges with what a strong candidate says; this has {pushbacks}"))
+            quant = [s for s in draft.sections if s.calculations]
+            if quant and sum(1 for s in quant if s.hints) < len(quant) / 2:
+                issues.append(Issue("minor", "hints", "give hints for most quantitative sections"))
+        if draft.difficulty != "easy" and draft.exhibits and all(e.kind in ("table", "text") for e in draft.exhibits):
+            issues.append(Issue("minor", "exhibits", "no charts — turn a trend or comparison into a line or bar chart"))
     leaks = [p for p, t in _walk_text(draft.model_dump())
              if re.search(r"\b(corrected|revised|fixed) (exhibit|version|case|key|answer|figure|number)", t, re.I)]
     unreal = [p for p, t in _walk_text(draft.model_dump())
@@ -428,7 +438,7 @@ def check(draft: CaseDraft) -> tuple[Values, list[Issue]]:
     if leaks:
         issues.append(Issue("major", leaks[0], "text mentions corrections or earlier versions; the case must read as a finished original"))
     x_sec, x_ex, x_calc = SHAPE_MAX[draft.difficulty]
-    if len(draft.sections) > x_sec or len(draft.exhibits) > x_ex or calcs > x_calc:
+    if design and (len(draft.sections) > x_sec or len(draft.exhibits) > x_ex or calcs > x_calc):
         issues.append(Issue("major", "case shape",
                             f"{draft.difficulty} should have at most {x_sec} sections, {x_ex} exhibits and {x_calc} calculations; "
                             f"this has {len(draft.sections)}, {len(draft.exhibits)} and {calcs}. Cut supporting arithmetic "
@@ -507,6 +517,9 @@ def _availability_issues(draft: CaseDraft, vals: Values) -> list[Issue]:
 
     for s in draft.sections:
         texts += [s.ask, *s.info_to_share]  # the ask is read aloud, so its numbers are given too
+        # a text handout's body is read by the candidate, so its numbers are given once it's handed out
+        texts += [ex_by_id[e].text_body or "" for e in s.exhibit_ids
+                  if e in ex_by_id and e not in handed and ex_by_id[e].kind == "text"]
         handed |= set(s.exhibit_ids)
         raw = "\n".join(texts)
         filled_tokens = _ANY_NUMBER.findall(fill(raw, vals))

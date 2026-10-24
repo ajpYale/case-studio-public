@@ -199,6 +199,19 @@ class Review(BaseModel):
     summary: str
 
 
+class SolverAnswer(BaseModel):
+    id: str = Field(description="The id of the result, exactly as listed.")
+    value: float | None = Field(description="Your result in the unit stated for that step (pct as a fraction: 0.25 "
+                                "means 25%; usd_m in millions). null only if it can't be worked out at all.")
+    working: str = Field(description="One line of arithmetic showing the inputs you used, e.g. '1,200 x $45 = $54,000'.")
+    missing: str | None = Field(None, description="If a number you needed was never given, or the question can be read "
+                                "two ways, say exactly what; otherwise null.")
+
+
+class SolverOutput(BaseModel):
+    answers: list[SolverAnswer]
+
+
 # ----------------------------------------------------------------------------- API
 
 

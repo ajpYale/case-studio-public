@@ -81,6 +81,12 @@
 <h1>McKennel &amp; Co.</h1>
 <p class="lede">An AI agent team that writes complete, interviewer-ready consulting practice cases on demand, at the
 difficulty you ask for, checks every number in the answer key with code, and then interviews you on them.</p>
+<div style="border:2px solid #bd5319;background:#fbeee6;color:#1f1f1f;padding:10px 14px;border-radius:6px;margin:14px 0;font-size:13px">
+  <b>Work in progress: please do not grade this version.</b> This report is from the <code>post-submission</code> branch,
+  where I am continuing to build the app after the course. The graded submission is the
+  <a href="https://github.com/ajpYale/case-studio/tree/main"><code>main</code> branch</a> and its report, both unchanged since the deadline. Section 7 covers
+  the new work; it is ongoing and may change.
+</div>
 <div class="links">
   <div><b>Author:</b> Andrew Perlowin</div>
   <div><b>Repository:</b> <a href="https://github.com/ajpYale/case-studio">https://github.com/ajpYale/case-studio</a> (private; access granted to zlisto)</div>
@@ -95,7 +101,7 @@ difficulty you ask for, checks every number in the answer key with code, and the
   <div class="kpi"><b>1–6¢</b><span>measured cost per case on Luna, Easy to Instant Offer</span></div>
   <div class="kpi"><b>½–1¢</b><span>measured cost of a full practice interview with Handsome Dan, scoring included</span></div>
   <div class="kpi"><b>35%</b><span>of free online casebook cases I audited had a wrong key or flawed premise</span></div>
-  <div class="kpi"><b>36</b><span>automated safety and correctness tests, all passing</span></div>
+  <div class="kpi"><b>67</b><span>automated tests (38 safety, 27 for the new features, 2 page checks), all passing</span></div>
 </div>
 
 <!-- 2. MOTIVATION -->
@@ -352,13 +358,15 @@ until the interview is scored.</p>
   <figure><img src="screenshots/practice/iv1-good-scorecard.png" alt="Scorecard"><figcaption>The Scorer's report for the strong candidate: rubric scores with quoted evidence and a math check against the key. The case title is revealed only now.</figcaption></figure>
 </div>
 
-<h3>The front end: a Handsome Dan run room</h3>
-<p>The app has three rooms in Yale blue, with Handsome Dan as the mascot and bulldog tiers for difficulty (Puppy, Bulldog,
-Top Dog, Handsome Dan). In the <b>Run room</b>, the user starts 1–6 cases at once (or "one of each level"). Each case gets a
+<h3>The front end: BCG, BAIN and Practice</h3>
+<p>The app has three tabs in Yale blue, with Handsome Dan as the mascot and bulldog tiers for difficulty (Puppy, Bulldog,
+Top Dog, Handsome Dan). The tabs show short names and expand to the full joke on hover or when selected. In the
+<b>Bulldog Case Generator (BCG)</b>, the user starts 1–6 cases at once (or "one of each level"). Each case gets a
 live card showing the step and agent in flight, the seconds on the current call, tokens in and out, the cache rate,
-dollars spent against the case's cap, and the elapsed time. A strip at the top totals running and queued cases and the
-session's spend. The <b>Library</b> shows each case's verification and second-opinion status. <b>Practice with Handsome Dan</b> is the
-interview above. Handsome Dan's eyes follow the pointer and a small Handsome Dan trots after the cursor; non-Yale visitors get an
+dollars spent against the case's cap, and the elapsed time; finished cards can be cleared from the board. A strip at the
+top totals running and queued cases and the session's spend. The <b>Bulldog Archive of INterviews (BAIN)</b> has two
+sub-tabs: <i>Generated cases</i>, with each case's verification, solver and second-opinion status, and <i>Casebook
+cases</i> (section 7). <b>Practice with Handsome Dan</b> is the interview above. Handsome Dan's eyes follow the pointer and a small Handsome Dan trots after the cursor; non-Yale visitors get an
 in-browser Bulldog Security Forces joke page. In practice, candidates can dictate replies, and Handsome Dan can read
 the prompt or every reply aloud in a regal or a calm voice (browser speech, no extra cost).</p>
 <figure><img src="screenshots/batch/03-running-75s.png" alt="Run room"><figcaption>A real batch of 3 Easy cases running in parallel, 75 seconds in: each card shows the agent working right now and the live cost.</figcaption></figure>
@@ -527,8 +535,8 @@ and each is tested by an automated test, a screenshot, or both.</p>
   <figure><img src="screenshots/daily-budget-refused.png" alt="Daily budget refused"><figcaption>The daily-budget kill-switch firing (test server with <code>CASEGEN_DAILY_USD_BUDGET=0</code>).</figcaption></figure>
 </div>
 <h3>The defenses, tested</h3>
-<p>The repo includes 36 automated safety tests (<code>tests/test_safety.py</code>) that exercise every defense without calling a model, so anyone can run
-them in 2 seconds. Run on a fresh clone:</p>
+<p>The repo includes 38 automated safety tests (<code>tests/test_safety.py</code>) that exercise every defense without calling a model, so anyone can run
+them in 2 seconds; the features added since the submission have 27 more (<code>tests/test_improvements.py</code>, section 7). The submission's run:</p>
 <table><thead><tr><th>Defense</th><th class="num">Tests</th><th>What the tests check</th></tr></thead><tbody><tr><td><b>Prompt injection in the notes field</b></td><td class="num">10</td><td>injection notes are blocked before any model call; notes reach the model fenced as data; ordinary notes pass the screen</td></tr><tr><td><b>Code execution through formulas</b></td><td class="num">7</td><td>formula evaluator does arithmetic; formula evaluator rejects anything but arithmetic</td></tr><tr><td><b>Invented or wrong numbers, unreal wording</b></td><td class="num">6</td><td>answer text with an invented number is caught; case text calling itself fictional is caught; formula that disagrees with its expected value is caught; input missing from its exhibit is caught; math a candidate cannot do by hand is caught; sample case passes all number checks</td></tr><tr><td><b>Practice with Handsome Dan: answer leaks, coaching questions, caps</b></td><td class="num">7</td><td>leak guard allows inputs and numbers the candidate said; leak guard blocks a result the candidate still has to calculate; leak guard reads spelled out millions; practice messages are length capped; practice refuses once the daily budget is spent; practice session never sends the answer key to the browser; question guard allows only the cases own questions</td></tr><tr><td><b>Overspending</b></td><td class="num">5</td><td>case stops when it reaches its budget; cost is computed from course prices; expensive model needs explicit confirmation; server refuses new cases once the daily budget is spent; server refuses to queue more than the cap</td></tr><tr><td><b>Data leakage</b></td><td class="num">1</td><td>api never exposes keys</td></tr></tbody></table>
 <pre>$ python -m pytest -q tests/test_safety.py
 ....................................  [100%]
@@ -602,8 +610,118 @@ paid tools: undergraduate clubs, students at schools without large casebook libr
 <b>education-access</b> benefit as much as a financial one.</p>
 
 
+<!-- 7a. SINCE SUBMISSION -->
+<h2>7. Since submission</h2>
+<p>After the graded submission I kept using the app and built the next steps it pointed to. Everything here is on the
+<code>post-submission</code> branch, measured the same way as sections 3 to 6, and covered by automated tests.
+<b>This section is ongoing work, not part of the graded submission.</b></p>
+
+<h3>A solver agent: can a candidate actually reach the key?</h3>
+<p>Section 6 showed that model reviewers miss premise gaps: the key relies on a fact the candidate is never given, or a
+question reads two ways. So the pipeline now has a <b>Solver</b> agent between the number checks and the reviews. It gets
+only the candidate's side of the case (prompt, clarifying answers, shared facts, exhibits), never the key, and works out
+every listed result. Code compares its answers with the key; each miss goes back to the writer with the solver's own
+working and what it found missing, and a final solve runs if the case changed afterwards.</p>
+<table class="compact">
+  <thead><tr><th>7 Luna test cases (1 Easy, 1 Medium, 3 Hard, 2 Instant Offer)</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Solver cost</td><td>0.09–0.26¢ per case, 4–7% of the case's cost</td></tr>
+    <tr><td>Real gaps caught on the first solve</td><td>1: an Instant Offer case defined a cash-flow hurdle both before and after fixed costs ($1.7M vs $0.5M). The writer made it consistent for half a cent.</td></tr>
+    <tr><td>Final solve</td><td>Every result reached in all 7 cases; 5 Verified, 2 with reviewer flags</td></tr>
+  </tbody>
+</table>
+<p>The solver is Luna, like the writer, so it can share the writer's blind spots, and it is told which results to
+compute. Whether it lowers the "5 of 7" major-issue rate needs the same Terra audit on new Hard cases (about 25¢).</p>
+<figure class="half"><img src="screenshots/post/solver-check.png" alt="Solver check in the Quality tab" style="max-height:2.6in"><figcaption>The Quality tab of a generated Instant Offer case: the solver reached all 24 results; its first attempt missed one, which went back to the writer.</figcaption></figure>
+
+<h3>Live partner mode</h3>
+<p>Most practice happens in pairs, so a case can now be run live. The interviewer keeps the full guide; the candidate
+scans a QR code or opens a link on a phone or a second computer and sees only what the interviewer hands over: the
+prompt once it's shown and each exhibit when it's released, updated every two seconds. It makes no model calls. To reach
+other devices the server runs with <code>--host 0.0.0.0</code>, so a <b>network guard</b> limits every other device to
+that read-only view and the images of released exhibits; everything that spends money or shows a key answers them with
+403 (tested). I tested it on a phone-sized screen and on a second computer on the same Wi-Fi.</p>
+<div class="two">
+  <figure><img src="screenshots/post/live-host.png" alt="Live panel, interviewer side"><figcaption>The interviewer's live panel: QR code, link, show the prompt, release exhibits one by one.</figcaption></figure>
+  <figure><img src="screenshots/post/live-phone.png" alt="Candidate's phone" style="max-height:2.6in"><figcaption>The candidate's phone: the prompt and one released exhibit, never the guide or the title.</figcaption></figure>
+</div>
+
+<h3>Casebook cases, run like generated ones</h3>
+<p>BAIN's <i>Casebook cases</i> sub-tab lists the 450 real casebook cases the knowledge pack was built from (search and
+filter by level, casebook, case type, and whether converted). <b>Convert</b> turns one into a full case in three steps.
+First, Luna looks at every page image and boxes the candidate-facing exhibits (about 0.03¢ a page), and code snaps each
+box to the PDF's own drawing objects so the crop hugs the chart or table. Second, Luna converts the case faithfully into
+the app's format: the casebook's story, numbers, questions, exhibits and answers, with every number as a checked formula.
+Third, the number checks run with up to two fix rounds (a round that makes things worse is thrown away) and one
+independent review. The converted case then runs exactly like a generated one: <b>Give Case</b> starts live mode,
+practice with Handsome Dan, PDF, flags. <b>Convert all shown</b> converts a whole filter after a confirmation that shows
+the count, the cost and today's remaining budget, stops by itself at the daily cap, and can be resumed.</p>
+<div class="two">
+<table class="compact">
+  <thead><tr><th>Measured on real casebook cases</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr><td>Exhibit finder vs the training annotations (5 cases)</td><td>Same count in 4; one page with two charts counted twice; a case without exhibits correctly had none</td></tr>
+    <tr><td>Conversions (9 cases)</td><td>0.5–2.2¢ each (1.4¢ average), about 2 minutes; every number check passes</td></tr>
+    <tr><td>Independent review</td><td>3–8 major notes per case on the casebook content itself, consistent with the 35% flaw rate in section 1</td></tr>
+    <tr><td>Exhibits kept as the casebook's original image</td><td>22 of 23</td></tr>
+    <tr><td>All 450 cases</td><td>About $4.50–$11 on Luna</td></tr>
+  </tbody>
+</table>
+  <figure><img src="screenshots/post/convert-all-confirm.png" alt="Convert all confirmation"><figcaption>Converting a whole casebook asks first, with the count, the cost and the budget.</figcaption></figure>
+</div>
+<p><b>Original or redrawn exhibits?</b> Each converted exhibit keeps the casebook's crop and the app's own redrawn
+chart or table. Comparing all 25 side by side, the redraw was exact for simple charts and tables but merged two stacked
+charts, read a line chart approximately, and fell back to text when it couldn't redraw. The original is therefore the
+default, with a toggle; the redrawn data is what lets Handsome Dan, the reviewer and the number checks read the exhibit.
+The casebooks are copyrighted, so they, the crops and the converted cases stay on the user's computer and out of the repo;
+nothing in this report shows casebook content.</p>
+
+<h3>Practice: pacing, progress and problem reports</h3>
+<ul>
+  <li><b>Pacing.</b> A clock in the interview shows time on the current part against an even share of the case's length;
+    the scorecard has a pacing table, and the scorer mentions pacing only when a part ran well over.</li>
+  <li><b>Progress over time.</b> Scored interviews are grouped into four skills (each case's rubric names its own
+    dimensions, so they're mapped by keyword), with trends, the case types practiced, and a suggested next case aimed at
+    the weakest recent skill. <b>Clear my progress</b> archives the history instead of deleting it, and <b>Undo</b> brings back
+    the most recent clear (tested, including two clears in a row).</li>
+  <li><b>Flag a problem.</b> From a case, an interview or a scorecard, a user reports a wrong number, a missing fact or an
+    unclear question. Reports are screened like notes, listed in the Quality tab, and open ones are shown to the reviewer
+    agent when new cases are written.</li>
+</ul>
+<div class="three">
+  <figure><img src="screenshots/post/practice-clock.png" alt="Interview clock"><figcaption>The interview clock: total and current part against target.</figcaption></figure>
+  <figure><img src="screenshots/post/progress.png" alt="Progress"><figcaption>Progress: skills, trends and the next case to practice.</figcaption></figure>
+  <figure><img src="screenshots/post/flag-dialog.png" alt="Flag a problem"><figcaption>Flag a problem, from any case or interview.</figcaption></figure>
+</div>
+
+<h3>Reliability</h3>
+<ul>
+  <li><b>Restarts.</b> The job board is saved to disk; after a restart an unfinished Luna case starts over with its earlier
+    spend still counted, an expensive one waits for the user to retry and confirm, and a batch conversion resumes. Tested
+    for real by restarting the server mid-case.</li>
+  <li><b>PDFs without Edge.</b> Print / Save as PDF uses the browser's own print dialog; a server without Edge or Chrome
+    (or with server PDFs switched off) hides the server buttons.</li>
+  <li><b>Bugs the new work surfaced, now fixed and tested:</b> concurrent page renders crashed the PDF library (now one at a
+    time); the total-row check misread "Summary" rows and summed across two blocks of one table, a fix that applies to
+    every case; finished cases were marked failed when Windows held an Edge temp file; the importer at first applied the
+    size rules for new cases to casebook cases, kept a worse draft after a bad fix round, and paired an image with the
+    wrong exhibit.</li>
+</ul>
+
+<h3>What the new features cost, and the new safety rules</h3>
+<table class="compact">
+  <thead><tr><th>Feature</th><th>Cost</th><th>Safety</th></tr></thead>
+  <tbody>
+    <tr><td>Solver check</td><td>0.09–0.26¢ per case</td><td>Bounded: one fix round, one final solve; a solver error never fails a case (only the usual budget caps stop it)</td></tr>
+    <tr><td>Live partner mode</td><td>Free</td><td>Network guard: other devices get only the read-only view; unguessable links</td></tr>
+    <tr><td>Exhibit finder + conversion</td><td>1–2.5¢ per casebook case</td><td>$0.50 cap per conversion; confirmation and daily cap for batches; casebook files served only to this computer</td></tr>
+    <tr><td>Pacing, progress, flags</td><td>Free</td><td>Flags screened for prompt injection; clearing progress is archived and undoable</td></tr>
+  </tbody>
+</table>
+
+
 <!-- 8. LIMITS -->
-<h2>7. Limits and next steps</h2>
+<h2>8. Limits and next steps</h2>
 <h3>What doesn't work yet</h3>
 <ul>
   <li><b>Luna is not powerful enough for reliable Hard and Instant Offer cases.</b> 5 of 7 needed fixes that Luna's own review
@@ -614,26 +732,28 @@ paid tools: undergraduate clubs, students at schools without large casebook libr
     that is guaranteed, and they only cover arithmetic and data consistency, not judgement.</li>
   <li><b>Real-world facts are not checked.</b> The client is fictional, but industry mechanics and magnitudes come from the model.
     The reviewer checks plausibility; nothing checks facts against a source.</li>
-  <li><b>Handsome Dan is text-only and only tested in two interviews.</b> There's no voice yet, so it doesn't feel like a live interview.
-    He gave away one qualitative insight before the prompt was tightened, and the code guard only covers numbers.</li>
-  <li><b>Single-user, local app.</b> No accounts, no shared club library, no hosting. The spend ledger and budget are per
-    installation.</li>
+  <li><b>Handsome Dan's voice is the browser's.</b> Dictation and read-aloud use built-in browser speech, so quality varies by
+    browser. He gave away one qualitative insight before the prompt was tightened, and the code guard only covers numbers.</li>
+  <li><b>Single-user, local app.</b> No accounts, no shared club library, no hosting. Live mode reaches other devices only
+    on the same network, and progress, the spend ledger and the budget are per installation.</li>
+  <li><b>Converted casebook cases keep the casebook's flaws.</b> The conversion is faithful on purpose, so the review's notes
+    on a casebook case are shown, not fixed. Redrawn exhibits can be approximate, which is why the original is the default.</li>
   <li><b>The knowledge pack can't be rebuilt from the repo</b>, because the casebooks are copyrighted and not included. The
     distilled pack itself contains no casebook text.</li>
-  <li><b>PDF export needs Edge or Chrome</b> on the machine. Without one, the case is still saved and the app says so.</li>
   <li><b>Gateway errors happen.</b> One of my test runs died on an HTTP 500 from the API gateway. The app now retries 5xx errors
     with a backoff, but a long outage will still fail the run.</li>
 </ul>
 <h3>What I'd build next</h3>
 <ol>
-  <li><b>Give Handsome Dan a voice</b> (speech in and out) and test him on a set of saved transcripts, so changes to his rules are measured
-    instead of hoped for.</li>
-  <li><b>A hosted club library</b> with sign-in, where members rate cases after running them. Those ratings become the
-    real-user quality signal and feed back into the knowledge pack.</li>
-  <li><b>Two independent reviewers</b> on the cheap model (different prompts) and stop only when both are clean. That attacks
-    the sampling problem above at Luna prices.</li>
-  <li><b>Score drills over time:</b> keep each user's scorecards and show progress by rubric dimension and case type.</li>
-  <li><b>Case-type coverage reports:</b> show which case types and industries a member has practiced and suggest what's missing.</li>
+  <li><b>Number checks during practice:</b> when the candidate states a result, code compares it with the key and Handsome
+    Dan reacts the way a real interviewer would, without giving the answer.</li>
+  <li><b>A hosted club library</b> with sign-in, where members rate cases after running them and see the club's casebook cases
+    without being able to download them. Those ratings become the real-user quality signal.</li>
+  <li><b>Measure the solver:</b> run the Terra audit from section 4 on new Hard and Instant Offer cases (about 25¢) to see whether
+    the "5 of 7" major-issue rate falls.</li>
+  <li><b>Two independent reviewers</b> on the cheap model (different prompts) and stop only when both are clean.</li>
+  <li><b>Browser tests in CI:</b> several bugs since the submission were in the interface, which the current tests don't
+    exercise. Automated browser tests on every push would catch them.</li>
 </ol>
 
 

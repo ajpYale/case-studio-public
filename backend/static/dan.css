@@ -107,8 +107,9 @@ details.more summary { cursor: pointer; font-size: 13px; font-weight: 600; color
 .badge.ok { background: #eef3e3; color: var(--green); }
 .badge.warn { background: #fbeee6; color: var(--orange); }
 .lib-card .summary { font-size: 13px; color: var(--ink-soft); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.lib-card .actions { display: flex; gap: 8px; margin-top: 4px; }
-.lib-card .actions .btn { padding: 6px 12px; font-size: 13px; }
+.lib-card .actions { display: flex; gap: 6px; margin-top: 4px; }
+/* Compact, so a card's three buttons (Open full case, Give Case, Raw PDF) fit on one line even at the narrowest card. */
+.lib-card .actions .btn { padding: 5px 9px; font-size: 12px; }
 
 /* ------------------------------------------------------------ practice */
 .practice-start { max-width: 760px; margin: 10px auto; display: grid; gap: 16px; }
@@ -255,3 +256,152 @@ body.viewer-open #dan-buddy, body.viewer-open #dan-unleash { display: none !impo
 .dan-wrap { user-select: none; -webkit-user-select: none; }
 #dan-buddy { user-select: none; -webkit-user-select: none; }
 
+
+/* ---- pacing: the interview clock */
+.iv-timer { display: flex; gap: 10px; align-items: center; font: 600 12.5px var(--sans); color: var(--ink-soft); white-space: nowrap; }
+.iv-timer .part-time { padding: 2px 8px; border-radius: 999px; background: #eef4fb; color: var(--yale-blue); }
+.iv-timer .part-time.over { background: #fff4dc; color: #7a5a00; }
+.iv-timer .part-time.late { background: #fbeee6; color: #7a2e0b; }
+.pacing-table tr.late td { color: #7a2e0b; }
+
+/* ---- jobs that a restart interrupted */
+.job.interrupted { border-left-color: var(--orange); }
+
+/* ---- solver check and user reports in the Quality tab */
+.solver-note td { font-size: 12.5px; color: var(--muted); padding-top: 0; border-top: 0; }
+.issue.resolved { opacity: .65; }
+.issue .link-btn { font-size: 12.5px; }
+
+/* ---- flag-a-problem dialog (reuses the exhibit viewer's backdrop) */
+.flag-panel { width: min(520px, 94vw); }
+.flag-panel .field textarea, .flag-panel .field select { width: 100%; margin-top: 6px; }
+.flag-panel .job-actions { justify-content: flex-end; }
+.flag-panel .btn-primary { width: auto; }
+
+/* ---- live partner mode: the interviewer's controls */
+.btn-inline { width: auto; }
+.live-panel { margin: 0 0 18px; border-left: 4px solid var(--yale-blue-mid); }
+.live-panel[hidden] { display: none; }
+.live-head { display: flex; justify-content: space-between; align-items: baseline; }
+.live-grid { display: grid; grid-template-columns: 150px 1fr; gap: 18px; align-items: start; }
+.live-qr { width: 150px; height: 150px; border: 1px solid #dfe5ee; border-radius: 6px; background: #fff; }
+.live-link { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; font-size: 13px; margin: 6px 0; }
+.live-link-label { font-weight: 600; color: var(--ink-soft); min-width: 210px; }
+.live-link a { word-break: break-all; }
+.live-controls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.live-controls .btn { padding: 8px 12px; font-size: 13px; }
+.live-ex.released { background: #eef3e3; border-color: var(--green); color: var(--green); }
+body.print-mode .live-panel { display: none !important; }
+@media print { .live-panel { display: none !important; } }
+
+/* ---- live partner mode: the candidate's screen */
+.live-candidate .live-top { justify-content: flex-start; }
+.live-main { max-width: 980px; margin: 0 auto; padding: 18px 16px 40px; }
+.live-meta { margin-bottom: 12px; font-size: 14px; }
+.live-prompt { margin-bottom: 16px; }
+.live-exhibit { margin-bottom: 16px; overflow-x: auto; }
+.live-exhibit .exhibit { margin: 0; }
+.live-exhibit.new { animation: live-new 2.4s ease-out; }
+@keyframes live-new { 0% { box-shadow: 0 0 0 4px var(--yale-blue-light); } 100% { box-shadow: var(--card-shadow); } }
+.live-empty { text-align: center; padding: 30px 10px; }
+.live-status { text-align: center; }
+@media (max-width: 640px) {
+  .live-grid { grid-template-columns: 1fr; }
+  .live-main { padding: 12px 10px 30px; }
+  .live-exhibit { padding: 12px; }
+  .live-exhibit table { font-size: 13px; }
+}
+.chat-head { flex-wrap: wrap; row-gap: 6px; }
+.chat-head > div:first-child { flex: 1 1 240px; min-width: 0; }
+#scorecard .job-actions .btn-ghost { white-space: nowrap; }
+
+/* ---- Casebook room */
+.cb-filters { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 0 0 16px; }
+.cb-filters input, .cb-filters select { font: 14px var(--sans); padding: 8px 10px; border: 1px solid #c9d3e0; border-radius: 6px; background: #fff; }
+.cb-filters input { flex: 1 1 280px; }
+.cb-card .actions a.btn { text-decoration: none; display: inline-block; }
+a.btn { text-decoration: none; display: inline-block; }
+
+/* ---- BAIN: one tab, two sub-tabs */
+.archive-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; border-bottom: 1px solid #dfe5ee; }
+.archive-head h1 { margin-bottom: 10px; }
+.archive-head h1 .muted { font-size: .6em; }
+.subtabs { display: flex; gap: 2px; }
+.subtab { border: 0; background: transparent; font: 600 14px var(--sans); color: var(--ink-soft); padding: 10px 16px; border-bottom: 3px solid transparent; cursor: pointer; margin-bottom: -1px; }
+.subtab:hover { color: var(--yale-blue); }
+.subtab.active { color: var(--yale-blue); border-bottom-color: var(--yale-blue); }
+.subview[hidden] { display: none; }
+/* Tabs: the short name normally, the full joke name on hover, keyboard focus, or when selected.
+   The labels slide between widths instead of swapping, so the bar glides rather than jumps; on hover
+   it waits a moment first, so sweeping the mouse across the bar doesn't set every tab off. */
+.nav-btn .nav-short, .nav-btn .nav-full { display: inline-block; vertical-align: bottom; overflow: hidden; white-space: nowrap;
+  transition: max-width .55s cubic-bezier(.4, 0, .2, 1), opacity .4s ease; }
+.nav-btn .nav-short { max-width: 8em; opacity: 1; }
+.nav-btn .nav-full { max-width: 0; opacity: 0; }
+.nav-btn:hover .nav-full, .nav-btn:focus-visible .nav-full, .nav-btn.active .nav-full { max-width: 22em; opacity: 1; }
+.nav-btn:hover .nav-short, .nav-btn:focus-visible .nav-short, .nav-btn.active .nav-short { max-width: 0; opacity: 0; }
+.nav-btn:hover:not(.active) .nav-full, .nav-btn:hover:not(.active) .nav-short { transition-delay: .18s; }
+@media (prefers-reduced-motion: reduce) { .nav-btn .nav-short, .nav-btn .nav-full { transition: none; } }
+
+/* ---- casebook folder */
+.cb-folder { margin: 0 0 12px; font-size: 13px; }
+.cb-folder-row { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.cb-folder code { font-size: 12.5px; background: #eef4fb; padding: 2px 6px; border-radius: 4px; word-break: break-all; }
+.cb-folder-edit { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
+.cb-folder-edit label { flex: 1 1 420px; font-weight: 600; color: var(--ink-soft); display: grid; gap: 6px; }
+.cb-folder-edit input { font: 13.5px var(--sans); padding: 8px 10px; border: 1px solid #c9d3e0; border-radius: 6px; }
+.cb-folder-btns { display: flex; gap: 8px; }
+@media (max-width: 1600px) { .dan-top .tagline { display: none; } }
+
+/* ---- converted casebook cases */
+.cb-convert-status:empty { display: none; }
+.cb-open-full { border-color: var(--green); color: var(--green); }
+.badge.casebook { background: #f3efe9; color: #6b5a43; }
+.case-source { margin-top: 4px; font-size: 13px; color: var(--muted); }
+.exhibit.has-original .exhibit-label { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.ex-flip { font-size: 12px; text-transform: none; letter-spacing: 0; }
+.exhibit.has-original { width: 100%; box-sizing: border-box; }
+.ex-original { display: block; max-width: 100%; height: auto; margin: 4px auto 0; }
+
+/* Every button label stays on one line; when a row runs out of room, whole buttons wrap to the next row. */
+.lib-card .actions, .job-actions, .case-actions, .cb-folder-btns, .live-controls { flex-wrap: wrap; }
+.btn, .link-btn { white-space: nowrap; }
+.btn-big { white-space: normal; } /* the big full-width buttons may wrap on tiny screens */
+
+/* ---- converting many casebook cases */
+#cb-convert-all { margin-left: auto; padding: 7px 12px; font-size: 13px; }
+.cb-batch { margin: 0 0 14px; padding: 12px 16px; border-left: 4px solid var(--yale-blue-mid); }
+.cb-batch[hidden] { display: none; }
+.cb-batch-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 8px; }
+.cb-batch-head .link-btn { margin-left: auto; }
+.confirm-list { margin: 0 0 14px; padding-left: 18px; font-size: 14px; line-height: 1.55; }
+.warn-text { color: #7a2e0b; }
+
+/* ---- practice progress */
+.progress-card { margin-top: 18px; }
+.progress-card[hidden] { display: none; }
+.progress-head { display: flex; justify-content: space-between; align-items: baseline; }
+.progress-grid { display: grid; grid-template-columns: 240px 1fr; gap: 24px; align-items: start; margin-bottom: 14px; }
+.progress-overall .score-big { font-size: 40px; }
+.sparkline { width: 220px; height: 46px; margin-top: 8px; }
+.sparkline .line { fill: none; stroke: var(--yale-blue-mid); stroke-width: 2; }
+.sparkline .dot { fill: var(--yale-blue); }
+.sparkline .mid { stroke: #dfe5ee; stroke-dasharray: 3 3; }
+.skill-row { display: grid; grid-template-columns: 140px 1fr 34px 20px; gap: 10px; align-items: center; margin: 7px 0; font-size: 14px; }
+.skill-bar { height: 8px; background: #eef1f5; border-radius: 4px; overflow: hidden; }
+.skill-bar i { display: block; height: 100%; background: var(--yale-blue-mid); border-radius: 4px; }
+.skill-trend.up { color: var(--green); }
+.skill-trend.down { color: #a33; }
+.progress-types { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; font-size: 12px; }
+.progress-next { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 12px 14px; background: #eef4fb; border-radius: 8px; margin-bottom: 10px; }
+.progress-recent summary { cursor: pointer; font-weight: 600; color: var(--yale-blue); font-size: 14px; }
+.progress-recent ul { margin: 8px 0 0; padding-left: 18px; font-size: 13.5px; }
+.progress-foot { display: flex; gap: 18px; margin-top: 10px; font-size: 13px; }
+.btn-danger-link:hover { color: #a33; }
+@media (max-width: 760px) { .progress-grid { grid-template-columns: 1fr; } }
+
+/* ---- BCG board: clearing finished cards */
+.board-tools { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin: -4px 2px 10px; }
+.board-tools[hidden] { display: none; }
+.job-dismiss { margin-left: 8px; border: 0; background: transparent; color: var(--muted); font-size: 17px; line-height: 1; cursor: pointer; padding: 0 2px; vertical-align: middle; }
+.job-dismiss:hover { color: #a33; }

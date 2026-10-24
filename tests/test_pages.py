@@ -13,7 +13,8 @@ client = TestClient(main.app)
 
 def test_main_page_has_all_three_rooms():
     html = client.get("/").text
-    for room in ("Run room", "Library", "Practice with Handsome Dan"):
+    for room in ("Bulldog Case Generator", "BCG", "Bulldog Archive of INterviews", "BAIN", "Generated cases",
+                 "Casebook cases", "Practice with Handsome Dan"):
         assert room in html
 
 

@@ -40,12 +40,24 @@ _BROWSERS = [
 ]
 
 
+# "auto" prints PDFs on the server with headless Edge/Chrome when one is installed; "off" never does
+# (e.g. on a hosted server), and the app falls back to the browser's own Print / Save as PDF.
+PDF_MODE = os.environ.get("CASEGEN_PDF", "auto").strip().lower()
+NO_SERVER_PDF = ("Server-side PDFs aren't available here ({why}). Use “Print / Save as PDF” in the case view: "
+                 "your browser's print dialog can save the same document as a PDF.")
+
+
 class ExportError(RuntimeError):
     pass
 
 
 def browser_path() -> str | None:
     return next((b for b in _BROWSERS if b and Path(b).exists()), None)
+
+
+def available() -> bool:
+    """Whether this server can print PDFs itself."""
+    return PDF_MODE != "off" and browser_path() is not None
 
 
 def pdf_name(difficulty: str, title: str) -> str:
@@ -63,9 +75,11 @@ async def export_pdf(case_id: str, difficulty: str, title: str, base_url: str, e
     """Print the case to EXPORT_DIR and return the file name."""
     if not re.fullmatch(r"[0-9A-Za-z-]+", case_id):
         raise ExportError("bad case id")
+    if PDF_MODE == "off":
+        raise ExportError(NO_SERVER_PDF.format(why="CASEGEN_PDF=off"))
     browser = browser_path()
     if not browser:
-        raise ExportError("No Edge or Chrome found for PDF export (set CASEGEN_BROWSER to its path)")
+        raise ExportError(NO_SERVER_PDF.format(why="no Edge or Chrome found; set CASEGEN_BROWSER to its path"))
     EXPORT_DIR.mkdir(parents=True, exist_ok=True)
     target = EXPORT_DIR / existing if existing else _unique(EXPORT_DIR / pdf_name(difficulty, title), case_id)
     if target.exists():  # re-saving: remove the old file so we don't mistake it for the new one

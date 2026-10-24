@@ -18,9 +18,10 @@
       </div>
     </div>
     <nav class="dan-nav" aria-label="Main">
-      <button type="button" class="nav-btn" data-view="run">Run room</button>
-      <button type="button" class="nav-btn" data-view="library">Library</button>
-      <button type="button" class="nav-btn" data-view="practice">Practice with Handsome Dan</button>
+      <!-- Short names normally; the full name shows on hover, on keyboard focus, and on the selected tab. -->
+      <button type="button" class="nav-btn" data-view="run" title="Bulldog Case Generator (BCG)"><span class="nav-short" aria-hidden="true">BCG</span><span class="nav-full">Bulldog Case Generator (BCG)</span></button>
+      <button type="button" class="nav-btn" data-view="library" title="Bulldog Archive of INterviews (BAIN)"><span class="nav-short" aria-hidden="true">BAIN</span><span class="nav-full">Bulldog Archive of INterviews (BAIN)</span></button>
+      <button type="button" class="nav-btn" data-view="practice" title="Practice with Handsome Dan"><span class="nav-short" aria-hidden="true">Practice</span><span class="nav-full">Practice with Handsome Dan</span></button>
     </nav>
     <div class="topbar-meta">
       <div id="built-from"></div>
@@ -28,7 +29,7 @@
     </div>
   </header>
 
-  <!-- ===================================================== RUN ROOM -->
+  <!-- ===================================================== BCG: BULLDOG CASE GENERATOR -->
   <main class="view" id="view-run">
     <section class="run-config card">
       <h2 class="card-title">New batch</h2>
@@ -90,6 +91,7 @@
 
     <section class="run-board">
       <div class="kpi-strip" id="kpi-strip"></div>
+      <div class="board-tools" id="board-tools" hidden></div>
       <div class="jobs" id="jobs"></div>
       <div class="jobs-empty" id="jobs-empty">
         <span data-dan="96"></span>
@@ -99,11 +101,19 @@
     </section>
   </main>
 
-  <!-- ===================================================== LIBRARY -->
-  <main class="view" id="view-library" hidden>
+  <!-- ===================================================== BAIN: BULLDOG ARCHIVE OF INTERVIEWS (generated + casebook cases) -->
+  <main class="view" id="view-archive" hidden>
+    <div class="archive-head">
+      <h1>Bulldog Archive of INterviews <span class="muted">(BAIN)</span></h1>
+      <div class="subtabs" role="tablist" aria-label="Which cases">
+        <button type="button" class="subtab" role="tab" data-sub="library">Generated cases</button>
+        <button type="button" class="subtab" role="tab" data-sub="casebook">Casebook cases</button>
+      </div>
+    </div>
+
+  <section class="subview" id="view-library" hidden>
     <div class="lib-head">
       <div>
-        <h1>Library</h1>
         <p class="muted" id="empty-built"></p>
       </div>
       <div class="chips" id="lib-filter">
@@ -115,6 +125,41 @@
       </div>
     </div>
     <div class="lib-grid" id="library"></div>
+  </section>
+
+  <!-- the real casebook cases the knowledge pack was built from -->
+  <section class="subview" id="view-casebook" hidden>
+    <div id="cb-browse">
+      <div class="lib-head">
+        <div>
+          <p class="muted">The real casebook cases this app learned from. Pick one and give it live: you read the case, and
+            your partner sees only the pages you share, on their phone or computer. These stay on this computer.</p>
+        </div>
+        <div class="chips" id="cb-level">
+          <button type="button" class="chip active" data-level="">All</button>
+          <button type="button" class="chip" data-level="easy">Easy</button>
+          <button type="button" class="chip" data-level="medium">Medium</button>
+          <button type="button" class="chip" data-level="hard">Hard</button>
+          <button type="button" class="chip" data-level="instant_offer">Instant Offer</button>
+        </div>
+      </div>
+      <div class="cb-folder" id="cb-folder"></div>
+      <div class="cb-filters">
+        <input type="search" id="cb-search" placeholder="Search by name, school or industry" aria-label="Search the casebook">
+        <select id="cb-school" aria-label="Casebook"><option value="">All casebooks</option></select>
+        <select id="cb-type" aria-label="Case type"><option value="">Any case type</option></select>
+        <select id="cb-converted" aria-label="Converted or not">
+          <option value="">All cases</option>
+          <option value="yes">Converted only</option>
+          <option value="no">Not converted yet</option>
+        </select>
+        <span class="muted small" id="cb-count"></span>
+        <button type="button" class="btn btn-ghost" id="cb-convert-all" hidden>Convert all shown</button>
+      </div>
+      <div class="cb-batch card" id="cb-batch" hidden></div>
+      <div class="lib-grid" id="cb-list"><p class="muted">Loading the casebook…</p></div>
+    </div>
+  </section>
   </main>
 
   <!-- ===================================================== CASE (opened from the library or a run) -->
@@ -153,10 +198,13 @@
       <div id="practice-resume"></div>
     </section>
 
+    <section class="card progress-card" id="progress-card" hidden></section>
+
     <section class="interview" id="interview" hidden>
       <div class="chat card">
         <div class="chat-head">
           <div><span class="pill" id="iv-level"></span> <strong id="iv-client"></strong> <span class="muted" id="iv-industry"></span></div>
+          <div class="iv-timer" id="iv-timer" aria-live="off"></div>
           <div class="progress-dots" id="iv-progress"></div>
         </div>
         <div class="messages" id="messages" aria-live="polite"></div>
@@ -195,6 +243,8 @@
           <h3 class="card-title">Exhibits from Handsome Dan</h3>
           <div id="iv-exhibits"><p class="muted small">Handsome Dan hands these over as you reach them.</p></div>
         </div>
+        <button type="button" class="link-btn" id="iv-flag">⚑ Flag a problem with this case</button>
+        <p class="muted small" id="iv-flag-note" hidden></p>
         <button type="button" class="link-btn" id="iv-new">Start a different case</button>
       </aside>
     </section>
@@ -211,6 +261,7 @@
   <script src="/static/dan.js"></script>
   <script src="/static/charts.js"></script>
   <script src="/static/case_view.js"></script>
+  <script src="/static/casebook.js"></script>
   <script src="/static/app.js"></script>
 </body>
 </html>

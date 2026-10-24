@@ -30,7 +30,14 @@ const DAN_QUIPS = [
 ];
 
 const DAN_FLIP_LINES = ["Boola boola!", "Stuck the landing.", "10/10. The Harvard judges are furious.",
-  "Handsome AND athletic.", "Still faster than your mental math.", "That's what we call a pivot."];
+  "Handsome AND athletic.", "Still faster than your mental math.", "That's what we call a pivot.",
+  "A 360° view of the problem.", "Flipped the P&L. Literally.", "That's a turnaround case.",
+  "Upside scenario achieved.", "Vertical integration.", "Nailed the dismount. And the synthesis.",
+  "Wharton dogs can't do that.", "Bark-flip. Patent pending.", "I flip for a clean framework.",
+  "Gravity is just a constraint. Prioritize.", "Stanford's mascot is a tree. Trees can't flip.",
+  "Hockey-stick growth!", "Top Dog for a reason.", "Did you see that, Princeton?",
+  "Head over paws for consulting.", "Bulldog bounce-back. Like a good recovery in the case.",
+  "Synergy.", "Nobody tell Career Development I did that indoors.", "Mascot-level execution."];
 
 const DAN_REDUCED = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

@@ -24,11 +24,13 @@ client = TestClient(main.app)
 
 
 @pytest.fixture(autouse=True)
-def no_real_generation(monkeypatch):
-    """A request that slips past a guard must never reach a model from the test suite."""
+def no_real_generation(monkeypatch, tmp_path):
+    """A request that slips past a guard must never reach a model from the test suite, and the
+    saved job board goes to a temp folder."""
     async def fake_run(job):
         job.status = "done"
     monkeypatch.setattr(main, "_run", fake_run)
+    monkeypatch.setattr(main, "JOBS_PATH", tmp_path / "jobs.json")
 
 
 def sample() -> dict:

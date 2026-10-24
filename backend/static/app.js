@@ -18,11 +18,26 @@ const sessionJobs = new Set(); // jobs started from this browser tab, for the se
 
 // ---------------------------------------------------------------- navigation
 
+// BAIN (the archive) is one main tab with two sub-tabs: generated cases ("library") and casebook cases.
+const ARCHIVE_SUBS = ["library", "casebook"];
+let archiveSub = "library";
+
 function showView(name) {
-  for (const v of ["run", "library", "case", "practice"]) $(`#view-${v}`).hidden = v !== name;
-  document.querySelectorAll(".nav-btn").forEach((b) => b.classList.toggle("active", b.dataset.view === name
-    || (name === "case" && b.dataset.view === previousView)));
+  const top = ARCHIVE_SUBS.includes(name) ? "archive" : name;
+  for (const v of ["run", "archive", "case", "practice"]) $(`#view-${v}`).hidden = v !== top;
+  if (top === "archive") {
+    archiveSub = name;
+    for (const sub of ARCHIVE_SUBS) $(`#view-${sub}`).hidden = sub !== name;
+    document.querySelectorAll(".subtab").forEach((t) => {
+      t.classList.toggle("active", t.dataset.sub === name);
+      t.setAttribute("aria-selected", t.dataset.sub === name ? "true" : "false");
+    });
+  }
+  const navOf = (v) => (ARCHIVE_SUBS.includes(v) ? "library" : v);
+  document.querySelectorAll(".nav-btn").forEach((b) => b.classList.toggle("active", b.dataset.view === navOf(name)
+    || (name === "case" && b.dataset.view === navOf(previousView))));
   if (name === "library") loadLibrary();
+  if (name === "casebook") loadCasebook();
   if (name === "run") pollJobs(true);
   if (name === "practice") renderPracticeHome();
   window.scrollTo({ top: 0 });
@@ -180,13 +195,17 @@ function jobCard(j) {
   } else if (done) {
     step = h("div.job-step", null, h("span.quality-badge." + (j.quality || "verified"), null,
       h("span.dot.dot-" + (j.quality || "verified")), STATUS[j.quality] || "Done"), `· ${j.fix_rounds ?? 0} fix rounds`);
-  } else step = h("div.job-error", null, j.error || "Failed");
+  } else step = h("div.job-error", null, j.error || (j.status === "interrupted" ? "Interrupted" : "Failed"));
+  const failed = j.status === "error" || j.status === "interrupted";
   const costPct = j.budget_usd ? Math.min(100, (100 * j.usd) / j.budget_usd) : 0;
+  const finished = !["queued", "running"].includes(j.status);
   return h("article." + cls, null,
     h("div.job-top", null,
       h("span", null, h("span.pill.pill-" + j.difficulty, null, LEVEL[j.difficulty]), ` ${TIER[j.difficulty]}`),
-      h("span", null, `${j.model || ""} · ${clock(j.elapsed)}`)),
-    h("div.job-title" + (j.title ? "" : ".pending"), null, j.title || (j.status === "queued" ? "In the queue" : "Writing a new case…")),
+      h("span", null, `${j.model || ""} · ${clock(j.elapsed)}`,
+        finished ? h("button.job-dismiss", { type: "button", title: "Take this card off the board (the case stays in BAIN)", "aria-label": "Dismiss", onclick: () => dismissJob(j.id) }, "×") : null)),
+    h("div.job-title" + (j.title ? "" : ".pending"), null, j.title
+      || (j.import_title ? `Converting the casebook case “${j.import_title}”…` : j.status === "queued" ? "In the queue" : "Writing a new case…")),
     step,
     h("div.job-bar", null, h("i", { style: `width:${pct}%` })),
     h("div.job-metrics", null,
@@ -196,9 +215,44 @@ function jobCard(j) {
       h("div", null, h("b", null, j.input ? `${Math.round((100 * j.cached) / j.input)}%` : "–"), "cached")),
     h("div.job-cost-bar", { title: `Cost against this case's $${(j.budget_usd || 0).toFixed(2)} cap` }, h("i", { style: `width:${costPct}%` })),
     stages.length && !done && j.status !== "error" ? h("ol.job-stages", null, stages.map((s) => h("li", null, s))) : null,
-    done ? h("div.job-actions", null,
+    done && j.case_id ? h("div.job-actions", null,
       h("button.btn.btn-ghost", { type: "button", onclick: () => openCase(j.case_id) }, "Open case"),
-      h("button.btn.btn-ghost", { type: "button", onclick: () => startPractice({ case_id: j.case_id }) }, "Practice it")) : null);
+      h("button.btn.btn-ghost", { type: "button", onclick: () => startPractice({ case_id: j.case_id }) }, "Practice it")) : null,
+    failed ? h("div.job-actions", null, j.retried_as
+      ? h("span.muted.small", null, "Retried as a new case")
+      : h("button.btn.btn-ghost", { type: "button", onclick: (ev) => retryJob(j, ev.currentTarget) }, "Retry with the same settings")) : null);
+}
+
+// Clearing the board only removes the cards: every finished case stays in BAIN.
+async function dismissJob(id) {
+  try { await api(`/api/jobs/${id}`, { method: "DELETE" }); } catch (err) { alert(err.message); }
+  sessionJobs.delete(id);
+  pollJobs(true);
+}
+
+async function clearFinishedJobs() {
+  try { await api("/api/jobs/clear", { method: "POST" }); } catch (err) { alert(err.message); }
+  pollJobs(true);
+}
+
+async function retryJob(j, btn) {
+  const eng = engineOf(j.engine || "luna");
+  let confirm_cost = false;
+  if (eng.confirm_levels.includes(j.difficulty)) {
+    if (!confirm(`This case runs on ${eng.models[j.difficulty]}, the most expensive model.\n\nRun it again and charge it to your Portkey key?`)) return;
+    confirm_cost = true;
+  }
+  btn.disabled = true;
+  try {
+    const { job_id } = await api(`/api/jobs/${j.id}/retry`, {
+      method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ confirm_cost }),
+    });
+    sessionJobs.add(job_id);
+  } catch (err) {
+    alert(`Couldn't retry: ${err.message}`);
+    btn.disabled = false;
+  }
+  pollJobs(true);
 }
 
 function renderKpis(data) {
@@ -226,6 +280,11 @@ async function pollJobs(immediate) {
     renderKpis(data);
     $("#jobs").replaceChildren(...data.jobs.map(jobCard));
     $("#jobs-empty").hidden = data.jobs.length > 0;
+    const finished = data.jobs.filter((j) => !["queued", "running"].includes(j.status)).length;
+    $("#board-tools").hidden = !finished;
+    $("#board-tools").replaceChildren(
+      h("span.muted.small", null, `${finished} finished card${finished === 1 ? "" : "s"} on the board · the cases stay in BAIN`),
+      h("button.link-btn", { type: "button", onclick: clearFinishedJobs }, "Clear finished"));
     const active = data.jobs.some((j) => j.status === "running" || j.status === "queued");
     refreshSpend();
     if (active || !$("#view-run").hidden) jobsTimer = setTimeout(tick, active ? 1500 : 6000);
@@ -236,7 +295,8 @@ async function pollJobs(immediate) {
 // ---------------------------------------------------------------- library + case
 
 async function loadLibrary() {
-  const items = await api("/api/cases");
+  // Generated cases only: converted casebook cases live under Casebook cases (Open full case / Give Case).
+  const items = (await api("/api/cases")).filter((it) => !(it.source && it.source.kind === "casebook"));
   const grid = $("#library");
   const shown = items.filter((it) => !libLevel || it.difficulty === libLevel);
   if (!shown.length) {
@@ -249,7 +309,12 @@ async function loadLibrary() {
       h("span.badge" + (it.status === "verified" ? ".ok" : ".warn"), null, STATUS[it.status] || it.status),
       it.second_opinion === null || it.second_opinion === undefined
         ? h("span.badge", { title: "Open the case and click Second opinion for an independent Terra review (~5¢)" }, "No second opinion yet")
-        : h("span.badge" + (it.second_opinion ? ".warn" : ".ok"), null, it.second_opinion ? `Second opinion: ${it.second_opinion} major` : "Second opinion: clean")),
+        : h("span.badge" + (it.second_opinion ? ".warn" : ".ok"), null, it.second_opinion ? `Second opinion: ${it.second_opinion} major` : "Second opinion: clean"),
+      it.solver ? h("span.badge" + (it.solver.solved === it.solver.total ? ".ok" : ".warn"),
+        { title: "Results a solver reached using only the candidate's materials" }, `Solver ${it.solver.solved}/${it.solver.total}`) : null,
+      it.flags ? h("span.badge.warn", { title: "Open problem reports from users" }, `⚑ ${it.flags} report${it.flags === 1 ? "" : "s"}`) : null,
+      it.source && it.source.kind === "casebook" ? h("span.badge.casebook", { title: `Converted from “${it.source.title}”` },
+        `From casebook · ${it.source.school}${it.source.year ? ` ${it.source.year}` : ""}`) : null),
     h("h3", null, it.title),
     h("div.meta", null, `${it.client} · ${it.industry}`),
     h("p.summary", null, it.summary || ""),
@@ -291,6 +356,7 @@ function renderPracticeHome() {
   $("#practice-start").hidden = false;
   $("#interview").hidden = true;
   $("#scorecard").hidden = true;
+  loadProgress();
   const last = localStorage.getItem("practiceSession");
   $("#practice-resume").replaceChildren(last ? h("button.link-btn", { type: "button", onclick: () => resumePractice(last) }, "Resume your last interview") : "");
 }
@@ -330,11 +396,55 @@ async function resumePractice(id) {
   }
 }
 
+// ---- pacing: a running clock against the case's length, per part and in total
+let timerTick = null;
+
+function updateTimer() {
+  const el = $("#iv-timer");
+  if (!el || !session || !session.pacing || $("#interview").hidden) return;
+  const p = session.pacing;
+  const extra = p.running ? Math.max(0, (Date.now() - (session._t || Date.now())) / 1000) : 0;
+  const cur = p.parts.find((x) => x.status === "current");
+  const partSec = cur ? cur.seconds + extra : 0;
+  const level = !cur ? "" : partSec > 1.5 * cur.target_seconds ? ".late" : partSec > cur.target_seconds ? ".over" : "";
+  el.replaceChildren(...[ // (filter: replaceChildren would print a literal "null")
+    h("span", { title: "Time in this interview against the case's length" }, `⏱ ${clock(p.elapsed_seconds + extra)} / ${clock(p.target_seconds)}`),
+    cur ? h("span.part-time" + level, { title: "Time on this part against its share of the case" },
+      `Part ${cur.part}: ${clock(partSec)} / ${clock(cur.target_seconds)}`) : null].filter(Boolean));
+}
+
+function pacingCard(p) {
+  if (!p || !p.parts.length) return null;
+  const note = (x) => x.status === "upcoming" ? "not reached" : x.skipped ? "skipped"
+    : x.over ? "well over target" : x.seconds > x.target_seconds ? "a little over" : "on pace";
+  return h("div.card", null, h("h3.card-title", null, "Pacing"),
+    h("p.muted.small", null, `Total ${clock(p.elapsed_seconds)} against a ${clock(p.target_seconds)} case. Each part's target is an even share of the case's length; real interviews run on the clock.`),
+    h("table.calc-table.pacing-table", null,
+      h("thead", null, h("tr", null, h("th", null, "Part"), h("th", null, "Time"), h("th", null, "Target"), h("th", null, ""))),
+      h("tbody", null, p.parts.map((x) => h("tr" + (x.over && !x.skipped ? ".late" : ""), null,
+        h("td", null, `Part ${x.part}`), h("td", null, x.status === "upcoming" ? "—" : clock(x.seconds)),
+        h("td", null, clock(x.target_seconds)), h("td", null, note(x)))))));
+}
+
+function flagPractice() {
+  if (!session) return;
+  openFlagDialog("Flag a problem with this case", async (body) => {
+    await api(`/api/practice/${session.id}/flag`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+    const note = $("#iv-flag-note");
+    if (note) { note.textContent = "Thanks: your report was saved with the case."; note.hidden = false; }
+  });
+}
+
 function renderInterview() {
   $("#practice-start").hidden = true;
+  $("#progress-card").hidden = true;
   $("#scorecard").hidden = true;
   $("#interview").hidden = false;
   const s = session;
+  if (!s._t) s._t = Date.now(); // when this snapshot of the clock arrived from the server
+  updateTimer();
+  clearInterval(timerTick);
+  if (s.pacing && s.pacing.running) timerTick = setInterval(updateTimer, 1000);
   $("#iv-level").className = "pill pill-" + s.difficulty;
   $("#iv-level").textContent = `${LEVEL[s.difficulty]} · ${TIER[s.difficulty]}${s.engine === "strong" ? " · Stronger interviewer" : ""}`;
   $("#iv-client").textContent = s.client;
@@ -653,13 +763,15 @@ function celebrate() {
 }
 
 function renderScorecard(fresh = false) {
+  clearInterval(timerTick);
   $("#practice-start").hidden = true;
+  $("#progress-card").hidden = true;
   $("#interview").hidden = true;
   const box = $("#scorecard");
   box.hidden = false;
   const c = session.scorecard;
   const verdictCls = c.verdict.split(" ")[0];
-  box.replaceChildren(
+  box.replaceChildren(...[ // (filter: replaceChildren would print a literal "null")
     h("div.congrats", null, danEl(40), h("span", null, "Congratulations on finishing the case!")),
     h("div.card.score-hero", null,
       danEl(92),
@@ -680,19 +792,110 @@ function renderScorecard(fresh = false) {
     h("div.two-col", null,
       h("div.card", null, h("h3.card-title", null, "What went well"), list(c.strengths)),
       h("div.card", null, h("h3.card-title", null, "Next time, try"), list(c.improvements))),
+    pacingCard(session.pacing),
     h("details.card.transcript", null, h("summary", null, `The interview (${session.transcript.length} messages)`),
       h("div.messages.read-only", null, session.transcript.map((t) => message(t)))),
     h("div.card", null,
       h("p.muted.small", null, `This interview: ${session.usage.calls} model calls, ${kTok(session.usage.input)} input and ${kTok(session.usage.output)} output tokens, ${money(session.usage.usd)}.`),
       h("div.job-actions", null,
         session.case_id ? h("button.btn.btn-ghost", { type: "button", onclick: () => openCase(session.case_id) }, "Open the interviewer guide") : null,
-        h("button.btn.btn-primary", { type: "button", onclick: () => { session = null; localStorage.removeItem("practiceSession"); renderPracticeHome(); } }, "Practice another case"))));
+        h("button.btn.btn-ghost", { type: "button", onclick: flagPractice }, "⚑ Flag a problem with this case"),
+        h("button.btn.btn-primary", { type: "button", onclick: () => { session = null; localStorage.removeItem("practiceSession"); renderPracticeHome(); } }, "Practice another case")))].filter(Boolean));
+}
+
+// ---------------------------------------------------------------- practice progress over time
+
+const CASE_TYPE_NAME = (t) => (options && options.case_types.find((x) => x.value === t) || {}).label || (t || "").replace(/_/g, " ");
+
+function sparkline(scores) {
+  const w = 220, hgt = 46, pad = 4;
+  if (scores.length < 2) return null;
+  const x = (i) => pad + (i * (w - 2 * pad)) / (scores.length - 1);
+  const y = (v) => hgt - pad - ((v - 1) * (hgt - 2 * pad)) / 4;
+  const pts = scores.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", `0 0 ${w} ${hgt}`);
+  svg.setAttribute("class", "sparkline");
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", `Overall scores, oldest to newest: ${scores.join(", ")} out of 5`);
+  svg.innerHTML = `<line x1="${pad}" x2="${w - pad}" y1="${y(3)}" y2="${y(3)}" class="mid"/>`
+    + `<polyline points="${pts}" class="line"/>`
+    + scores.map((v, i) => `<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="2.6" class="dot"/>`).join("");
+  return svg;
+}
+
+function trendText(recent, earlier) {
+  if (earlier === null || earlier === undefined || recent === null) return "";
+  const d = recent - earlier;
+  if (Math.abs(d) < 0.15) return "about the same as before";
+  return `${d > 0 ? "▲" : "▼"} ${Math.abs(d).toFixed(1)} vs your earlier interviews`;
+}
+
+async function loadProgress() {
+  const box = $("#progress-card");
+  if (!box) return;
+  let p;
+  try { p = await api("/api/progress"); } catch { box.hidden = true; return; }
+  box.hidden = false;
+  const undo = p.undo ? h("button.link-btn", { type: "button", onclick: undoWipe },
+    `Undo last clear (${p.undo.count} interview${p.undo.count === 1 ? "" : "s"})`) : null;
+  if (!p.count) {
+    box.replaceChildren(...[h("h3.card-title", null, "Your progress"),
+      h("p.muted", null, "Score an interview with Handsome Dan and your progress shows up here: your skills over time and what to practice next."),
+      undo ? h("div.progress-foot", null, undo) : null].filter(Boolean));
+    return;
+  }
+  const s = p.suggestion;
+  box.replaceChildren(...[
+    h("div.progress-head", null, h("h3.card-title", null, "Your progress"),
+      h("span.muted.small", null, `${p.count} scored interview${p.count === 1 ? "" : "s"}`)),
+    h("div.progress-grid", null,
+      h("div.progress-overall", null,
+        h("div.score-big", null, p.overall_avg.toFixed(1), h("small", null, "/5")),
+        h("div.muted.small", null, "average overall"),
+        h("div.small", null, trendText(p.overall_recent, p.overall_earlier)),
+        sparkline(p.interviews.map((e) => e.overall))),
+      h("div.progress-skills", null, p.skills.map((k) => h("div.skill-row", null,
+        h("span.skill-name", null, k.skill),
+        h("span.skill-bar", { title: `${k.avg.toFixed(1)} of 5 across ${k.n} interview${k.n === 1 ? "" : "s"}` },
+          h("i", { style: `width:${(100 * k.avg) / 5}%` })),
+        h("b", null, k.avg.toFixed(1)),
+        h("span.skill-trend.small" + (k.earlier !== null && k.recent - k.earlier >= 0.15 ? ".up" : k.earlier !== null && k.earlier - k.recent >= 0.15 ? ".down" : ""),
+          null, k.earlier === null ? "" : k.recent > k.earlier + 0.14 ? "▲" : k.recent < k.earlier - 0.14 ? "▼" : "–"))))),
+    p.by_type.length ? h("div.progress-types", null, h("span.muted.small", null, "Practiced: "),
+      ...p.by_type.map((t) => h("span.badge", { title: `average ${t.avg.toFixed(1)} of 5` }, `${CASE_TYPE_NAME(t.case_type)} · ${t.n}`))) : null,
+    s ? h("div.progress-next", null,
+      h("div", null, h("b", null, `Practice next: ${/^[AEIOU]/.test(LEVEL[s.difficulty]) ? "an" : "a"} ${LEVEL[s.difficulty]} ${CASE_TYPE_NAME(s.case_type).toLowerCase()} case. `),
+        h("span.muted", null, s.why)),
+      h("button.btn.btn-primary.btn-inline", { type: "button", onclick: () => startPractice({ difficulty: s.difficulty, case_type: s.case_type }) }, "Practice this")) : null,
+    h("details.progress-recent", null, h("summary", null, "Recent interviews"),
+      h("ul", null, p.interviews.slice(-5).reverse().map((e) => h("li", null,
+        h("span.muted.small", null, e.at ? new Date(e.at).toLocaleDateString() : ""), " ",
+        `${e.title} `, h("span.muted", null, `(${LEVEL[e.difficulty] || ""})`), " · ", h("b", null, `${e.overall}/5`))))),
+    h("div.progress-foot", null,
+      h("button.link-btn.btn-danger-link", { type: "button", onclick: wipeProgress }, "Clear my progress"), undo)].filter(Boolean));
+}
+
+async function wipeProgress() {
+  if (!confirm("Clear your practice progress?\n\nYour scored interviews are taken out of the history, so the scores, trends and suggestions start fresh. Interviews you're still in the middle of are kept.\n\nYou can undo this right after with “Undo last clear”.")) return;
+  try { await api("/api/progress/wipe", { method: "POST" }); } catch (err) { alert(err.message); }
+  localStorage.removeItem("practiceSession");
+  loadProgress();
+  renderPracticeHome();
+}
+
+async function undoWipe() {
+  try { await api("/api/progress/undo-wipe", { method: "POST" }); } catch (err) { alert(err.message); }
+  loadProgress();
 }
 
 // ---------------------------------------------------------------- boot
 
 function wire() {
-  document.querySelectorAll(".nav-btn").forEach((b) => b.addEventListener("click", () => go(b.dataset.view)));
+  // The BAIN tab reopens whichever sub-tab was used last.
+  document.querySelectorAll(".nav-btn").forEach((b) => b.addEventListener("click", () =>
+    go(b.dataset.view === "library" ? archiveSub : b.dataset.view)));
+  document.querySelectorAll(".subtab").forEach((t) => t.addEventListener("click", () => go(t.dataset.sub)));
   $("#gen-form").addEventListener("submit", (ev) => {
     ev.preventDefault();
     const body = formBody();
@@ -750,6 +953,8 @@ function wire() {
   });
   if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => {}; // load the voice list early
   $("#score-btn").addEventListener("click", scoreSession);
+  $("#iv-flag").addEventListener("click", flagPractice);
+  wireCasebook();
   $("#iv-new").addEventListener("click", () => {
     if (!confirm("Leave this interview? You can resume it later from the Practice page.")) return;
     session = null;
@@ -774,7 +979,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   refreshSpend();
   const fromHash = () => {
     const v = (location.hash || "").replace("#", "");
-    return ["library", "practice"].includes(v) ? v : "run";
+    return ["library", "casebook", "practice"].includes(v) ? v : "run";
   };
   window.addEventListener("hashchange", () => go(fromHash()));
   go(fromHash());

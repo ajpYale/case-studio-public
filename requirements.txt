@@ -6,6 +6,8 @@ pydantic-ai-slim[openai]==2.54.0
 openai==3.24.0
 python-dotenv==1.2.4
 httpx==0.28.1
+segno==1.6.6  # QR code for live partner mode
+pypdfium2==5.14.0  # casebook pages as images in live mode
 # tests (python -m pytest)
 pytest==9.1.1
 # build_knowledge/ only (reads the casebook PDFs); the app itself doesn't need it

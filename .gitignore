@@ -13,6 +13,11 @@ Generated Cases/
 # extracted casebook text (copyrighted; only needed to rebuild the knowledge pack)
 build_knowledge/work/
 backend/practice/
+backend/live/
+backend/jobs.json
+backend/settings.json
+backend/batch.json
+backend/progress_wipes/
 
 # The full knowledge pack is distilled from copyrighted casebooks: never commit it here
 backend/knowledge/knowledge_pack.json
